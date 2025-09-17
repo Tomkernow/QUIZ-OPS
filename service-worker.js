@@ -1,6 +1,6 @@
 const CACHE_NAME = "quiz-app-cache-v2"; // ⚡ change de version pour forcer la maj
 const urlsToCache = [
-  "/Testo.html",          // ton fichier principal
+  "/index.html",          // ton fichier principal
   "/manifest.json",       // manifest PWA
   "/icons/icon-192.png",  // icône PWA
   "/icons/icon-512.png"   // icône PWA
@@ -44,9 +44,10 @@ self.addEventListener("fetch", event => {
       return fetch(event.request).catch(() => {
         // ⚠️ fallback offline uniquement pour les navigations (HTML)
         if (event.request.mode === "navigate") {
-          return caches.match("/testo.html");
+          return caches.match("/index.html");
         }
       });
     })
   );
+
 });
