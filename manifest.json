@@ -1,7 +1,7 @@
 {
   "name": "Trading Quiz",
   "short_name": "Quiz",
-  "start_url": "Testo.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#004aad",
@@ -17,4 +17,5 @@
     "type": "image/png"
   }
   ]
+
 }
