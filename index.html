@@ -412,51 +412,59 @@ let timerInterval = null;
 let timeLeft = 10;
   /* ========= Login ========= */
   async function login() {
-  const email = document.getElementById("emailInput").value.trim().toLowerCase();
-  const password = document.getElementById("passwordInput").value.trim();
-
-  if (!email || !email.includes("@")) { 
-    alert("Please enter a valid email"); 
-    return; 
-  }
-  if (!password) {
-    alert("Please enter your ID");
-    return;
-  }
-
-  // === Vérifier si admin ===
-  if (email === "admin@quiz.com" && password === "admin123") {
-    currentUser = "admin";
-    document.getElementById("login-container").style.display = "none";
-    document.getElementById("admin-panel").style.display = "block";
-    renderUserList();
-    return;
-  }
+    const email = document.getElementById("emailInput").value.trim().toLowerCase();
+    const password = document.getElementById("passwordInput").value.trim();
+ 
+    if (!email || !email.includes("@")) {
+        alert("Please enter a valid email");
+        return;
+    }
+    if (!password) {
+        alert("Please enter your ID");
+        return;
+    }
+ 
+    // === Vérifier si admin ===
+    if (email === "admin@quiz.com" && password === "admin123") {
+        currentUser = "admin";
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("admin-panel").style.display = "block";
+        renderUserList();
+        return;
+    }
+ 
+// === Vérifier localStorage temporaire ===
+    const tempUser = JSON.parse(localStorage.getItem("tempUser") || "{}");
+    if (tempUser.email === email && tempUser.id === password) {
+        currentUser = email;
+        localStorage.setItem("quizUser", currentUser); // stockage plus permanent si besoin
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("theme-selection").style.display = "block";
+        renderThemesGrid();
+        loadProgressOverview();
 
   // === Vérifier dans Excel via Power Automate ===
   try {
-    const res = await fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8529a06fdcc6401aaa54e12ccdf8053c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZMFUE06qvb1Qjx-2UAwG47ivXUPZljA2ikv4TaMdVQE", {
+    const res = await fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomat…, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, id: password })
     });
-
-    if (res.status === 200) {
-      currentUser = email;
-      localStorage.setItem("quizUser", currentUser);
-      document.getElementById("login-container").style.display = "none";
-      document.getElementById("theme-selection").style.display = "block";
-      renderThemesGrid();
-      loadProgressOverview();
-    } else if (res.status === 401) {
-      alert("❌ Email ou ID incorrect. Veuillez vous inscrire d'abord.");
-    } else {
-      alert("❌ Erreur technique: " + res.status);
+ 
+const data = await res.json();
+            console.log("Login Flow response:", data);
+ 
+            if (data?.status !== 200) {
+                console.warn("⚠️ Flow login failed, but user already logged in locally.");
+            }
+        } catch (err) {
+            console.error("❌ Background login error:", err);
+        }
+ 
+        return;
     }
-  } catch (err) {
-    console.error("❌ Login error:", err);
-    alert("❌ Problème technique lors du login.");
-  }
+ 
+    alert("❌ Email or ID incorrect. Please sign up first.");
 }
 
  function logout() {
@@ -608,35 +616,34 @@ function showUserProgress(email) {
 async function signup() {
     const email = document.getElementById("signupEmail").value.trim().toLowerCase();
     const id = document.getElementById("signupID").value.trim();
-
+ 
     if (!email || !email.includes("@") || !id) {
         alert("❌ Please enter a valid email and ID.");
         return;
     }
-
+ 
     // URL du Flow signupuser
-    const signupUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/cb431fe6824e4af79ff1081e88adbcde/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JJ-Qbs2tRRE5gFnpSBfUrVp6oPshyoZcKFEJ3CcVWvg";
-
+    const signupUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomat…
+ 
     try {
         const res = await fetch(signupUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, id })
         });
-
+ 
         const data = await res.json();
-
+ 
         // ⚡ On lit uniquement le JSON renvoyé par le Flow
-        if (data?.status === 200) {
-            alert("✅ " + data.message);  // Signup réussi
+if (data?.status === 200 || data?.status === 400) {
+            // ✅ Stockage temporaire immédiat pour login rapide
+            localStorage.setItem("tempUser", JSON.stringify({ email, id }));
+            alert("✅ " + data.message);
             showLogin();
-        } else if (data?.status === 400) {
-            alert("❌ " + data.message);  // Email déjà existant
-            showLogin(); // Retour automatique au login
         } else {
             alert("❌ Technical error during signup. Please try again later.");
         }
-
+ 
     } catch (err) {
         console.error("❌ Signup error:", err);
         alert("❌ Technical error during signup. Please try again later.");
@@ -1065,6 +1072,7 @@ if ("serviceWorker" in navigator) {
   </script>
 </body>
 </html>
+
 
 
 
