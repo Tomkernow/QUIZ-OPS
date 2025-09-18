@@ -234,26 +234,29 @@ function getUserIP() {
       choices: ["Bill of Lading", "Certificate of Quality", "Charter Party", "NOR"], 
       correct: 0, 
       explanation: "The Bill of Lading is the legal document of cargo ownership." },
-    { id: "id2", question: "Which document certifies the technical specifications of Jet A1?", 
+    { id: "id2", question: "Which document certifies the technical specifications of a product?", 
       choices: ["Certificate of Quality", "Bill of Lading", "Q88", "Charter Party"], 
       correct: 0, 
       explanation: "The Certificate of Quality details the product quality." },
-    { id: "id3", question: "Which document confirms the quantity loaded onto a vessel?", 
-      choices: ["Ullage Report", "Certificate of Quantity", "Bill of Lading", "Surveyor Report"], 
-      correct: 1, 
-      explanation: "The Certificate of Quantity specifies the exact loaded volume." },
-    { id: "id4", question: "Who issues the Bill of Lading?", 
-      choices: ["The trader", "The ship captain", "The independent surveyor", "The refinery"], 
-      correct: 1, 
-      explanation: "The captain (or the ship agent) signs and issues the B/L." },
+    { id: "id3", question: "Which document contains details of time used for loading/discharging operations?", 
+    choices: ["Statement of facts (SOF)", "NOR", "Charter Party", "Certificate of Quantity"], 
+    correct: 0, 
+    explanation: "The Statement of facts (SOF) records loading/discharging durations." },
+    { id: "id4", question: "Which document is often required by banks under a Letter of Credit?", 
+    choices: ["Bill of Lading", "Certificate of Quality", "NOR", "Q88"], 
+    correct: 0, 
+    explanation: "Banks usually require an original Bill of Lading for payment release." },
     { id: "id5", question: "Which document is essential for import customs?", 
       choices: ["Commercial Invoice", "Pumping Log", "Q88", "Certificate of Origin"], 
       correct: 3, 
       explanation: "The Certificate of Origin is required for customs clearance." },
-    { id: "id6", question: "Which document is mandatory for a CIF-sold crude cargo?", 
-      choices: ["Insurance Certificate", "NOR", "Laytime Statement", "Q88"], 
-      correct: 0, 
-      explanation: "Under CIF terms, the seller must provide cargo insurance." },
+    { 
+    id: "id6", 
+    question: "During discharge, the shore tank shows 500 MT less than ship’s ullage report. Which document will reconcile this difference?", 
+    choices: ["Pumping Log", "Charter Party", "Surveyor Report", "Statement of Facts"], 
+    correct: 2, 
+    explanation: "The Surveyor Report reconciles ship vs. shore measurements and resolves cargo quantity disputes." 
+  },
     { id: "id7", question: "What does NOR stand for in cargo documentation?", 
       choices: ["Notice of Readiness", "Nominal Oil Receipt", "Notice of Release", "None of the above"], 
       correct: 0, 
@@ -266,10 +269,13 @@ function getUserIP() {
       choices: ["Cargo Manifest", "Certificate of Analysis", "Invoice", "Bunker Receipt"], 
       correct: 0, 
       explanation: "The Cargo Manifest lists all cargoes on board." },
-    { id: "id10", question: "Which document certifies that the product meets the standards?", 
-      choices: ["Certificate of Analysis", "Laytime Statement", "Bill of Lading", "Charter Party"], 
-      correct: 0, 
-      explanation: "The Certificate of Analysis (CoA) confirms quality compliance." }
+    { 
+    id: "id10", 
+    question: "Buyer claims contamination after discharge. CoA at load showed on-spec, but CoA at discharge shows off-spec. Shipowner argues cargo degraded naturally during voyage. Who is liable?", 
+    choices: ["Seller", "Shipowner", "Buyer", "Surveyor"], 
+    correct: 1, 
+    explanation: "Shipowners are responsible for maintaining cargo condition during voyage (heating, inerting, no contamination). If cargo was on-spec at load but off-spec at discharge, owners are liable unless they prove force majeure. Lesson: proper log-keeping (heating logs, tank records) is vital defense."
+  }
   ]
 },
 
@@ -1059,5 +1065,6 @@ if ("serviceWorker" in navigator) {
   </script>
 </body>
 </html>
+
 
 
