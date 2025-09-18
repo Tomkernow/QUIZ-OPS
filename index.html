@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<title>QuizOps</title>
+<title>Quiz'Ops</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
  
   <!-- Manifest pour PWA -->
@@ -113,7 +113,7 @@
 
      <!-- === LOGIN PAGE === -->
       <div id="login-container">
-        <h1>🔑 Login to QuizOps</h1>
+        <h1>🔑 Login to Quiz'Ops</h1>
         <p><button onclick="showSignup()" style="background:none;border:none;color:var(--primary);cursor:pointer;text-decoration:underline;font-size:0.9rem;">First connexion ? Subscribe</button></p>
         <p>Enter your email and password to start</p>
         <input type="email" id="emailInput" placeholder="your@email.com" />
@@ -157,7 +157,7 @@
       <!-- === THEME SELECTION === -->
       <div id="theme-selection" style="display:none;">
         <div style="display:flex;align-items:center;justify-content:space-between;">
-          <h1>⛽ QuizOps</h1>
+          <h1>⛽ Quiz'Ops</h1>
           <button id="logoutBtn" onclick="logout()">Logout</button>
         </div>
         <p style="text-align:center">
@@ -410,11 +410,13 @@ crude_types_specs: {
   let currentUser = null;
 let timerInterval = null;
 let timeLeft = 10;
+
   /* ========= Login ========= */
-  async function login() {
+  
+async function login() {
     const email = document.getElementById("emailInput").value.trim().toLowerCase();
     const password = document.getElementById("passwordInput").value.trim();
- 
+
     if (!email || !email.includes("@")) {
         alert("Please enter a valid email");
         return;
@@ -423,7 +425,7 @@ let timeLeft = 10;
         alert("Please enter your ID");
         return;
     }
- 
+
     // === Vérifier si admin ===
     if (email === "admin@quiz.com" && password === "admin123") {
         currentUser = "admin";
@@ -432,8 +434,8 @@ let timeLeft = 10;
         renderUserList();
         return;
     }
- 
-// === Vérifier localStorage temporaire ===
+
+ // === Vérifier localStorage temporaire ===
     const tempUser = JSON.parse(localStorage.getItem("tempUser") || "{}");
     if (tempUser.email === email && tempUser.id === password) {
         currentUser = email;
@@ -442,28 +444,29 @@ let timeLeft = 10;
         document.getElementById("theme-selection").style.display = "block";
         renderThemesGrid();
         loadProgressOverview();
-
+		
+		
   // === Vérifier dans Excel via Power Automate ===
   try {
-    const res = await fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomat…, {
+    const res = await fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8529a06fdcc6401aaa54e12ccdf8053c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZMFUE06qvb1Qjx-2UAwG47ivXUPZljA2ikv4TaMdVQE", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, id: password })
     });
- 
+
 const data = await res.json();
             console.log("Login Flow response:", data);
- 
+
             if (data?.status !== 200) {
                 console.warn("⚠️ Flow login failed, but user already logged in locally.");
             }
         } catch (err) {
             console.error("❌ Background login error:", err);
         }
- 
+
         return;
     }
- 
+
     alert("❌ Email or ID incorrect. Please sign up first.");
 }
 
@@ -616,26 +619,27 @@ function showUserProgress(email) {
 async function signup() {
     const email = document.getElementById("signupEmail").value.trim().toLowerCase();
     const id = document.getElementById("signupID").value.trim();
- 
+
     if (!email || !email.includes("@") || !id) {
         alert("❌ Please enter a valid email and ID.");
         return;
     }
- 
+
     // URL du Flow signupuser
-    const signupUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomat…
- 
+    const signupUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/cb431fe6824e4af79ff1081e88adbcde/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JJ-Qbs2tRRE5gFnpSBfUrVp6oPshyoZcKFEJ3CcVWvg";
+
     try {
         const res = await fetch(signupUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, id })
         });
- 
+
         const data = await res.json();
- 
+
         // ⚡ On lit uniquement le JSON renvoyé par le Flow
-if (data?.status === 200 || data?.status === 400) {
+		
+ if (data?.status === 200 || data?.status === 400) {
             // ✅ Stockage temporaire immédiat pour login rapide
             localStorage.setItem("tempUser", JSON.stringify({ email, id }));
             alert("✅ " + data.message);
@@ -643,7 +647,7 @@ if (data?.status === 200 || data?.status === 400) {
         } else {
             alert("❌ Technical error during signup. Please try again later.");
         }
- 
+
     } catch (err) {
         console.error("❌ Signup error:", err);
         alert("❌ Technical error during signup. Please try again later.");
@@ -1072,7 +1076,4 @@ if ("serviceWorker" in navigator) {
   </script>
 </body>
 </html>
-
-
-
 
