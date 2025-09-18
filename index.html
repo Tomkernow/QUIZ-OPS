@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<title>TotalEnergies Oil Quiz</title>
+<title>QuizOps</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
  
   <!-- Manifest pour PWA -->
@@ -113,7 +113,7 @@
 
      <!-- === LOGIN PAGE === -->
       <div id="login-container">
-        <h1>🔑 Login to Oil Quiz</h1>
+        <h1>🔑 Login to QuizOps</h1>
         <p><button onclick="showSignup()" style="background:none;border:none;color:var(--primary);cursor:pointer;text-decoration:underline;font-size:0.9rem;">First connexion ? Subscribe</button></p>
         <p>Enter your email and password to start</p>
         <input type="email" id="emailInput" placeholder="your@email.com" />
@@ -157,7 +157,7 @@
       <!-- === THEME SELECTION === -->
       <div id="theme-selection" style="display:none;">
         <div style="display:flex;align-items:center;justify-content:space-between;">
-          <h1>⛽ TotalEnergies Oil Quiz</h1>
+          <h1>⛽ QuizOps</h1>
           <button id="logoutBtn" onclick="logout()">Logout</button>
         </div>
         <p style="text-align:center">
@@ -784,7 +784,7 @@ document.getElementById("forgotID").onclick = () => {
 
 function startTimer() {
   stopTimer(); // éviter un double timer
-  timeLeft = 20;
+  timeLeft = 10;
   document.getElementById("timer").textContent = `⏳ Time left: ${timeLeft}s`;
 
   timerInterval = setInterval(() => {
@@ -1059,4 +1059,5 @@ if ("serviceWorker" in navigator) {
   </script>
 </body>
 </html>
+
 
