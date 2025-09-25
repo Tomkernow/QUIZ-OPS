@@ -232,92 +232,4242 @@ function getUserIP() {
       cargo_docs: {
         title: "Cargo Documentation",
         questions: [
-    { id: "id1", question: "Which document proves the ownership of a crude oil cargo?", 
-      choices: ["Bill of Lading", "Certificate of Quality", "Charter Party", "NOR"], 
-      correct: 0, 
-      explanation: "The Bill of Lading is the legal document of cargo ownership." },
-    { id: "id2", question: "Which document certifies the technical specifications of a product?", 
-      choices: ["Certificate of Quality", "Bill of Lading", "Q88", "Charter Party"], 
-      correct: 0, 
-      explanation: "The Certificate of Quality details the product quality." },
-    { id: "id3", question: "Which document contains details of time used for loading/discharging operations?", 
-    choices: ["Statement of facts (SOF)", "NOR", "Charter Party", "Certificate of Quantity"], 
-    correct: 0, 
-    explanation: "The Statement of facts (SOF) records loading/discharging durations." },
-    { id: "id4", question: "Which document is often required by banks under a Letter of Credit?", 
-    choices: ["Bill of Lading", "Certificate of Quality", "NOR", "Q88"], 
-    correct: 0, 
-    explanation: "Banks usually require an original Bill of Lading for payment release." },
-    { id: "id5", question: "Which document is essential for import customs?", 
-      choices: ["Commercial Invoice", "Pumping Log", "Q88", "Certificate of Origin"], 
-      correct: 3, 
-      explanation: "The Certificate of Origin is required for customs clearance." },
-    { 
-    id: "id6", 
-    question: "During discharge, the shore tank shows 500 MT less than ship’s ullage report. Which document will reconcile this difference?", 
-    choices: ["Pumping Log", "Charter Party", "Surveyor Report", "Statement of Facts"], 
-    correct: 2, 
-    explanation: "The Surveyor Report reconciles ship vs. shore measurements and resolves cargo quantity disputes." 
-  },
-    { id: "id7", question: "What does NOR stand for in cargo documentation?", 
-      choices: ["Notice of Readiness", "Nominal Oil Receipt", "Notice of Release", "None of the above"], 
-      correct: 0, 
-      explanation: "NOR = Notice of Readiness, declaring the vessel is ready to load/unload." },
-    { id: "id8", question: "Which document describes a vessel's technical characteristics?", 
-      choices: ["Q88", "Bill of Lading", "Certificate of Origin", "Cargo Manifest"], 
-      correct: 0, 
-      explanation: "The Q88 questionnaire details the tanker’s technical specs." },
-    { id: "id9", question: "Which document summarizes all loaded products?", 
-      choices: ["Cargo Manifest", "Certificate of Analysis", "Invoice", "Bunker Receipt"], 
-      correct: 0, 
-      explanation: "The Cargo Manifest lists all cargoes on board." },
-	{ id: "id10", question: "Which document summarizes the commercial terms agreed between charterer and owner?", 
-      choices: ["Charter Party", "Bill of Lading", "Statement of Facts", "Cargo Manifest"], 
-      correct: 0, 
-      explanation: "The Charter Party is the contract between shipowner and charterer detailing agreed terms." }
+    {
+  id: "cdoc1",
+  question: "Which document serves as proof of title for crude oil cargo?",
+  choices: ["Bill of Lading", "Certificate of Quality", "Charter Party", "Invoice"],
+  correct: 0,
+  explanation: "The Bill of Lading is the legal document that represents cargo ownership."
+},
+{
+  id: "cdoc2",
+  question: "Which documents are usually required by banks under a Letter of Credit?",
+  choices: ["Bill of Lading", "Commercial Invoice", "Certificate of Origin", "NOR"],
+  correct: [0,1,2],
+  explanation: "Banks require the Bill of Lading, Commercial Invoice, and Certificate of Origin for payment."
+},
+{
+  id: "cdoc3",
+  question: "Which document records loading and discharging operations timings?",
+  choices: ["Statement of Facts (SOF)", "Charter Party", "NOR", "Cargo Manifest"],
+  correct: 0,
+  explanation: "The Statement of Facts (SOF) lists all events during cargo ops."
+},
+{
+  id: "cdoc4",
+  question: "Which documents are considered key for customs clearance?",
+  choices: ["Bill of Lading", "Certificate of Origin", "Commercial Invoice", "Q88"],
+  correct: [0,1,2],
+  explanation: "Customs clearance usually needs B/L, Certificate of Origin, and Invoice."
+},
+{
+  id: "cdoc5",
+  question: "Which document specifies vessel readiness to load/discharge?",
+  choices: ["Notice of Readiness (NOR)", "SOF", "Charter Party", "Survey Report"],
+  correct: 0,
+  explanation: "The NOR certifies the ship is ready for operations."
+},
+{
+  id: "cdoc6",
+  question: "Which documents may contain details on product specifications?",
+  choices: ["Certificate of Quality", "Certificate of Quantity", "Survey Report", "Q88"],
+  correct: [0,1,2],
+  explanation: "CoQ, CoQnty, and Survey Reports provide product details."
+},
+{
+  id: "cdoc7",
+  question: "Which document describes technical vessel specifications?",
+  choices: ["Q88", "Charter Party", "Bill of Lading", "Invoice"],
+  correct: 0,
+  explanation: "The Q88 is a tanker questionnaire listing vessel specs."
+},
+{
+  id: "cdoc8",
+  question: "Which documents are critical for resolving cargo disputes?",
+  choices: ["Surveyor Report", "Pumping Log", "SOF", "Bunker Delivery Note"],
+  correct: [0,1,2],
+  explanation: "Survey, pumping log, and SOF help reconcile disputes."
+},
+{
+  id: "cdoc9",
+  question: "Which document summarizes all cargo loaded on the vessel?",
+  choices: ["Cargo Manifest", "Invoice", "Bill of Lading", "Q88"],
+  correct: 0,
+  explanation: "The Cargo Manifest lists all cargo parcels."
+},
+{
+  id: "cdoc10",
+  question: "Which documents prove cargo quality?",
+  choices: ["Certificate of Quality", "Surveyor Report", "Commercial Invoice", "Charter Party"],
+  correct: [0,1],
+  explanation: "CoQ and Surveyor Reports certify cargo quality."
+},
+{
+  id: "cdoc11",
+  question: "Which document provides a vessel’s performance and demurrage obligations?",
+  choices: ["Charter Party", "Bill of Lading", "Q88", "Invoice"],
+  correct: 0,
+  explanation: "The Charter Party governs vessel terms and demurrage."
+},
+{
+  id: "cdoc12",
+  question: "Which documents are normally issued by the ship’s Master?",
+  choices: ["Bill of Lading", "SOF", "NOR", "Survey Report"],
+  correct: [0,1,2],
+  explanation: "B/L, SOF, and NOR are typically issued by the Master."
+},
+{
+  id: "cdoc13",
+  question: "Which certificate shows origin of cargo for import duties?",
+  choices: ["Certificate of Origin", "Certificate of Quality", "Bill of Lading", "Invoice"],
+  correct: 0,
+  explanation: "The Certificate of Origin is used for customs duties."
+},
+{
+  id: "cdoc14",
+  question: "Which documents confirm loaded and discharged quantities?",
+  choices: ["Certificate of Quantity", "Survey Report", "Pumping Log", "Invoice"],
+  correct: [0,1,2],
+  explanation: "All three confirm actual loaded/discharged cargo."
+},
+{
+  id: "cdoc15",
+  question: "Which documents are legally binding contracts?",
+  choices: ["Charter Party", "Bill of Lading", "Invoice", "Q88"],
+  correct: [0,1],
+  explanation: "The Charter Party and B/L are legal documents."
+},
+{
+  id: "cdoc16",
+  question: "Which document is often countersigned by the terminal?",
+  choices: ["SOF", "NOR", "Survey Report", "Invoice"],
+  correct: [0,1],
+  explanation: "SOF and NOR are often signed by terminal and Master."
+},
+{
+  id: "cdoc17",
+  question: "Which certificates are key for jet fuel cargoes?",
+  choices: ["Certificate of Quality", "Certificate of Analysis", "Certificate of Origin", "Bunker Delivery Note"],
+  correct: [0,1],
+  explanation: "CoQ and CoA are essential for jet fuel certification."
+},
+{
+  id: "cdoc18",
+  question: "Which documents protect cargo interests in case of dispute?",
+  choices: ["Letter of Protest", "Surveyor Report", "SOF", "Charter Party"],
+  correct: [0,1,2],
+  explanation: "Protest letters, survey, and SOF support claims."
+},
+{
+  id: "cdoc19",
+  question: "Which documents are usually attached to Letters of Credit?",
+  choices: ["Bill of Lading", "Commercial Invoice", "Insurance Certificate", "Packing List"],
+  correct: [0,1,2,3],
+  explanation: "All four are typically required in L/C documentation."
+},
+{
+  id: "cdoc20",
+  question: "Which document confirms vessel tank cleanliness before loading?",
+  choices: ["Tank Inspection Certificate", "Q88", "SOF", "NOR"],
+  correct: 0,
+  explanation: "A Tank Inspection Certificate is issued before loading sensitive cargo."
+},
+{
+  id: "cdoc21",
+  question: "Which documents are relevant to insurance claims?",
+  choices: ["Bill of Lading", "Insurance Certificate", "Surveyor Report", "Invoice"],
+  correct: [0,1,2,3],
+  explanation: "All are needed for insurance claims."
+},
+{
+  id: "cdoc22",
+  question: "Which document is used to declare the ship’s arrival?",
+  choices: ["Notice of Readiness", "Bill of Entry", "SOF", "Cargo Manifest"],
+  correct: 1,
+  explanation: "The Bill of Entry declares the vessel’s arrival to customs."
+},
+{
+  id: "cdoc23",
+  question: "Which documents provide details of demurrage calculations?",
+  choices: ["SOF", "Charter Party", "Invoice", "NOR"],
+  correct: [0,1],
+  explanation: "SOF and Charter Party form the basis of demurrage claims."
+},
+{
+  id: "cdoc24",
+  question: "Which documents are commonly signed by the surveyor?",
+  choices: ["Survey Report", "Certificate of Quality", "Certificate of Quantity", "Bunker Delivery Note"],
+  correct: [0,1,2],
+  explanation: "Surveyor signs Survey Reports and CoQ/CoQnty."
+},
+{
+  id: "cdoc25",
+  question: "Which documents provide evidence for laytime calculation?",
+  choices: ["NOR", "SOF", "Charter Party", "Invoice"],
+  correct: [0,1,2],
+  explanation: "NOR, SOF, and Charter Party are essential for laytime."
+},
+
+{
+  id: "cdoc26",
+  question: "Which documents must match under a Letter of Credit to avoid rejection?",
+  choices: ["Bill of Lading", "Commercial Invoice", "Certificate of Origin", "Insurance Certificate"],
+  correct: [0,1,2,3],
+  explanation: "All presented documents must strictly match L/C terms to avoid rejection."
+},
+{
+  id: "cdoc27",
+  question: "Which document proves insurance coverage for cargo?",
+  choices: ["Insurance Certificate", "Bill of Lading", "Surveyor Report", "Charter Party"],
+  correct: 0,
+  explanation: "The Insurance Certificate provides proof of coverage."
+},
+{
+  id: "cdoc28",
+  question: "Which documents are critical in case of cargo shortage disputes?",
+  choices: ["Certificate of Quantity", "Surveyor Report", "Pumping Log", "SOF"],
+  correct: [0,1,2,3],
+  explanation: "All are necessary to prove where the loss occurred."
+},
+{
+  id: "cdoc29",
+  question: "Which document declares the vessel has completed cargo ops?",
+  choices: ["SOF", "Notice of Readiness", "Charter Party", "Completion Certificate"],
+  correct: 3,
+  explanation: "A Completion Certificate may be issued after operations finish."
+},
+{
+  id: "cdoc30",
+  question: "Which documents are issued at the load port?",
+  choices: ["Bill of Lading", "Certificate of Quality", "Certificate of Quantity", "Invoice"],
+  correct: [0,1,2],
+  explanation: "B/L, CoQ, and CoQnty are issued at load port."
+},
+{
+  id: "cdoc31",
+  question: "Which document evidences vessel seaworthiness?",
+  choices: ["Class Certificate", "Q88", "Charter Party", "Bill of Lading"],
+  correct: 0,
+  explanation: "Class Certificates prove vessel seaworthiness."
+},
+{
+  id: "cdoc32",
+  question: "Which documents are important in off-spec cargo claims?",
+  choices: ["Certificate of Quality", "Surveyor Report", "Heating Logs", "Charter Party"],
+  correct: [0,1,2],
+  explanation: "CoQ, survey, and heating logs support or defend quality claims."
+},
+{
+  id: "cdoc33",
+  question: "Which document contains legal conditions for cargo carriage?",
+  choices: ["Bill of Lading", "Charter Party", "Invoice", "Survey Report"],
+  correct: [0,1],
+  explanation: "Both B/L and Charter Party include legal clauses."
+},
+{
+  id: "cdoc34",
+  question: "Which documents are commonly used to check cargo description?",
+  choices: ["Cargo Manifest", "Bill of Lading", "Commercial Invoice", "Q88"],
+  correct: [0,1,2],
+  explanation: "Manifest, B/L, and Invoice must match cargo description."
+},
+{
+  id: "cdoc35",
+  question: "Which document specifies tank cleanliness before loading clean products?",
+  choices: ["Tank Cleanliness Certificate", "Surveyor Report", "Q88", "SOF"],
+  correct: [0,1],
+  explanation: "Tank cleanliness certificates and surveyor reports confirm readiness."
+},
+{
+  id: "cdoc36",
+  question: "Which documents are key in demurrage disputes?",
+  choices: ["SOF", "NOR", "Charter Party", "Laytime Statement"],
+  correct: [0,1,2,3],
+  explanation: "All four are needed to settle demurrage disputes."
+},
+{
+  id: "cdoc37",
+  question: "Which document states cargo has been loaded on board?",
+  choices: ["On-board Bill of Lading", "Cargo Manifest", "Survey Report", "Charter Party"],
+  correct: 0,
+  explanation: "An on-board B/L confirms cargo is physically loaded."
+},
+{
+  id: "cdoc38",
+  question: "Which documents can be used to prove force majeure in cargo ops?",
+  choices: ["Port Authority Notice", "Weather Reports", "SOF", "Charter Party"],
+  correct: [0,1,2,3],
+  explanation: "All can be used as supporting evidence for force majeure claims."
+},
+{
+  id: "cdoc39",
+  question: "Which documents confirm cargo weight?",
+  choices: ["Certificate of Quantity", "Survey Report", "Pumping Log", "Bill of Lading"],
+  correct: [0,1,2],
+  explanation: "CoQ, Survey, and Pumping Log confirm weights."
+},
+{
+  id: "cdoc40",
+  question: "Which document serves as a receipt for cargo?",
+  choices: ["Bill of Lading", "Invoice", "Certificate of Origin", "SOF"],
+  correct: 0,
+  explanation: "The Bill of Lading is both a receipt and title document."
+},
+{
+  id: "cdoc41",
+  question: "Which documents are checked during port State control?",
+  choices: ["Bill of Lading", "SOF", "Q88", "Class Certificates"],
+  correct: [2,3],
+  explanation: "PSC checks vessel class certificates and sometimes Q88."
+},
+{
+  id: "cdoc42",
+  question: "Which documents can be electronically issued?",
+  choices: ["Electronic Bill of Lading", "Invoice", "Cargo Manifest", "Survey Report"],
+  correct: [0,1,2],
+  explanation: "B/L, Invoice, and Manifest can now be issued electronically."
+},
+{
+  id: "cdoc43",
+  question: "Which document records vessel pumping performance?",
+  choices: ["Pumping Log", "SOF", "Survey Report", "Charter Party"],
+  correct: 0,
+  explanation: "The Pumping Log records cargo pumping rates."
+},
+{
+  id: "cdoc44",
+  question: "Which documents are vital for laytime calculation?",
+  choices: ["NOR", "SOF", "Charter Party", "Completion Certificate"],
+  correct: [0,1,2],
+  explanation: "NOR, SOF, and CP are required for laytime."
+},
+{
+  id: "cdoc45",
+  question: "Which documents confirm cargo identity?",
+  choices: ["Certificate of Analysis", "Certificate of Quality", "Commercial Invoice", "Survey Report"],
+  correct: [0,1,2],
+  explanation: "CoA, CoQ, and Invoice confirm product identity."
+},
+{
+  id: "cdoc46",
+  question: "Which document is key for phytosanitary clearance of biofuels?",
+  choices: ["Phytosanitary Certificate", "Certificate of Quality", "Certificate of Origin", "Invoice"],
+  correct: 0,
+  explanation: "Phytosanitary Certificates are mandatory for biofuels/agri products."
+},
+{
+  id: "cdoc47",
+  question: "Which documents are usually provided by independent inspectors?",
+  choices: ["Surveyor Report", "Certificate of Quantity", "Certificate of Quality", "Invoice"],
+  correct: [0,1,2],
+  explanation: "Inspectors issue Survey Reports and CoQ/CoQnty."
+},
+{
+  id: "cdoc48",
+  question: "Which document is required for dangerous cargo declaration?",
+  choices: ["Material Safety Data Sheet (MSDS)", "Bill of Lading", "Cargo Manifest", "Survey Report"],
+  correct: 0,
+  explanation: "The MSDS is mandatory for dangerous cargo."
+},
+{
+  id: "cdoc49",
+  question: "Which documents protect charterers in disputes?",
+  choices: ["Charter Party", "Letter of Protest", "NOR", "SOF"],
+  correct: [0,1,3],
+  explanation: "Charter Party, Protest letters, and SOF protect charterers."
+},
+{
+  id: "cdoc50",
+  question: "Which documents must be consistent across trade?",
+  choices: ["Bill of Lading", "Commercial Invoice", "Certificate of Origin", "Cargo Manifest"],
+  correct: [0,1,2,3],
+  explanation: "All must match for smooth cargo operations and trade compliance."
+}
+
   ]
 },
 
 crude_types_specs: { 
     title: "Crude Oil Types & Specs", 
-    questions: [] 
-  },
+
+  questions: [
+    {
+      id: 1,
+      question: "Crude oil is a mixture of:",
+      choices: ["Pure hydrocarbons", "Hydrocarbons and impurities", "Single compound", "Alcohols"],
+      correct: 1,
+      explanation: "Crude oil is a natural mixture of hydrocarbons and impurities like sulfur, nitrogen, metals, and salts."
+    },
+    {
+      id: 2,
+      question: "First major separation step for crude oil:",
+      choices: ["Vacuum distillation", "Atmospheric distillation", "Cracking", "Reforming"],
+      correct: 1,
+      explanation: "Atmospheric distillation is the first step in refining crude oil, separating it into fractions based on boiling points."
+    },
+    {
+      id: 3,
+      question: "Main impurities in crude impacting refining:",
+      choices: ["Nitrogen, sulfur, metals", "Helium and neon", "Water only", "Oxygen only"],
+      correct: 0,
+      explanation: "Sulfur, nitrogen, and metals are the main problematic impurities because they cause corrosion and catalyst poisoning."
+    },
+    {
+      id: 4,
+      question: "API gravity is a measure of:",
+      choices: ["Viscosity", "Density", "Sulfur", "Aromatics"],
+      correct: 1,
+      explanation: "API gravity is a measure of the density of crude oil compared to water."
+    },
+    {
+      id: 5,
+      question: "Light crude generally has:",
+      choices: ["Low API", "High API", "High sulfur", "High metals"],
+      correct: 1,
+      explanation: "Light crude has high API gravity, meaning it is less dense and yields more valuable light products."
+    },
+    {
+      id: 6,
+      question: "Sweet crude means:",
+      choices: ["Low sulfur", "High sulfur", "High nitrogen", "Low metals"],
+      correct: 0,
+      explanation: "Sweet crude contains low sulfur and is easier to refine into clean fuels."
+    },
+    {
+      id: 7,
+      question: "A crude desalter removes mostly:",
+      choices: ["Hydrogen", "Water and salts", "Aromatics", "Paraffins"],
+      correct: 1,
+      explanation: "A desalter removes water-soluble salts and water to prevent corrosion and fouling in the distillation unit."
+    },
+    {
+      id: 8,
+      question: "Bottom product of atmospheric distillation:",
+      choices: ["Naphtha", "Kerosene", "Atmospheric residue", "Diesel"],
+      correct: 2,
+      explanation: "The heaviest fraction, atmospheric residue, remains at the bottom after atmospheric distillation."
+    },
+    {
+      id: 9,
+      question: "Typical sulfur content range in crudes:",
+      choices: ["0–0.1%", "0.5–5%", "10%", "50%"],
+      correct: 1,
+      explanation: "Sulfur content in crude typically ranges between 0.5% and 5%."
+    },
+    {
+      id: 10,
+      question: "Crude oil resources are mainly found in:",
+      choices: ["Igneous rocks", "Sedimentary basins", "Mountains", "Volcanoes"],
+      correct: 1,
+      explanation: "Crude oil forms in sedimentary basins where organic matter is buried and transformed under heat and pressure."
+    },
+    {
+      id: 11,
+      question: "What is heavy crude oil characterized by?",
+      choices: ["High API gravity", "Low viscosity", "High viscosity and density", "Low sulfur"],
+      correct: 2,
+      explanation: "Heavy crude has high viscosity, low API gravity, and is harder to refine."
+    },
+    {
+      id: 12,
+      question: "Which element in crude oil contributes to SOx emissions?",
+      choices: ["Carbon", "Sulfur", "Nitrogen", "Hydrogen"],
+      correct: 1,
+      explanation: "Sulfur in crude oil produces sulfur oxides (SOx) during combustion, causing air pollution."
+    },
+    {
+      id: 13,
+      question: "Vacuum distillation is applied to:",
+      choices: ["Light naphtha", "Kerosene", "Atmospheric residue", "LPG"],
+      correct: 2,
+      explanation: "Atmospheric residue is sent to vacuum distillation to recover valuable heavy gas oils without cracking them."
+    },
+    {
+      id: 14,
+      question: "Which crude type is easier to refine?",
+      choices: ["Heavy sour crude", "Light sweet crude", "Residue-rich crude", "Extra heavy crude"],
+      correct: 1,
+      explanation: "Light sweet crude is easier to refine and produces more high-value light products."
+    },
+    {
+      id: 15,
+      question: "Which crude oil fraction is used for making lubricants?",
+      choices: ["LPG", "Gasoline", "Vacuum gas oil", "Heavy residue"],
+      correct: 2,
+      explanation: "Vacuum gas oil and heavier fractions are processed into base oils for lubricants."
+    },
+    {
+      id: 16,
+      question: "What is the typical hydrogen content in crude oil?",
+      choices: ["1–5%", "10–14%", "20–25%", "50%"],
+      correct: 1,
+      explanation: "Crude oil typically contains around 10–14% hydrogen by weight."
+    },
+    {
+      id: 17,
+      question: "Crude oil with high paraffin content is prone to:",
+      choices: ["High viscosity", "Wax deposition", "High sulfur", "Metal poisoning"],
+      correct: 1,
+      explanation: "Paraffinic crudes contain waxes that can solidify and cause flow problems at low temperatures."
+    },
+    {
+      id: 18,
+      question: "The pour point of crude oil refers to:",
+      choices: ["Boiling point", "Flash point", "Lowest temperature it flows", "Viscosity at 100 °C"],
+      correct: 2,
+      explanation: "The pour point is the lowest temperature at which crude oil remains pourable."
+    },
+    {
+      id: 19,
+      question: "Which crude benchmark is used in Europe?",
+      choices: ["WTI", "Dubai", "Brent", "Bonny Light"],
+      correct: 2,
+      explanation: "Brent crude is the main pricing benchmark in Europe."
+    },
+    {
+      id: 20,
+      question: "Which crude benchmark is used in the US?",
+      choices: ["Brent", "WTI", "Dubai", "Urals"],
+      correct: 1,
+      explanation: "West Texas Intermediate (WTI) is the key benchmark for US crude oil pricing."
+    },
+    {
+      id: 21,
+      question: "Which crude oil benchmark is used in the Middle East?",
+      choices: ["Brent", "WTI", "Dubai", "Bonny Light"],
+      correct: 2,
+      explanation: "Dubai crude is the key pricing benchmark in the Middle East and Asia."
+    },
+    {
+      id: 22,
+      question: "What does TAN (Total Acid Number) measure in crude?",
+      choices: ["Acidity of crude", "Sulfur content", "Viscosity", "Density"],
+      correct: 0,
+      explanation: "TAN indicates the acidity of crude oil, which impacts corrosion in refinery units."
+    },
+    {
+      id: 23,
+      question: "What does a higher API gravity indicate?",
+      choices: ["Heavier crude", "Lighter crude", "Higher sulfur", "Higher metals"],
+      correct: 1,
+      explanation: "Higher API gravity means the crude is lighter and more valuable."
+    },
+    {
+      id: 24,
+      question: "What does CCR (Conradson Carbon Residue) indicate?",
+      choices: ["Sulfur content", "Coking tendency", "Viscosity", "API gravity"],
+      correct: 1,
+      explanation: "CCR measures the tendency of crude oil to form coke during processing."
+    },
+    {
+      id: 25,
+      question: "Which crude property impacts hydrogen consumption in refining?",
+      choices: ["Sulfur content", "Wax content", "Water content", "Density"],
+      correct: 0,
+      explanation: "High sulfur content requires more hydrogen for hydrotreating and desulfurization."
+    },
+    {
+      id: 26,
+      question: "Which gas is dissolved in crude oil at reservoir conditions?",
+      choices: ["Oxygen", "Carbon dioxide", "Methane", "Nitrogen"],
+      correct: 2,
+      explanation: "Methane and other light hydrocarbons are dissolved in crude oil under reservoir pressure."
+    },
+    {
+      id: 27,
+      question: "Which crude fraction is used as petrochemical feedstock?",
+      choices: ["Fuel oil", "Naphtha", "Vacuum residue", "Asphalt"],
+      correct: 1,
+      explanation: "Naphtha is the primary feedstock for petrochemical production like olefins and aromatics."
+    },
+    {
+      id: 28,
+      question: "Which heavy crude upgrading process uses hydrogen?",
+      choices: ["Coking", "Hydrocracking", "Visbreaking", "Thermal cracking"],
+      correct: 1,
+      explanation: "Hydrocracking uses hydrogen to upgrade heavy crude fractions into lighter products."
+    },
+    {
+      id: 29,
+      question: "Where is most of the world's crude oil located?",
+      choices: ["Arctic", "Middle East", "Europe", "Australia"],
+      correct: 1,
+      explanation: "The Middle East holds the largest share of the world’s proven crude oil reserves."
+    },
+    {
+      id: 30,
+      question: "Which property differentiates sweet and sour crude?",
+      choices: ["API gravity", "Sulfur content", "Viscosity", "Wax content"],
+      correct: 1,
+      explanation: "The sulfur content defines whether a crude is classified as sweet or sour."
+    },
+    {
+      id: 31,
+      question: "What does BS&W in crude oil stand for?",
+      choices: ["Base Sulfur & Water", "Basic Sediment & Water", "Balance Salt & Wax", "Bitumen Sand & Wax"],
+      correct: 1,
+      explanation: "BS&W refers to Basic Sediment & Water, impurities removed before refining."
+    },
+    {
+      id: 32,
+      question: "Crude oil’s nitrogen compounds are problematic because:",
+      choices: ["They increase viscosity", "They poison catalysts", "They lower API gravity", "They reduce hydrogen"],
+      correct: 1,
+      explanation: "Nitrogen compounds deactivate catalysts during hydrotreating and cracking."
+    },
+    {
+      id: 33,
+      question: "The flash point of crude oil is:",
+      choices: ["Lowest flow temperature", "Temperature it ignites", "Density measure", "Pour point"],
+      correct: 1,
+      explanation: "The flash point is the temperature at which crude vapors ignite in the presence of a flame."
+    },
+    {
+      id: 34,
+      question: "What is bitumen derived from crude used for?",
+      choices: ["Jet fuel", "Road construction", "Petrochemicals", "Cooking gas"],
+      correct: 1,
+      explanation: "Bitumen, the heaviest crude fraction, is widely used in road paving and roofing materials."
+    },
+    {
+      id: 35,
+      question: "Which is the lightest fraction in crude distillation?",
+      choices: ["Diesel", "LPG", "Vacuum residue", "Fuel oil"],
+      correct: 1,
+      explanation: "LPG is the lightest fraction recovered during crude distillation."
+    },
+    {
+      id: 36,
+      question: "Which test measures crude’s metal content?",
+      choices: ["XRF analysis", "API gravity", "Pour point", "CCR"],
+      correct: 0,
+      explanation: "X-ray fluorescence (XRF) is used to measure trace metals in crude oil."
+    },
+    {
+      id: 37,
+      question: "Which crude fraction has the highest boiling point?",
+      choices: ["Gasoline", "Kerosene", "Vacuum residue", "Diesel"],
+      correct: 2,
+      explanation: "Vacuum residue has the highest boiling range and cannot be distilled under normal conditions."
+    },
+    {
+      id: 38,
+      question: "Which crude oil fraction is a key feedstock for catalytic cracking?",
+      choices: ["LPG", "Vacuum gas oil", "Kerosene", "Asphalt"],
+      correct: 1,
+      explanation: "Vacuum gas oil is the main feedstock for FCC (fluid catalytic cracking) units."
+    },
+    {
+      id: 39,
+      question: "Crude oil density is usually expressed in:",
+      choices: ["g/cm³", "API gravity", "Pa·s", "°C"],
+      correct: 1,
+      explanation: "Crude oil density is expressed as API gravity, a standard industry measure."
+    },
+    {
+      id: 40,
+      question: "Which crude property impacts refinery yield of gasoline?",
+      choices: ["Sulfur content", "Paraffinic content", "Viscosity", "Water content"],
+      correct: 1,
+      explanation: "Paraffinic crudes yield more gasoline when processed compared to naphthenic crudes."
+    },
+    {
+      id: 41,
+      question: "Which element in crude causes corrosion in distillation units?",
+      choices: ["Sulfur", "Nitrogen", "Chlorides", "Paraffins"],
+      correct: 2,
+      explanation: "Chloride salts in crude oil hydrolyze into hydrochloric acid, causing corrosion."
+    },
+    {
+      id: 42,
+      question: "Which crude type generally requires more upgrading?",
+      choices: ["Light sweet crude", "Heavy sour crude", "Condensates", "Paraffinic crude"],
+      correct: 1,
+      explanation: "Heavy sour crude requires extensive upgrading due to its high sulfur and metal content."
+    },
+    {
+      id: 43,
+      question: "Which crude oil property determines energy content?",
+      choices: ["Sulfur", "Viscosity", "Hydrogen-to-carbon ratio", "Pour point"],
+      correct: 2,
+      explanation: "A higher hydrogen-to-carbon ratio indicates greater energy content and cleaner combustion."
+    },
+    {
+      id: 44,
+      question: "Which type of crude has higher wax content?",
+      choices: ["Naphthenic crude", "Paraffinic crude", "Sour crude", "Heavy crude"],
+      correct: 1,
+      explanation: "Paraffinic crudes have higher wax content, leading to flow problems in pipelines."
+    },
+    {
+      id: 45,
+      question: "Which crude analysis measures hydrocarbon types?",
+      choices: ["Distillation curve", "SARA analysis", "CCR", "Flash point"],
+      correct: 1,
+      explanation: "SARA analysis separates hydrocarbons into saturates, aromatics, resins, and asphaltenes."
+    },
+    {
+      id: 46,
+      question: "Which crude oil type yields more lubricants?",
+      choices: ["Paraffinic crude", "Naphthenic crude", "Sour crude", "Light crude"],
+      correct: 0,
+      explanation: "Paraffinic crudes are preferred for lubricant production due to high wax and base oil content."
+    },
+    {
+      id: 47,
+      question: "Which measurement indicates crude stability?",
+      choices: ["API gravity", "CCR", "Asphaltene content", "Flash point"],
+      correct: 2,
+      explanation: "Asphaltene content affects crude oil stability during transport and refining."
+    },
+    {
+      id: 48,
+      question: "Which crude oil property is most important for transport?",
+      choices: ["Viscosity", "Pour point", "API gravity", "All of the above"],
+      correct: 3,
+      explanation: "Viscosity, pour point, and API gravity all impact how crude oil can be pumped and transported."
+    },
+    {
+      id: 49,
+      question: "Which crude fraction is mainly used for jet fuel?",
+      choices: ["Naphtha", "Kerosene", "Diesel", "Vacuum residue"],
+      correct: 1,
+      explanation: "Kerosene fraction is primarily refined into jet fuel."
+    },
+    {
+      id: 50,
+      question: "Which heavy crude processing method produces petroleum coke?",
+      choices: ["Hydrocracking", "Coking", "Visbreaking", "Reforming"],
+      correct: 1,
+      explanation: "Coking is used to upgrade heavy residues and produces petroleum coke as a byproduct."
+    }
+  ]
+},
   refined_products: { 
     title: "Refined Products (Gasoline, Diesel, Jet A1, Fuel Oil)", 
-    questions: [] 
+    questions: [
+
+{
+  id: "rfp1",
+  question: "Which refined product typically has the highest sulfur specification tolerance?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 3,
+  explanation: "Fuel oil has the highest sulfur tolerance compared to clean products."
+},
+{
+  id: "rfp2",
+  question: "Which products are classified as clean petroleum products (CPP)?",
+  choices: ["Gasoline", "Jet A1", "Diesel", "Fuel Oil"],
+  correct: [0,1,2],
+  explanation: "Gasoline, jet fuel, and diesel are CPP. Fuel oil is dirty cargo."
+},
+{
+  id: "rfp3",
+  question: "What is the primary concern when blending gasoline with high aromatics?",
+  choices: ["Octane increase", "Knock resistance", "Environmental restrictions", "Viscosity"],
+  correct: [0,1,2],
+  explanation: "Aromatics increase octane but face restrictions due to emissions."
+},
+{
+  id: "rfp4",
+  question: "Which refined product requires freezing point testing?",
+  choices: ["Diesel", "Gasoline", "Jet A1", "Fuel Oil"],
+  correct: 2,
+  explanation: "Jet A1 requires freezing point control for aviation safety."
+},
+{
+  id: "rfp5",
+  question: "Which specs are critical in marine fuel oil trading?",
+  choices: ["Viscosity", "Sulfur content", "Density", "Octane number"],
+  correct: [0,1,2],
+  explanation: "Marine fuels are controlled by viscosity, sulfur, and density; octane applies to gasoline."
+},
+{
+  id: "rfp6",
+  question: "Which refined product is mostly subject to octane rating?",
+  choices: ["Diesel", "Gasoline", "Jet A1", "Fuel Oil"],
+  correct: 1,
+  explanation: "Octane rating defines gasoline anti-knock properties."
+},
+{
+  id: "rfp7",
+  question: "Which refined products are subject to flash point requirements?",
+  choices: ["Jet A1", "Diesel", "Gasoline", "Fuel Oil"],
+  correct: [0,1,3],
+  explanation: "Jet, diesel, and fuel oil have minimum flash point requirements."
+},
+{
+  id: "rfp8",
+  question: "Which product has the lowest density?",
+  choices: ["Gasoline", "Jet A1", "Diesel", "Fuel Oil"],
+  correct: 0,
+  explanation: "Gasoline is the lightest refined product in density."
+},
+{
+  id: "rfp9",
+  question: "Which test is used to measure cetane number?",
+  choices: ["Ignition quality test", "Octane engine test", "Viscosity test", "Freezing point test"],
+  correct: 0,
+  explanation: "Cetane number measures diesel ignition quality."
+},
+{
+  id: "rfp10",
+  question: "Which products face seasonal specification adjustments?",
+  choices: ["Diesel", "Gasoline", "Jet A1", "Fuel Oil"],
+  correct: [0,1],
+  explanation: "Diesel and gasoline specs vary winter/summer (volatility, cloud point)."
+},
+{
+  id: "rfp11",
+  question: "Which refined product requires smoke point testing?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: 1,
+  explanation: "Jet A1 requires smoke point testing to assess combustion quality."
+},
+{
+  id: "rfp12",
+  question: "Which refined product has the strictest sulfur specification globally?",
+  choices: ["Gasoline", "Diesel (ULSD)", "Jet A1", "Fuel Oil"],
+  correct: 1,
+  explanation: "Ultra Low Sulfur Diesel (ULSD) has the tightest sulfur limits."
+},
+{
+  id: "rfp13",
+  question: "Which products are traded in both paper and physical markets?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [0,1,2,3],
+  explanation: "All refined products are traded via derivatives and physical cargoes."
+},
+{
+  id: "rfp14",
+  question: "Which product is most sensitive to vapor pressure specs?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 0,
+  explanation: "Gasoline volatility (Reid Vapor Pressure) is strictly regulated."
+},
+{
+  id: "rfp15",
+  question: "Which refined products are classified as middle distillates?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: [0,1],
+  explanation: "Diesel and jet are middle distillates; gasoline is light, fuel oil is heavy."
+},
+{
+  id: "rfp16",
+  question: "Which blending component is used to increase octane?",
+  choices: ["MTBE", "Ethanol", "Toluene", "Sulfur"],
+  correct: [0,1,2],
+  explanation: "MTBE, ethanol, and aromatics boost octane rating."
+},
+{
+  id: "rfp17",
+  question: "Which specs are critical in jet fuel safety?",
+  choices: ["Flash point", "Freezing point", "Smoke point", "Viscosity"],
+  correct: [0,1,2],
+  explanation: "Jet fuel is controlled by flash, freezing, and smoke point."
+},
+{
+  id: "rfp18",
+  question: "Which refined product is most used in petrochemical feedstock blending?",
+  choices: ["Gasoline", "Naphtha", "Jet A1", "Diesel"],
+  correct: 1,
+  explanation: "Naphtha is widely used in steam cracking for petrochemicals."
+},
+{
+  id: "rfp19",
+  question: "Which specifications are controlled by ASTM standards?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [0,1,2,3],
+  explanation: "All refined products have ASTM standards for specs."
+},
+{
+  id: "rfp20",
+  question: "Which refined product requires lubricity testing?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: 0,
+  explanation: "Diesel lubricity is critical for engine performance."
+},
+{
+  id: "rfp21",
+  question: "Which products are subject to cloud point testing?",
+  choices: ["Diesel", "Gasoline", "Jet A1", "Fuel Oil"],
+  correct: [0,3],
+  explanation: "Diesel and fuel oil cloud points affect cold flow properties."
+},
+{
+  id: "rfp22",
+  question: "Which spec impacts aviation safety the most?",
+  choices: ["Freezing point", "Density", "Cetane number", "Viscosity"],
+  correct: 0,
+  explanation: "Jet A1 freezing point is critical for flight safety."
+},
+{
+  id: "rfp23",
+  question: "Which refined product typically trades against Brent benchmarks?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [1,2,3],
+  explanation: "Diesel, jet, and fuel oil are often priced against Brent. Gasoline uses RBOB benchmarks."
+},
+{
+  id: "rfp24",
+  question: "Which quality specs must align between load and discharge ports?",
+  choices: ["Density", "Sulfur content", "Flash point", "Octane number"],
+  correct: [0,1,2,3],
+  explanation: "All quality parameters must remain within spec during voyage."
+},
+{
+  id: "rfp25",
+  question: "Which refined product requires most stringent cleanliness of tanks?",
+  choices: ["Diesel", "Gasoline", "Jet A1", "Fuel Oil"],
+  correct: 2,
+  explanation: "Jet A1 tanks must be extremely clean to avoid contamination."	
   },
+  
+  {
+  id: "rfp26",
+  question: "Which products require specific cold flow additives in winter?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: [0,1],
+  explanation: "Diesel and jet fuel need cold flow additives to prevent gelling at low temperatures."
+},
+{
+  id: "rfp27",
+  question: "Which refined product has the highest volatility?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 0,
+  explanation: "Gasoline is the lightest and most volatile refined product."
+},
+{
+  id: "rfp28",
+  question: "Which specifications are critical for marine diesel engines?",
+  choices: ["Sulfur content", "Viscosity", "Cetane number", "Octane rating"],
+  correct: [0,1,2],
+  explanation: "Marine diesel requires control of sulfur, viscosity, and cetane for engine safety."
+},
+{
+  id: "rfp29",
+  question: "Which products are usually measured in metric tons for trading?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [1,2,3],
+  explanation: "Middle and heavy distillates (diesel, jet, fuel oil) are traded in metric tons; gasoline often in barrels or tons."
+},
+{
+  id: "rfp30",
+  question: "Which refined products are affected by Reid Vapor Pressure regulations?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 0,
+  explanation: "RVP controls gasoline volatility to manage evaporative emissions."
+},
+{
+  id: "rfp31",
+  question: "Which products have strict limitations on water content?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: [0,1,3],
+  explanation: "Water in diesel, jet fuel, and fuel oil can damage engines; gasoline is less sensitive."
+},
+{
+  id: "rfp32",
+  question: "Which product is most sensitive to storage tank cleanliness?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 2,
+  explanation: "Jet A1 must be stored in clean tanks to avoid contamination."
+},
+{
+  id: "rfp33",
+  question: "Which products are middle distillates?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [1,2],
+  explanation: "Diesel and Jet A1 are middle distillates; gasoline is light, fuel oil is heavy."
+},
+{
+  id: "rfp34",
+  question: "Which properties are critical for aviation fuel safety?",
+  choices: ["Freezing point", "Flash point", "Smoke point", "Octane number"],
+  correct: [0,1,2],
+  explanation: "Freezing, flash, and smoke points are crucial for Jet A1 performance."
+},
+{
+  id: "rfp35",
+  question: "Which refined product requires lubricity testing?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: 0,
+  explanation: "Diesel requires lubricity testing for proper engine operation."
+},
+{
+  id: "rfp36",
+  question: "Which products are most affected by sulfur regulations?",
+  choices: ["Diesel", "Gasoline", "Jet A1", "Fuel Oil"],
+  correct: [0,2,3],
+  explanation: "Diesel, jet, and fuel oil have strict sulfur limits; gasoline less so."
+},
+{
+  id: "rfp37",
+  question: "Which refined products are traded with flat price exposure?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [0,1,2,3],
+  explanation: "All refined products can be traded on flat price or swaps markets."
+},
+{
+  id: "rfp38",
+  question: "Which products require viscosity checks for pumping safety?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: [0,1,3],
+  explanation: "Diesel, jet fuel, and fuel oil must meet viscosity requirements for handling."
+},
+{
+  id: "rfp39",
+  question: "Which product is most affected by cold filter plugging point?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 1,
+  explanation: "Diesel is sensitive to CFPP in cold climates."
+},
+{
+  id: "rfp40",
+  question: "Which products are classified as dirty products?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 3,
+  explanation: "Fuel oil is considered a dirty product."
+},
+{
+  id: "rfp41",
+  question: "Which products are subject to ASTM D1655 standard?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: 1,
+  explanation: "ASTM D1655 applies to aviation turbine fuels."
+},
+{
+  id: "rfp42",
+  question: "Which products require pour point testing?",
+  choices: ["Diesel", "Jet A1", "Gasoline", "Fuel Oil"],
+  correct: [0,1,3],
+  explanation: "Pour point testing ensures safe handling in cold temperatures."
+},
+{
+  id: "rfp43",
+  question: "Which product is traded as RBOB in US markets?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 0,
+  explanation: "RBOB (Reformulated Blendstock for Oxygenate Blending) is gasoline."
+},
+{
+  id: "rfp44",
+  question: "Which products are blended with ethanol or MTBE to improve performance?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: 0,
+  explanation: "Gasoline can be blended with ethanol or MTBE for octane and emission improvements."
+},
+{
+  id: "rfp45",
+  question: "Which specifications affect marine fuel suitability?",
+  choices: ["Viscosity", "Sulfur content", "Density", "Octane number"],
+  correct: [0,1,2],
+  explanation: "Marine fuels must meet viscosity, sulfur, and density requirements."
+},
+{
+  id: "rfp46",
+  question: "Which products have seasonal volatility adjustments?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [0,1],
+  explanation: "Gasoline and diesel have summer/winter spec adjustments."
+},
+{
+  id: "rfp47",
+  question: "Which properties determine engine performance in diesel?",
+  choices: ["Cetane number", "Sulfur content", "Viscosity", "Octane number"],
+  correct: [0,1,2],
+  explanation: "Cetane, sulfur, and viscosity directly impact diesel engine performance."
+},
+{
+  id: "rfp48",
+  question: "Which products are subject to flash point requirements for safety?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [1,2,3],
+  explanation: "Diesel, jet, and fuel oil have minimum flash point safety regulations."
+},
+{
+  id: "rfp49",
+  question: "Which refined products require water content analysis before shipment?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [0,1,2,3],
+  explanation: "All products need water content checks to prevent contamination or engine issues."
+},
+{
+  id: "rfp50",
+  question: "Which products are considered middle distillates and traded globally?",
+  choices: ["Gasoline", "Diesel", "Jet A1", "Fuel Oil"],
+  correct: [1,2],
+  explanation: "Diesel and Jet A1 are middle distillates with global trade relevance."
+}
+  ]
+},
+  
   trading_market: { 
     title: "Trading & Market Fundamentals", 
-    questions: [] 
-  },
+
+  questions: [
+    {
+      id: 1,
+      question: "What does 'backwardation' mean in oil markets?",
+      choices: [
+        "Spot price is lower than future price",
+        "Future and spot price are equal",
+        "Spot price is higher than future price",
+        "Refining margin is negative"
+      ],
+      correct: 2,
+      explanation: "Backwardation means near-term prices are higher than longer-dated futures, usually due to tight prompt supply."
+    },
+    {
+      id: 2,
+      question: "What does 'contango' mean in crude trading?",
+      choices: [
+        "Spot prices are higher than future prices",
+        "It describes price volatility",
+        "It’s a refining margin term",
+        "Future prices are higher than spot prices"
+      ],
+      correct: 3,
+      explanation: "Contango occurs when futures prices are above spot, often reflecting storage costs and abundant supply."
+    },
+    {
+      id: 3,
+      question: "A 'hedge' in trading refers to:",
+      choices: [
+        "A shipping cost",
+        "A transaction to reduce risk exposure",
+        "Speculating for profit",
+        "A physical barrier in terminals"
+      ],
+      correct: 1,
+      explanation: "Hedging is entering positions to offset price risks (e.g., buying crude futures to lock supply costs)."
+    },
+    {
+      id: 4,
+      question: "What is a 'crack spread'?",
+      choices: [
+        "Spread between diesel and gasoline only",
+        "Difference between Brent and WTI",
+        "Shipping differential between two ports",
+        "Difference between crude and refined product prices"
+      ],
+      correct: 3,
+      explanation: "A crack spread measures refinery margin: crude input price vs. value of refined outputs."
+    },
+    {
+      id: 5,
+      question: "What is a 'calendar spread' in futures trading?",
+      choices: [
+        "Arbitrage between two refineries",
+        "Difference between Brent and Dubai",
+        "Price difference between contracts of different maturities",
+        "Difference in shipping costs between two routes"
+      ],
+      correct: 2,
+      explanation: "Calendar spreads compare futures prices of the same commodity with different delivery months."
+    },
+    {
+      id: 6,
+      question: "What is a 'forward contract'?",
+      choices: [
+        "Spot market deal",
+        "OTC agreement to buy/sell at future date and price",
+        "Physical freight charter",
+        "Standardized exchange-traded contract"
+      ],
+      correct: 1,
+      explanation: "Forwards are OTC bilateral contracts fixing future price and delivery, unlike standardized futures."
+    },
+    {
+      id: 7,
+      question: "What is a 'future contract'?",
+      choices: [
+        "A standardized, exchange-traded contract",
+        "A refinery maintenance plan",
+        "An OTC agreement",
+        "A pipeline tariff"
+      ],
+      correct: 0,
+      explanation: "Futures are standardized contracts traded on exchanges, with margining and liquidity."
+    },
+    {
+      id: 8,
+      question: "What is the 'prompt month' contract?",
+      choices: [
+        "An option premium",
+        "A physical crude delivery",
+        "The nearest active futures month",
+        "The farthest dated contract"
+      ],
+      correct: 2,
+      explanation: "The prompt month is the nearest active maturity, often the reference for benchmarks."
+    },
+    {
+      id: 9,
+      question: "What does 'rollover' mean in futures trading?",
+      choices: [
+        "A margin call",
+        "Switching from one maturity to the next",
+        "Transferring crude between ships",
+        "Physical rollover of barrels in tanks"
+      ],
+      correct: 1,
+      explanation: "Rolling futures means closing a near-month position and opening a longer-dated one."
+    },
+    {
+      id: 10,
+      question: "What is 'basis risk'?",
+      choices: [
+        "Storage cost risk",
+        "Currency exchange risk",
+        "Risk of ship delay",
+        "Risk that futures and physical prices do not move perfectly together"
+      ],
+      correct: 3,
+      explanation: "Basis risk occurs when hedge instruments don’t perfectly track the physical exposure."
+    },
+    {
+      id: 11,
+      question: "What is 'PRA pricing' in oil markets?",
+      choices: [
+        "Pipeline regulated access",
+        "Physical refinery allocation",
+        "Port risk assessment",
+        "Price assessed by Price Reporting Agencies"
+      ],
+      correct: 3,
+      explanation: "PRA (Platts, Argus, etc.) provides benchmark assessments widely used in physical contracts."
+    },
+    {
+      id: 12,
+      question: "What does 'flat price' mean?",
+      choices: [
+        "The outright market price of a commodity",
+        "Derivative spread",
+        "Adjusted netback value",
+        "Price difference between two grades"
+      ],
+      correct: 0,
+      explanation: "Flat price is the outright market price (e.g., Brent $85/bbl)."
+    },
+    {
+      id: 13,
+      question: "What is a 'spread trade'?",
+      choices: [
+        "Export license mechanism",
+        "Simultaneous buying and selling of related instruments",
+        "Transport of crude via pipeline",
+        "Storage hedging strategy"
+      ],
+      correct: 1,
+      explanation: "Spread trading involves opposite positions in correlated contracts (e.g., Brent-WTI)."
+    },
+    {
+      id: 14,
+      question: "What is a 'swap' in oil trading?",
+      choices: [
+        "Pipeline tariff adjustment",
+        "Physical cargo exchange",
+        "An option premium",
+        "Exchange of cash flows to manage risk"
+      ],
+      correct: 3,
+      explanation: "Swaps are OTC derivatives exchanging fixed vs. floating prices, often used for hedging."
+    },
+    {
+      id: 15,
+      question: "What is 'mark-to-market' in trading?",
+      choices: [
+        "Updating book value of contracts to current market price",
+        "Ship chartering contract",
+        "Pipeline throughput monitoring",
+        "Physical inventory valuation"
+      ],
+      correct: 0,
+      explanation: "Mark-to-market adjusts the value of open positions to reflect daily prices."
+    },
+    {
+      id: 16,
+      question: "What is an 'ICE Brent contract'?",
+      choices: [
+        "An exchange-traded futures contract for Brent",
+        "A swap agreement",
+        "A shipping derivative",
+        "A physical cargo deal"
+      ],
+      correct: 0,
+      explanation: "ICE Brent is the global benchmark crude futures contract."
+    },
+    {
+      id: 17,
+      question: "What is 'Dated Brent'?",
+      choices: [
+        "A refinery marker",
+        "An OTC swap",
+        "A physical crude benchmark for North Sea loading",
+        "A futures contract"
+      ],
+      correct: 2,
+      explanation: "Dated Brent is the physical crude benchmark assessed by PRAs, basis for global pricing."
+    },
+    {
+      id: 18,
+      question: "What does 'netback' mean in trading?",
+      choices: [
+        "Pipeline tariff",
+        "Delivered price at destination minus costs",
+        "Charter rate of a tanker",
+        "Storage margin"
+      ],
+      correct: 1,
+      explanation: "Netback = product sales revenue minus transport, duties, and costs, showing refinery economics."
+    },
+    {
+      id: 19,
+      question: "What is 'arbitrage' in oil markets?",
+      choices: [
+        "Blending of two fuels",
+        "Storage optimization",
+        "Buying and selling simultaneously to capture price differentials",
+        "Risk hedging"
+      ],
+      correct: 2,
+      explanation: "Arbitrage exploits regional or product price differences, e.g. US Gulf vs. Europe."
+    },
+    {
+      id: 20,
+      question: "What is a 'time charter equivalent' (TCE)?",
+      choices: [
+        "Pipeline fee",
+        "Storage rent",
+        "Derivative swap",
+        "Daily revenue measure for ships"
+      ],
+      correct: 3,
+      explanation: "TCE is a normalized measure of daily ship earnings after voyage costs."
+    },
+    {
+      id: 21,
+      question: "What is a 'clean product tanker'?",
+      choices: [
+        "Ship designed for refined products (diesel, gasoline, jet)",
+        "Ship carrying crude oil",
+        "Tanker used for chemicals",
+        "An LNG vessel"
+      ],
+      correct: 0,
+      explanation: "Clean tankers carry refined petroleum products like diesel and gasoline."
+    },
+    {
+      id: 22,
+      question: "What does 'dirty tanker' refer to?",
+      choices: [
+        "Carrying crude or heavy fuel oil",
+        "Tanker without cleaning",
+        "Ballasted ship",
+        "Old vessel"
+      ],
+      correct: 0,
+      explanation: "Dirty tankers transport crude or residual fuels, as opposed to clean products."
+    },
+    {
+      id: 23,
+      question: "What is a 'demurrage' cost?",
+      choices: [
+        "Penalty for delayed loading/discharge beyond laytime",
+        "Tanker fuel cost",
+        "Pipeline fee",
+        "Insurance premium"
+      ],
+      correct: 0,
+      explanation: "Demurrage is charged when a vessel is delayed at port beyond agreed time."
+    },
+    {
+      id: 24,
+      question: "What is 'laycan' in shipping?",
+      choices: [
+        "Pipeline capacity",
+        "Refinery shutdown plan",
+        "Laydays and cancelling date for vessel arrival",
+        "Trading option window"
+      ],
+      correct: 2,
+      explanation: "Laycan defines the period during which a ship must present for loading."
+    },
+    {
+      id: 25,
+      question: "What is a 'VLCC'?",
+      choices: [
+        "Pipeline code",
+        "Refinery unit",
+        "Very Large Crude Carrier tanker",
+        "Futures contract type"
+      ],
+      correct: 2,
+      explanation: "VLCCs are massive crude tankers, typically carrying 2 million barrels."
+    },
+	 {
+      id: 26,
+      question: "What is 'HSFO' in trading?",
+      choices: [
+        "High Sulfur Fuel Oil",
+        "Heat Stable Fuel Output",
+        "Hydrotreated Straight Fuel Oil",
+        "Heavy Shipping Fuel Option"
+      ],
+      correct: 0,
+      explanation: "HSFO is high sulfur fuel oil, used mainly for shipping pre-IMO 2020."
+    },
+    {
+      id: 27,
+      question: "What is 'ULSD'?",
+      choices: [
+        "Underground Line Storage Diesel",
+        "Ultra-Low Sulfur Diesel",
+        "Unleaded Super Diesel",
+        "Utility Line Supply Diesel"
+      ],
+      correct: 1,
+      explanation: "ULSD is a diesel grade with <15 ppm sulfur, the standard in US and Europe."
+    },
+    {
+      id: 28,
+      question: "What is 'IMO 2020'?",
+      choices: [
+        "Trading benchmark",
+        "A new oil futures contract",
+        "Refining technology",
+        "Global sulfur cap regulation for shipping"
+      ],
+      correct: 3,
+      explanation: "IMO 2020 reduced marine fuel sulfur limit to 0.5%, reshaping bunker and fuel markets."
+    },
+    {
+      id: 29,
+      question: "What is 'physical arbitrage'?",
+      choices: [
+        "Option premium strategy",
+        "Storage optimization only",
+        "Moving physical barrels to capture price differentials",
+        "Derivative-only trading"
+      ],
+      correct: 2,
+      explanation: "Physical arbitrage exploits geographical spreads by shipping oil between regions."
+    },
+    {
+      id: 30,
+      question: "What is a 'straddle option'?",
+      choices: [
+        "Blending option",
+        "Options strategy buying call and put at same strike",
+        "Shipping contract",
+        "Pipeline swing contract"
+      ],
+      correct: 1,
+      explanation: "Straddles profit from volatility, buying both call and put on the same strike/expiry."
+    },
+    {
+      id: 31,
+      question: "What is an 'option premium'?",
+      choices: [
+        "Freight cost",
+        "Pipeline tariff",
+        "The upfront cost paid to buy an option",
+        "Storage fee"
+      ],
+      correct: 2,
+      explanation: "The premium is the price paid for the right (not obligation) to buy/sell at a strike price."
+    },
+    {
+      id: 32,
+      question: "What is a 'long position'?",
+      choices: [
+        "A delayed cargo",
+        "A wide crack spread",
+        "Betting on falling prices",
+        "Owning or being exposed to rising prices"
+      ],
+      correct: 3,
+      explanation: "Being long means benefiting if prices increase (buy low, sell high)."
+    },
+    {
+      id: 33,
+      question: "What is a 'short position'?",
+      choices: [
+        "A forward hedge",
+        "Pipeline bottleneck",
+        "Owning physical barrels",
+        "Betting on price decreases"
+      ],
+      correct: 3,
+      explanation: "Short positions profit when prices decline (sell high, buy back lower)."
+    },
+    {
+      id: 34,
+      question: "What is 'margin call' in trading?",
+      choices: [
+        "Demurrage penalty",
+        "Option expiration",
+        "Pipeline delivery slot",
+        "Request to post more collateral on losing positions"
+      ],
+      correct: 3,
+      explanation: "Margin calls are requests from exchanges to top up funds when positions lose value."
+    },
+    {
+      id: 35,
+      question: "What is an 'ICE gasoil contract'?",
+      choices: [
+        "Pipeline allocation",
+        "Physical diesel cargo",
+        "European benchmark futures for diesel",
+        "A swap agreement"
+      ],
+      correct: 2,
+      explanation: "ICE gasoil is the main futures benchmark for European diesel/gasoil."
+    },
+    {
+      id: 36,
+      question: "What does 'outright' mean in trading?",
+      choices: [
+        "Flat price position without spreads",
+        "Option premium",
+        "Physical swap",
+        "Blended barrel"
+      ],
+      correct: 0,
+      explanation: "An outright is a single flat price exposure, not a spread or hedge."
+    },
+    {
+      id: 37,
+      question: "What is a 'barrel equivalent' (boe)?",
+      choices: [
+        "A tanker capacity",
+        "Storage limit",
+        "Refining output",
+        "Energy equivalent measure for gas/oil"
+      ],
+      correct: 3,
+      explanation: "BOE converts other energy units (gas, LNG) into crude oil equivalents."
+    },
+    {
+      id: 38,
+      question: "What is 'EFP' (Exchange for Physical)?",
+      choices: [
+        "Mechanism to swap futures for a physical cargo",
+        "Freight premium",
+        "Pipeline entry fee",
+        "Energy finance protocol"
+      ],
+      correct: 0,
+      explanation: "EFP allows counterparties to convert futures into a physical position."
+    },
+    {
+      id: 39,
+      question: "What is 'floating price contract'?",
+      choices: [
+        "Spot-only deal",
+        "A fixed price forward",
+        "Price linked to a benchmark index (Platts, Brent)",
+        "Option derivative"
+      ],
+      correct: 2,
+      explanation: "Floating price contracts are indexed to benchmarks, adjusted with differentials."
+    },
+    {
+      id: 40,
+      question: "What does 'differential' mean in trading?",
+      choices: [
+        "Pipeline fee",
+        "Freight premium",
+        "Currency hedge",
+        "Adjustment vs. a benchmark to reflect quality or location"
+      ],
+      correct: 3,
+      explanation: "Differentials adjust contracts vs. a benchmark to reflect crude/product quality or geography."
+    },
+    {
+      id: 41,
+      question: "What is 'WTI Midland'?",
+      choices: [
+        "A futures contract",
+        "A refining process",
+        "A tanker route",
+        "A US crude grade from Permian Basin"
+      ],
+      correct: 3,
+      explanation: "WTI Midland is a key Permian crude stream, priced against WTI benchmarks."
+    },
+    {
+      id: 42,
+      question: "What does 'ICE Clear' provide?",
+      choices: [
+        "Shipping routes",
+        "Clearing and settlement for futures",
+        "Refinery scheduling",
+        "Pipeline operations"
+      ],
+      correct: 1,
+      explanation: "ICE Clear provides risk management, margining, and settlement for exchange trades."
+    },
+    {
+      id: 43,
+      question: "What is 'position limit'?",
+      choices: [
+        "Maximum size of a position regulated by exchange",
+        "Pipeline storage max",
+        "Refinery output cap",
+        "Cargo volume limit"
+      ],
+      correct: 0,
+      explanation: "Position limits are regulatory caps on open positions to prevent market manipulation."
+    },
+    {
+      id: 44,
+      question: "What is 'volatility' in trading?",
+      choices: [
+        "Storage capacity",
+        "Freight speed",
+        "Pipeline flow rate",
+        "Degree of price fluctuation over time"
+      ],
+      correct: 3,
+      explanation: "Volatility measures how much and how fast prices change, key for risk and options pricing."
+    },
+    {
+      id: 45,
+      question: "What is a 'swaption'?",
+      choices: [
+        "Swap between two crudes",
+        "Storage contract",
+        "An option granting the right to enter a swap",
+        "Shipping option"
+      ],
+      correct: 2,
+      explanation: "A swaption gives the right, not obligation, to enter into a swap at a future date."
+    },
+    {
+      id: 46,
+      question: "What is 'backwardation' used for in trading strategy?",
+      choices: [
+        "Locking in low future prices",
+        "Speculating on price declines",
+        "Taking advantage of higher spot prices for immediate sales",
+        "Avoiding storage costs"
+      ],
+      correct: 2,
+      explanation: "Traders can sell prompt crude at higher prices than futures in backwardation."
+    },
+    {
+      id: 47,
+      question: "What is 'contango' used for in trading strategy?",
+      choices: [
+        "Immediate sale advantage",
+        "Storage and carry trades",
+        "Hedging refining margins",
+        "Reducing shipping risk"
+      ],
+      correct: 1,
+      explanation: "Contango enables storage-based strategies, buying spot and selling futures."
+    },
+    {
+      id: 48,
+      question: "What is a 'calendar spread' used for?",
+      choices: [
+        "Arbitrage between ports",
+        "Trading difference between nearby and deferred futures",
+        "Refining margin calculation",
+        "Physical cargo hedging"
+      ],
+      correct: 1,
+      explanation: "Calendar spreads exploit price differences between futures of different maturities."
+    },
+    {
+      id: 49,
+      question: "What is 'TCE' mainly used for?",
+      choices: [
+        "Option pricing",
+        "Ship revenue comparison",
+        "Storage optimization",
+        "Futures margin calculation"
+      ],
+      correct: 1,
+      explanation: "TCE normalizes vessel earnings across voyages for operational and financial comparison."
+    },
+    {
+      id: 50,
+      question: "What is 'netback' used for in trading?",
+      choices: [
+        "Calculating refinery profitability",
+        "Determining shipping charter rates",
+        "Setting storage fees",
+        "Evaluating option premiums"
+      ],
+      correct: 0,
+      explanation: "Netback measures revenue minus costs, key for assessing refinery economics."
+    },
+  ]
+},
   pricing_contracts: { 
     title: "Pricing & Contracts", 
-    questions: [] 
-  },
+    questions: [
+    {
+      id: "pc1",
+      question: "Your company has a Gasoil term contract: monthly lifting of 700 kb CIF NWE, priced at ICE Gasoil M-1 average + $10/MT. On the 20th of the month, you reduce your lifting to 670 kb. What is the impact on your flat price exposure?",
+      choices: [
+        "You remain fully hedged with no impact",
+        "You are left long 30 kb of futures exposure",
+        "You are short 30 kb of futures exposure",
+        "No impact since final nomination has no link to futures"
+      ],
+      correct: 1,
+      explanation: "If you pre-hedged 700 kb on ICE Gasoil but reduce to 670 kb physical, you are left long 30 kb paper exposure."
+    },
+    {
+      id: "pc2",
+      question: "In a Jet Fuel contract under GTCs, a Force Majeure clause is invoked by the seller due to refinery outage. What is the buyer entitled to?",
+      choices: [
+        "Automatic compensation for lost barrels",
+        "Release from the obligation to lift volumes during the FM period",
+        "Ability to source elsewhere and claim damages",
+        "The seller must deliver replacement cargoes from third parties"
+      ],
+      correct: 1,
+      explanation: "Force majeure releases both parties from their obligations during the FM event; seller is not forced to supply replacement barrels."
+    },
+    {
+      id: "pc3",
+      question: "A Crude contract is priced as 'Brent Dated average M-1' + premium. On the 15th of the month you roll your cargo to M (current month). What is your exposure?",
+      choices: [
+        "You are exposed to a flat price move",
+        "You are exposed to a time spread move between M and M-1",
+        "You are hedged with no exposure",
+        "You are exposed to FX risk only"
+      ],
+      correct: 1,
+      explanation: "Rolling from M-1 to M changes your indexation and exposes you to the M vs M-1 time spread."
+    },
+    {
+      id: "pc4",
+      question: "In Fuel Oil contracts, disputes over Quality are usually resolved based on:",
+      choices: [
+        "Surveyor appointed at discharge port",
+        "Lab analysis at seller’s refinery",
+        "Independent inspector’s certificate at load port",
+        "Average of buyer and seller results"
+      ],
+      correct: 2,
+      explanation: "Standard GTCs often state 'Q final at load port as per independent inspector certificate'."
+    },
+    {
+      id: "pc5",
+      question: "A Biofuel buyer refuses cargo citing 'off-spec viscosity'. Under GTC, Quality is final load port as per inspector certificate. What is the likely outcome?",
+      choices: [
+        "Buyer can reject and claim damages",
+        "Buyer must accept cargo and cannot reject",
+        "Seller must offer replacement barrels",
+        "Dispute goes automatically to arbitration"
+      ],
+      correct: 1,
+      explanation: "If Q final load port and inspector certified on-spec, buyer cannot reject cargo."
+    },
+    {
+      id: "pc6",
+      question: "You have a Jet CIF contract indexed to Platts Jet CIF NWE M-1. You sell cargo on FOB basis instead. What is your new risk?",
+      choices: [
+        "Freight exposure",
+        "Quality differential exposure",
+        "Currency risk only",
+        "No risk if hedged with futures"
+      ],
+      correct: 0,
+      explanation: "Switching from CIF to FOB introduces freight exposure since buyer now arranges transport."
+    },
+    {
+      id: "pc7",
+      question: "A Gasoil contract specifies '30 days credit after B/L date'. What risk does the seller carry?",
+      choices: [
+        "Price risk",
+        "Credit / counterparty risk",
+        "Operational risk",
+        "No risk, buyer is always solvent"
+      ],
+      correct: 1,
+      explanation: "Seller carries counterparty credit risk until payment is received."
+    },
+    {
+      id: "pc8",
+      question: "In a Crude sale, the Charter Party freight increases unexpectedly. Who bears the cost under CIF contract?",
+      choices: [
+        "Buyer",
+        "Seller",
+        "Shared equally",
+        "Shipping company"
+      ],
+      correct: 1,
+      explanation: "Under CIF, seller arranges and pays for freight."
+    },
+    {
+      id: "pc9",
+      question: "Fuel Oil term contract: 100 kb monthly lifting, priced vs Singapore 380 CST average. You lift only 80 kb. What happens to the remaining 20 kb?",
+      choices: [
+        "Automatically carried to next month",
+        "Buyer can lift later without penalty",
+        "You are in default under GTCs",
+        "No consequence since volumes are 'approximate'"
+      ],
+      correct: 2,
+      explanation: "Failing to lift contracted quantity is a default unless otherwise agreed."
+    },
+    {
+      id: "pc10",
+      question: "A Gasoil cargo is priced vs ICE Gasoil futures. If your hedges are in Brent futures, what mismatch do you face?",
+      choices: [
+        "No mismatch, both are correlated",
+        "Basis risk between Brent and Gasoil",
+        "FX risk only",
+        "Freight risk"
+      ],
+      correct: 1,
+      explanation: "Using Brent to hedge Gasoil creates basis risk (Brent vs ICE Gasoil)."
+    },
+    {
+      id: "pc11",
+      question: "A crude buyer disputes volume shortage at discharge. Which document governs final Quantity?",
+      choices: [
+        "Charter Party",
+        "Surveyor’s outturn certificate",
+        "Bill of Lading",
+        "Commercial Invoice"
+      ],
+      correct: 1,
+      explanation: "Quantity is usually final at discharge as per independent surveyor’s certificate."
+    },
+    {
+      id: "pc12",
+      question: "In a Jet sale contract, laytime/demurrage terms are usually referenced from:",
+      choices: [
+        "Charter Party",
+        "General Terms & Conditions",
+        "Bill of Lading",
+        "Survey Report"
+      ],
+      correct: 0,
+      explanation: "Demurrage is based on Charter Party terms agreed between shipowner and charterer."
+    },
+    {
+      id: "pc13",
+      question: "A Gasoil buyer fails to open LC by deadline. Under GTC, what can the seller do?",
+      choices: [
+        "Cancel the contract",
+        "Deliver without payment",
+        "Wait indefinitely",
+        "Force buyer into arbitration"
+      ],
+      correct: 0,
+      explanation: "Failure to provide LC is a breach allowing seller to cancel."
+    },
+    {
+      id: "pc14",
+      question: "In a Crude sale, if buyer nominates a vessel that does not meet terminal restrictions, what happens?",
+      choices: [
+        "Seller must accept vessel anyway",
+        "Buyer must re-nominate compliant vessel",
+        "Cargo is cancelled automatically",
+        "Seller pays extra costs"
+      ],
+      correct: 1,
+      explanation: "Buyer must nominate a vessel acceptable to terminal; otherwise re-nomination is required."
+    },
+    {
+      id: "pc15",
+      question: "A Biofuel contract references RED II compliance. What does this mean?",
+      choices: [
+        "Product meets EU sustainability criteria",
+        "Cargo exempt from duties",
+        "Buyer cannot reject",
+        "Blend obligation waived"
+      ],
+      correct: 0,
+      explanation: "RED II compliance ensures product meets EU renewable sustainability requirements."
+    },
+    {
+      id: "pc16",
+      question: "A Gasoil sale 'subject to LC opening'. Buyer requests delivery before LC issued. Should seller accept?",
+      choices: [
+        "Yes, under GTC it is safe",
+        "Yes, but only with discount",
+        "No, as credit risk is not covered",
+        "Yes, since cargo is already on water"
+      ],
+      correct: 2,
+      explanation: "Seller should not deliver before LC opening; otherwise exposed to non-payment."
+    },
+    {
+      id: "pc17",
+      question: "In a Crude DES contract, who bears risk of vessel delay at discharge?",
+      choices: [
+        "Buyer",
+        "Seller",
+        "Shared equally",
+        "Port Authority"
+      ],
+      correct: 1,
+      explanation: "In DES (Delivered Ex Ship), seller bears risk until cargo is delivered at discharge port."
+    },
+    {
+      id: "pc18",
+      question: "A Jet cargo indexed to Platts Jet CIF NWE M-1 is priced using which period?",
+      choices: [
+        "Current month (M)",
+        "Previous month (M-1)",
+        "Next month (M+1)",
+        "Averaged 3 months"
+      ],
+      correct: 1,
+      explanation: "M-1 means pricing is based on the previous month’s average."
+    },
+    {
+      id: "pc19",
+      question: "Fuel Oil GTC dispute clauses usually refer to:",
+      choices: [
+        "ICC Arbitration",
+        "English High Court",
+        "Local chamber of commerce",
+        "Singapore Court"
+      ],
+      correct: 0,
+      explanation: "Standard GTCs refer disputes to ICC Arbitration under English law."
+    },
+    {
+      id: "pc20",
+      question: "A Crude cargo under FOB sale suffers delay due to late vessel arrival. Who pays demurrage?",
+      choices: [
+        "Buyer",
+        "Seller",
+        "Shared equally",
+        "Shipowner"
+      ],
+      correct: 0,
+      explanation: "In FOB, buyer nominates vessel and pays demurrage if vessel delays."
+    },
+    {
+      id: "pc21",
+      question: "A Gasoil cargo is rejected by buyer for being off-spec density. Inspector certificate load port shows on-spec. Who is right?",
+      choices: [
+        "Buyer",
+        "Seller",
+        "Inspector",
+        "Depends on arbitration"
+      ],
+      correct: 1,
+      explanation: "Under GTC, quality final load port inspector governs. Buyer must accept cargo."
+    },
+    {
+      id: "pc22",
+      question: "Biofuel cargo priced vs Argus FOB ARA. Buyer wants CIF basis. What changes?",
+      choices: [
+        "Freight cost added",
+        "FX risk shifts",
+        "No change",
+        "Quality terms change"
+      ],
+      correct: 0,
+      explanation: "Switch from FOB to CIF adds freight and insurance responsibility."
+    },
+    {
+      id: "pc23",
+      question: "In Jet contracts, what is the impact if you hedge physical sales with ICE Gasoil futures?",
+      choices: [
+        "Perfect hedge",
+        "Basis risk Jet vs Gasoil",
+        "FX risk only",
+        "Freight risk"
+      ],
+      correct: 1,
+      explanation: "Jet CIF NWE vs ICE Gasoil introduces basis risk."
+    },
+    {
+      id: "pc24",
+      question: "A Crude cargo price is 'Brent Dated + $1/bbl'. Market moves +$2/bbl. What is seller’s exposure?",
+      choices: [
+        "Seller gains $2/bbl",
+        "Seller loses $2/bbl",
+        "Seller unaffected, buyer exposed",
+        "Both gain equally"
+      ],
+      correct: 1,
+      explanation: "If not pre-hedged, seller loses $2/bbl since sale price was fixed at Brent +1."
+    },
+    {
+      id: "pc25",
+      question: "Fuel Oil cargo nominated late by buyer, vessel misses laycan. Who bears cost?",
+      choices: [
+        "Seller",
+        "Buyer",
+        "Shipowner",
+        "Shared equally"
+      ],
+      correct: 1,
+      explanation: "Late nomination is buyer’s fault; buyer bears consequences."
+    },
+	 {
+      id: "pc26",
+      question: "In a Gasoil term contract, which elements are usually critical in the General Terms & Conditions (GTC)?",
+      choices: ["Quality determination method", "Quantity finality", "Dispute resolution clause", "Nomination deadlines"],
+      correct: [0,1,2,3],
+      explanation: "All four are fundamental: Q&Q determination, nomination rules, and dispute mechanisms define the backbone of GTC."
+    },
+    {
+      id: "pc27",
+      question: "In a Crude CIF contract, which risks remain for the seller after title transfer?",
+      choices: ["Demurrage costs if vessel delayed at discharge", "Credit risk until payment received", "Exposure to flat price moves", "Freight volatility risk"],
+      correct: [1,2],
+      explanation: "Once title passes, freight/demurrage are buyer’s risk. Seller still carries counterparty (payment) risk and unhedged flat price exposure."
+    },
+    {
+      id: "pc28",
+      question: "Which circumstances usually qualify under Force Majeure in oil contracts?",
+      choices: ["War", "Earthquake", "Buyer unwilling to pay", "Refinery shutdown due to fire"],
+      correct: [0,1,3],
+      explanation: "War, natural disasters, accidents like fire are FM. Simple unwillingness to pay is not."
+    },
+    {
+      id: "pc29",
+      question: "You buy a Jet cargo CIF NWE, indexed to M-1 average. To hedge, which instruments could you use?",
+      choices: ["ICE Gasoil futures", "Platts Jet swaps", "Brent futures", "Currency forwards"],
+      correct: [0,1,3],
+      explanation: "ICE Gasoil and Jet swaps are natural hedges. Currency forwards protect FX exposure."
+    },
+    {
+      id: "pc30",
+      question: "A Fuel Oil sale is disputed on quantity at discharge. Which documents are relevant to resolve the case?",
+      choices: ["Bill of Lading", "Surveyor outturn certificate", "Charter Party", "Statement of Facts"],
+      correct: [0,1,3],
+      explanation: "Quantity disputes are resolved with B/L, independent survey certificates, and supporting operational records (SOF)."
+    },
+    {
+      id: "pc31",
+      question: "Which risks exist when hedging Crude purchases priced vs Brent Dated with ICE Brent futures?",
+      choices: ["Time spread risk", "Basis risk", "FX risk", "Freight risk"],
+      correct: [0,1,2],
+      explanation: "ICE Brent futures hedge flat Brent, not Dated, leaving basis/time spread risk. FX exposure exists if priced in USD but revenues in another currency."
+    },
+    {
+      id: "pc32",
+      question: "In a Biofuel contract, which sustainability documents may be required by buyer?",
+      choices: ["ISCC certificate", "RED II compliance proof", "Cargo Manifest", "Certificate of Analysis"],
+      correct: [0,1],
+      explanation: "ISCC and RED II compliance are critical for biofuels. Manifest/CoA are standard docs but not sustainability proof."
+    },
+    {
+      id: "pc33",
+      question: "A Gasoil FOB contract specifies 'NOR to be tendered at load port by 12:00 LT'. What happens if vessel tenders NOR late?",
+      choices: ["Laytime starts later", "Demurrage claims may be reduced", "Buyer is still fully liable", "NOR may be invalid"],
+      correct: [0,1,3],
+      explanation: "Late NOR impacts laytime calculation and can be considered invalid, reducing seller’s demurrage claims."
+    },
+    {
+      id: "pc34",
+      question: "Which elements drive the final flat price in crude term contracts?",
+      choices: ["Index (Brent/WTI/Urals)", "Differential agreed", "Month of pricing (M, M-1)", "Freight component"],
+      correct: [0,1,2,3],
+      explanation: "Flat price = Index + Differential, adjusted by pricing period and freight under CIF contracts."
+    },
+    {
+      id: "pc35",
+      question: "In Jet sales, what risks exist if you hedge with Gasoil futures instead of Jet swaps?",
+      choices: ["Basis risk", "Liquidity risk", "Currency risk", "Operational risk"],
+      correct: [0,1],
+      explanation: "Basis risk Jet vs Gasoil, and Jet swaps being less liquid create liquidity concerns."
+    },
+    {
+      id: "pc36",
+      question: "In GTC, which situations typically allow termination of the contract?",
+      choices: ["Buyer fails to open LC", "Force majeure persists beyond X days", "Dispute over survey results", "Payment default"],
+      correct: [0,1,3],
+      explanation: "Termination rights include LC not opened, long FM, or payment default. Disputes over survey are resolved differently, not termination."
+    },
+    {
+      id: "pc37",
+      question: "A crude term contract mentions 'quality as per API gravity and sulphur'. Which additional elements might be disputed?",
+      choices: ["Pour point", "Asphaltenes content", "Water & sediment", "Viscosity"],
+      correct: [0,2,3],
+      explanation: "API and sulphur are standard, but pour point/asphaltenes/water are often critical in disputes."
+    },
+    {
+      id: "pc38",
+      question: "In a CIF contract, what costs must the seller cover?",
+      choices: ["Freight", "Insurance", "Inspection fees load port", "Demurrage at discharge"],
+      correct: [0,1,2],
+      explanation: "Seller pays freight, insurance, and load port inspection. Discharge demurrage is buyer’s responsibility."
+    },
+    {
+      id: "pc39",
+      question: "If a buyer reduces nomination after the hedge is placed, what risks arise?",
+      choices: ["Over-hedged position", "Flat price exposure", "FX risk", "Freight mismatch"],
+      correct: [0,1],
+      explanation: "Seller is left over-hedged and thus exposed to flat price changes."
+    },
+    {
+      id: "pc40",
+      question: "Fuel Oil disputes on quality can involve which methods of resolution?",
+      choices: ["Joint lab analysis", "Arbitration under GTC", "Seller’s refinery certificate final", "Independent umpire lab"],
+      correct: [0,1,3],
+      explanation: "Disputes often use joint testing or an umpire lab; arbitration if unresolved."
+    },
+    {
+      id: "pc41",
+      question: "Which clauses are most negotiated in long-term Crude contracts?",
+      choices: ["Destination restrictions", "Quality tolerance", "Pricing mechanism", "Letter of Credit terms"],
+      correct: [0,1,2,3],
+      explanation: "All of these are critical in term crude sales."
+    },
+    {
+      id: "pc42",
+      question: "A Jet FOB sale is priced vs Platts Jet CIF NWE. What risks emerge?",
+      choices: ["Freight exposure", "Basis risk", "Time spread risk", "Currency mismatch"],
+      correct: [0,1],
+      explanation: "FOB vs CIF index introduces freight and potential basis risk."
+    },
+    {
+      id: "pc43",
+      question: "Which scenarios create exposure when hedging Biofuel with Gasoil futures?",
+      choices: ["Basis risk biofuel vs gasoil", "Sustainability premium mismatch", "FX risk if priced in EUR", "No risk, correlation is perfect"],
+      correct: [0,1,2],
+      explanation: "Biofuels have unique pricing dynamics; Gasoil futures only partly hedge."
+    },
+    {
+      id: "pc44",
+      question: "In a Crude CIF contract, title transfer usually occurs at which moment?",
+      choices: ["B/L issuance", "Discharge completion", "After customs clearance", "Upon NOR tendering"],
+      correct: [0,1],
+      explanation: "Title transfer is often at B/L, but in some contracts at discharge. Always check GTC."
+    },
+    {
+      id: "pc45",
+      question: "In a Gasoil sale, which tools can mitigate counterparty risk?",
+      choices: ["Letter of Credit", "Parent company guarantee", "Cash in advance", "Performance bond"],
+      correct: [0,1,2,3],
+      explanation: "All of these instruments reduce counterparty credit risk exposure."
+    },
+    {
+      id: "pc46",
+      question: "When pricing Crude DES, which elements affect netback calculation?",
+      choices: ["FOB price", "Freight", "Insurance", "Port costs"],
+      correct: [0,1,2,3],
+      explanation: "DES price includes FOB + Freight + Insurance + Port costs."
+    },
+    {
+      id: "pc47",
+      question: "Buyer claims cargo delay due to seller’s late nomination. Which consequences may apply?",
+      choices: ["Demurrage at load port", "Cancellation rights for buyer", "Claim for market loss", "Change of laycan"],
+      correct: [0,1,2],
+      explanation: "Late nomination may cause demurrage, allow cancellation, and claims for losses."
+    },
+    {
+      id: "pc48",
+      question: "In Fuel Oil swaps used for hedging, which risks remain uncovered?",
+      choices: ["Quality differential", "Operational risk", "Credit risk of counterparty", "Time spread volatility"],
+      correct: [0,2,3],
+      explanation: "Swaps hedge flat price but not operational/quality/credit/time spread risks."
+    },
+    {
+      id: "pc49",
+      question: "In Biofuel contracts, which clauses are often unique compared to fossil fuels?",
+      choices: ["Sustainability certification", "Blend obligation", "CO2 emission accounting", "RED II compliance"],
+      correct: [0,1,3],
+      explanation: "Biofuels require sustainability proofs, blend mandates, and RED II compliance."
+    },
+    {
+      id: "pc50",
+      question: "In a crude long-term SPA, which events may trigger renegotiation?",
+      choices: ["Tax regime change", "Pipeline disruption", "Regulatory change (sanctions)", "Price volatility > 10%"],
+      correct: [0,1,2],
+      explanation: "Renegotiations may be triggered by structural/regulatory changes; simple volatility is not usually a trigger."
+	   }
+  ]
+},
   logistics_shipping: { 
     title: "Logistics & Shipping Operations", 
-    questions: [] 
-  },
+  questions: [
+    {
+      id: 1,
+      question: "You buy crude FOB and sell CIF. At which point does the title of the cargo usually transfer?",
+      choices: [
+        "When the vessel passes the ship rail at the loadport",
+        "When the vessel arrives at discharge port",
+        "When the cargo is discharged into shore tanks",
+        "When the Bill of Lading is issued"
+      ],
+      correct: [0,3],
+      explanation: "FOB transfers title/loadport once the product passes ship’s rail. However, many contracts also link title to the Bill of Lading date."
+    },
+    {
+      id: 2,
+      question: "You sold cargo DAP Rotterdam but the receiver changes the discharge port to Antwerp. What are the operational impacts?",
+      choices: [
+        "Additional port costs must be renegotiated",
+        "Vessel deviation time may be for seller’s account",
+        "The Incoterm allows the buyer to freely change port without discussion",
+        "Demurrage calculations may change"
+      ],
+      correct: [0,1,3],
+      explanation: "Changing discharge port affects port costs, voyage time and demurrage. Buyer cannot change port freely without agreement."
+    },
+    {
+      id: 3,
+      question: "Which items are critical to check on a Bill of Lading (B/L)?",
+      choices: [
+        "Correct cargo description and quantity",
+        "Loadport and discharge port",
+        "Date of issue",
+        "Correct freight rate",
+        "Shipper, consignee and notify parties"
+      ],
+      correct: [0,1,2,4],
+      explanation: "Cargo, ports, date and parties must be correct. Freight rate belongs to the charter party, not B/L."
+    },
+    {
+      id: 4,
+      question: "Why is crude oil washing (COW) performed on tankers?",
+      choices: [
+        "To reduce clingage losses",
+        "To comply with MARPOL regulations",
+        "To clean tanks for next cargo",
+        "To speed up discharge pumping"
+      ],
+      correct: [0,1,2],
+      explanation: "COW reduces losses, ensures regulatory compliance, and prepares tanks for next cargo."
+    },
+    {
+      id: 5,
+      question: "What risks occur when nominating a vessel late to a counterparty?",
+      choices: [
+        "Receiver may reject the vessel",
+        "Demurrage will automatically be zero",
+        "Charter party clauses may be breached",
+        "Operational delays at the terminal"
+      ],
+      correct: [0,2,3],
+      explanation: "Late nominations risk rejection, contract breach and delays. Demurrage is unrelated."
+    },
+    {
+      id: 6,
+      question: "In a CIF sale, who is responsible for arranging insurance?",
+      choices: ["Buyer", "Seller", "Port Authority", "Charterer"],
+      correct: [1],
+      explanation: "Seller must provide insurance under CIF Incoterm."
+    },
+    {
+      id: 7,
+      question: "Which factors affect demurrage exposure?",
+      choices: [
+        "Port congestion",
+        "Weather delays",
+        "Incorrect laytime calculation",
+        "Freight rate movements"
+      ],
+      correct: [0,1,2],
+      explanation: "Demurrage depends on time spent in port and laytime clauses. Freight rate does not affect it."
+    },
+    {
+      id: 8,
+      question: "When issuing a Letter of Indemnity (LOI) for delivery without B/L, what are key risks?",
+      choices: [
+        "Buyer may not pay cargo",
+        "Double claim on cargo title",
+        "Loss of P&I coverage",
+        "Higher freight rate"
+      ],
+      correct: [0,1,2],
+      explanation: "LOIs expose to risk of non-payment, double title claim, and loss of insurance protection."
+    },
+    {
+      id: 9,
+      question: "You are discharging a cargo with high pour point in winter. What operational issues matter?",
+      choices: [
+        "Need for heating coils during voyage",
+        "Slower pumping rates at discharge",
+        "Risk of solidification in lines",
+        "Impact on octane number"
+      ],
+      correct: [0,1,2],
+      explanation: "Heating is required to maintain flow; otherwise pumping slows or solidifies."
+    },
+    {
+      id: 10,
+      question: "What are the key documents required for crude oil cargo discharge?",
+      choices: [
+        "Bill of Lading",
+        "Certificate of Quantity (CQ)",
+        "Charter Party",
+        "Certificate of Quality",
+        "Letter of Credit"
+      ],
+      correct: [0,1,3],
+      explanation: "B/L, CQ and Certificate of Quality are essential for title and customs. LC is for finance."
+    },
+    {
+      id: 11,
+      question: "When does laytime typically start counting?",
+      choices: [
+        "Upon vessel arrival at anchorage",
+        "Once Notice of Readiness (NOR) is tendered and accepted",
+        "At the start of pumping",
+        "When charter party is signed"
+      ],
+      correct: [1],
+      explanation: "Laytime begins after NOR is tendered and accepted, subject to berth availability and CP terms."
+    },
+    {
+      id: 12,
+      question: "Which Incoterm gives the seller maximum control of the transport chain?",
+      choices: ["FOB", "CFR", "CIF", "DAP"],
+      correct: [3],
+      explanation: "DAP means seller organizes transport until delivery point. FOB transfers control at loadport."
+    },
+    {
+      id: 13,
+      question: "Why is ullage measurement important during cargo loading?",
+      choices: [
+        "To calculate loaded volume",
+        "To check vessel stability",
+        "To set freight cost",
+        "To confirm cargo heating"
+      ],
+      correct: [0,1],
+      explanation: "Ullage helps confirm volume and stability of vessel. Freight cost is pre-agreed, not from ullage."
+    },
+    {
+      id: 14,
+      question: "What are common causes of cargo contamination?",
+      choices: [
+        "Unclean tanks",
+        "Line displacement issues",
+        "Improper crude oil washing",
+        "Incorrect bill of lading data"
+      ],
+      correct: [0,1,2],
+      explanation: "Contamination usually results from tank cleanliness or line issues, not documentation errors."
+    },
+    {
+      id: 15,
+      question: "What is the function of a cargo surveyor?",
+      choices: [
+        "Verify cargo quantity",
+        "Check quality specifications",
+        "Issue vessel certificates",
+        "Monitor loading/discharge operations"
+      ],
+      correct: [0,1,3],
+      explanation: "Surveyors independently verify quantity, quality and observe operations. They do not issue vessel certs."
+    },
+    {
+      id: 16,
+      question: "In an FOB deal, who is responsible for freight?",
+      choices: ["Buyer", "Seller", "Vessel master", "Port authority"],
+      correct: [0],
+      explanation: "Buyer arranges and pays for freight under FOB terms."
+    },
+    {
+      id: 17,
+      question: "What are typical reasons for issuing a Letter of Protest (LOP)?",
+      choices: [
+        "Delays in operations",
+        "Unsafe loading practices",
+        "Incorrect laytime calculation",
+        "Pipeline rupture"
+      ],
+      correct: [0,1,2],
+      explanation: "LOPs are issued for delays, unsafe ops, or disputes over time counting."
+    },
+    {
+      id: 18,
+      question: "Why might a receiver request a split Bill of Lading?",
+      choices: [
+        "To allow multiple consignees",
+        "To adjust freight rate",
+        "To manage financing with different banks",
+        "To accelerate vessel turnaround"
+      ],
+      correct: [0,2],
+      explanation: "Split B/Ls are used for multiple buyers/financing arrangements."
+    },
+    {
+      id: 19,
+      question: "What are the impacts of weather delays at loadport?",
+      choices: [
+        "Potential demurrage",
+        "Cargo contamination",
+        "Late delivery to buyer",
+        "Increased freight rates"
+      ],
+      correct: [0,2],
+      explanation: "Weather delays may trigger demurrage and cause late delivery, but not contamination."
+    },
+    {
+      id: 20,
+      question: "What is the role of the Notice of Readiness (NOR)?",
+      choices: [
+        "Triggers laytime start",
+        "Confirms vessel readiness for loading/discharge",
+        "Acts as a customs clearance",
+        "Serves as title document"
+      ],
+      correct: [0,1],
+      explanation: "NOR indicates vessel readiness and triggers laytime. It has no customs or title role."
+    },
+    {
+      id: 21,
+      question: "Why might a charterer prefer a time charter over a voyage charter?",
+      choices: [
+        "Flexibility in using vessel for multiple voyages",
+        "Lower bunker risk exposure",
+        "Fixed freight for one trip",
+        "No responsibility for demurrage"
+      ],
+      correct: [0,1],
+      explanation: "Time charters give flexibility and shift bunker risk to owner. Voyage charters fix freight per trip."
+    },
+    {
+      id: 22,
+      question: "What are bunker adjustment factors in shipping?",
+      choices: [
+        "Charges linked to fuel cost changes",
+        "Extra demurrage fees",
+        "Terminal loading charges",
+        "Insurance premium"
+      ],
+      correct: [0],
+      explanation: "BAF are surcharges applied to adjust freight with bunker fuel prices."
+    },
+    {
+      id: 23,
+      question: "What happens if a cargo is discharged against a wrong Bill of Lading?",
+      choices: [
+        "Risk of double claims on cargo",
+        "Receiver may refuse payment",
+        "Insurance coverage could be void",
+        "Laytime resets"
+      ],
+      correct: [0,1,2],
+      explanation: "Delivering without correct B/L risks double claim, non-payment, and loss of P&I cover."
+    },
+    {
+      id: 24,
+      question: "Why is heating critical during voyage for some fuel oils?",
+      choices: [
+        "To maintain pumpable viscosity",
+        "To meet sulfur specifications",
+        "To avoid wax precipitation",
+        "To reduce demurrage"
+      ],
+      correct: [0,2],
+      explanation: "Heating avoids solidification and maintains flow. It has no effect on sulfur spec."
+    },
+    {
+      id: 25,
+      question: "Which clause protects the owner from liability for strike delays?",
+      choices: [
+        "Force majeure",
+        "Laytime exception clause",
+        "Demurrage clause",
+        "Safe berth warranty"
+      ],
+      correct: [1],
+      explanation: "Laytime exception clauses often exclude counting strike delays."
+    },
+	{
+      id: 26,
+      question: "What are typical risks with STS (Ship-to-Ship) transfer operations?",
+      choices: [
+        "Oil spillage",
+        "Hull damage",
+        "Documentation errors",
+        "Cargo contamination"
+      ],
+      correct: [0,1,3],
+      explanation: "STS risks include pollution, hull contact and contamination. Documentation errors are secondary."
+    },
+    {
+      id: 27,
+      question: "Why is draft survey important?",
+      choices: [
+        "To calculate cargo weight via vessel displacement",
+        "To measure cargo temperature",
+        "To check trim and stability",
+        "To calculate bunker consumption"
+      ],
+      correct: [0,2],
+      explanation: "Draft surveys measure cargo loaded/discharged and check stability."
+    },
+    {
+      id: 28,
+      question: "What are consequences of incorrect ullage report?",
+      choices: [
+        "Commercial disputes over quantity",
+        "Loss of trust with counterparties",
+        "Impact on demurrage",
+        "Legal claims"
+      ],
+      correct: [0,1,3],
+      explanation: "Wrong ullage can cause disputes, legal claims, and damage credibility. Demurrage is unaffected."
+    },
+    {
+      id: 29,
+      question: "What are common reasons for cargo shortage claims?",
+      choices: [
+        "Evaporation losses",
+        "Tank clingage",
+        "Measurement errors",
+        "Incorrect Incoterm"
+      ],
+      correct: [0,1,2],
+      explanation: "Losses come from evaporation, clingage, and errors. Incoterms do not cause shortages."
+    },
+    {
+      id: 30,
+      question: "What is a Letter of Credit’s role in oil trading?",
+      choices: [
+        "Guarantees payment to seller if documents comply",
+        "Confirms vessel seaworthiness",
+        "Covers demurrage costs",
+        "Acts as title document"
+      ],
+      correct: [0],
+      explanation: "LC secures payment but does not certify vessel or cover demurrage."
+    },
+    {
+      id: 31,
+      question: "What are safe berth warranties in charter parties?",
+      choices: [
+        "Charterer guarantees berth is physically safe",
+        "Seller guarantees port costs",
+        "Buyer accepts laytime delays",
+        "Owner guarantees vessel age"
+      ],
+      correct: [0],
+      explanation: "Safe berth warranties put liability on charterers to nominate a safe port/berth."
+    },
+    {
+      id: 32,
+      question: "Why is tank inspection before loading important?",
+      choices: [
+        "Ensures tanks are clean",
+        "Prevents contamination",
+        "Confirms pump functionality",
+        "Verifies port charges"
+      ],
+      correct: [0,1,2],
+      explanation: "Tank inspections avoid contamination and confirm readiness. Port charges are unrelated."
+    },
+    {
+      id: 33,
+      question: "What is the role of a Notice of Protest (NOP)?",
+      choices: [
+        "Formally records disagreement",
+        "Protects legal rights in disputes",
+        "Acts as customs document",
+        "Resets laytime"
+      ],
+      correct: [0,1],
+      explanation: "NOP preserves charterers’/owners’ rights in disputes. It is not a customs doc."
+    },
+    {
+      id: 34,
+      question: "What can cause a vessel to be rejected at loadport?",
+      choices: [
+        "Failing vetting inspection",
+        "Not meeting terminal restrictions",
+        "Having expired certificates",
+        "High freight rate"
+      ],
+      correct: [0,1,2],
+      explanation: "Rejection is linked to safety, certificates, or terminal rules. Freight rate is irrelevant."
+    },
+    {
+      id: 35,
+      question: "What are consequences of incorrect NOR tendering?",
+      choices: [
+        "Laytime disputes",
+        "Loss of demurrage claim",
+        "Faster port clearance",
+        "Operational delays"
+      ],
+      correct: [0,1,3],
+      explanation: "Incorrect NOR impacts demurrage rights and may cause disputes or delays."
+    },
+    {
+      id: 36,
+      question: "Why might a cargo receiver insist on shore tank gauging?",
+      choices: [
+        "Independent verification of quantity",
+        "Cross-check against ship figures",
+        "To reduce demurrage",
+        "Customs compliance"
+      ],
+      correct: [0,1,3],
+      explanation: "Shore tank gauging provides independent verification and supports customs clearance."
+    },
+    {
+      id: 37,
+      question: "What is the role of a cargo manifest?",
+      choices: [
+        "Lists all cargo loaded/discharged",
+        "Used for customs clearance",
+        "Acts as a freight contract",
+        "Details vessel speed"
+      ],
+      correct: [0,1],
+      explanation: "Cargo manifest is for customs and cargo listing, not freight contracts."
+    },
+    {
+      id: 38,
+      question: "What are common reasons for high demurrage bills?",
+      choices: [
+        "Port congestion",
+        "Receiver delays",
+        "Incorrect NOR",
+        "Short laytime allowance"
+      ],
+      correct: [0,1,2,3],
+      explanation: "All listed factors can drive demurrage costs up."
+    },
+    {
+      id: 39,
+      question: "Why is weather routing important in tanker operations?",
+      choices: [
+        "Avoids delays",
+        "Minimizes fuel consumption",
+        "Protects cargo integrity",
+        "Increases port tariffs"
+      ],
+      correct: [0,1,2],
+      explanation: "Routing reduces delays, saves fuel, and protects cargo. Port tariffs are unrelated."
+    },
+    {
+      id: 40,
+      question: "What does 'free pratique' mean?",
+      choices: [
+        "Health clearance for vessel to enter port",
+        "Permission to start loading",
+        "Exemption from port costs",
+        "Customs clearance"
+      ],
+      correct: [0],
+      explanation: "Free pratique is health clearance allowing vessel entry."
+    },
+    {
+      id: 41,
+      question: "Why is slops management important?",
+      choices: [
+        "Environmental compliance",
+        "Port reception facility costs",
+        "Tank space availability",
+        "Laytime savings"
+      ],
+      correct: [0,1,2],
+      explanation: "Slops handling avoids pollution, manages space, and adds costs. It doesn’t save laytime."
+    },
+    {
+      id: 42,
+      question: "What happens if ship documents are not presented correctly under an LC?",
+      choices: [
+        "Bank may refuse payment",
+        "Cargo title may be disputed",
+        "Demurrage resets",
+        "Seller faces cashflow risk"
+      ],
+      correct: [0,1,3],
+      explanation: "Incorrect docs block payment and risk title disputes. Demurrage is unrelated."
+    },
+    {
+      id: 43,
+      question: "Why is compatibility testing done before blending or commingling cargoes?",
+      choices: [
+        "Prevent asphaltene precipitation",
+        "Avoid sludge formation",
+        "Ensure contractual quality",
+        "Reduce pumping time"
+      ],
+      correct: [0,1,2],
+      explanation: "Compatibility testing prevents quality issues; it does not impact pumping time."
+    },
+    {
+      id: 44,
+      question: "What is a 'deadfreight' claim?",
+      choices: [
+        "Owner’s claim for unused vessel space",
+        "Demurrage for delays",
+        "Extra bunker consumption",
+        "Insurance premium increase"
+      ],
+      correct: [0],
+      explanation: "Deadfreight compensates owners when charterers fail to provide full cargo."
+    },
+    {
+      id: 45,
+      question: "What are typical bunker risks in shipping operations?",
+      choices: [
+        "Fuel contamination",
+        "Price volatility",
+        "Quantity shortage",
+        "Option premium increase"
+      ],
+      correct: [0,1,2],
+      explanation: "Bunker risks include contamination, shortages, and volatile prices."
+    },
+    {
+      id: 46,
+      question: "What is the purpose of a 'notice of readiness clause' in charter parties?",
+      choices: [
+        "Defines when NOR can be tendered",
+        "Protects owners’ demurrage rights",
+        "Allocates port costs",
+        "Confirms insurance coverage"
+      ],
+      correct: [0,1],
+      explanation: "The clause specifies NOR validity, impacting laytime and demurrage."
+    },
+    {
+      id: 47,
+      question: "What are the operational risks of high pour point fuel oils during winter?",
+      choices: [
+        "Cargo solidification in pipelines",
+        "Slower pumping rates",
+        "Risk of off-spec delivery",
+        "Increased demurrage"
+      ],
+      correct: [0,1,2],
+      explanation: "High pour point oils need heating to prevent solidification; otherwise pumping slows and specs can be missed."
+    },
+    {
+      id: 48,
+      question: "Why is MARPOL compliance critical during crude oil transport?",
+      choices: [
+        "Avoid environmental fines",
+        "Ensure safe handling of slops",
+        "Maintain vessel insurance coverage",
+        "Reduce demurrage charges"
+      ],
+      correct: [0,1,2],
+      explanation: "MARPOL ensures environmental safety; compliance affects fines, slops handling, and insurance."
+    },
+    {
+      id: 49,
+      question: "What is the impact of incorrect laytime calculation on charter parties?",
+      choices: [
+        "Incorrect demurrage billing",
+        "Commercial disputes",
+        "Potential arbitration",
+        "Port fines"
+      ],
+      correct: [0,1,2],
+      explanation: "Errors in laytime counting lead to demurrage disputes, possibly legal or arbitration cases."
+    },
+    {
+      id: 50,
+      question: "Why is P&I insurance crucial for crude oil shipping?",
+      choices: [
+        "Covers cargo claims",
+        "Covers pollution liability",
+        "Protects against personal injury claims",
+        "Guarantees freight payments"
+      ],
+      correct: [0,1,2],
+      explanation: "P&I insurance protects against cargo loss, pollution, and crew/passenger claims; it does not guarantee freight."
+    }
+  ]
+},
   insurance_risk: { 
     title: "Insurance & Risk Management", 
-    questions: [] 
-  },
+     questions: [
+    {
+      id: "ir1",
+      question: "Which type of marine insurance covers loss or damage to the ship itself?",
+      choices: ["Hull & Machinery (H&M)", "P&I", "Cargo Insurance", "Charterer's Liability"],
+      correct: 0,
+      explanation: "Hull & Machinery covers the vessel’s structure and equipment."
+    },
+    {
+      id: "ir2",
+      question: "In an oil cargo sale, who usually bears the insurance cost under CIF terms?",
+      choices: ["Buyer", "Seller", "Charterer", "Bank"],
+      correct: 1,
+      explanation: "Under CIF, the seller arranges and pays insurance up to destination."
+    },
+    {
+      id: "ir3",
+      question: "Which insurance club typically covers pollution liabilities from oil spills?",
+      choices: ["P&I Club", "Hull & Machinery insurer", "Cargo underwriter", "Freight insurer"],
+      correct: 0,
+      explanation: "Protection & Indemnity (P&I) covers third-party liabilities such as pollution."
+    },
+    {
+      id: "ir4",
+      question: "Which risk is best managed through hedging with futures or swaps?",
+      choices: ["Flat price risk", "Collision risk", "Demurrage risk", "Cargo contamination"],
+      correct: 0,
+      explanation: "Futures/swaps mitigate flat price exposure."
+    },
+    {
+      id: "ir5",
+      question: "What is the deductible in insurance?",
+      choices: ["The maximum payout", "The premium", "The portion of loss borne by insured", "The reinsurance cost"],
+      correct: 2,
+      explanation: "Deductible is the part of each loss not covered by the insurer."
+    },
+    {
+      id: "ir6",
+      question: "Which insurance responds to crew injury claims?",
+      choices: ["Hull & Machinery", "P&I", "Cargo Insurance", "Force Majeure clause"],
+      correct: 1,
+      explanation: "P&I covers crew injury, death, and repatriation costs."
+    },
+    {
+      id: "ir7",
+      question: "Credit risk in oil trading refers to:",
+      choices: ["Risk of cargo loss", "Risk buyer defaults on payment", "Risk of price volatility", "Risk of late laycan"],
+      correct: 1,
+      explanation: "Credit risk is counterparty default risk."
+    },
+    {
+      id: "ir8",
+      question: "If a refinery fire interrupts supply obligations, this may be claimed under:",
+      choices: ["Quality dispute", "Force Majeure", "Payment default", "Demurrage claim"],
+      correct: 1,
+      explanation: "Force Majeure covers unforeseen events like fires."
+    },
+    {
+      id: "ir9",
+      question: "Which clause protects against non-performance due to war or sanctions?",
+      choices: ["Force Majeure clause", "Payment clause", "Quantity tolerance", "Ullage clause"],
+      correct: 0,
+      explanation: "Force Majeure includes war/sanctions exemptions."
+    },
+    {
+      id: "ir10",
+      question: "What does 'All Risks' cargo insurance usually exclude?",
+      choices: ["Theft", "General Average", "War risks", "Damage during transit"],
+      correct: 2,
+      explanation: "War and strikes risks are excluded unless separately added."
+    },
+    {
+      id: "ir11",
+      question: "Which document is required to claim under cargo insurance?",
+      choices: ["Insurance certificate", "Bill of Lading", "Commercial Invoice", "All of the above"],
+      correct: 3,
+      explanation: "All three documents are typically needed in a claim."
+    },
+    {
+      id: "ir12",
+      question: "Market risk is best defined as:",
+      choices: ["Risk of vessel collision", "Risk of financial loss due to price changes", "Risk of operational error", "Risk of insurance denial"],
+      correct: 1,
+      explanation: "Market risk = exposure to commodity price moves."
+    },
+    {
+      id: "ir13",
+      question: "Which insurance pays when shipowners declare General Average?",
+      choices: ["Cargo insurance", "P&I", "Hull & Machinery", "Demurrage insurance"],
+      correct: 0,
+      explanation: "Cargo underwriters cover General Average contributions."
+    },
+    {
+      id: "ir14",
+      question: "Which risk is NOT insurable?",
+      choices: ["Fraud by counterparty", "Storm damage", "Collision", "Piracy"],
+      correct: 0,
+      explanation: "Fraud is not typically insurable; operational/physical risks are."
+    },
+    {
+      id: "ir15",
+      question: "Operational risk in trading includes:",
+      choices: ["Human error in nominations", "Price volatility", "Credit default", "Hull damage"],
+      correct: 0,
+      explanation: "Operational risk = internal process failure, not market/credit/physical."
+    },
+    {
+      id: "ir16",
+      question: "Which clause obliges parties to share costs in case of sacrifice for common safety?",
+      choices: ["Force Majeure", "General Average", "Laytime clause", "Insurance warranty"],
+      correct: 1,
+      explanation: "General Average requires ship, cargo, and freight interests to share losses."
+    },
+    {
+      id: "ir17",
+      question: "Which policy covers an oil trader against defaults by multiple buyers?",
+      choices: ["Trade credit insurance", "Cargo insurance", "H&M", "Freight cover"],
+      correct: 0,
+      explanation: "Trade credit insurance protects against buyer payment default."
+    },
+    {
+      id: "ir18",
+      question: "Which of the following is a key control in Risk Management?",
+      choices: ["Segregation of duties", "Late nominations", "Flat price exposure", "Increasing laycan"],
+      correct: 0,
+      explanation: "Segregation of duties prevents fraud and errors."
+    },
+    {
+      id: "ir19",
+      question: "In oil trading, VaR (Value at Risk) measures:",
+      choices: ["Operational errors", "Potential loss in portfolio over time horizon", "Insurance deductible", "Maximum credit exposure"],
+      correct: 1,
+      explanation: "VaR quantifies maximum potential trading loss."
+    },
+    {
+      id: "ir20",
+      question: "Which risk arises if the hedge instrument matures before physical pricing?",
+      choices: ["Basis risk", "Time mismatch risk", "Liquidity risk", "Force majeure"],
+      correct: 1,
+      explanation: "Time mismatch = hedge expiry vs pricing exposure."
+    },
+    {
+      id: "ir21",
+      question: "Which entity sets international rules for marine insurance?",
+      choices: ["Lloyd’s of London", "IMO", "P&I Clubs", "Charterers"],
+      correct: 0,
+      explanation: "Lloyd’s plays central role in marine insurance markets."
+    },
+    {
+      id: "ir22",
+      question: "If a vessel is arrested due to unpaid bunkers by owner, which insurance may cover cargo owner’s loss?",
+      choices: ["Cargo insurance", "P&I", "Charterer’s liability", "No insurance"],
+      correct: 3,
+      explanation: "Cargo insurance doesn’t cover such legal arrests."
+    },
+    {
+      id: "ir23",
+      question: "Which risk is best mitigated by diversification of counterparties?",
+      choices: ["Credit risk", "Operational risk", "Market risk", "Weather risk"],
+      correct: 0,
+      explanation: "Diversification reduces counterparty credit risk."
+    },
+    {
+      id: "ir24",
+      question: "If an oil spill occurs during discharge, which coverage applies?",
+      choices: ["P&I", "Cargo Insurance", "H&M", "War risks"],
+      correct: 0,
+      explanation: "Pollution liability is handled by P&I."
+    },
+    {
+      id: "ir25",
+      question: "In risk management, 'stress testing' is used to:",
+      choices: ["Evaluate vessel hull integrity", "Assess extreme scenarios on portfolio", "Test insurance certificates", "Audit laytime calculation"],
+      correct: 1,
+      explanation: "Stress tests simulate worst-case market scenarios."
+    },
+	
+	{
+      id: "ir26",
+      question: "Which risks are typically covered under P&I insurance?",
+      choices: ["Pollution liabilities", "Cargo damage claims", "Hull & Machinery damage", "Crew injury claims"],
+      correct: [0,1,3],
+      explanation: "P&I covers third-party liabilities: pollution, cargo claims, and crew-related incidents. Hull & Machinery is excluded."
+    },
+    {
+      id: "ir27",
+      question: "Which risks are usually excluded from 'All Risks' cargo insurance?",
+      choices: ["War risks", "Inherent vice (natural deterioration)", "Theft", "Fire damage"],
+      correct: [0,1],
+      explanation: "War risks and inherent vice are excluded unless specifically endorsed."
+    },
+    {
+      id: "ir28",
+      question: "Which documents are normally required to submit a cargo insurance claim?",
+      choices: ["Insurance certificate", "Bill of Lading", "Commercial Invoice", "Survey Report"],
+      correct: [0,1,2,3],
+      explanation: "All of these documents may be required by underwriters to process a claim."
+    },
+    {
+      id: "ir29",
+      question: "Which risk types are part of a trader’s overall risk exposure?",
+      choices: ["Market risk", "Credit risk", "Operational risk", "Political risk"],
+      correct: [0,1,2,3],
+      explanation: "All four are part of an integrated risk management framework."
+    },
+    {
+      id: "ir30",
+      question: "Which actions mitigate credit risk?",
+      choices: ["Diversification of buyers", "Using letters of credit", "Ignoring counterparty ratings", "Trade credit insurance"],
+      correct: [0,1,3],
+      explanation: "Diversification, secure payment methods, and insurance reduce credit exposure."
+    },
+    {
+      id: "ir31",
+      question: "What are typical components of operational risk in commodity trading?",
+      choices: ["Human error", "System failures", "Price volatility", "Fraud"],
+      correct: [0,1,3],
+      explanation: "Operational risk arises from processes, systems, and people, not market price moves."
+    },
+    {
+      id: "ir32",
+      question: "Which situations may justify a Force Majeure claim?",
+      choices: ["War outbreak", "Port closure due to strike", "Buyer payment default", "Natural disasters (earthquake, hurricane)"],
+      correct: [0,1,3],
+      explanation: "Force Majeure covers external, unforeseeable events – not financial defaults."
+    },
+    {
+      id: "ir33",
+      question: "Which exposures can be hedged with derivatives?",
+      choices: ["Flat price risk", "Basis risk", "FX risk", "Operational error risk"],
+      correct: [0,1,2],
+      explanation: "Derivatives cover price, basis, and currency risks; not operational mistakes."
+    },
+    {
+      id: "ir34",
+      question: "Which tools are used in quantitative risk management?",
+      choices: ["VaR (Value at Risk)", "Stress testing", "Scenario analysis", "Letter of Indemnity"],
+      correct: [0,1,2],
+      explanation: "VaR, stress testing, and scenarios are analytics; LOI is contractual, not risk quantification."
+    },
+    {
+      id: "ir35",
+      question: "Which coverages are included in Hull & Machinery insurance?",
+      choices: ["Damage to the vessel’s structure", "Damage to ship engines", "Pollution liability", "Collision damage"],
+      correct: [0,1,3],
+      explanation: "H&M covers vessel structure, machinery, and collision liability (partially). Pollution falls under P&I."
+    },
+    {
+      id: "ir36",
+      question: "What are examples of market risk?",
+      choices: ["Oil price drop", "Gasoline crack change", "Counterparty insolvency", "FX USD/EUR movement"],
+      correct: [0,1,3],
+      explanation: "Market risks relate to commodity and FX prices; insolvency is credit risk."
+    },
+    {
+      id: "ir37",
+      question: "Which clauses are typically part of oil trading contracts?",
+      choices: ["Force Majeure", "General Average", "Quality & Quantity", "Payment terms"],
+      correct: [0,2,3],
+      explanation: "FM, Q&Q, and payment are standard. General Average is shipping, not trading contract."
+    },
+    {
+      id: "ir38",
+      question: "Which are valid strategies to reduce operational risk?",
+      choices: ["Automation of processes", "Segregation of duties", "Overexposure to one counterparty", "Regular audits"],
+      correct: [0,1,3],
+      explanation: "Automation, segregation, and audits mitigate operational risk. Overexposure increases risk."
+    },
+    {
+      id: "ir39",
+      question: "Which events may trigger a General Average declaration?",
+      choices: ["Jettisoning cargo to save ship", "Deliberate grounding", "Cargo theft", "Fire-fighting at sea"],
+      correct: [0,1,3],
+      explanation: "GA applies when extraordinary sacrifice is made for common safety."
+    },
+    {
+      id: "ir40",
+      question: "Which insurance products protect a trader against buyer non-payment?",
+      choices: ["Trade credit insurance", "Performance bond", "Cargo insurance", "Bank guarantee"],
+      correct: [0,1,3],
+      explanation: "Credit insurance, bonds, and guarantees mitigate default risk. Cargo insurance is physical, not credit."
+    },
+    {
+      id: "ir41",
+      question: "Which controls should a Risk Management team implement?",
+      choices: ["Daily exposure reporting", "Position limits", "System access control", "Ignoring VaR breaches"],
+      correct: [0,1,2],
+      explanation: "Reporting, limits, and access control are best practices. Ignoring breaches undermines control."
+    },
+    {
+      id: "ir42",
+      question: "Which losses may be recovered via P&I insurance?",
+      choices: ["Pollution clean-up costs", "Crew repatriation", "Loss of freight revenue", "Cargo contamination claims"],
+      correct: [0,1,3],
+      explanation: "P&I covers pollution, crew, and cargo liability. Loss of freight is owner’s risk."
+    },
+    {
+      id: "ir43",
+      question: "Which exposures are part of a trader’s daily risk report?",
+      choices: ["Flat price exposure", "Credit exposure", "Demurrage cost", "FX exposure"],
+      correct: [0,1,3],
+      explanation: "Daily risk reports track price, credit, and FX. Demurrage is operational, tracked separately."
+    },
+    {
+      id: "ir44",
+      question: "Which risks are reduced by using Letters of Credit?",
+      choices: ["Buyer insolvency", "Late delivery", "Non-payment", "Market volatility"],
+      correct: [0,2],
+      explanation: "LCs mitigate insolvency and non-payment, not delivery or price risks."
+    },
+    {
+      id: "ir45",
+      question: "Which factors increase cargo contamination risk?",
+      choices: ["Improper tank cleaning", "Incompatible product blending", "Incorrect heating", "Timely ship nomination"],
+      correct: [0,1,2],
+      explanation: "Cleaning, blending, and heating errors cause contamination. Proper nomination avoids delays, not contamination."
+    },
+    {
+      id: "ir46",
+      question: "Which risks are typically assessed in Enterprise Risk Management?",
+      choices: ["Strategic risks", "Market risks", "Reputation risks", "Credit risks"],
+      correct: [0,1,2,3],
+      explanation: "ERM integrates strategic, market, reputational, and credit risks into one framework."
+    },
+    {
+      id: "ir47",
+      question: "Which are key benefits of insurance?",
+      choices: ["Risk transfer", "Regulatory compliance", "Profit guarantee", "Access to financing"],
+      correct: [0,1,3],
+      explanation: "Insurance transfers risk, helps compliance, and facilitates financing. It doesn’t guarantee profit."
+    },
+    {
+      id: "ir48",
+      question: "Which risks are generally managed through diversification?",
+      choices: ["Counterparty risk", "Portfolio market risk", "Operational system risk", "Geopolitical exposure"],
+      correct: [0,1,3],
+      explanation: "Diversification reduces counterparty, portfolio, and geopolitical concentration. System failures require controls."
+    },
+    {
+      id: "ir49",
+      question: "Which insurance(s) would cover war-related damages at sea?",
+      choices: ["War Risk insurance", "Hull & Machinery", "P&I", "Cargo insurance with war extension"],
+      correct: [0,3],
+      explanation: "War risk and cargo war extension cover these. Standard H&M and P&I exclude war."
+    },
+    {
+      id: "ir50",
+      question: "Which steps are part of a proper risk management cycle?",
+      choices: ["Risk identification", "Risk assessment", "Risk mitigation", "Risk ignoring"],
+      correct: [0,1,2],
+      explanation: "Identify, assess, mitigate = cycle. Ignoring risk is not part of risk management."
+    }
+  ]
+},
+
   refining_blending: { 
     title: "Refining & Blending", 
-    questions: [] 
-  },
+
+        questions: [
+          // 1
+          { id: 1, question: "To raise gasoline octane without adding sulfur, blend with:", choices: ["Alkylate", "Vacuum residue", "Light cycle oil (LCO)", "Heavy fuel oil"], correct: 0, explanation: "Alkylate is high-octane, very low sulfur, and olefin-free—ideal for upgrading octane cleanly." },
+    { id: 2, question: "Gasoline RVP increases the most when adding:", choices: ["Reformate", "Kerosene", "Butane", "Diesel"], correct: 2, explanation: "Butane has very high vapor pressure; small additions sharply raise pool RVP." },
+    { id: 3, question: "A common gasoline detergent additive is:", choices: ["Polyether amine (PEA)", "Sodium chloride", "Water", "Sulfur"], correct: 0, explanation: "PEA detergents keep injectors/intake valves clean and control deposit formation." },
+    { id: 4, question: "Typical cetane improver for diesel blending:", choices: ["MTBE", "Toluene", "2-ethylhexyl nitrate (2-EHN)", "Ethanol"], correct: 2, explanation: "2-EHN shortens ignition delay and effectively increases diesel cetane number." },
+    { id: 5, question: "Adding FAME (biodiesel) to diesel mainly:", choices: ["Reduces lubricity", "Improves lubricity", "Eliminates sulfur", "Raises octane"], correct: 1, explanation: "Even small FAME additions improve HFRR lubricity in ultra-low sulfur diesel." },
+    { id: 6, question: "Which property is notably non-linear in gasoline blending?", choices: ["Octane number", "Density", "Sulfur content", "Color"], correct: 0, explanation: "Octane blending is strongly non-linear; simple volume averaging fails." },
+    { id: 7, question: "Best low-sulfur, high-octane gasoline blendstock:", choices: ["FCC gasoline", "Alkylate", "Reformate", "Straight-run naphtha"], correct: 1, explanation: "Alkylate combines high RON/MON with very low sulfur and zero olefins." },
+    { id: 8, question: "Blend component that raises aromatics and octane:", choices: ["Reformate", "Alkylate", "Butane", "Hydrotreated naphtha"], correct: 0, explanation: "Catalytic reformate is aromatic-rich, lifting RON but tightening benzene/aromatics specs." },
+    { id: 9, question: "To improve diesel cold flow you would typically add:", choices: ["Kerosene (winterization)", "Heavy cycle oil", "Bitumen", "Water"], correct: 0, explanation: "Kerosene lowers cloud/CFPP quickly; PPDs help too, but kerosene is a fast fix." },
+    { id: 10, question: "Final product release is based on meeting:", choices: ["Crude assay data", "Pump performance curves", "Applicable product specification (e.g., ASTM/EN)", "Material safety data sheet"], correct: 2, explanation: "Shipment release depends on certified test results versus the required product specification." },
+    { id: 11, question: "Case study: Summer gasoline is over-volatile. What should you trim first?", choices: ["Butane", "Alkylate", "Reformate", "Isomerate"], correct: 0, explanation: "Cutting butane is the fastest way to bring RVP down for summer caps." },
+    { id: 12, question: "Case study: Winter startability complaints. First corrective addition?", choices: ["Butane", "Heavy reformate", "Diesel", "Resid"], correct: 0, explanation: "In winter, adding butane boosts volatility to improve cold starts—within seasonal limits." },
+    { id: 13, question: "Which component most increases benzene in gasoline?", choices: ["Reformate", "Isomerate", "Alkylate", "Ethanol"], correct: 0, explanation: "Reformate contains benzene; alkylate/isomerate are benzene-lean." },
+    { id: 14, question: "To reduce gasoline benzene below 1 vol%, favor:", choices: ["Reformate", "Alkylate", "FCC gasoline", "Coker naphtha"], correct: 1, explanation: "Alkylate has near-zero benzene and helps meet aromatics/benzene constraints." },
+    { id: 15, question: "Non-oxygenate octane booster often referenced in racing fuels:", choices: ["Toluene", "Ethanol", "MTBE", "Kerosene"], correct: 0, explanation: "Aromatics like toluene raise octane but also increase aromatics content; use is regulated." },
+    { id: 16, question: "Which gasoline property is the most seasonal constraint in trading?", choices: ["RVP (volatility)", "Olefins", "Color", "Sulfur always"], correct: 0, explanation: "RVP limits vary by season/region and often bind summer gasoline trades." },
+    { id: 17, question: "Diesel density is too high. Which blendstock helps the most?", choices: ["Kerosene", "LCO", "Vacuum gasoil", "Reformate"], correct: 0, explanation: "Kerosene lowers density and improves cold flow without heavily hurting cetane." },
+    { id: 18, question: "Which component most effectively raises diesel cetane?", choices: ["Light cycle oil", "HVO diesel", "Reformate", "Butane"], correct: 1, explanation: "HVO (paraffinic) diesel has very high cetane and very low aromatics." },
+    { id: 19, question: "Which diesel component most harms CFPP/cold flow?", choices: ["Light cycle oil (LCO)", "Kerosene", "Hydrotreated diesel", "HVO diesel"], correct: 0, explanation: "Aromatic LCO degrades cold flow and increases smoke." },
+    { id: 20, question: "Rising FAME content in diesel increases risk of:", choices: ["Oxidation instability", "Low lubricity", "Higher sulfur", "Lower density"], correct: 0, explanation: "FAME can oxidize; antioxidants and tight storage discipline mitigate the risk." },
+    { id: 21, question: "Gasoline MON is low but RON is okay. Best corrective stream:", choices: ["Isomerate", "Alkylate", "Reformate", "Butane"], correct: 1, explanation: "Alkylate has strong MON; isomerate tends to increase sensitivity (RON–MON)." },
+    { id: 22, question: "Blending margin is best defined as:", choices: ["Crude price minus product price", "Blend value minus component cost", "Spec deviation penalty", "Arbitrage spread only"], correct: 1, explanation: "It’s the incremental value from turning components into a spec product vs. their costs." },
+    { id: 23, question: "Which property is approximately linear in blending calculations?", choices: ["Sulfur content", "RVP", "Octane", "Smoke point"], correct: 0, explanation: "Mass properties like sulfur are near-linear; octane/RVP are notably non-linear." },
+    { id: 24, question: "Viscosity blending for fuel oil is commonly handled with:", choices: ["Simple averaging", "Refutas (Viscosity Blending Number)", "Cloud point index", "Cetane index"], correct: 1, explanation: "Refutas VBN converts viscosity to a quasi-linear space for accurate blending math." },
+    { id: 25, question: "Key risk when blending HSFO with paraffinic low-S cutter stocks:", choices: ["Low RVP", "Asphaltene precipitation (incompatibility)", "High cetane", "Phase separation"], correct: 1, explanation: "Incompatibility can precipitate asphaltenes—check stability/TSP tests." },
+	{ id: 26, question: "Ethanol’s effect on gasoline volatility at low blends (e.g., E10):", choices: ["Lowers RVP", "No effect", "Raises RVP (uplift)", "Eliminates RVP limits"], correct: 2, explanation: "Ethanol causes a volatility uplift at low concentrations—key for summer specs." },
+    { id: 27, question: "To reduce gasoline sulfur via blending, favor:", choices: ["Hydrotreated naphtha", "FCC gasoline", "Coker naphtha", "Heavy reformate"], correct: 0, explanation: "Hydrotreated naphtha is very low sulfur and reduces pool sulfur quickly." },
+    { id: 28, question: "Jet fuel smoke point is low. First blending move:", choices: ["Add hydrotreated kerosene", "Add reformate", "Add LCO", "Add heavy naphtha"], correct: 0, explanation: "More paraffins/fewer aromatics (hydrotreated kerosene) improve smoke point." },
+    { id: 29, question: "Gasoline T90 is too high (too heavy). Best corrective stream:", choices: ["Light isomerate", "Heavy reformate", "LCO", "Heavy naphtha"], correct: 0, explanation: "Light isomerate/light naphtha lowers the back-end of the distillation curve (T90)." },
+    { id: 30, question: "Before sailing, the document proving specs at load port is the:", choices: ["Certificate of Quality (CoQ)", "Bill of Lading only", "Commercial invoice", "Timesheet"], correct: 0, explanation: "An independent survey issues the CoQ from sealed load-port samples." },
+    { id: 31, question: "Which property is NOT used for diesel release testing?", choices: ["Cetane number/index", "Density", "Cold flow (CFPP/cloud)", "Octane number"], correct: 3, explanation: "Octane is for gasoline; diesel uses cetane, density, sulfur, cold-flow, etc." },
+    { id: 32, question: "Which gasoline blendstock is olefin-free and improves stability/gum risk?", choices: ["Alkylate", "FCC gasoline", "Coker naphtha", "Reformate"], correct: 0, explanation: "Alkylate contains virtually no olefins—excellent stability and low gum." },
+    { id: 33, question: "Market in strong backwardation. Best stance for components:", choices: ["Store for later", "Sell promptly", "Hedge only", "Ignore structure"], correct: 1, explanation: "In backwardation, time erodes value; monetizing quickly maximizes margin." },
+    { id: 34, question: "Constraint often limiting profitable butane injection in terminals:", choices: ["Cetane", "CFPP", "RVP and seasonal limits", "Smoke point"], correct: 2, explanation: "Terminal/regional RVP caps limit economical butane injection." },
+    { id: 35, question: "To hit low benzene and low aromatics while keeping octane, favor pairing:", choices: ["Reformate + LCO", "Alkylate + Isomerate", "Coker naphtha + Reformate", "FCC gasoline + Reformate"], correct: 1, explanation: "Alkylate + isomerate are paraffinic/clean with good octane and low aromatics." },
+    { id: 36, question: "Deep hydrotreating can harm diesel lubricity. Quick corrective action:", choices: ["Add lubricity improver", "Add sulfur", "Blend with LCO", "Raise density"], correct: 0, explanation: "Lubricity additives restore HFRR quickly without violating sulfur limits." },
+    { id: 37, question: "Best practice to ensure homogeneous blends before CoQ sampling:", choices: ["Immediate sample after top-loading", "No circulation needed", "In-tank circulation/line blending then settle", "Skip sampling"], correct: 2, explanation: "Proper circulation avoids stratification and biased CoQ results." },
+    { id: 38, question: "Gasoline pool has high sulfur and low octane. Best two-stream combo:", choices: ["Alkylate + hydrotreated naphtha", "Reformate + LCO", "Coker naphtha + FCC gasoline", "Butane + heavy reformate"], correct: 0, explanation: "Alkylate boosts octane; hydrotreated naphtha lowers sulfur—synergistic." },
+    { id: 39, question: "Bunker blend shows high TSP/instability. Likely corrective action:", choices: ["Add heavy reformate", "Dilute with stable, low-asphaltene cutter", "Add water", "Raise temperature only"], correct: 1, explanation: "Use compatible paraffinic cutter and verify with stability tests." },
+    { id: 40, question: "Which blendstock tends to raise RON much more than MON (high sensitivity)?", choices: ["Isomerate", "Alkylate", "Reformate", "Kerosene"], correct: 0, explanation: "Isomerate is high-RON but relatively lower MON, increasing sensitivity." },
+    { id: 41, question: "When adding ethanol to gasoline, the compliance calculation most impacted is:", choices: ["Cetane", "Oxygen content (wt%)", "Smoke point", "CFPP"], correct: 1, explanation: "Oxygen content and RVP uplift must be checked when blending ethanol." },
+    { id: 42, question: "Major operational risk when blending ethanol into moist gasoline:", choices: ["Low octane", "Phase separation with water", "High cetane", "Low density"], correct: 1, explanation: "Water promotes ethanol/water separation (two-phase), making fuel off-spec." },
+    { id: 43, question: "Which contamination in jet fuel cannot realistically be solved by simple blending if too high?", choices: ["High aromatics", "High sulfur", "FAME contamination over limit", "Slightly high density"], correct: 2, explanation: "FAME carryover limits are very tight; significant contamination requires reprocessing." },
+    { id: 44, question: "Tool most used to screen multi-component blending economics:", choices: ["Simple averages", "Linear programming (pooling LP)", "Manual spreadsheets only", "Monte Carlo only"], correct: 1, explanation: "LP pooling models capture specs, costs, and constraints to optimize margin." },
+    { id: 45, question: "Which gasoline component most raises gum formation risk if overused?", choices: ["FCC gasoline (olefinic)", "Alkylate", "Isomerate", "Hydrotreated naphtha"], correct: 0, explanation: "Olefinic FCC gasoline is more prone to oxidation/gum; treat limits carefully." },
+    { id: 46, question: "To lower diesel aromatics via blending (not processing), best stream to add:", choices: ["HVO diesel", "LCO", "Reformate", "Vacuum residue"], correct: 0, explanation: "Paraffinic HVO reduces aromatics and smoke while helping cetane." },
+    { id: 47, question: "For jet fuel: meeting both freeze point and smoke point at minimal cost is easiest with:", choices: ["Heavy reformate alone", "Hydrotreated kerosene + synthetic paraffinic kerosene (SPK)", "LCO only", "Butane addition"], correct: 1, explanation: "SPK + hydrotreated kerosene are paraffinic/clean, improving both properties." },
+    { id: 48, question: "Gasoline oxygen is too high due to ethanol. Quickest corrective move while preserving octane:", choices: ["Increase alkylate and reduce ethanol proportion", "Add water", "Add LCO", "Add heavy reformate"], correct: 0, explanation: "Cut ethanol to reduce oxygen and replace octane with alkylate to keep specs." },
+    { id: 49, question: "Case study: A Europe→US gasoline arb opens, but pool aromatics are high. Best quick fix:", choices: ["Add reformate", "Add alkylate/isomerate and cut reformate", "Add diesel", "Do nothing"], correct: 1, explanation: "US specs are tight on benzene/aromatics; paraffinic components help fit the window." },
+    { id: 50, question: "Case study: Contango builds on gasoline components. Likely value strategy:", choices: ["Sell prompt regardless", "Store components if carry < contango spread", "Blend immediately into final", "Avoid hedging"], correct: 1, explanation: "In contango, deferred prices exceed prompt; if storage costs (carry) are lower, storing can add value." }
+        ]
+      },
+
   specialty_products: { 
     title: "LPG, VGO, Bitumen, and Other Specialty Products", 
-    questions: [] 
-  },
+    questions: [
+	{
+  id: "sp1",
+  question: "Which specialty products are considered light hydrocarbons?",
+  choices: ["LPG", "VGO", "Bitumen", "Naphtha"],
+  correct: [0,3],
+  explanation: "LPG and naphtha are light hydrocarbons, while VGO and bitumen are heavier fractions."
+},
+{
+  id: "sp2",
+  question: "Which products are sensitive to temperature during storage?",
+  choices: ["LPG", "Bitumen", "VGO", "Diesel"],
+  correct: [0,1,2],
+  explanation: "LPG is volatile, bitumen and VGO are viscous; all require temperature control."
+},
+{
+  id: "sp3",
+  question: "Which products are commonly used as feedstock for cracking units?",
+  choices: ["VGO", "LPG", "Bitumen", "Gasoline"],
+  correct: 0,
+  explanation: "VGO is a primary feedstock for FCC or hydrocracking units."
+},
+{
+  id: "sp4",
+  question: "Which products are typically traded in metric tons?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,1,2],
+  explanation: "LPG, VGO, and bitumen are traded in metric tons; gasoline may also be in barrels."
+},
+{
+  id: "sp5",
+  question: "Which specialty products require strict sulfur specifications?",
+  choices: ["LPG", "VGO", "Bitumen", "Jet A1"],
+  correct: [1,2],
+  explanation: "VGO and bitumen must meet sulfur limits for processing and environmental reasons."
+},
+{
+  id: "sp6",
+  question: "Which products are flammable and require safety monitoring?",
+  choices: ["LPG", "Bitumen", "VGO", "Diesel"],
+  correct: [0,2],
+  explanation: "LPG and VGO are flammable and need proper safety measures."
+},
+{
+  id: "sp7",
+  question: "Which specialty products can solidify at ambient temperature?",
+  choices: ["LPG", "VGO", "Bitumen", "Naphtha"],
+  correct: 2,
+  explanation: "Bitumen solidifies at ambient temperature; others remain liquid or gas."
+},
+{
+  id: "sp8",
+  question: "Which products are used as industrial fuel or bunker fuel?",
+  choices: ["LPG", "VGO", "Bitumen", "Fuel Oil"],
+  correct: [1,2,3],
+  explanation: "VGO, bitumen, and fuel oil are commonly used as industrial or marine fuel."
+},
+{
+  id: "sp9",
+  question: "Which product requires pressurized storage tanks?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: 0,
+  explanation: "LPG is gaseous under ambient conditions and needs pressurized tanks."
+},
+{
+  id: "sp10",
+  question: "Which products are affected by pour point or viscosity limitations?",
+  choices: ["VGO", "Bitumen", "LPG", "Gasoline"],
+  correct: [0,1],
+  explanation: "VGO and bitumen are viscous; their handling depends on temperature and viscosity."
+},
+{
+  id: "sp11",
+  question: "Which products are used as feedstock for petrochemical production?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,1,3],
+  explanation: "LPG, VGO, and gasoline can be converted into chemicals in petrochemical plants."
+},
+{
+  id: "sp12",
+  question: "Which specialty product is primarily composed of propane and butane?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: 0,
+  explanation: "LPG consists mainly of propane and butane."
+},
+{
+  id: "sp13",
+  question: "Which products are sensitive to contamination from water or sediments?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [1,2],
+  explanation: "VGO and bitumen must be clean; water or sediments affect processing and quality."
+},
+{
+  id: "sp14",
+  question: "Which products are traded with flat price or CFR terms?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [0,1,2],
+  explanation: "LPG, VGO, and bitumen are traded with flexible pricing terms."
+},
+{
+  id: "sp15",
+  question: "Which products are subject to flash point safety regulations?",
+  choices: ["LPG", "Bitumen", "VGO", "Gasoline"],
+  correct: [0,2,3],
+  explanation: "LPG, VGO, and gasoline require minimum flash points for safe handling."
+},
+{
+  id: "sp16",
+  question: "Which specialty products require blending before use?",
+  choices: ["VGO", "Bitumen", "LPG", "Diesel"],
+  correct: [0,1],
+  explanation: "VGO and bitumen are often blended to meet fuel or asphalt specifications."
+},
+{
+  id: "sp17",
+  question: "Which product is most volatile and requires leak detection?",
+  choices: ["LPG", "VGO", "Bitumen", "Fuel Oil"],
+  correct: 0,
+  explanation: "LPG is highly volatile and must be monitored for leaks."
+},
+{
+  id: "sp18",
+  question: "Which products are heavy hydrocarbon fractions?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [1,2],
+  explanation: "VGO and bitumen are heavy fractions; LPG and gasoline are lighter."
+},
+{
+  id: "sp19",
+  question: "Which products need heated pipelines for transfer?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen are viscous; heating is required for pumping."
+},
+{
+  id: "sp20",
+  question: "Which specialty products are affected by density and API gravity limits?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [1,2],
+  explanation: "VGO and bitumen have strict density/API limits for blending and usage."
+},
+{
+  id: "sp21",
+  question: "Which product is gaseous at normal temperature and pressure?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: 0,
+  explanation: "LPG is gaseous under normal conditions."
+},
+{
+  id: "sp22",
+  question: "Which products are part of heavy residue streams in refineries?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen are heavy residue fractions."
+},
+{
+  id: "sp23",
+  question: "Which products can be used for asphalt production?",
+  choices: ["LPG", "VGO", "Bitumen", "Fuel Oil"],
+  correct: 2,
+  explanation: "Bitumen is the primary product for asphalt."
+},
+{
+  id: "sp24",
+  question: "Which products are traded in both bulk and packaged forms?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [0,2],
+  explanation: "LPG and bitumen can be shipped in bulk or packaged forms."
+},
+{
+  id: "sp25",
+  question: "Which products are sensitive to vapor pressure limits for safety?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,3],
+  explanation: "LPG and gasoline have vapor pressure limits to avoid explosion risks."
+},
+
+// Bloc 2 : sp26 → sp50
+{
+  id: "sp26",
+  question: "Which specialty products are considered flammable liquids?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [0,1,3],
+  explanation: "LPG, VGO, and diesel are flammable and require precautions."
+},
+{
+  id: "sp27",
+  question: "Which products are traded internationally with CIF/CFR terms?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,1,2],
+  explanation: "LPG, VGO, and bitumen are traded under common shipping terms."
+},
+{
+  id: "sp28",
+  question: "Which products are affected by temperature during shipping?",
+  choices: ["LPG", "Bitumen", "VGO", "Gasoline"],
+  correct: [0,1,2],
+  explanation: "LPG needs pressure control; VGO and bitumen may require heating."
+},
+{
+  id: "sp29",
+  question: "Which specialty products are part of refinery bottoms?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen are heavy residue streams from refining."
+},
+{
+  id: "sp30",
+  question: "Which products are monitored for water content before delivery?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2,3],
+  explanation: "VGO, bitumen, and diesel must be free of water contamination."
+},
+{
+  id: "sp31",
+  question: "Which specialty products are often blended to meet sulfur specs?",
+  choices: ["VGO", "Bitumen", "LPG", "Diesel"],
+  correct: [0,1],
+  explanation: "VGO and bitumen are blended to comply with sulfur regulations."
+},
+{
+  id: "sp32",
+  question: "Which products require monitoring of vapor leaks?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,3],
+  explanation: "LPG and gasoline are volatile and require leak monitoring."
+},
+{
+  id: "sp33",
+  question: "Which products are handled with heated pumps?",
+  choices: ["VGO", "Bitumen", "LPG", "Diesel"],
+  correct: [0,1],
+  explanation: "VGO and bitumen are viscous; heating facilitates pumping."
+},
+{
+  id: "sp34",
+  question: "Which products are included in refinery specialty streams?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [0,1,2],
+  explanation: "Refinery specialty products include LPG, VGO, and bitumen."
+},
+{
+  id: "sp35",
+  question: "Which products can solidify under ambient conditions?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: 2,
+  explanation: "Bitumen solidifies and must be heated to remain liquid."
+},
+{
+  id: "sp36",
+  question: "Which products have high specific gravity and low API?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [1,2],
+  explanation: "VGO and bitumen are heavy hydrocarbons with low API gravity."
+},
+{
+  id: "sp37",
+  question: "Which products are shipped under temperature-controlled conditions?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,1,2],
+  explanation: "LPG needs pressure/temperature control; VGO and bitumen need heating."
+},
+{
+  id: "sp38",
+  question: "Which products are prone to thermal cracking if overheated?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen can crack under excessive heat."
+},
+{
+  id: "sp39",
+  question: "Which products are volatile and pose explosion risks?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,3],
+  explanation: "LPG and gasoline are highly flammable."
+},
+{
+  id: "sp40",
+  question: "Which products are used as raw material for chemical plants?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [0,1],
+  explanation: "LPG and VGO are used for petrochemical feedstock."
+},
+{
+  id: "sp41",
+  question: "Which products are sensitive to API gravity for trading?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [1,2],
+  explanation: "VGO and bitumen specifications rely on API gravity for pricing and blending."
+},
+{
+  id: "sp42",
+  question: "Which products are stored in pressurized or heated tanks?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [0,1,2],
+  explanation: "LPG tanks are pressurized; VGO and bitumen tanks may be heated."
+},
+{
+  id: "sp43",
+  question: "Which products are part of heavy residue blending programs?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen are blended to produce bunker or asphalt products."
+},
+{
+  id: "sp44",
+  question: "Which specialty products are sensitive to contamination?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen require clean handling to maintain specifications."
+},
+{
+  id: "sp45",
+  question: "Which products are primarily used in petrochemical cracking?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [0,1],
+  explanation: "LPG and VGO are key feedstocks for petrochemical units."
+},
+{
+  id: "sp46",
+  question: "Which products are volatile liquids?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,3],
+  explanation: "LPG and gasoline are volatile at ambient conditions."
+},
+{
+  id: "sp47",
+  question: "Which products require heated pipelines or storage for handling?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen are viscous and need heat to flow properly."
+},
+{
+  id: "sp48",
+  question: "Which products have flash point limitations for safety compliance?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,1,3],
+  explanation: "LPG, VGO, and gasoline must meet flash point regulations for safe handling."
+},
+{
+  id: "sp49",
+  question: "Which products are prone to sediment or impurities?",
+  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
+  correct: [1,2],
+  explanation: "VGO and bitumen may contain sediments affecting quality and processing."
+},
+{
+  id: "sp50",
+  question: "Which products are considered specialty refinery streams?",
+  choices: ["LPG", "VGO", "Bitumen", "Gasoline"],
+  correct: [0,1,2],
+  explanation: "LPG, VGO, and bitumen are specialty refinery streams traded separately from main fuels."
+}
+ ]
+      },
+	  
   regulations_compliance: { 
     title: "Trading Regulations & Compliance", 
-    questions: [] 
-  },
+    questions: [
+    {
+      id: "rc1",
+      question: "Which organizations regulate international oil trading practices?",
+      choices: ["IMO (International Maritime Organization)", "FCA (Financial Conduct Authority)", "CFTC (Commodity Futures Trading Commission)", "Interpol"],
+      correct: [0,1,2],
+      explanation: "IMO regulates shipping, FCA financial conduct in the UK, and CFTC derivatives markets in the US. Interpol is law enforcement, not trade regulator."
+    },
+    {
+      id: "rc2",
+      question: "Which risks are addressed by compliance frameworks?",
+      choices: ["Money laundering", "Market manipulation", "Tax evasion", "Operational system failure"],
+      correct: [0,1,2],
+      explanation: "Compliance focuses on AML, market conduct, and financial crime. Operational failures fall under risk management."
+    },
+    {
+      id: "rc3",
+      question: "Which are common KYC (Know Your Customer) requirements?",
+      choices: ["Company registration documents", "Beneficial ownership details", "Ship chartering terms", "Proof of identity for directors"],
+      correct: [0,1,3],
+      explanation: "KYC requires corporate docs, ownership, and ID verification. Chartering terms are commercial, not compliance."
+    },
+    {
+      id: "rc4",
+      question: "Which actions may breach market manipulation rules?",
+      choices: ["Wash trading", "Spoofing", "Arbitrage", "Insider trading"],
+      correct: [0,1,3],
+      explanation: "Wash trades, spoofing, and insider trading are manipulative. Arbitrage is legitimate."
+    },
+    {
+      id: "rc5",
+      question: "Which are red flags for money laundering in commodity trading?",
+      choices: ["Unusual payment routes", "Shell companies", "Cash transactions", "Standard credit terms"],
+      correct: [0,1,2],
+      explanation: "Unusual payments, shell structures, and cash are red flags. Standard terms are normal."
+    },
+    {
+      id: "rc6",
+      question: "Which laws apply to anti-bribery compliance?",
+      choices: ["UK Bribery Act", "US FCPA", "SOX (Sarbanes-Oxley)", "EU AML directives"],
+      correct: [0,1,3],
+      explanation: "UK Bribery Act, US FCPA, and EU AML apply. SOX focuses on accounting standards."
+    },
+    {
+      id: "rc7",
+      question: "Which sanctions regimes must global traders typically monitor?",
+      choices: ["US OFAC sanctions", "EU sanctions", "UN Security Council sanctions", "OPEC export quotas"],
+      correct: [0,1,2],
+      explanation: "OFAC, EU, and UN sanctions apply. OPEC quotas are production, not sanctions."
+    },
+    {
+      id: "rc8",
+      question: "Which documents are reviewed in a trade compliance audit?",
+      choices: ["Bills of Lading", "Charter Party", "KYC documentation", "Payment instructions"],
+      correct: [0,2,3],
+      explanation: "Audits cover shipping docs, KYC, and payments. Charter Party is operational, not compliance focus."
+    },
+    {
+      id: "rc9",
+      question: "Which practices are mandatory under MAR (Market Abuse Regulation) in the EU?",
+      choices: ["Insider list maintenance", "Timely disclosure of inside information", "Wash trades to boost liquidity", "Suspicious transaction reporting"],
+      correct: [0,1,3],
+      explanation: "MAR enforces insider list, disclosure, and suspicious reporting. Wash trades are illegal."
+    },
+    {
+      id: "rc10",
+      question: "Which are consequences of breaching sanctions?",
+      choices: ["Heavy fines", "Imprisonment of individuals", "Reputational damage", "Exemption from KYC obligations"],
+      correct: [0,1,2],
+      explanation: "Fines, jail, and reputation damage are real consequences. Sanctions increase, not exempt, KYC requirements."
+    },
+    {
+      id: "rc11",
+      question: "Which controls help detect insider trading?",
+      choices: ["Monitoring communication channels", "Trading surveillance systems", "Daily reconciliation of bunker consumption", "Restricted lists of securities"],
+      correct: [0,1,3],
+      explanation: "Monitoring, surveillance, and restricted lists are compliance tools. Bunker reconciliation is operational."
+    },
+    {
+      id: "rc12",
+      question: "Which departments are typically involved in compliance?",
+      choices: ["Legal", "Risk", "Trading desk", "Operations"],
+      correct: [0,1,2,3],
+      explanation: "Compliance involves all: legal frameworks, risk controls, trading monitoring, and operational checks."
+    },
+    {
+      id: "rc13",
+      question: "Which activities may fall under Anti-Money Laundering (AML) obligations?",
+      choices: ["High-value transactions", "Trade with high-risk jurisdictions", "Spot trading with regulated counterparties", "Payments through offshore accounts"],
+      correct: [0,1,3],
+      explanation: "AML applies to high-value, high-risk, and offshore payments. Normal regulated counterparties are lower risk."
+    },
+    {
+      id: "rc14",
+      question: "Which systems support compliance monitoring?",
+      choices: ["Transaction monitoring software", "Watchlist screening", "ERP accounting systems", "Sanctions screening tools"],
+      correct: [0,1,3],
+      explanation: "Transaction monitoring, watchlists, and sanctions checks are compliance tools. ERP is more finance-oriented."
+    },
+    {
+      id: "rc15",
+      question: "Which are typical penalties for market abuse?",
+      choices: ["Trading ban", "Fines", "Criminal charges", "Automatic trade annulment"],
+      correct: [0,1,2],
+      explanation: "Market abuse leads to bans, fines, and jail. Trades are not automatically annulled."
+    },
+    {
+      id: "rc16",
+      question: "Which principles guide a compliance program?",
+      choices: ["Transparency", "Accountability", "Proportionality", "Speculation"],
+      correct: [0,1,2],
+      explanation: "Compliance is built on transparency, accountability, and proportionality. Speculation is trading."
+    },
+    {
+      id: "rc17",
+      question: "Which risks are linked to sanctions breaches?",
+      choices: ["Frozen assets", "Loss of trading license", "Counterparty default", "Regulatory investigations"],
+      correct: [0,1,3],
+      explanation: "Sanctions lead to frozen assets, license withdrawal, and investigations. Default is credit risk, not sanctions."
+    },
+    {
+      id: "rc18",
+      question: "Which are forms of market abuse?",
+      choices: ["Insider dealing", "Spreading false information", "Cornering the market", "Benchmark manipulation"],
+      correct: [0,1,2,3],
+      explanation: "All four are recognized forms of market abuse."
+    },
+    {
+      id: "rc19",
+      question: "Which checks are part of sanctions screening?",
+      choices: ["Counterparty names", "Beneficial owners", "Ship IMO numbers", "Weather patterns"],
+      correct: [0,1,2],
+      explanation: "Names, owners, and vessel numbers are screened. Weather is irrelevant."
+    },
+    {
+      id: "rc20",
+      question: "Which bodies enforce compliance in the US?",
+      choices: ["SEC", "CFTC", "OFAC", "IMO"],
+      correct: [0,1,2],
+      explanation: "SEC (securities), CFTC (commodities), and OFAC (sanctions) enforce compliance. IMO regulates shipping, not financial compliance."
+    },
+    {
+      id: "rc21",
+      question: "Which behaviors violate anti-bribery laws?",
+      choices: ["Facilitation payments", "Kickbacks", "Entertainment within policy limits", "Improper gifts"],
+      correct: [0,1,3],
+      explanation: "Facilitation, kickbacks, and improper gifts breach laws. Reasonable entertainment within policy is acceptable."
+    },
+    {
+      id: "rc22",
+      question: "Which policies should a compliance manual contain?",
+      choices: ["AML policy", "Sanctions policy", "Market conduct policy", "Weather risk policy"],
+      correct: [0,1,2],
+      explanation: "AML, sanctions, and market conduct are essential. Weather risk is operational."
+    },
+    {
+      id: "rc23",
+      question: "Which mechanisms protect whistleblowers?",
+      choices: ["Confidential reporting channels", "Anti-retaliation policies", "Financial bonuses for silence", "Anonymous hotlines"],
+      correct: [0,1,3],
+      explanation: "Whistleblowers are protected by anonymity, anti-retaliation, and reporting systems. Paying for silence is illegal."
+    },
+    {
+      id: "rc24",
+      question: "Which elements are part of a compliance culture?",
+      choices: ["Tone from the top", "Training & awareness", "Ignoring breaches if profitable", "Clear escalation channels"],
+      correct: [0,1,3],
+      explanation: "Leadership, training, and escalation build compliance culture. Ignoring breaches undermines it."
+    },
+    {
+      id: "rc25",
+      question: "Which trading practices may trigger regulatory scrutiny?",
+      choices: ["Unusual trading volumes", "Circular trading patterns", "Transparent reporting", "Large orders with no intent to execute"],
+      correct: [0,1,3],
+      explanation: "Unusual patterns, circular trades, and spoofing trigger scrutiny. Transparency is good practice."
+    },
+	
+	{
+  id: "rc26",
+  question: "Which documents are required during a regulatory investigation?",
+  choices: ["Trade confirmations", "Emails & communication logs", "Shipping invoices", "Weather routing reports"],
+  correct: [0,1,2],
+  explanation: "Investigators review confirmations, communications, and invoices. Weather routing is irrelevant."
+},
+{
+  id: "rc27",
+  question: "Which methods are used to identify beneficial ownership?",
+  choices: ["Corporate registry checks", "Shareholding analysis", "Asking only the trader", "Screening against PEP lists"],
+  correct: [0,1,3],
+  explanation: "Registry, shareholder analysis, and PEP screening help. Asking only the trader is insufficient."
+},
+{
+  id: "rc28",
+  question: "Which scenarios may require an STR (Suspicious Transaction Report)?",
+  choices: ["Unusual counterparties", "Complex payment structures", "Market arbitrage", "High-value cash transactions"],
+  correct: [0,1,3],
+  explanation: "STRs are filed for suspicious payments, structures, and cash. Arbitrage is legitimate."
+},
+{
+  id: "rc29",
+  question: "Which principles apply under OECD guidelines for compliance?",
+  choices: ["Integrity", "Transparency", "Corruption tolerance", "Accountability"],
+  correct: [0,1,3],
+  explanation: "OECD promotes integrity, transparency, and accountability. Tolerance of corruption is prohibited."
+},
+{
+  id: "rc30",
+  question: "Which are common enforcement actions by regulators?",
+  choices: ["Fines", "License suspension", "Mandatory remediation plans", "Automatic forgiveness after 1 year"],
+  correct: [0,1,2],
+  explanation: "Sanctions include fines, suspensions, and remediation. Forgiveness is not automatic."
+},
+{
+  id: "rc31",
+  question: "Which are examples of politically exposed persons (PEPs)?",
+  choices: ["Government ministers", "Family of senior politicians", "Local ship agents", "Heads of state-owned enterprises"],
+  correct: [0,1,3],
+  explanation: "Ministers, families, and SOE heads are PEPs. Ship agents are not."
+},
+{
+  id: "rc32",
+  question: "Which training topics are mandatory in compliance programs?",
+  choices: ["AML procedures", "Sanctions awareness", "Commodity price forecasting", "Anti-bribery rules"],
+  correct: [0,1,3],
+  explanation: "AML, sanctions, and anti-bribery training are mandatory. Price forecasting is commercial."
+},
+{
+  id: "rc33",
+  question: "Which trades may breach embargoes?",
+  choices: ["Direct trade with sanctioned countries", "Indirect trade via intermediaries", "Trade routed through neutral jurisdictions", "Trade of humanitarian goods under license"],
+  correct: [0,1,2],
+  explanation: "Direct, indirect, and disguised trade breaches embargoes. Licensed humanitarian goods are allowed."
+},
+{
+  id: "rc34",
+  question: "Which mechanisms support trade surveillance?",
+  choices: ["Pattern recognition algorithms", "Manual exception reviews", "Shipping demurrage logs", "Real-time monitoring tools"],
+  correct: [0,1,3],
+  explanation: "Surveillance relies on algorithms, reviews, and monitoring. Demurrage logs are operational."
+},
+{
+  id: "rc35",
+  question: "Which behaviors may indicate front running?",
+  choices: ["Trading ahead of a large client order", "Disclosing client intentions", "Executing hedges after order completion", "Profiting from advance knowledge"],
+  correct: [0,1,3],
+  explanation: "Trading ahead, disclosure, and profiting from client knowledge are front running. Hedging afterward is normal."
+},
+{
+  id: "rc36",
+  question: "Which laws relate to competition compliance?",
+  choices: ["Sherman Act", "EU Competition Law", "Basel III", "Cartel prohibition rules"],
+  correct: [0,1,3],
+  explanation: "Sherman Act, EU law, and cartel prohibitions govern competition. Basel III is banking regulation."
+},
+{
+  id: "rc37",
+  question: "Which are signs of potential cartel activity?",
+  choices: ["Identical bids", "Market share stability", "Price fixing", "Open market transparency"],
+  correct: [0,1,2],
+  explanation: "Identical bids, stable shares, and price fixing suggest cartels. Transparency is not a cartel sign."
+},
+{
+  id: "rc38",
+  question: "Which elements form part of sanctions due diligence?",
+  choices: ["Checking vessel AIS data", "Screening beneficial owners", "Assessing cargo origin", "Optimizing freight rates"],
+  correct: [0,1,2],
+  explanation: "AIS, ownership, and cargo origin checks are sanctions due diligence. Freight rates are commercial."
+},
+{
+  id: "rc39",
+  question: "Which frameworks address financial crime?",
+  choices: ["FATF recommendations", "Basel AML principles", "IMO MARPOL rules", "National AML legislation"],
+  correct: [0,1,3],
+  explanation: "FATF, Basel, and national laws cover AML. MARPOL addresses pollution."
+},
+{
+  id: "rc40",
+  question: "Which factors increase compliance risks?",
+  choices: ["Trading with new counterparties", "Operating in high-risk jurisdictions", "Complex offshore structures", "Routine hedging transactions"],
+  correct: [0,1,2],
+  explanation: "New counterparties, risky jurisdictions, and offshore structures increase compliance risk. Routine hedges do not."
+},
+{
+  id: "rc41",
+  question: "Which are examples of soft controls in compliance culture?",
+  choices: ["Leadership commitment", "Training", "Code of conduct", "Automated sanctions filters"],
+  correct: [0,1,2],
+  explanation: "Soft controls include leadership, training, and conduct codes. Filters are hard controls."
+},
+{
+  id: "rc42",
+  question: "Which are escalation triggers in compliance monitoring?",
+  choices: ["Suspicious counterparties", "Failed KYC checks", "Unusual payment terms", "Valid letters of credit"],
+  correct: [0,1,2],
+  explanation: "Suspicious counterparties, failed KYC, and unusual terms trigger escalation. Valid LCs do not."
+},
+{
+  id: "rc43",
+  question: "Which practices enhance compliance training effectiveness?",
+  choices: ["Case studies", "Role-based modules", "Gamified learning", "Ignoring performance tracking"],
+  correct: [0,1,2],
+  explanation: "Case studies, role-based, and gamified learning work. Ignoring tracking weakens training."
+},
+{
+  id: "rc44",
+  question: "Which trades are most exposed to sanctions evasion risks?",
+  choices: ["Ship-to-ship transfers", "Opaque ownership structures", "Cargoes routed through free zones", "Spot market hedges"],
+  correct: [0,1,2],
+  explanation: "STS transfers, opaque structures, and free zones are high risk. Spot hedges are low risk."
+},
+{
+  id: "rc45",
+  question: "Which agencies enforce AML globally?",
+  choices: ["Financial Action Task Force (FATF)", "National financial intelligence units (FIUs)", "World Trade Organization", "Interpol"],
+  correct: [0,1,3],
+  explanation: "FATF, FIUs, and Interpol enforce AML. WTO regulates trade, not AML."
+},
+{
+  id: "rc46",
+  question: "Which behaviors may breach ethical trading codes?",
+  choices: ["Conflict of interest", "Bribery", "Insider trading", "Transparent reporting"],
+  correct: [0,1,2],
+  explanation: "Conflicts, bribery, and insider trading breach ethics. Transparency is positive."
+},
+{
+  id: "rc47",
+  question: "Which technologies support regulatory compliance?",
+  choices: ["Blockchain for trade traceability", "AI for transaction monitoring", "ERP freight scheduling", "Sanctions list automation"],
+  correct: [0,1,3],
+  explanation: "Blockchain, AI, and sanctions automation support compliance. ERP scheduling is operational."
+},
+{
+  id: "rc48",
+  question: "Which indicators suggest trade-based money laundering?",
+  choices: ["Over-invoicing", "Under-invoicing", "Phantom shipments", "Routine hedges with regulated banks"],
+  correct: [0,1,2],
+  explanation: "Over/under invoicing and phantom trades are TBML red flags. Routine hedges are not."
+},
+{
+  id: "rc49",
+  question: "Which measures reduce insider risk?",
+  choices: ["Access controls", "Data leakage monitoring", "Segregation of duties", "Excessive disclosure"],
+  correct: [0,1,2],
+  explanation: "Access, monitoring, and segregation reduce risk. Excessive disclosure increases it."
+},
+{
+  id: "rc50",
+  question: "Which reporting duties exist under global compliance laws?",
+  choices: ["Suspicious activity reports", "Market abuse notifications", "Annual compliance certifications", "Optional weather forecasts"],
+  correct: [0,1,2],
+  explanation: "SARs, abuse reports, and certifications are mandatory. Weather forecasts are irrelevant."
+}
+  ]
+      },
+
   quality_testing: { 
     title: "Quality Control & Testing", 
-    questions: [] 
+    questions: [
+{
+  id: "qt1",
+  question: "Which parameter is commonly tested to determine gasoline’s resistance to knocking?",
+  choices: ["Flash Point", "Pour Point", "Octane Number", "Cetane Number"],
+  correct: [2],
+  explanation: "Octane number measures resistance to knocking in gasoline."
+},
+{
+  id: "qt2",
+  question: "Which tests are standard for marine fuel quality?",
+  choices: ["Viscosity", "Density", "Sulfur content", "Freezing point"],
+  correct: [0,1,2],
+  explanation: "Viscosity, density, and sulfur content are tested in marine fuels. Freezing point is aviation."
+},
+{
+  id: "qt3",
+  question: "Which standard specifies jet fuel testing procedures?",
+  choices: ["ASTM D1655", "ISO 8217", "EN 590", "API RP 500"],
+  correct: [0],
+  explanation: "ASTM D1655 is the standard for jet fuel quality testing."
+},
+{
+  id: "qt4",
+  question: "Which contaminants are critical to monitor in crude oil assays?",
+  choices: ["Salt", "Mercury", "Vanadium", "Lead"],
+  correct: [0,1,2],
+  explanation: "Salt, mercury, and vanadium are critical contaminants. Lead is not usually present in crude assays."
+},
+{
+  id: "qt5",
+  question: "Which unit is used for viscosity measurement?",
+  choices: ["Seconds", "cSt (centistokes)", "Liters", "Joules"],
+  correct: [1],
+  explanation: "Viscosity in petroleum testing is expressed in cSt (centistokes)."
+},
+{
+  id: "qt6",
+  question: "Which test determines water content in fuels?",
+  choices: ["ASTM D86", "Karl Fischer titration", "Bomb calorimeter", "Flash point"],
+  correct: [1],
+  explanation: "Karl Fischer titration is the standard for water content measurement."
+},
+{
+  id: "qt7",
+  question: "Which are common causes of off-spec gasoline?",
+  choices: ["Low octane", "Excess sulfur", "Excess aromatics", "Low viscosity"],
+  correct: [0,1,2],
+  explanation: "Low octane, sulfur, and aromatics cause off-spec. Viscosity is not relevant for gasoline."
+},
+{
+  id: "qt8",
+  question: "Which property is measured by ASTM D86?",
+  choices: ["Distillation curve", "Density", "Sulfur", "Pour point"],
+  correct: [0],
+  explanation: "ASTM D86 measures distillation characteristics of fuels."
+},
+{
+  id: "qt9",
+  question: "Which parameters define jet fuel freezing behavior?",
+  choices: ["Flash point", "Freezing point", "Viscosity", "Distillation range"],
+  correct: [1],
+  explanation: "Freezing point is a key safety parameter in jet fuels."
+},
+{
+  id: "qt10",
+  question: "Which analytical techniques are used in crude assay?",
+  choices: ["Gas chromatography", "Mass spectrometry", "Spectroscopy", "Tensile strength testing"],
+  correct: [0,1,2],
+  explanation: "GC, MS, and spectroscopy are key crude assay tools. Tensile strength is irrelevant."
+},
+{
+  id: "qt11",
+  question: "Which metals are critical to monitor in crude oil?",
+  choices: ["Nickel", "Vanadium", "Iron", "Copper"],
+  correct: [0,1],
+  explanation: "Nickel and vanadium are problematic in refining. Iron and copper less so."
+},
+{
+  id: "qt12",
+  question: "Which standard defines diesel fuel specifications in Europe?",
+  choices: ["ASTM D975", "EN 590", "ISO 8217", "ASTM D1655"],
+  correct: [1],
+  explanation: "EN 590 sets diesel specifications in Europe."
+},
+{
+  id: "qt13",
+  question: "Which are possible reasons for failed jet fuel flash point tests?",
+  choices: ["Excess gasoline contamination", "Excess aromatics", "Water contamination", "Additive overdose"],
+  correct: [0,3],
+  explanation: "Gasoline contamination or additive overdose may lower flash point."
+},
+{
+  id: "qt14",
+  question: "Which test measures volatility of gasoline?",
+  choices: ["Reid Vapor Pressure (RVP)", "Flash Point", "Freezing Point", "Density"],
+  correct: [0],
+  explanation: "RVP measures gasoline volatility."
+},
+{
+  id: "qt15",
+  question: "Which characteristics are tested in bunker fuels?",
+  choices: ["Viscosity", "Density", "Sulfur", "Cetane number"],
+  correct: [0,1,2],
+  explanation: "Viscosity, density, and sulfur are key bunker tests. Cetane is diesel."
+},
+{
+  id: "qt16",
+  question: "Which contaminants can damage refinery catalysts?",
+  choices: ["Nickel", "Vanadium", "Sodium", "Calcium"],
+  correct: [0,1,2,3],
+  explanation: "All listed metals contaminate and deactivate catalysts."
+},
+{
+  id: "qt17",
+  question: "Which method is used to determine pour point?",
+  choices: ["ASTM D97", "ASTM D86", "Karl Fischer", "Bomb calorimeter"],
+  correct: [0],
+  explanation: "ASTM D97 defines pour point testing."
+},
+{
+  id: "qt18",
+  question: "Which factors affect crude TAN (Total Acid Number)?",
+  choices: ["Naphthenic acid content", "Water content", "Salt content", "Mercury content"],
+  correct: [0],
+  explanation: "TAN depends mainly on naphthenic acids."
+},
+{
+  id: "qt19",
+  question: "Which properties are important in jet fuel safety?",
+  choices: ["Freezing point", "Flash point", "Sulfur", "Density"],
+  correct: [0,1,3],
+  explanation: "Freezing, flash, and density are safety parameters. Sulfur is environmental."
+},
+{
+  id: "qt20",
+  question: "Which units measure sulfur in fuels?",
+  choices: ["ppm", "% weight", "cSt", "MJ/kg"],
+  correct: [0,1],
+  explanation: "Sulfur is measured in ppm or % weight."
+},
+{
+  id: "qt21",
+  question: "Which are consequences of water in jet fuel?",
+  choices: ["Ice formation at altitude", "Microbial growth", "Engine knock", "Filter blockage"],
+  correct: [0,1,3],
+  explanation: "Water causes ice, microbes, and blockages. Engine knock is gasoline-specific."
+},
+{
+  id: "qt22",
+  question: "Which crude assay result is critical for refinery planning?",
+  choices: ["Distillation yield curves", "Viscosity", "Ash content", "Flash point"],
+  correct: [0],
+  explanation: "Distillation curves guide refinery processing choices."
+},
+{
+  id: "qt23",
+  question: "Which analytical techniques are rapid screening methods?",
+  choices: ["Infrared spectroscopy", "NMR", "Gas chromatography", "Titration"],
+  correct: [0,1],
+  explanation: "IR and NMR give fast screening. GC and titration are slower."
+},
+{
+  id: "qt24",
+  question: "Which is the most critical property in marine fuel stability?",
+  choices: ["Compatibility", "Flash Point", "TAN", "Density"],
+  correct: [0],
+  explanation: "Compatibility with other fuels is critical for stability."
+},
+{
+  id: "qt25",
+  question: "Which contaminants are tested in biofuels?",
+  choices: ["Methanol", "Water", "Glycerol", "Nickel"],
+  correct: [0,1,2],
+  explanation: "Biofuels are tested for methanol, water, and glycerol. Nickel is not relevant."	
   },
+  
+  {
+  id: "qt26",
+  question: "Which methods are commonly used to test sulfur in fuels?",
+  choices: ["X-ray fluorescence (XRF)", "UV fluorescence", "Gas chromatography", "Karl Fischer"],
+  correct: [0,1],
+  explanation: "Sulfur is tested by XRF and UV fluorescence. Karl Fischer is for water."
+},
+{
+  id: "qt27",
+  question: "Which contaminants in crude oil can cause corrosion?",
+  choices: ["Chlorides", "Hydrogen sulfide", "Mercury", "Vanadium"],
+  correct: [0,1,2],
+  explanation: "Chlorides, H2S, and mercury are highly corrosive. Vanadium is more catalyst poison."
+},
+{
+  id: "qt28",
+  question: "Which standard defines marine fuel quality?",
+  choices: ["ISO 8217", "ASTM D975", "EN 590", "ASTM D1655"],
+  correct: [0],
+  explanation: "ISO 8217 defines marine fuel specifications."
+},
+{
+  id: "qt29",
+  question: "Which are critical tests for biofuels?",
+  choices: ["Acid number", "Water content", "Flash point", "Sulfur content"],
+  correct: [0,1,2],
+  explanation: "Acid number, water, and flash point are critical. Sulfur is less relevant."
+},
+{
+  id: "qt30",
+  question: "Which method is used to measure octane number?",
+  choices: ["CFR engine test", "Gas chromatography", "Bomb calorimeter", "Karl Fischer"],
+  correct: [0],
+  explanation: "Octane number is determined using the CFR engine method."
+},
+{
+  id: "qt31",
+  question: "Which contaminants may be introduced during storage?",
+  choices: ["Water", "Rust particles", "Microorganisms", "Nitrogen"],
+  correct: [0,1,2],
+  explanation: "Water, rust, and microbes can contaminate during storage. Nitrogen is not typical."
+},
+{
+  id: "qt32",
+  question: "Which test measures cold flow properties of diesel?",
+  choices: ["CFPP (Cold Filter Plugging Point)", "Flash point", "Cetane number", "Pour point"],
+  correct: [0,3],
+  explanation: "Pour point and CFPP measure cold flow properties of diesel."
+},
+{
+  id: "qt33",
+  question: "Which test determines fuel energy content?",
+  choices: ["Bomb calorimeter", "Octane number", "Flash point", "RVP"],
+  correct: [0],
+  explanation: "Energy content is measured by bomb calorimetry."
+},
+{
+  id: "qt34",
+  question: "Which of these are ASTM standards?",
+  choices: ["ASTM D86", "ASTM D97", "ISO 8217", "ASTM D975"],
+  correct: [0,1,3],
+  explanation: "ASTM D86, D97, and D975 are ASTM standards. ISO 8217 is ISO."
+},
+{
+  id: "qt35",
+  question: "Which tests are critical for aviation fuel safety?",
+  choices: ["Flash point", "Freezing point", "Water content", "Cetane number"],
+  correct: [0,1,2],
+  explanation: "Flash point, freezing point, and water are critical for jet safety. Cetane is diesel."
+},
+{
+  id: "qt36",
+  question: "Which methods are used for density measurement?",
+  choices: ["Hydrometer", "Oscillating U-tube", "Gas chromatography", "Refractometer"],
+  correct: [0,1],
+  explanation: "Density is tested by hydrometer and oscillating U-tube."
+},
+{
+  id: "qt37",
+  question: "Which contaminants are dangerous for turbines?",
+  choices: ["Sodium", "Potassium", "Vanadium", "Lead"],
+  correct: [0,1,2],
+  explanation: "Na, K, and V can cause turbine corrosion and hot spots."
+},
+{
+  id: "qt38",
+  question: "Which property does Cetane number measure?",
+  choices: ["Ignition quality of diesel", "Resistance to knocking", "Energy content", "Viscosity"],
+  correct: [0],
+  explanation: "Cetane measures ignition quality of diesel, opposite of Octane for gasoline."
+},
+{
+  id: "qt39",
+  question: "Which contaminants are typical in used lubricating oils?",
+  choices: ["Water", "Metals", "Soot", "Sulfur"],
+  correct: [0,1,2],
+  explanation: "Water, metals, and soot are common in used lubes. Sulfur depends on formulation."
+},
+{
+  id: "qt40",
+  question: "Which method measures water in LPG?",
+  choices: ["ASTM D2713 (freeze test)", "Karl Fischer", "Distillation", "Bomb calorimeter"],
+  correct: [0],
+  explanation: "ASTM D2713 freeze test is used for water in LPG."
+},
+{
+  id: "qt41",
+  question: "Which are signs of poor gasoline quality?",
+  choices: ["Low octane", "High sulfur", "High benzene", "High viscosity"],
+  correct: [0,1,2],
+  explanation: "Low octane, sulfur, and benzene indicate poor gasoline quality."
+},
+{
+  id: "qt42",
+  question: "Which ASTM test determines flash point?",
+  choices: ["ASTM D93 (Pensky-Martens)", "ASTM D97", "ASTM D86", "ASTM D445"],
+  correct: [0],
+  explanation: "ASTM D93 determines flash point using Pensky-Martens method."
+},
+{
+  id: "qt43",
+  question: "Which contaminants are linked to microbial growth in fuels?",
+  choices: ["Water", "Oxygen", "Sulfur", "Particulates"],
+  correct: [0,3],
+  explanation: "Water and particulates enable microbial growth."
+},
+{
+  id: "qt44",
+  question: "Which tests define crude stability?",
+  choices: ["Asphaltene stability", "Viscosity", "Density", "Sulfur"],
+  correct: [0,1],
+  explanation: "Asphaltene stability and viscosity are key for crude stability."
+},
+{
+  id: "qt45",
+  question: "Which standard defines unleaded gasoline specifications in the U.S.?",
+  choices: ["ASTM D4814", "EN 590", "ISO 8217", "ASTM D975"],
+  correct: [0],
+  explanation: "ASTM D4814 specifies gasoline in the U.S."
+},
+{
+  id: "qt46",
+  question: "Which contaminants can cause black smoke emissions?",
+  choices: ["Unburned carbon", "Asphaltenes", "Sulfur", "Iron"],
+  correct: [0,1],
+  explanation: "Carbon and asphaltenes lead to black smoke."
+},
+{
+  id: "qt47",
+  question: "Which parameters are critical in LPG quality?",
+  choices: ["Vapor pressure", "Sulfur", "Water", "Cetane number"],
+  correct: [0,1,2],
+  explanation: "LPG specs include vapor pressure, sulfur, and water. Cetane is diesel."
+},
+{
+  id: "qt48",
+  question: "Which contaminants are monitored in natural gas?",
+  choices: ["CO2", "H2S", "Water", "Methanol"],
+  correct: [0,1,2],
+  explanation: "Natural gas is tested for CO2, H2S, and water. Methanol may be injected, not contaminant."
+},
+{
+  id: "qt49",
+  question: "Which ASTM test measures kinematic viscosity?",
+  choices: ["ASTM D445", "ASTM D93", "ASTM D86", "ASTM D97"],
+  correct: [0],
+  explanation: "ASTM D445 measures kinematic viscosity."
+},
+{
+  id: "qt50",
+  question: "Which contaminants are critical in aviation fuel?",
+  choices: ["Water", "Particulates", "Sulfur", "Ice crystals"],
+  correct: [0,1,3],
+  explanation: "Water, particulates, and ice crystals must be avoided. Sulfur is less critical."
+}
+ ]
+      },
+
+
+
   operations_coordination: { 
     title: "Operations & Stakeholder Coordination", 
     questions: [] 
@@ -327,23 +4477,47 @@ crude_types_specs: {
     // ---------------------------
     // Unlock logic
     // ---------------------------
-    function isThemeUnlocked(theme) {
-      if (theme === "cargo_docs") return true; // disponible dès le départ
+ function isThemeUnlocked(theme) {
+  const order = Object.keys(quizData);
+  const N = order.length;
+  if (N === 0) return false;
+  // le premier thème est toujours dispo
+  if (theme === order[0]) return true;
 
-      // ordre des thèmes (déblocage mensuel à partir de Jan 2026)
-      const themesOrder = Object.keys(quizData).filter(t => t !== "cargo_docs");
-      const start = new Date(2026, 0, 1); // 1 Jan 2026
-      const now = new Date();
+  // date de début pour le déblocage mensuel (ajuste si tu veux)
+  const start = new Date(2026, 0, 1); // 1 Jan 2026
+  const now = new Date();
+  const monthDiff = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  // monthlyMaxIndex = index maximum débloquable par la règle "1 thème par mois" (0 = only first)
+  const monthlyMaxIndex = Math.max(0, Math.min(N - 1, monthDiff));
 
-      // mois passés depuis start (0 pour Jan 2026)
-      const monthDiff = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  // Construire séquentiellement l'indice maximal débloqué (préfixe contigu)
+  // unlockedIndex = index le plus élevé (>=0) qui est déverrouillé (0 = premier)
+  let unlockedIndex = 0;
+  for (let k = 1; k < N; k++) {
+    const prevTheme = order[k - 1];
 
-      if (monthDiff < 0) return false;
-      if (monthDiff >= themesOrder.length) return false;
+    const totalPrev = quizData[prevTheme]?.questions?.length || 0;
+    const solvedPrev = getSolvedCount(prevTheme) || 0;
 
-      return themesOrder[monthDiff] === theme;
+    // On considère "complété" seulement si il y a des questions ET que toutes sont résolues
+    const prevCompleted = (totalPrev > 0) && (solvedPrev === totalPrev);
+
+    // Déblocage par date : si l'index k est <= monthlyMaxIndex
+    const allowedByDate = k <= monthlyMaxIndex;
+
+    // Si le thème précédent est complété OU la date permet d'atteindre cet index,
+    // alors k devient déverrouillé. Sinon on stoppe (assure préfixe contigu).
+    if (prevCompleted || allowedByDate) {
+      unlockedIndex = k;
+    } else {
+      break;
     }
+  }
 
+  const themeIdx = order.indexOf(theme);
+  return themeIdx <= unlockedIndex;
+}
     // ---------------------------
     // UI / Themes grid
     // ---------------------------
@@ -354,7 +4528,7 @@ crude_types_specs: {
 
       const icons = {
   cargo_docs: "https://img.icons8.com/fluency/96/document.png",
-  crude_types_specs: "https://img.icons8.com/color/96/oil.png",
+  crude_types_specs: "https://img.icons8.com/?size=96&id=18348&format=png",
   refined_products: "https://img.icons8.com/color/96/fuel.png",
   trading_market: "https://img.icons8.com/color/96/combo-chart.png",
   pricing_contracts: "https://img.icons8.com/color/96/contract.png",
@@ -408,7 +4582,7 @@ crude_types_specs: {
   let answersHistory = {}; // { [qIndex]: { selected:number[], isCorrect:boolean, explanation:string, id?:string } }
   let currentUser = null;
 let timerInterval = null;
-let timeLeft = 10;
+let timeLeft = 25;
 
   /* ========= Login ========= */
   
@@ -732,16 +4906,22 @@ document.getElementById("forgotID").onclick = () => {
 
   // barre du haut = progression cumulée (questions uniques résolues) du thème
   function updateTopProgressBar() {
-    if (!currentTheme) return;
-    const total = quizData[currentTheme].questions.length;
-    const solved = getSolvedCount(currentTheme);
-    const percent = total ? Math.round((solved / total) * 100) : 0;
-    const fill = document.getElementById("progressFill");
-    if (fill) {
-      fill.style.width = percent + "%";
-      fill.textContent = percent + "%";
-    }
+  if (!currentTheme) return;
+  const total = quizData[currentTheme].questions.length;
+  const solved = getSolvedCount(currentTheme);
+  const percent = total ? Math.round((solved / total) * 100) : 0;
+  const fill = document.getElementById("progressFill");
+  if (fill) {
+    fill.style.width = percent + "%";
+    fill.textContent = percent + "%";
   }
+
+  // ✅ Si 100% atteint → refresh de la grille pour débloquer le suivant
+  if (percent === 100) {
+    renderThemesGrid();
+    loadProgressOverview();
+  }
+}
 
  function showQuestion() {
   const q = selectedSet[questionIndex];
@@ -799,7 +4979,7 @@ document.getElementById("forgotID").onclick = () => {
 
 function startTimer() {
   stopTimer(); // éviter un double timer
-  timeLeft = 10;
+  timeLeft = 25;
   document.getElementById("timer").textContent = `⏳ Time left: ${timeLeft}s`;
 
   timerInterval = setInterval(() => {
@@ -1076,5 +5256,4 @@ if ("serviceWorker" in navigator) {
   </script>
 </body>
 </html>
-
 
