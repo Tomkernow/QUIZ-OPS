@@ -167,6 +167,29 @@
         <!-- Dynamic themes grid -->
         <div class="themes"></div>
 
+<div id="challenge-section" style="display:none; margin-top:24px;">
+    <h2>⚔️ Défis</h2>
+    <button id="showChallengeBtn">Lancer un défi</button>
+
+    <div id="challenge-form" style="display:none; margin-top:12px;">
+      <select id="opponentEmail">
+  <option value="">Choisir un joueur...</option>
+</select>
+      <select id="challengeTheme">
+        <option value="cargo_docs">Cargo Docs</option>
+        <option value="refined_products">Refined Products</option>
+        <option value="specialty_products">Specialty Products</option>
+      </select>
+      <button id="sendChallengeBtn">Envoyer le défi</button>
+    </div>
+
+    <!-- Container pour défis reçus -->
+    <div id="my-challenges" style="margin-top:16px; display:none;">
+        <h3>Défis reçus</h3>
+        <div id="challenges-list"></div>
+    </div>
+</div>
+
         <!-- Progress dashboard -->
         <div id="progress-overview"></div>
       </div>
@@ -211,6 +234,11 @@ function showLogin() {
 const flowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8529a06fdcc6401aaa54e12ccdf8053c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZMFUE06qvb1Qjx-2UAwG47ivXUPZljA2ikv4TaMdVQE";
 const flowUrlSignup = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/cb431fe6824e4af79ff1081e88adbcde/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JJ-Qbs2tRRE5gFnpSBfUrVp6oPshyoZcKFEJ3CcVWvg";
 const flow = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/cd72f3ad611140f4b40ee95952f496ac/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=U45wTZLPIBNCIHN1Jv8Uq1AmteCU1Bo6eLzz2TTmVIE"
+const createChallengeFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/2a477945342b45fb8d16005ccea30204/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rV-cHf43QIzra6-zmfEkfCNOEV00ovXN0VxL9Z62Wz0";
+const getChallengesFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/31ef6faaebcb43f4878225828d23a559/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=21xbDVO1CPlcxZgqjjjJ7bi9F9IBvXDzU_1fDKc5K7Q";
+const updateChallengeFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f75d3f08213d4d3badffabd91a32f666/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eOjS9FQtNfeonEXf3eYRX2y5koUv9nV-czcyrFN8lvM";
+const getAllUsersFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/87639e159f094cfdb271eac85cc07e9a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=44pRUiagqDm_20uaN8NVFifqclbejWMyNPDMan3Wntk"
+const updateChallengeDoneFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c9bcce3eda5549b3ae905734dadc8fcf/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=mNGG7Fs3Z0ywx5v95GrR2aKzEoQVzBGIK2XECgdpNA8";
 
 function getUserIP() {
   // ⚠️ HTML ne peut pas obtenir l’IP réelle sans backend.
@@ -590,358 +618,58 @@ function getUserIP() {
 crude_types_specs: { 
     title: "Crude Oil Types & Specs", 
 
-  questions: [
-    {
-      id: 1,
-      question: "Crude oil is a mixture of:",
-      choices: ["Pure hydrocarbons", "Hydrocarbons and impurities", "Single compound", "Alcohols"],
-      correct: 1,
-      explanation: "Crude oil is a natural mixture of hydrocarbons and impurities like sulfur, nitrogen, metals, and salts."
-    },
-    {
-      id: 2,
-      question: "First major separation step for crude oil:",
-      choices: ["Vacuum distillation", "Atmospheric distillation", "Cracking", "Reforming"],
-      correct: 1,
-      explanation: "Atmospheric distillation is the first step in refining crude oil, separating it into fractions based on boiling points."
-    },
-    {
-      id: 3,
-      question: "Main impurities in crude impacting refining:",
-      choices: ["Nitrogen, sulfur, metals", "Helium and neon", "Water only", "Oxygen only"],
-      correct: 0,
-      explanation: "Sulfur, nitrogen, and metals are the main problematic impurities because they cause corrosion and catalyst poisoning."
-    },
-    {
-      id: 4,
-      question: "API gravity is a measure of:",
-      choices: ["Viscosity", "Density", "Sulfur", "Aromatics"],
-      correct: 1,
-      explanation: "API gravity is a measure of the density of crude oil compared to water."
-    },
-    {
-      id: 5,
-      question: "Light crude generally has:",
-      choices: ["Low API", "High API", "High sulfur", "High metals"],
-      correct: 1,
-      explanation: "Light crude has high API gravity, meaning it is less dense and yields more valuable light products."
-    },
-    {
-      id: 6,
-      question: "Sweet crude means:",
-      choices: ["Low sulfur", "High sulfur", "High nitrogen", "Low metals"],
-      correct: 0,
-      explanation: "Sweet crude contains low sulfur and is easier to refine into clean fuels."
-    },
-    {
-      id: 7,
-      question: "A crude desalter removes mostly:",
-      choices: ["Hydrogen", "Water and salts", "Aromatics", "Paraffins"],
-      correct: 1,
-      explanation: "A desalter removes water-soluble salts and water to prevent corrosion and fouling in the distillation unit."
-    },
-    {
-      id: 8,
-      question: "Bottom product of atmospheric distillation:",
-      choices: ["Naphtha", "Kerosene", "Atmospheric residue", "Diesel"],
-      correct: 2,
-      explanation: "The heaviest fraction, atmospheric residue, remains at the bottom after atmospheric distillation."
-    },
-    {
-      id: 9,
-      question: "Typical sulfur content range in crudes:",
-      choices: ["0–0.1%", "0.5–5%", "10%", "50%"],
-      correct: 1,
-      explanation: "Sulfur content in crude typically ranges between 0.5% and 5%."
-    },
-    {
-      id: 10,
-      question: "Crude oil resources are mainly found in:",
-      choices: ["Igneous rocks", "Sedimentary basins", "Mountains", "Volcanoes"],
-      correct: 1,
-      explanation: "Crude oil forms in sedimentary basins where organic matter is buried and transformed under heat and pressure."
-    },
-    {
-      id: 11,
-      question: "What is heavy crude oil characterized by?",
-      choices: ["High API gravity", "Low viscosity", "High viscosity and density", "Low sulfur"],
-      correct: 2,
-      explanation: "Heavy crude has high viscosity, low API gravity, and is harder to refine."
-    },
-    {
-      id: 12,
-      question: "Which element in crude oil contributes to SOx emissions?",
-      choices: ["Carbon", "Sulfur", "Nitrogen", "Hydrogen"],
-      correct: 1,
-      explanation: "Sulfur in crude oil produces sulfur oxides (SOx) during combustion, causing air pollution."
-    },
-    {
-      id: 13,
-      question: "Vacuum distillation is applied to:",
-      choices: ["Light naphtha", "Kerosene", "Atmospheric residue", "LPG"],
-      correct: 2,
-      explanation: "Atmospheric residue is sent to vacuum distillation to recover valuable heavy gas oils without cracking them."
-    },
-    {
-      id: 14,
-      question: "Which crude type is easier to refine?",
-      choices: ["Heavy sour crude", "Light sweet crude", "Residue-rich crude", "Extra heavy crude"],
-      correct: 1,
-      explanation: "Light sweet crude is easier to refine and produces more high-value light products."
-    },
-    {
-      id: 15,
-      question: "Which crude oil fraction is used for making lubricants?",
-      choices: ["LPG", "Gasoline", "Vacuum gas oil", "Heavy residue"],
-      correct: 2,
-      explanation: "Vacuum gas oil and heavier fractions are processed into base oils for lubricants."
-    },
-    {
-      id: 16,
-      question: "What is the typical hydrogen content in crude oil?",
-      choices: ["1–5%", "10–14%", "20–25%", "50%"],
-      correct: 1,
-      explanation: "Crude oil typically contains around 10–14% hydrogen by weight."
-    },
-    {
-      id: 17,
-      question: "Crude oil with high paraffin content is prone to:",
-      choices: ["High viscosity", "Wax deposition", "High sulfur", "Metal poisoning"],
-      correct: 1,
-      explanation: "Paraffinic crudes contain waxes that can solidify and cause flow problems at low temperatures."
-    },
-    {
-      id: 18,
-      question: "The pour point of crude oil refers to:",
-      choices: ["Boiling point", "Flash point", "Lowest temperature it flows", "Viscosity at 100 °C"],
-      correct: 2,
-      explanation: "The pour point is the lowest temperature at which crude oil remains pourable."
-    },
-    {
-      id: 19,
-      question: "Which crude benchmark is used in Europe?",
-      choices: ["WTI", "Dubai", "Brent", "Bonny Light"],
-      correct: 2,
-      explanation: "Brent crude is the main pricing benchmark in Europe."
-    },
-    {
-      id: 20,
-      question: "Which crude benchmark is used in the US?",
-      choices: ["Brent", "WTI", "Dubai", "Urals"],
-      correct: 1,
-      explanation: "West Texas Intermediate (WTI) is the key benchmark for US crude oil pricing."
-    },
-    {
-      id: 21,
-      question: "Which crude oil benchmark is used in the Middle East?",
-      choices: ["Brent", "WTI", "Dubai", "Bonny Light"],
-      correct: 2,
-      explanation: "Dubai crude is the key pricing benchmark in the Middle East and Asia."
-    },
-    {
-      id: 22,
-      question: "What does TAN (Total Acid Number) measure in crude?",
-      choices: ["Acidity of crude", "Sulfur content", "Viscosity", "Density"],
-      correct: 0,
-      explanation: "TAN indicates the acidity of crude oil, which impacts corrosion in refinery units."
-    },
-    {
-      id: 23,
-      question: "What does a higher API gravity indicate?",
-      choices: ["Heavier crude", "Lighter crude", "Higher sulfur", "Higher metals"],
-      correct: 1,
-      explanation: "Higher API gravity means the crude is lighter and more valuable."
-    },
-    {
-      id: 24,
-      question: "What does CCR (Conradson Carbon Residue) indicate?",
-      choices: ["Sulfur content", "Coking tendency", "Viscosity", "API gravity"],
-      correct: 1,
-      explanation: "CCR measures the tendency of crude oil to form coke during processing."
-    },
-    {
-      id: 25,
-      question: "Which crude property impacts hydrogen consumption in refining?",
-      choices: ["Sulfur content", "Wax content", "Water content", "Density"],
-      correct: 0,
-      explanation: "High sulfur content requires more hydrogen for hydrotreating and desulfurization."
-    },
-    {
-      id: 26,
-      question: "Which gas is dissolved in crude oil at reservoir conditions?",
-      choices: ["Oxygen", "Carbon dioxide", "Methane", "Nitrogen"],
-      correct: 2,
-      explanation: "Methane and other light hydrocarbons are dissolved in crude oil under reservoir pressure."
-    },
-    {
-      id: 27,
-      question: "Which crude fraction is used as petrochemical feedstock?",
-      choices: ["Fuel oil", "Naphtha", "Vacuum residue", "Asphalt"],
-      correct: 1,
-      explanation: "Naphtha is the primary feedstock for petrochemical production like olefins and aromatics."
-    },
-    {
-      id: 28,
-      question: "Which heavy crude upgrading process uses hydrogen?",
-      choices: ["Coking", "Hydrocracking", "Visbreaking", "Thermal cracking"],
-      correct: 1,
-      explanation: "Hydrocracking uses hydrogen to upgrade heavy crude fractions into lighter products."
-    },
-    {
-      id: 29,
-      question: "Where is most of the world's crude oil located?",
-      choices: ["Arctic", "Middle East", "Europe", "Australia"],
-      correct: 1,
-      explanation: "The Middle East holds the largest share of the world’s proven crude oil reserves."
-    },
-    {
-      id: 30,
-      question: "Which property differentiates sweet and sour crude?",
-      choices: ["API gravity", "Sulfur content", "Viscosity", "Wax content"],
-      correct: 1,
-      explanation: "The sulfur content defines whether a crude is classified as sweet or sour."
-    },
-    {
-      id: 31,
-      question: "What does BS&W in crude oil stand for?",
-      choices: ["Base Sulfur & Water", "Basic Sediment & Water", "Balance Salt & Wax", "Bitumen Sand & Wax"],
-      correct: 1,
-      explanation: "BS&W refers to Basic Sediment & Water, impurities removed before refining."
-    },
-    {
-      id: 32,
-      question: "Crude oil’s nitrogen compounds are problematic because:",
-      choices: ["They increase viscosity", "They poison catalysts", "They lower API gravity", "They reduce hydrogen"],
-      correct: 1,
-      explanation: "Nitrogen compounds deactivate catalysts during hydrotreating and cracking."
-    },
-    {
-      id: 33,
-      question: "The flash point of crude oil is:",
-      choices: ["Lowest flow temperature", "Temperature it ignites", "Density measure", "Pour point"],
-      correct: 1,
-      explanation: "The flash point is the temperature at which crude vapors ignite in the presence of a flame."
-    },
-    {
-      id: 34,
-      question: "What is bitumen derived from crude used for?",
-      choices: ["Jet fuel", "Road construction", "Petrochemicals", "Cooking gas"],
-      correct: 1,
-      explanation: "Bitumen, the heaviest crude fraction, is widely used in road paving and roofing materials."
-    },
-    {
-      id: 35,
-      question: "Which is the lightest fraction in crude distillation?",
-      choices: ["Diesel", "LPG", "Vacuum residue", "Fuel oil"],
-      correct: 1,
-      explanation: "LPG is the lightest fraction recovered during crude distillation."
-    },
-    {
-      id: 36,
-      question: "Which test measures crude’s metal content?",
-      choices: ["XRF analysis", "API gravity", "Pour point", "CCR"],
-      correct: 0,
-      explanation: "X-ray fluorescence (XRF) is used to measure trace metals in crude oil."
-    },
-    {
-      id: 37,
-      question: "Which crude fraction has the highest boiling point?",
-      choices: ["Gasoline", "Kerosene", "Vacuum residue", "Diesel"],
-      correct: 2,
-      explanation: "Vacuum residue has the highest boiling range and cannot be distilled under normal conditions."
-    },
-    {
-      id: 38,
-      question: "Which crude oil fraction is a key feedstock for catalytic cracking?",
-      choices: ["LPG", "Vacuum gas oil", "Kerosene", "Asphalt"],
-      correct: 1,
-      explanation: "Vacuum gas oil is the main feedstock for FCC (fluid catalytic cracking) units."
-    },
-    {
-      id: 39,
-      question: "Crude oil density is usually expressed in:",
-      choices: ["g/cm³", "API gravity", "Pa·s", "°C"],
-      correct: 1,
-      explanation: "Crude oil density is expressed as API gravity, a standard industry measure."
-    },
-    {
-      id: 40,
-      question: "Which crude property impacts refinery yield of gasoline?",
-      choices: ["Sulfur content", "Paraffinic content", "Viscosity", "Water content"],
-      correct: 1,
-      explanation: "Paraffinic crudes yield more gasoline when processed compared to naphthenic crudes."
-    },
-    {
-      id: 41,
-      question: "Which element in crude causes corrosion in distillation units?",
-      choices: ["Sulfur", "Nitrogen", "Chlorides", "Paraffins"],
-      correct: 2,
-      explanation: "Chloride salts in crude oil hydrolyze into hydrochloric acid, causing corrosion."
-    },
-    {
-      id: 42,
-      question: "Which crude type generally requires more upgrading?",
-      choices: ["Light sweet crude", "Heavy sour crude", "Condensates", "Paraffinic crude"],
-      correct: 1,
-      explanation: "Heavy sour crude requires extensive upgrading due to its high sulfur and metal content."
-    },
-    {
-      id: 43,
-      question: "Which crude oil property determines energy content?",
-      choices: ["Sulfur", "Viscosity", "Hydrogen-to-carbon ratio", "Pour point"],
-      correct: 2,
-      explanation: "A higher hydrogen-to-carbon ratio indicates greater energy content and cleaner combustion."
-    },
-    {
-      id: 44,
-      question: "Which type of crude has higher wax content?",
-      choices: ["Naphthenic crude", "Paraffinic crude", "Sour crude", "Heavy crude"],
-      correct: 1,
-      explanation: "Paraffinic crudes have higher wax content, leading to flow problems in pipelines."
-    },
-    {
-      id: 45,
-      question: "Which crude analysis measures hydrocarbon types?",
-      choices: ["Distillation curve", "SARA analysis", "CCR", "Flash point"],
-      correct: 1,
-      explanation: "SARA analysis separates hydrocarbons into saturates, aromatics, resins, and asphaltenes."
-    },
-    {
-      id: 46,
-      question: "Which crude oil type yields more lubricants?",
-      choices: ["Paraffinic crude", "Naphthenic crude", "Sour crude", "Light crude"],
-      correct: 0,
-      explanation: "Paraffinic crudes are preferred for lubricant production due to high wax and base oil content."
-    },
-    {
-      id: 47,
-      question: "Which measurement indicates crude stability?",
-      choices: ["API gravity", "CCR", "Asphaltene content", "Flash point"],
-      correct: 2,
-      explanation: "Asphaltene content affects crude oil stability during transport and refining."
-    },
-    {
-      id: 48,
-      question: "Which crude oil property is most important for transport?",
-      choices: ["Viscosity", "Pour point", "API gravity", "All of the above"],
-      correct: 3,
-      explanation: "Viscosity, pour point, and API gravity all impact how crude oil can be pumped and transported."
-    },
-    {
-      id: 49,
-      question: "Which crude fraction is mainly used for jet fuel?",
-      choices: ["Naphtha", "Kerosene", "Diesel", "Vacuum residue"],
-      correct: 1,
-      explanation: "Kerosene fraction is primarily refined into jet fuel."
-    },
-    {
-      id: 50,
-      question: "Which heavy crude processing method produces petroleum coke?",
-      choices: ["Hydrocracking", "Coking", "Visbreaking", "Reforming"],
-      correct: 1,
-      explanation: "Coking is used to upgrade heavy residues and produces petroleum coke as a byproduct."
-    }
-  ]
+ questions: [
+  { id: "cru1", question: "Crude oil is a mixture of:", choices: ["Pure hydrocarbons", "Hydrocarbons and impurities", "Single compound", "Alcohols"], correct: 1, explanation: "Crude oil is a natural mixture of hydrocarbons and impurities like sulfur, nitrogen, metals, and salts." },
+  { id: "cru2", question: "First major separation step for crude oil:", choices: ["Vacuum distillation", "Atmospheric distillation", "Cracking", "Reforming"], correct: 1, explanation: "Atmospheric distillation is the first step in refining crude oil, separating it into fractions based on boiling points." },
+  { id: "cru3", question: "Main impurities in crude impacting refining:", choices: ["Nitrogen, sulfur, metals", "Helium and neon", "Water only", "Oxygen only"], correct: 0, explanation: "Sulfur, nitrogen, and metals are the main problematic impurities because they cause corrosion and catalyst poisoning." },
+  { id: "cru4", question: "API gravity is a measure of:", choices: ["Viscosity", "Density", "Sulfur", "Aromatics"], correct: 1, explanation: "API gravity is a measure of the density of crude oil compared to water." },
+  { id: "cru5", question: "Light crude generally has:", choices: ["Low API", "High API", "High sulfur", "High metals"], correct: 1, explanation: "Light crude has high API gravity, meaning it is less dense and yields more valuable light products." },
+  { id: "cru6", question: "Sweet crude means:", choices: ["Low sulfur", "High sulfur", "High nitrogen", "Low metals"], correct: 0, explanation: "Sweet crude contains low sulfur and is easier to refine into clean fuels." },
+  { id: "cru7", question: "A crude desalter removes mostly:", choices: ["Hydrogen", "Water and salts", "Aromatics", "Paraffins"], correct: 1, explanation: "A desalter removes water-soluble salts and water to prevent corrosion and fouling in the distillation unit." },
+  { id: "cru8", question: "Bottom product of atmospheric distillation:", choices: ["Naphtha", "Kerosene", "Atmospheric residue", "Diesel"], correct: 2, explanation: "The heaviest fraction, atmospheric residue, remains at the bottom after atmospheric distillation." },
+  { id: "cru9", question: "Typical sulfur content range in crudes:", choices: ["0–0.1%", "0.5–5%", "10%", "50%"], correct: 1, explanation: "Sulfur content in crude typically ranges between 0.5% and 5%." },
+  { id: "cru10", question: "Crude oil resources are mainly found in:", choices: ["Igneous rocks", "Sedimentary basins", "Mountains", "Volcanoes"], correct: 1, explanation: "Crude oil forms in sedimentary basins where organic matter is buried and transformed under heat and pressure." },
+  { id: "cru11", question: "What is heavy crude oil characterized by?", choices: ["High API gravity", "Low viscosity", "High viscosity and density", "Low sulfur"], correct: 2, explanation: "Heavy crude has high viscosity, low API gravity, and is harder to refine." },
+  { id: "cru12", question: "Which element in crude oil contributes to SOx emissions?", choices: ["Carbon", "Sulfur", "Nitrogen", "Hydrogen"], correct: 1, explanation: "Sulfur in crude oil produces sulfur oxides (SOx) during combustion, causing air pollution." },
+  { id: "cru13", question: "Vacuum distillation is applied to:", choices: ["Light naphtha", "Kerosene", "Atmospheric residue", "LPG"], correct: 2, explanation: "Atmospheric residue is sent to vacuum distillation to recover valuable heavy gas oils without cracking them." },
+  { id: "cru14", question: "Which crude type is easier to refine?", choices: ["Heavy sour crude", "Light sweet crude", "Residue-rich crude", "Extra heavy crude"], correct: 1, explanation: "Light sweet crude is easier to refine and produces more high-value light products." },
+  { id: "cru15", question: "Which crude oil fraction is used for making lubricants?", choices: ["LPG", "Gasoline", "Vacuum gas oil", "Heavy residue"], correct: 2, explanation: "Vacuum gas oil and heavier fractions are processed into base oils for lubricants." },
+  { id: "cru16", question: "What is the typical hydrogen content in crude oil?", choices: ["1–5%", "10–14%", "20–25%", "50%"], correct: 1, explanation: "Crude oil typically contains around 10–14% hydrogen by weight." },
+  { id: "cru17", question: "Crude oil with high paraffin content is prone to:", choices: ["High viscosity", "Wax deposition", "High sulfur", "Metal poisoning"], correct: 1, explanation: "Paraffinic crudes contain waxes that can solidify and cause flow problems at low temperatures." },
+  { id: "cru18", question: "The pour point of crude oil refers to:", choices: ["Boiling point", "Flash point", "Lowest temperature it flows", "Viscosity at 100 °C"], correct: 2, explanation: "The pour point is the lowest temperature at which crude oil remains pourable." },
+  { id: "cru19", question: "Which crude benchmark is used in Europe?", choices: ["WTI", "Dubai", "Brent", "Bonny Light"], correct: 2, explanation: "Brent crude is the main pricing benchmark in Europe." },
+  { id: "cru20", question: "Which crude benchmark is used in the US?", choices: ["Brent", "WTI", "Dubai", "Urals"], correct: 1, explanation: "West Texas Intermediate (WTI) is the key benchmark for US crude oil pricing." },
+  { id: "cru21", question: "Which crude oil benchmark is used in the Middle East?", choices: ["Brent", "WTI", "Dubai", "Bonny Light"], correct: 2, explanation: "Dubai crude is the key pricing benchmark in the Middle East and Asia." },
+  { id: "cru22", question: "What does TAN (Total Acid Number) measure in crude?", choices: ["Acidity of crude", "Sulfur content", "Viscosity", "Density"], correct: 0, explanation: "TAN indicates the acidity of crude oil, which impacts corrosion in refinery units." },
+  { id: "cru23", question: "What does a higher API gravity indicate?", choices: ["Heavier crude", "Lighter crude", "Higher sulfur", "Higher metals"], correct: 1, explanation: "Higher API gravity means the crude is lighter and more valuable." },
+  { id: "cru24", question: "What does CCR (Conradson Carbon Residue) indicate?", choices: ["Sulfur content", "Coking tendency", "Viscosity", "API gravity"], correct: 1, explanation: "CCR measures the tendency of crude oil to form coke during processing." },
+  { id: "cru25", question: "Which crude property impacts hydrogen consumption in refining?", choices: ["Sulfur content", "Wax content", "Water content", "Density"], correct: 0, explanation: "High sulfur content requires more hydrogen for hydrotreating and desulfurization." },
+  { id: "cru26", question: "Which gas is dissolved in crude oil at reservoir conditions?", choices: ["Oxygen", "Carbon dioxide", "Methane", "Nitrogen"], correct: 2, explanation: "Methane and other light hydrocarbons are dissolved in crude oil under reservoir pressure." },
+  { id: "cru27", question: "Which crude fraction is used as petrochemical feedstock?", choices: ["Fuel oil", "Naphtha", "Vacuum residue", "Asphalt"], correct: 1, explanation: "Naphtha is the primary feedstock for petrochemical production like olefins and aromatics." },
+  { id: "cru28", question: "Which heavy crude upgrading process uses hydrogen?", choices: ["Coking", "Hydrocracking", "Visbreaking", "Thermal cracking"], correct: 1, explanation: "Hydrocracking uses hydrogen to upgrade heavy crude fractions into lighter products." },
+  { id: "cru29", question: "Where is most of the world's crude oil located?", choices: ["Arctic", "Middle East", "Europe", "Australia"], correct: 1, explanation: "The Middle East holds the largest share of the world’s proven crude oil reserves." },
+  { id: "cru30", question: "Which property differentiates sweet and sour crude?", choices: ["API gravity", "Sulfur content", "Viscosity", "Wax content"], correct: 1, explanation: "The sulfur content defines whether a crude is classified as sweet or sour." },
+  { id: "cru31", question: "What does BS&W in crude oil stand for?", choices: ["Base Sulfur & Water", "Basic Sediment & Water", "Balance Salt & Wax", "Bitumen Sand & Wax"], correct: 1, explanation: "BS&W refers to Basic Sediment & Water, impurities removed before refining." },
+  { id: "cru32", question: "Crude oil’s nitrogen compounds are problematic because:", choices: ["They increase viscosity", "They poison catalysts", "They lower API gravity", "They reduce hydrogen"], correct: 1, explanation: "Nitrogen compounds deactivate catalysts during hydrotreating and cracking." },
+  { id: "cru33", question: "The flash point of crude oil is:", choices: ["Lowest flow temperature", "Temperature it ignites", "Density measure", "Pour point"], correct: 1, explanation: "The flash point is the temperature at which crude vapors ignite in the presence of a flame." },
+  { id: "cru34", question: "What is bitumen derived from crude used for?", choices: ["Jet fuel", "Road construction", "Petrochemicals", "Cooking gas"], correct: 1, explanation: "Bitumen, the heaviest crude fraction, is widely used in road paving and roofing materials." },
+  { id: "cru35", question: "Which is the lightest fraction in crude distillation?", choices: ["Diesel", "LPG", "Vacuum residue", "Fuel oil"], correct: 1, explanation: "LPG is the lightest fraction recovered during crude distillation." },
+  { id: "cru36", question: "Which test measures crude’s metal content?", choices: ["XRF analysis", "API gravity", "Pour point", "CCR"], correct: 0, explanation: "X-ray fluorescence (XRF) is used to measure trace metals in crude oil." },
+  { id: "cru37", question: "Which crude fraction has the highest boiling point?", choices: ["Gasoline", "Kerosene", "Vacuum residue", "Diesel"], correct: 2, explanation: "Vacuum residue has the highest boiling range and cannot be distilled under normal conditions." },
+  { id: "cru38", question: "Which crude oil fraction is a key feedstock for catalytic cracking?", choices: ["LPG", "Vacuum gas oil", "Kerosene", "Asphalt"], correct: 1, explanation: "Vacuum gas oil is the main feedstock for FCC (fluid catalytic cracking) units." },
+  { id: "cru39", question: "Crude oil density is usually expressed in:", choices: ["g/cm³", "API gravity", "Pa·s", "°C"], correct: 1, explanation: "Crude oil density is expressed as API gravity, a standard industry measure." },
+  { id: "cru40", question: "Which crude property impacts refinery yield of gasoline?", choices: ["Sulfur content", "Paraffinic content", "Viscosity", "Water content"], correct: 1, explanation: "Paraffinic crudes yield more gasoline when processed compared to naphthenic crudes." },
+  { id: "cru41", question: "Which element in crude causes corrosion in distillation units?", choices: ["Sulfur", "Nitrogen", "Chlorides", "Paraffins"], correct: 2, explanation: "Chloride salts in crude oil hydrolyze into hydrochloric acid, causing corrosion." },
+  { id: "cru42", question: "Which crude type generally requires more upgrading?", choices: ["Light sweet crude", "Heavy sour crude", "Condensates", "Paraffinic crude"], correct: 1, explanation: "Heavy sour crude requires extensive upgrading due to its high sulfur and metal content." },
+  { id: "cru43", question: "Which crude oil property determines energy content?", choices: ["Sulfur", "Viscosity", "Hydrogen-to-carbon ratio", "Pour point"], correct: 2, explanation: "A higher hydrogen-to-carbon ratio indicates greater energy content and cleaner combustion." },
+  { id: "cru44", question: "Which type of crude has higher wax content?", choices: ["Naphthenic crude", "Paraffinic crude", "Sour crude", "Heavy crude"], correct: 1, explanation: "Paraffinic crudes have higher wax content, leading to flow problems in pipelines." },
+  { id: "cru45", question: "Which crude analysis measures hydrocarbon types?", choices: ["Distillation curve", "SARA analysis", "CCR", "Flash point"], correct: 1, explanation: "SARA analysis separates hydrocarbons into saturates, aromatics, resins, and asphaltenes." },
+  { id: "cru46", question: "Which crude oil type yields more lubricants?", choices: ["Paraffinic crude", "Naphthenic crude", "Sour crude", "Light crude"], correct: 0, explanation: "Paraffinic crudes are preferred for lubricant production due to high wax and base oil content." },
+  { id: "cru47", question: "Which measurement indicates crude stability?", choices: ["API gravity", "CCR", "Asphaltene content", "Flash point"], correct: 2, explanation: "Asphaltene content affects crude oil stability during transport and refining." },
+  { id: "cru48", question: "Which crude oil property is most important for transport?", choices: ["Viscosity", "Pour point", "API gravity", "All of the above"], correct: 3, explanation: "Viscosity, pour point, and API gravity all impact how crude oil can be pumped and transported." },
+  { id: "cru49", question: "Which crude fraction is mainly used for jet fuel?", choices: ["Naphtha", "Kerosene", "Diesel", "Vacuum residue"], correct: 1, explanation: "Kerosene fraction is primarily refined into jet fuel." },
+  { id: "cru50", question: "Which heavy crude processing method produces petroleum coke?", choices: ["Hydrocracking", "Coking", "Visbreaking", "Reforming"], correct: 1, explanation: "Coking is used to upgrade heavy residues and produces petroleum coke as a byproduct." }
+]
 },
   refined_products: { 
     title: "Refined Products (Gasoline, Diesel, Jet A1, Fuel Oil)", 
@@ -1304,561 +1032,561 @@ crude_types_specs: {
   trading_market: { 
     title: "Trading & Market Fundamentals", 
 
-  questions: [
+questions: [
+  {
+    id: "lex1",
+    question: "What does 'backwardation' mean in oil markets?",
+    choices: [
+      "Spot price is lower than future price",
+      "Future and spot price are equal",
+      "Spot price is higher than future price",
+      "Refining margin is negative"
+    ],
+    correct: 2,
+    explanation: "Backwardation means near-term prices are higher than longer-dated futures, usually due to tight prompt supply."
+  },
+  {
+    id: "lex2",
+    question: "What does 'contango' mean in crude trading?",
+    choices: [
+      "Spot prices are higher than future prices",
+      "It describes price volatility",
+      "It’s a refining margin term",
+      "Future prices are higher than spot prices"
+    ],
+    correct: 3,
+    explanation: "Contango occurs when futures prices are above spot, often reflecting storage costs and abundant supply."
+  },
+  {
+    id: "lex3",
+    question: "A 'hedge' in trading refers to:",
+    choices: [
+      "A shipping cost",
+      "A transaction to reduce risk exposure",
+      "Speculating for profit",
+      "A physical barrier in terminals"
+    ],
+    correct: 1,
+    explanation: "Hedging is entering positions to offset price risks (e.g., buying crude futures to lock supply costs)."
+  },
+  {
+    id: "lex4",
+    question: "What is a 'crack spread'?",
+    choices: [
+      "Spread between diesel and gasoline only",
+      "Difference between Brent and WTI",
+      "Shipping differential between two ports",
+      "Difference between crude and refined product prices"
+    ],
+    correct: 3,
+    explanation: "A crack spread measures refinery margin: crude input price vs. value of refined outputs."
+  },
+  {
+    id: "lex5",
+    question: "What is a 'calendar spread' in futures trading?",
+    choices: [
+      "Arbitrage between two refineries",
+      "Difference between Brent and Dubai",
+      "Price difference between contracts of different maturities",
+      "Difference in shipping costs between two routes"
+    ],
+    correct: 2,
+    explanation: "Calendar spreads compare futures prices of the same commodity with different delivery months."
+  },
+  {
+    id: "lex6",
+    question: "What is a 'forward contract'?",
+    choices: [
+      "Spot market deal",
+      "OTC agreement to buy/sell at future date and price",
+      "Physical freight charter",
+      "Standardized exchange-traded contract"
+    ],
+    correct: 1,
+    explanation: "Forwards are OTC bilateral contracts fixing future price and delivery, unlike standardized futures."
+  },
+  {
+    id: "lex7",
+    question: "What is a 'future contract'?",
+    choices: [
+      "A standardized, exchange-traded contract",
+      "A refinery maintenance plan",
+      "An OTC agreement",
+      "A pipeline tariff"
+    ],
+    correct: 0,
+    explanation: "Futures are standardized contracts traded on exchanges, with margining and liquidity."
+  },
+  {
+    id: "lex8",
+    question: "What is the 'prompt month' contract?",
+    choices: [
+      "An option premium",
+      "A physical crude delivery",
+      "The nearest active futures month",
+      "The farthest dated contract"
+    ],
+    correct: 2,
+    explanation: "The prompt month is the nearest active maturity, often the reference for benchmarks."
+  },
+  {
+    id: "lex9",
+    question: "What does 'rollover' mean in futures trading?",
+    choices: [
+      "A margin call",
+      "Switching from one maturity to the next",
+      "Transferring crude between ships",
+      "Physical rollover of barrels in tanks"
+    ],
+    correct: 1,
+    explanation: "Rolling futures means closing a near-month position and opening a longer-dated one."
+  },
+  {
+    id: "lex10",
+    question: "What is 'basis risk'?",
+    choices: [
+      "Storage cost risk",
+      "Currency exchange risk",
+      "Risk of ship delay",
+      "Risk that futures and physical prices do not move perfectly together"
+    ],
+    correct: 3,
+    explanation: "Basis risk occurs when hedge instruments don’t perfectly track the physical exposure."
+  },
+  {
+    id: "lex11",
+    question: "What is 'PRA pricing' in oil markets?",
+    choices: [
+      "Pipeline regulated access",
+      "Physical refinery allocation",
+      "Port risk assessment",
+      "Price assessed by Price Reporting Agencies"
+    ],
+    correct: 3,
+    explanation: "PRA (Platts, Argus, etc.) provides benchmark assessments widely used in physical contracts."
+  },
+  {
+    id: "lex12",
+    question: "What does 'flat price' mean?",
+    choices: [
+      "The outright market price of a commodity",
+      "Derivative spread",
+      "Adjusted netback value",
+      "Price difference between two grades"
+    ],
+    correct: 0,
+    explanation: "Flat price is the outright market price (e.g., Brent $85/bbl)."
+  },
+  {
+    id: "lex13",
+    question: "What is a 'spread trade'?",
+    choices: [
+      "Export license mechanism",
+      "Simultaneous buying and selling of related instruments",
+      "Transport of crude via pipeline",
+      "Storage hedging strategy"
+    ],
+    correct: 1,
+    explanation: "Spread trading involves opposite positions in correlated contracts (e.g., Brent-WTI)."
+  },
+  {
+    id: "lex14",
+    question: "What is a 'swap' in oil trading?",
+    choices: [
+      "Pipeline tariff adjustment",
+      "Physical cargo exchange",
+      "An option premium",
+      "Exchange of cash flows to manage risk"
+    ],
+    correct: 3,
+    explanation: "Swaps are OTC derivatives exchanging fixed vs. floating prices, often used for hedging."
+  },
+  {
+    id: "lex15",
+    question: "What is 'mark-to-market' in trading?",
+    choices: [
+      "Updating book value of contracts to current market price",
+      "Ship chartering contract",
+      "Pipeline throughput monitoring",
+      "Physical inventory valuation"
+    ],
+    correct: 0,
+    explanation: "Mark-to-market adjusts the value of open positions to reflect daily prices."
+  },
+  {
+    id: "lex16",
+    question: "What is an 'ICE Brent contract'?",
+    choices: [
+      "An exchange-traded futures contract for Brent",
+      "A swap agreement",
+      "A shipping derivative",
+      "A physical cargo deal"
+    ],
+    correct: 0,
+    explanation: "ICE Brent is the global benchmark crude futures contract."
+  },
+  {
+    id: "lex17",
+    question: "What is 'Dated Brent'?",
+    choices: [
+      "A refinery marker",
+      "An OTC swap",
+      "A physical crude benchmark for North Sea loading",
+      "A futures contract"
+    ],
+    correct: 2,
+    explanation: "Dated Brent is the physical crude benchmark assessed by PRAs, basis for global pricing."
+  },
+  {
+    id: "lex18",
+    question: "What does 'netback' mean in trading?",
+    choices: [
+      "Pipeline tariff",
+      "Delivered price at destination minus costs",
+      "Charter rate of a tanker",
+      "Storage margin"
+    ],
+    correct: 1,
+    explanation: "Netback = product sales revenue minus transport, duties, and costs, showing refinery economics."
+  },
+  {
+    id: "lex19",
+    question: "What is 'arbitrage' in oil markets?",
+    choices: [
+      "Blending of two fuels",
+      "Storage optimization",
+      "Buying and selling simultaneously to capture price differentials",
+      "Risk hedging"
+    ],
+    correct: 2,
+    explanation: "Arbitrage exploits regional or product price differences, e.g. US Gulf vs. Europe."
+  },
+  {
+    id: "lex20",
+    question: "What is a 'time charter equivalent' (TCE)?",
+    choices: [
+      "Pipeline fee",
+      "Storage rent",
+      "Derivative swap",
+      "Daily revenue measure for ships"
+    ],
+    correct: 3,
+    explanation: "TCE is a normalized measure of daily ship earnings after voyage costs."
+  },
+  {
+    id: "lex21",
+    question: "What is a 'clean product tanker'?",
+    choices: [
+      "Ship designed for refined products (diesel, gasoline, jet)",
+      "Ship carrying crude oil",
+      "Tanker used for chemicals",
+      "An LNG vessel"
+    ],
+    correct: 0,
+    explanation: "Clean tankers carry refined petroleum products like diesel and gasoline."
+  },
+  {
+    id: "lex22",
+    question: "What does 'dirty tanker' refer to?",
+    choices: [
+      "Carrying crude or heavy fuel oil",
+      "Tanker without cleaning",
+      "Ballasted ship",
+      "Old vessel"
+    ],
+    correct: 0,
+    explanation: "Dirty tankers transport crude or residual fuels, as opposed to clean products."
+  },
+  {
+    id: "lex23",
+    question: "What is a 'demurrage' cost?",
+    choices: [
+      "Penalty for delayed loading/discharge beyond laytime",
+      "Tanker fuel cost",
+      "Pipeline fee",
+      "Insurance premium"
+    ],
+    correct: 0,
+    explanation: "Demurrage is charged when a vessel is delayed at port beyond agreed time."
+  },
+  {
+    id: "lex24",
+    question: "What is 'laycan' in shipping?",
+    choices: [
+      "Pipeline capacity",
+      "Refinery shutdown plan",
+      "Laydays and cancelling date for vessel arrival",
+      "Trading option window"
+    ],
+    correct: 2,
+    explanation: "Laycan defines the period during which a ship must present for loading."
+  },
+  {
+    id: "lex25",
+    question: "What is a 'VLCC'?",
+    choices: [
+      "Pipeline code",
+      "Refinery unit",
+      "Very Large Crude Carrier tanker",
+      "Futures contract type"
+    ],
+    correct: 2,
+    explanation: "VLCCs are massive crude tankers, typically carrying 2 million barrels."
+  },
+  {
+    id: "lex26",
+    question: "What is 'HSFO' in trading?",
+    choices: [
+      "High Sulfur Fuel Oil",
+      "Heat Stable Fuel Output",
+      "Hydrotreated Straight Fuel Oil",
+      "Heavy Shipping Fuel Option"
+    ],
+    correct: 0,
+    explanation: "HSFO is high sulfur fuel oil, used mainly for shipping pre-IMO 2020."
+  },
+  {
+    id: "lex27",
+    question: "What is 'ULSD'?",
+    choices: [
+      "Underground Line Storage Diesel",
+      "Ultra-Low Sulfur Diesel",
+      "Unleaded Super Diesel",
+      "Utility Line Supply Diesel"
+    ],
+    correct: 1,
+    explanation: "ULSD is a diesel grade with <15 ppm sulfur, the standard in US and Europe."
+  },
+  {
+    id: "lex28",
+    question: "What is 'IMO 2020'?",
+    choices: [
+      "Trading benchmark",
+      "A new oil futures contract",
+      "Refining technology",
+      "Global sulfur cap regulation for shipping"
+    ],
+    correct: 3,
+    explanation: "IMO 2020 reduced marine fuel sulfur limit to 0.5%, reshaping bunker and fuel markets."
+  },
+  {
+    id: "lex29",
+    question: "What is 'physical arbitrage'?",
+    choices: [
+      "Option premium strategy",
+      "Storage optimization only",
+      "Moving physical barrels to capture price differentials",
+      "Derivative-only trading"
+    ],
+    correct: 2,
+    explanation: "Physical arbitrage exploits geographical spreads by shipping oil between regions."
+  },
+  {
+    id: "lex30",
+    question: "What is a 'straddle option'?",
+    choices: [
+      "Blending option",
+      "Options strategy buying call and put at same strike",
+      "Shipping contract",
+      "Pipeline swing contract"
+    ],
+    correct: 1,
+    explanation: "Straddles profit from volatility, buying both call and put on the same strike/expiry."
+  },
+  {
+    id: "lex31",
+    question: "What is an 'option premium'?",
+    choices: [
+      "Freight cost",
+      "Pipeline tariff",
+      "The upfront cost paid to buy an option",
+      "Storage fee"
+    ],
+    correct: 2,
+    explanation: "The premium is the price paid for the right (not obligation) to buy/sell at a strike price."
+  },
+  {
+    id: "lex32",
+    question: "What is a 'long position'?",
+    choices: [
+      "A delayed cargo",
+      "A wide crack spread",
+      "Betting on falling prices",
+      "Owning or being exposed to rising prices"
+    ],
+    correct: 3,
+    explanation: "Being long means benefiting if prices increase (buy low, sell high)."
+  },
+  {
+    id: "lex33",
+    question: "What is a 'short position'?",
+    choices: [
+      "A forward hedge",
+      "Pipeline bottleneck",
+      "Owning physical barrels",
+      "Betting on price decreases"
+    ],
+    correct: 3,
+    explanation: "Short positions profit when prices decline (sell high, buy back lower)."
+  },
+  {
+    id: "lex34",
+    question: "What is 'margin call' in trading?",
+    choices: [
+      "Demurrage penalty",
+      "Option expiration",
+      "Pipeline delivery slot",
+      "Request to post more collateral on losing positions"
+    ],
+    correct: 3,
+    explanation: "Margin calls are requests from exchanges to top up funds when positions lose value."
+  },
+  {
+    id: "lex35",
+    question: "What is an 'ICE gasoil contract'?",
+    choices: [
+      "Pipeline allocation",
+      "Physical diesel cargo",
+      "European benchmark futures for diesel",
+      "A swap agreement"
+    ],
+    correct: 2,
+    explanation: "ICE gasoil is the main futures benchmark for European diesel/gasoil."
+  },
+  {
+    id: "lex36",
+    question: "What does 'outright' mean in trading?",
+    choices: [
+      "Flat price position without spreads",
+      "Option premium",
+      "Physical swap",
+      "Blended barrel"
+    ],
+    correct: 0,
+    explanation: "An outright is a single flat price exposure, not a spread or hedge."
+  },
+  {
+    id: "lex37",
+    question: "What is a 'barrel equivalent' (boe)?",
+    choices: [
+      "A tanker capacity",
+      "Storage limit",
+      "Refining output",
+      "Energy equivalent measure for gas/oil"
+    ],
+    correct: 3,
+    explanation: "BOE converts other energy units (gas, LNG) into crude oil equivalents."
+  },
+  {
+    id: "lex38",
+    question: "What is 'EFP' (Exchange for Physical)?",
+    choices: [
+      "Mechanism to swap futures for a physical cargo",
+      "Freight premium",
+      "Pipeline entry fee",
+      "Energy finance protocol"
+    ],
+    correct: 0,
+    explanation: "EFP allows counterparties to convert futures into a physical position."
+  },
+  {
+    id: "lex39",
+    question: "What is 'floating price contract'?",
+    choices: [
+      "Spot-only deal",
+      "A fixed price forward",
+      "Price linked to a benchmark index (Platts, Brent)",
+      "Option derivative"
+    ],
+    correct: 2,
+    explanation: "Floating price contracts are indexed to benchmarks, adjusted with differentials."
+  },
+  {
+    id: "lex40",
+    question: "What does 'differential' mean in trading?",
+    choices: [
+      "Pipeline fee",
+      "Freight premium",
+      "Currency hedge",
+      "Adjustment vs. a benchmark to reflect quality or location"
+    ],
+    correct: 3,
+    explanation: "Differentials adjust contracts vs. a benchmark to reflect crude/product quality or geography."
+  },
+  {
+    id: "lex41",
+    question: "What is 'WTI Midland'?",
+    choices: [
+      "A futures contract",
+      "A refining process",
+      "A tanker route",
+      "A US crude grade from Permian Basin"
+    ],
+    correct: 3,
+    explanation: "WTI Midland is a key Permian crude stream, priced against WTI benchmarks."
+  },
+  {
+    id: "lex42",
+    question: "What does 'ICE Clear' provide?",
+    choices: [
+      "Shipping routes",
+      "Clearing and settlement for futures",
+      "Refinery scheduling",
+      "Pipeline operations"
+    ],
+    correct: 1,
+    explanation: "ICE Clear provides risk management, margining, and settlement for exchange trades."
+  },
+  {
+    id: "lex43",
+    question: "What is 'position limit'?",
+    choices: [
+      "Maximum size of a position regulated by exchange",
+      "Pipeline storage max",
+      "Refinery output cap",
+      "Cargo volume limit"
+    ],
+    correct: 0,
+    explanation: "Position limits are regulatory caps on open positions to prevent market manipulation."
+  },
+  {
+    id: "lex44",
+    question: "What is 'volatility' in trading?",
+    choices: [
+      "Storage capacity",
+      "Freight speed",
+      "Pipeline flow rate",
+      "Degree of price fluctuation over time"
+    ],
+    correct: 3,
+    explanation: "Volatility measures how much and how fast prices change, key for risk and options pricing."
+  },
+  {
+    id: "lex45",
+    question: "What is a 'swaption'?",
+    choices: [
+      "Swap between two crudes",
+      "Storage contract",
+      "An option granting the right to enter a swap",
+      "Shipping option"
+    ],
+    correct: 2,
+    explanation: "A swaption gives the right, not obligation, to enter into a swap at a future date."
+  },
+  {
+    id: "lex46",
+    question: "What is 'backwardation' used for in trading strategy?",
+    choices: [
+      "Locking in low future prices",
+      "Speculating on price declines",
+      "Taking advantage of higher spot prices for immediate sales",
+      "Avoiding storage costs"
+    ],
+    correct: 2,
+    explanation: "Traders can sell prompt crude at higher prices than futures in backwardation."
+  },
     {
-      id: 1,
-      question: "What does 'backwardation' mean in oil markets?",
-      choices: [
-        "Spot price is lower than future price",
-        "Future and spot price are equal",
-        "Spot price is higher than future price",
-        "Refining margin is negative"
-      ],
-      correct: 2,
-      explanation: "Backwardation means near-term prices are higher than longer-dated futures, usually due to tight prompt supply."
-    },
-    {
-      id: 2,
-      question: "What does 'contango' mean in crude trading?",
-      choices: [
-        "Spot prices are higher than future prices",
-        "It describes price volatility",
-        "It’s a refining margin term",
-        "Future prices are higher than spot prices"
-      ],
-      correct: 3,
-      explanation: "Contango occurs when futures prices are above spot, often reflecting storage costs and abundant supply."
-    },
-    {
-      id: 3,
-      question: "A 'hedge' in trading refers to:",
-      choices: [
-        "A shipping cost",
-        "A transaction to reduce risk exposure",
-        "Speculating for profit",
-        "A physical barrier in terminals"
-      ],
-      correct: 1,
-      explanation: "Hedging is entering positions to offset price risks (e.g., buying crude futures to lock supply costs)."
-    },
-    {
-      id: 4,
-      question: "What is a 'crack spread'?",
-      choices: [
-        "Spread between diesel and gasoline only",
-        "Difference between Brent and WTI",
-        "Shipping differential between two ports",
-        "Difference between crude and refined product prices"
-      ],
-      correct: 3,
-      explanation: "A crack spread measures refinery margin: crude input price vs. value of refined outputs."
-    },
-    {
-      id: 5,
-      question: "What is a 'calendar spread' in futures trading?",
-      choices: [
-        "Arbitrage between two refineries",
-        "Difference between Brent and Dubai",
-        "Price difference between contracts of different maturities",
-        "Difference in shipping costs between two routes"
-      ],
-      correct: 2,
-      explanation: "Calendar spreads compare futures prices of the same commodity with different delivery months."
-    },
-    {
-      id: 6,
-      question: "What is a 'forward contract'?",
-      choices: [
-        "Spot market deal",
-        "OTC agreement to buy/sell at future date and price",
-        "Physical freight charter",
-        "Standardized exchange-traded contract"
-      ],
-      correct: 1,
-      explanation: "Forwards are OTC bilateral contracts fixing future price and delivery, unlike standardized futures."
-    },
-    {
-      id: 7,
-      question: "What is a 'future contract'?",
-      choices: [
-        "A standardized, exchange-traded contract",
-        "A refinery maintenance plan",
-        "An OTC agreement",
-        "A pipeline tariff"
-      ],
-      correct: 0,
-      explanation: "Futures are standardized contracts traded on exchanges, with margining and liquidity."
-    },
-    {
-      id: 8,
-      question: "What is the 'prompt month' contract?",
-      choices: [
-        "An option premium",
-        "A physical crude delivery",
-        "The nearest active futures month",
-        "The farthest dated contract"
-      ],
-      correct: 2,
-      explanation: "The prompt month is the nearest active maturity, often the reference for benchmarks."
-    },
-    {
-      id: 9,
-      question: "What does 'rollover' mean in futures trading?",
-      choices: [
-        "A margin call",
-        "Switching from one maturity to the next",
-        "Transferring crude between ships",
-        "Physical rollover of barrels in tanks"
-      ],
-      correct: 1,
-      explanation: "Rolling futures means closing a near-month position and opening a longer-dated one."
-    },
-    {
-      id: 10,
-      question: "What is 'basis risk'?",
-      choices: [
-        "Storage cost risk",
-        "Currency exchange risk",
-        "Risk of ship delay",
-        "Risk that futures and physical prices do not move perfectly together"
-      ],
-      correct: 3,
-      explanation: "Basis risk occurs when hedge instruments don’t perfectly track the physical exposure."
-    },
-    {
-      id: 11,
-      question: "What is 'PRA pricing' in oil markets?",
-      choices: [
-        "Pipeline regulated access",
-        "Physical refinery allocation",
-        "Port risk assessment",
-        "Price assessed by Price Reporting Agencies"
-      ],
-      correct: 3,
-      explanation: "PRA (Platts, Argus, etc.) provides benchmark assessments widely used in physical contracts."
-    },
-    {
-      id: 12,
-      question: "What does 'flat price' mean?",
-      choices: [
-        "The outright market price of a commodity",
-        "Derivative spread",
-        "Adjusted netback value",
-        "Price difference between two grades"
-      ],
-      correct: 0,
-      explanation: "Flat price is the outright market price (e.g., Brent $85/bbl)."
-    },
-    {
-      id: 13,
-      question: "What is a 'spread trade'?",
-      choices: [
-        "Export license mechanism",
-        "Simultaneous buying and selling of related instruments",
-        "Transport of crude via pipeline",
-        "Storage hedging strategy"
-      ],
-      correct: 1,
-      explanation: "Spread trading involves opposite positions in correlated contracts (e.g., Brent-WTI)."
-    },
-    {
-      id: 14,
-      question: "What is a 'swap' in oil trading?",
-      choices: [
-        "Pipeline tariff adjustment",
-        "Physical cargo exchange",
-        "An option premium",
-        "Exchange of cash flows to manage risk"
-      ],
-      correct: 3,
-      explanation: "Swaps are OTC derivatives exchanging fixed vs. floating prices, often used for hedging."
-    },
-    {
-      id: 15,
-      question: "What is 'mark-to-market' in trading?",
-      choices: [
-        "Updating book value of contracts to current market price",
-        "Ship chartering contract",
-        "Pipeline throughput monitoring",
-        "Physical inventory valuation"
-      ],
-      correct: 0,
-      explanation: "Mark-to-market adjusts the value of open positions to reflect daily prices."
-    },
-    {
-      id: 16,
-      question: "What is an 'ICE Brent contract'?",
-      choices: [
-        "An exchange-traded futures contract for Brent",
-        "A swap agreement",
-        "A shipping derivative",
-        "A physical cargo deal"
-      ],
-      correct: 0,
-      explanation: "ICE Brent is the global benchmark crude futures contract."
-    },
-    {
-      id: 17,
-      question: "What is 'Dated Brent'?",
-      choices: [
-        "A refinery marker",
-        "An OTC swap",
-        "A physical crude benchmark for North Sea loading",
-        "A futures contract"
-      ],
-      correct: 2,
-      explanation: "Dated Brent is the physical crude benchmark assessed by PRAs, basis for global pricing."
-    },
-    {
-      id: 18,
-      question: "What does 'netback' mean in trading?",
-      choices: [
-        "Pipeline tariff",
-        "Delivered price at destination minus costs",
-        "Charter rate of a tanker",
-        "Storage margin"
-      ],
-      correct: 1,
-      explanation: "Netback = product sales revenue minus transport, duties, and costs, showing refinery economics."
-    },
-    {
-      id: 19,
-      question: "What is 'arbitrage' in oil markets?",
-      choices: [
-        "Blending of two fuels",
-        "Storage optimization",
-        "Buying and selling simultaneously to capture price differentials",
-        "Risk hedging"
-      ],
-      correct: 2,
-      explanation: "Arbitrage exploits regional or product price differences, e.g. US Gulf vs. Europe."
-    },
-    {
-      id: 20,
-      question: "What is a 'time charter equivalent' (TCE)?",
-      choices: [
-        "Pipeline fee",
-        "Storage rent",
-        "Derivative swap",
-        "Daily revenue measure for ships"
-      ],
-      correct: 3,
-      explanation: "TCE is a normalized measure of daily ship earnings after voyage costs."
-    },
-    {
-      id: 21,
-      question: "What is a 'clean product tanker'?",
-      choices: [
-        "Ship designed for refined products (diesel, gasoline, jet)",
-        "Ship carrying crude oil",
-        "Tanker used for chemicals",
-        "An LNG vessel"
-      ],
-      correct: 0,
-      explanation: "Clean tankers carry refined petroleum products like diesel and gasoline."
-    },
-    {
-      id: 22,
-      question: "What does 'dirty tanker' refer to?",
-      choices: [
-        "Carrying crude or heavy fuel oil",
-        "Tanker without cleaning",
-        "Ballasted ship",
-        "Old vessel"
-      ],
-      correct: 0,
-      explanation: "Dirty tankers transport crude or residual fuels, as opposed to clean products."
-    },
-    {
-      id: 23,
-      question: "What is a 'demurrage' cost?",
-      choices: [
-        "Penalty for delayed loading/discharge beyond laytime",
-        "Tanker fuel cost",
-        "Pipeline fee",
-        "Insurance premium"
-      ],
-      correct: 0,
-      explanation: "Demurrage is charged when a vessel is delayed at port beyond agreed time."
-    },
-    {
-      id: 24,
-      question: "What is 'laycan' in shipping?",
-      choices: [
-        "Pipeline capacity",
-        "Refinery shutdown plan",
-        "Laydays and cancelling date for vessel arrival",
-        "Trading option window"
-      ],
-      correct: 2,
-      explanation: "Laycan defines the period during which a ship must present for loading."
-    },
-    {
-      id: 25,
-      question: "What is a 'VLCC'?",
-      choices: [
-        "Pipeline code",
-        "Refinery unit",
-        "Very Large Crude Carrier tanker",
-        "Futures contract type"
-      ],
-      correct: 2,
-      explanation: "VLCCs are massive crude tankers, typically carrying 2 million barrels."
-    },
-	 {
-      id: 26,
-      question: "What is 'HSFO' in trading?",
-      choices: [
-        "High Sulfur Fuel Oil",
-        "Heat Stable Fuel Output",
-        "Hydrotreated Straight Fuel Oil",
-        "Heavy Shipping Fuel Option"
-      ],
-      correct: 0,
-      explanation: "HSFO is high sulfur fuel oil, used mainly for shipping pre-IMO 2020."
-    },
-    {
-      id: 27,
-      question: "What is 'ULSD'?",
-      choices: [
-        "Underground Line Storage Diesel",
-        "Ultra-Low Sulfur Diesel",
-        "Unleaded Super Diesel",
-        "Utility Line Supply Diesel"
-      ],
-      correct: 1,
-      explanation: "ULSD is a diesel grade with <15 ppm sulfur, the standard in US and Europe."
-    },
-    {
-      id: 28,
-      question: "What is 'IMO 2020'?",
-      choices: [
-        "Trading benchmark",
-        "A new oil futures contract",
-        "Refining technology",
-        "Global sulfur cap regulation for shipping"
-      ],
-      correct: 3,
-      explanation: "IMO 2020 reduced marine fuel sulfur limit to 0.5%, reshaping bunker and fuel markets."
-    },
-    {
-      id: 29,
-      question: "What is 'physical arbitrage'?",
-      choices: [
-        "Option premium strategy",
-        "Storage optimization only",
-        "Moving physical barrels to capture price differentials",
-        "Derivative-only trading"
-      ],
-      correct: 2,
-      explanation: "Physical arbitrage exploits geographical spreads by shipping oil between regions."
-    },
-    {
-      id: 30,
-      question: "What is a 'straddle option'?",
-      choices: [
-        "Blending option",
-        "Options strategy buying call and put at same strike",
-        "Shipping contract",
-        "Pipeline swing contract"
-      ],
-      correct: 1,
-      explanation: "Straddles profit from volatility, buying both call and put on the same strike/expiry."
-    },
-    {
-      id: 31,
-      question: "What is an 'option premium'?",
-      choices: [
-        "Freight cost",
-        "Pipeline tariff",
-        "The upfront cost paid to buy an option",
-        "Storage fee"
-      ],
-      correct: 2,
-      explanation: "The premium is the price paid for the right (not obligation) to buy/sell at a strike price."
-    },
-    {
-      id: 32,
-      question: "What is a 'long position'?",
-      choices: [
-        "A delayed cargo",
-        "A wide crack spread",
-        "Betting on falling prices",
-        "Owning or being exposed to rising prices"
-      ],
-      correct: 3,
-      explanation: "Being long means benefiting if prices increase (buy low, sell high)."
-    },
-    {
-      id: 33,
-      question: "What is a 'short position'?",
-      choices: [
-        "A forward hedge",
-        "Pipeline bottleneck",
-        "Owning physical barrels",
-        "Betting on price decreases"
-      ],
-      correct: 3,
-      explanation: "Short positions profit when prices decline (sell high, buy back lower)."
-    },
-    {
-      id: 34,
-      question: "What is 'margin call' in trading?",
-      choices: [
-        "Demurrage penalty",
-        "Option expiration",
-        "Pipeline delivery slot",
-        "Request to post more collateral on losing positions"
-      ],
-      correct: 3,
-      explanation: "Margin calls are requests from exchanges to top up funds when positions lose value."
-    },
-    {
-      id: 35,
-      question: "What is an 'ICE gasoil contract'?",
-      choices: [
-        "Pipeline allocation",
-        "Physical diesel cargo",
-        "European benchmark futures for diesel",
-        "A swap agreement"
-      ],
-      correct: 2,
-      explanation: "ICE gasoil is the main futures benchmark for European diesel/gasoil."
-    },
-    {
-      id: 36,
-      question: "What does 'outright' mean in trading?",
-      choices: [
-        "Flat price position without spreads",
-        "Option premium",
-        "Physical swap",
-        "Blended barrel"
-      ],
-      correct: 0,
-      explanation: "An outright is a single flat price exposure, not a spread or hedge."
-    },
-    {
-      id: 37,
-      question: "What is a 'barrel equivalent' (boe)?",
-      choices: [
-        "A tanker capacity",
-        "Storage limit",
-        "Refining output",
-        "Energy equivalent measure for gas/oil"
-      ],
-      correct: 3,
-      explanation: "BOE converts other energy units (gas, LNG) into crude oil equivalents."
-    },
-    {
-      id: 38,
-      question: "What is 'EFP' (Exchange for Physical)?",
-      choices: [
-        "Mechanism to swap futures for a physical cargo",
-        "Freight premium",
-        "Pipeline entry fee",
-        "Energy finance protocol"
-      ],
-      correct: 0,
-      explanation: "EFP allows counterparties to convert futures into a physical position."
-    },
-    {
-      id: 39,
-      question: "What is 'floating price contract'?",
-      choices: [
-        "Spot-only deal",
-        "A fixed price forward",
-        "Price linked to a benchmark index (Platts, Brent)",
-        "Option derivative"
-      ],
-      correct: 2,
-      explanation: "Floating price contracts are indexed to benchmarks, adjusted with differentials."
-    },
-    {
-      id: 40,
-      question: "What does 'differential' mean in trading?",
-      choices: [
-        "Pipeline fee",
-        "Freight premium",
-        "Currency hedge",
-        "Adjustment vs. a benchmark to reflect quality or location"
-      ],
-      correct: 3,
-      explanation: "Differentials adjust contracts vs. a benchmark to reflect crude/product quality or geography."
-    },
-    {
-      id: 41,
-      question: "What is 'WTI Midland'?",
-      choices: [
-        "A futures contract",
-        "A refining process",
-        "A tanker route",
-        "A US crude grade from Permian Basin"
-      ],
-      correct: 3,
-      explanation: "WTI Midland is a key Permian crude stream, priced against WTI benchmarks."
-    },
-    {
-      id: 42,
-      question: "What does 'ICE Clear' provide?",
-      choices: [
-        "Shipping routes",
-        "Clearing and settlement for futures",
-        "Refinery scheduling",
-        "Pipeline operations"
-      ],
-      correct: 1,
-      explanation: "ICE Clear provides risk management, margining, and settlement for exchange trades."
-    },
-    {
-      id: 43,
-      question: "What is 'position limit'?",
-      choices: [
-        "Maximum size of a position regulated by exchange",
-        "Pipeline storage max",
-        "Refinery output cap",
-        "Cargo volume limit"
-      ],
-      correct: 0,
-      explanation: "Position limits are regulatory caps on open positions to prevent market manipulation."
-    },
-    {
-      id: 44,
-      question: "What is 'volatility' in trading?",
-      choices: [
-        "Storage capacity",
-        "Freight speed",
-        "Pipeline flow rate",
-        "Degree of price fluctuation over time"
-      ],
-      correct: 3,
-      explanation: "Volatility measures how much and how fast prices change, key for risk and options pricing."
-    },
-    {
-      id: 45,
-      question: "What is a 'swaption'?",
-      choices: [
-        "Swap between two crudes",
-        "Storage contract",
-        "An option granting the right to enter a swap",
-        "Shipping option"
-      ],
-      correct: 2,
-      explanation: "A swaption gives the right, not obligation, to enter into a swap at a future date."
-    },
-    {
-      id: 46,
-      question: "What is 'backwardation' used for in trading strategy?",
-      choices: [
-        "Locking in low future prices",
-        "Speculating on price declines",
-        "Taking advantage of higher spot prices for immediate sales",
-        "Avoiding storage costs"
-      ],
-      correct: 2,
-      explanation: "Traders can sell prompt crude at higher prices than futures in backwardation."
-    },
-    {
-      id: 47,
+      id: "lex47",
       question: "What is 'contango' used for in trading strategy?",
       choices: [
         "Immediate sale advantage",
@@ -1870,7 +1598,7 @@ crude_types_specs: {
       explanation: "Contango enables storage-based strategies, buying spot and selling futures."
     },
     {
-      id: 48,
+      id: "lex48",
       question: "What is a 'calendar spread' used for?",
       choices: [
         "Arbitrage between ports",
@@ -1882,7 +1610,7 @@ crude_types_specs: {
       explanation: "Calendar spreads exploit price differences between futures of different maturities."
     },
     {
-      id: 49,
+      id: "lex49",
       question: "What is 'TCE' mainly used for?",
       choices: [
         "Option pricing",
@@ -1894,7 +1622,7 @@ crude_types_specs: {
       explanation: "TCE normalizes vessel earnings across voyages for operational and financial comparison."
     },
     {
-      id: 50,
+      id: "lex50",
       question: "What is 'netback' used for in trading?",
       choices: [
         "Calculating refinery profitability",
@@ -4608,7 +4336,7 @@ async function login() {
         return;
     }
 
- // === Vérification via Flow Login ===
+    // === Vérification via Flow Login ===
     try {
         const res = await fetch(flowUrl, {
             method: "POST",
@@ -4624,8 +4352,14 @@ async function login() {
             localStorage.setItem("quizUser", currentUser);
             document.getElementById("login-container").style.display = "none";
             document.getElementById("theme-selection").style.display = "block";
+
             renderThemesGrid();
             loadProgressOverview();
+
+            document.getElementById("challenge-section").style.display = "block";
+            document.getElementById("my-challenges").style.display = "block";
+            await loadMyChallenges(email); // <-- passer l'email ici ✅
+
         } else {
             // ⚡ Si login échoue, vérifier si on a un user temporaire stocké
             const tempUser = JSON.parse(localStorage.getItem("tempUser") || "null");
@@ -4636,6 +4370,10 @@ async function login() {
                 document.getElementById("theme-selection").style.display = "block";
                 renderThemesGrid();
                 loadProgressOverview();
+
+                document.getElementById("challenge-section").style.display = "block";
+                document.getElementById("my-challenges").style.display = "block";
+                await loadMyChallenges(email); // <-- passer l'email ici aussi ✅
             } else {
                 alert("❌ Email ou ID incorrect. If first connexion, please subscribe.");
             }
@@ -4659,7 +4397,9 @@ async function login() {
   document.getElementById("theme-selection").style.display = "none";
   document.getElementById("quiz-container").style.display = "none";
   document.getElementById("admin-panel").style.display = "none";
+  document.getElementById("challenge-section").style.display = "none";
   document.getElementById("login-container").style.display = "block";
+  document.getElementById("my-challenges").style.display = "none";
 }
 
   window.addEventListener("DOMContentLoaded", () => {
@@ -4671,6 +4411,11 @@ async function login() {
       document.getElementById("theme-selection").style.display = "block";
       renderThemesGrid();
       loadProgressOverview();
+	  
+	  document.getElementById("challenge-section").style.display = "block"; // <-- ici
+	  document.getElementById("my-challenges").style.display = "block";
+	  loadMyChallenges(); // <--- AJOUT IMPORTANT ICI ✅
+	  
     }
   });
 
@@ -4685,16 +4430,26 @@ async function login() {
       localStorage.setItem("progress_" + currentUser, JSON.stringify(data));
     } catch(e) {}
   }
-  function markQuestionAsSolved(theme, qid) {
-    if (!qid) return;
+ function markQuestionAsSolved(theme, qid) {
+    if (!qid || !currentTheme) return;
+
     const data = getUserProgress();
     if (!data[theme]) data[theme] = { solved: [] };
     if (!Array.isArray(data[theme].solved)) data[theme].solved = [];
+
+    // ✅ Ajouter uniquement si la question n’est pas déjà présente
     if (!data[theme].solved.includes(qid)) {
-      data[theme].solved.push(qid);
-      setUserProgress(data);
+        data[theme].solved.push(qid);
+
+        // ✅ S'assurer de ne pas dépasser le total de questions du thème
+        const total = quizData[theme]?.questions.length || 0;
+        if (data[theme].solved.length > total) {
+            data[theme].solved = data[theme].solved.slice(0, total);
+        }
+
+        setUserProgress(data);
     }
-  }
+}
   function getSolvedCount(theme) {
     const data = getUserProgress();
     return data[theme]?.solved?.length || 0;
@@ -4856,71 +4611,177 @@ document.getElementById("forgotID").onclick = () => {
 
 
 
-  /* ========= Quiz engine ========= */
- 
-     function startQuiz(theme) {
-      if (!currentUser) { alert("Please login first."); return; }
-      if (!quizData[theme]) { alert("Theme not found."); return; }
+// 🔹 Variable globale pour savoir si on est en mode défi
+let isChallengeSession = false;
 
-      const bank = quizData[theme].questions.slice();
-      if (bank.length === 0) {
-        // show empty message inside quiz container
+// =======================
+// START QUIZ
+// =======================
+
+function smartShuffle(theme) {
+    if (!quizData[theme]?.questions) return [];
+
+    const allQuestions = [...quizData[theme].questions];
+    const solvedIds = getUserProgress()[theme]?.solved || [];
+
+    // Séparer questions résolues et non résolues
+    const unsolved = allQuestions.filter(q => !solvedIds.includes(q.id));
+    const solved = allQuestions.filter(q => solvedIds.includes(q.id));
+
+    // Mélanger chacune des deux listes
+    const shuffledUnsolved = shuffle(unsolved);
+    const shuffledSolved = shuffle(solved);
+
+    // Priorité aux non-résolues
+    const combined = [...shuffledUnsolved, ...shuffledSolved];
+
+    // On limite à 10 questions max
+    return combined.slice(0, Math.min(10, combined.length));
+}
+
+function startQuiz(input, challengeMode = false, theme = null, challenge = null) {
+    isChallengeSession = challengeMode; // ✅ active/désactive mode défi
+
+    let questions;
+    if (challengeMode) {
+        // input = tableau de questions pour le défi
+        questions = input;
+        currentTheme = theme;
+    } else {
+        // quiz normal par thème
+        currentTheme = input;
+        questions = quizData[input]?.questions.slice();
+    }
+
+    if (!questions || questions.length === 0) {
         document.getElementById("theme-selection").style.display = "none";
         document.getElementById("quiz-container").style.display = "block";
-        document.getElementById("theme-title").textContent = "Theme: " + quizData[theme].title;
-        document.getElementById("scoreLine").textContent = "";
-        document.getElementById("question").textContent = "⚠️ No questions configured for this theme yet.";
+        document.getElementById("theme-title").textContent = "Theme: " + (challengeMode ? theme : quizData[input].title);
+        document.getElementById("question").textContent = "⚠️ No questions available for this theme.";
         document.getElementById("choices").innerHTML = "";
         document.getElementById("result").textContent = "";
         document.getElementById("explanation").textContent = "";
         document.getElementById("prevBtn").style.display = "none";
         document.getElementById("nextBtn").style.display = "none";
         document.getElementById("backBtn").style.display = "inline-block";
-        const fill = document.getElementById("progressFill");
-        if (fill) { fill.style.width = "0%"; fill.textContent = "0%"; }
+        if (!challengeMode) document.getElementById("challenge-section").style.display = "block";
         return;
-      }
-
-      currentTheme = theme;
-      questionIndex = 0;
-      score = 0;
-      answersHistory = {};
-
-      shuffle(bank);
-      selectedSet = bank.slice(0, Math.min(10, bank.length));
-
-      document.getElementById("theme-selection").style.display = "none";
-      document.getElementById("quiz-container").style.display = "block";
-      document.getElementById("theme-title").textContent = "Theme: " + quizData[theme].title;
-
-      updateScoreLine();
-      updateTopProgressBar();
-      showQuestion();
     }
 
+  // Initialisation session
+selectedSet = smartShuffle(currentTheme);
+questionIndex = 0;
+score = 0;
+answersHistory = {};
+
+    // Affichage UI
+    document.getElementById("theme-selection").style.display = "none";
+    document.getElementById("quiz-container").style.display = "block";
+    if (challengeMode) document.getElementById("challenge-section").style.display = "none";
+    document.getElementById("theme-title").textContent = "Theme: " + (challengeMode ? theme : quizData[input].title);
+
+    updateScoreLine();
+    updateTopProgressBar();
+    showQuestion();
+
+    // Gestion défi : préparation envoi score à la fin
+    if (challengeMode && challenge) {
+window.onChallengeFinished = async function(finalScore) {
+    if (currentUser === challenge.opponent) {
+        challenge.opponentScore = finalScore;
+    } else if (currentUser === challenge.challenger) {
+        challenge.challengerScore = finalScore;
+    }
+
+    console.log("Envoi score défi au Flow :", challenge);
+
+    // 1️⃣ Envoi du score au Flow principal (inchangé)
+    try {
+        const payload = {
+            ID: challenge.ID,
+            challengerScore: challenge.challengerScore ?? null,
+            opponentScore: challenge.opponentScore ?? null,
+            status: challenge.status || "accepted"
+        };
+
+        console.log("📤 Envoi score au Flow :", payload);
+
+        const res = await fetch(updateChallengeFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+        console.log("✅ Score envoyé au Flow !");
+    } catch (err) {
+        console.error("❌ Erreur lors de l’envoi du score :", err);
+    }
+
+    // 2️⃣ Met à jour la colonne Done correspondante (NOUVEAUTÉ)
+    try {
+      const isChallenger = (currentUser === challenge.challenger);
+const donePayload = {
+    ID: challenge.ID,
+    currentUser: currentUser,
+    role: isChallenger ? "challenger" : "opponent"
+};
+
+        console.log("⚙️ Envoi du Done au Flow :", donePayload);
+
+        const doneRes = await fetch(updateChallengeDoneFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(donePayload)
+        });
+
+        if (!doneRes.ok) throw new Error(`Erreur HTTP ${doneRes.status}`);
+        console.log("✅ Colonne Done mise à jour dans Excel !");
+    } catch (err) {
+        console.error("❌ Erreur lors de la mise à jour du Done :", err);
+    }
+
+    // 3️⃣ Si les deux ont joué → checkWinner
+    if (challenge.challengerScore != null && challenge.opponentScore != null) {
+        checkWinner(challenge);
+    }
+
+    // 4️⃣ Nettoyage pour éviter doublons
+    window.onChallengeFinished = null;
+};
+    }
+}
+
+
   function updateScoreLine() {
-    const totalQ = selectedSet.length || 0;
-    document.getElementById("scoreLine").textContent =
-      `Question ${questionIndex + 1} / ${totalQ} • Score: ${score}`;
-  }
+  const totalQ = selectedSet.length || 1; // éviter division par 0
+  const displayScore = Math.min(score, totalQ); // jamais supérieur au total
+  document.getElementById("scoreLine").textContent =
+      `Question ${questionIndex + 1} / ${totalQ} • Score: ${displayScore}`;
+}
 
-  // barre du haut = progression cumulée (questions uniques résolues) du thème
-  function updateTopProgressBar() {
-  if (!currentTheme) return;
-  const total = quizData[currentTheme].questions.length;
-  const solved = getSolvedCount(currentTheme);
-  const percent = total ? Math.round((solved / total) * 100) : 0;
-  const fill = document.getElementById("progressFill");
-  if (fill) {
-    fill.style.width = percent + "%";
-    fill.textContent = percent + "%";
-  }
+// =======================
+// UPDATE TOP PROGRESS BAR
+// =======================
+function updateTopProgressBar() {
+    if (!currentTheme || isChallengeSession) return; // ignore si mode défi
 
-  // ✅ Si 100% atteint → refresh de la grille pour débloquer le suivant
-  if (percent === 100) {
-    renderThemesGrid();
-    loadProgressOverview();
-  }
+    const total = quizData[currentTheme].questions.length || 1; // éviter div/0
+    let solved = getSolvedCount(currentTheme);
+
+    if (solved > total) solved = total;
+
+    const percent = Math.round((solved / total) * 100);
+    const fill = document.getElementById("progressFill");
+    if (fill) {
+        fill.style.width = percent + "%";
+        fill.textContent = percent + "%";
+    }
+
+    if (percent === 100) {
+        renderThemesGrid();
+        loadProgressOverview();
+    }
 }
 
  function showQuestion() {
@@ -4942,7 +4803,7 @@ document.getElementById("forgotID").onclick = () => {
   document.getElementById("explanation").textContent = "";
   document.getElementById("nextBtn").style.display = "none";
   document.getElementById("prevBtn").style.display = questionIndex > 0 ? "inline-block" : "none";
-  document.getElementById("backBtn").style.display = "inline-block";
+  document.getElementById("backBtn").style.display = "none";
 
   const multiple = Array.isArray(q.correct);
   q.choices.forEach((choice, idx) => {
@@ -5168,45 +5029,61 @@ function sendAnswerToFlow(q, selected, isCorrect) {
     if (nb) nb.style.display = "inline-block";
   }
 
-  function commitSessionSolved() {
-    // Marque comme “solved” uniquement les questions répondues justes une fois le quiz terminé
-    try {
-      const idsToCommit = [];
-      Object.keys(answersHistory).forEach(k => {
+// =======================
+// COMMIT SESSION SOLVED
+// =======================
+function commitSessionSolved() {
+    if (!currentTheme || isChallengeSession) return; // ignore les défis
+
+    const data = getUserProgress();
+    if (!data[currentTheme]) data[currentTheme] = { solved: [] };
+
+    const total = quizData[currentTheme]?.questions.length || 0;
+    Object.keys(answersHistory).forEach(k => {
         const rec = answersHistory[k];
-        if (rec?.isCorrect && rec?.id) idsToCommit.push(rec.id);
-      });
-      // dédoublonne
-      const unique = Array.from(new Set(idsToCommit));
-      unique.forEach(qid => markQuestionAsSolved(currentTheme, qid));
-    } catch(e) {
-      // ne bloque pas l’UI
-    }
-  }
+        if (rec?.isCorrect && rec?.id && !data[currentTheme].solved.includes(rec.id)) {
+            data[currentTheme].solved.push(rec.id);
+        }
+    });
 
-  function nextQuestion() {
+    if (data[currentTheme].solved.length > total) {
+        data[currentTheme].solved = data[currentTheme].solved.slice(0, total);
+    }
+
+    setUserProgress(data);
+}
+
+
+ // =======================
+// NEXT QUESTION
+// =======================
+function nextQuestion() {
     if (questionIndex < selectedSet.length - 1) {
-      questionIndex++;
-      showQuestion();
+        questionIndex++;
+        showQuestion();
     } else {
-      // Fin de session
-      commitSessionSolved();          // <-- cumulatif unique appliqué ici
-      updateTopProgressBar();         // met à jour la barre du haut
-      renderThemesGrid();             // met à jour la grid d’accueil
-      loadProgressOverview();         // met à jour les cartes
+        // Fin de session
+        commitSessionSolved();          // marquer les bonnes réponses (ignore si défi)
+        updateTopProgressBar();         // mise à jour barre de progression (ignore si défi)
+        renderThemesGrid();             // mise à jour grille accueil
+        loadProgressOverview();         // mise à jour cartes progress
 
-      document.getElementById("question").textContent = "🎉 Quiz completed!";
-      document.getElementById("choices").innerHTML = "";
-      document.getElementById("result").textContent = `Final Score: ${score}/${selectedSet.length}`;
-      document.getElementById("explanation").textContent = "";
-      document.getElementById("nextBtn").style.display = "none";
-      document.getElementById("prevBtn").style.display = "inline-block";
-      document.getElementById("backBtn").style.display = "inline-block";
+        document.getElementById("question").textContent = "🎉 Quiz completed!";
+        document.getElementById("choices").innerHTML = "";
+        document.getElementById("result").textContent = `Final Score: ${score}/${selectedSet.length}`;
+        document.getElementById("explanation").textContent = "";
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("prevBtn").style.display = "inline-block";
+        document.getElementById("backBtn").style.display = "inline-block";
 
-      // retour menu auto (facultatif)
-      setTimeout(() => { goBack(); }, 1000);
+        // ✅ Si c’est un défi, envoyer le score au Flow
+        finishChallengeIfNeeded();
+
+        // retour menu automatique après 1s
+        setTimeout(() => { goBack(); }, 1000);
     }
-  }
+}
+
 
   function prevQuestion() {
     if (questionIndex > 0) {
@@ -5220,6 +5097,8 @@ function sendAnswerToFlow(q, selected, isCorrect) {
     document.getElementById("theme-selection").style.display = "block";
     renderThemesGrid();
     loadProgressOverview();
+
+document.getElementById("challenge-section").style.display = "block";
 
     // stop timer et reset affichage
     stopTimer();
@@ -5253,6 +5132,581 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("✅ Service Worker registered"))
     .catch(err => console.error("❌ Service Worker error", err));
 }
+
+// ⚡ Remplir la liste déroulante des emails depuis Flow
+async function loadAllEmails() {
+  if (!getAllUsersFlowUrl) {
+    console.error("getAllUsersFlowUrl n'est pas défini.");
+    return;
+  }
+
+  try {
+    const res = await fetch(getAllUsersFlowUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (!res.ok) throw new Error("Erreur HTTP " + res.status);
+
+    const raw = await res.json();
+    console.log("📥 Réponse Flow getAllUsers (parsed) :", raw);
+
+    const dataArray = Array.isArray(raw.body) ? raw.body : raw;
+    const list = dataArray.map(item => item.email).filter(Boolean);
+
+    const emailSelect = document.getElementById("opponentEmail");
+    if (!emailSelect) {
+      console.warn("Element #opponentEmail introuvable dans le DOM.");
+      return;
+    }
+
+    emailSelect.innerHTML = "";
+
+    // placeholder
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Choisir un joueur...";
+    emailSelect.appendChild(placeholder);
+
+    // remplir la liste
+    list.forEach(email => {
+      if (email.toLowerCase() === (currentUser || "").toLowerCase()) return;
+      const option = document.createElement("option");
+      option.value = email;
+      option.textContent = email;
+      emailSelect.appendChild(option);
+    });
+
+    console.log(`✅ ${emailSelect.options.length - 1} emails chargés dans la liste.`);
+  } catch (err) {
+    console.error("❌ Impossible de charger la liste des emails :", err);
+  }
+}
+
+
+// ⚡ Remplir la liste déroulante des thèmes
+function loadAllThemes() {
+    const themeSelect = document.getElementById("challengeTheme");
+    themeSelect.innerHTML = ""; // reset
+
+    Object.keys(quizData).forEach(t => {
+        const option = document.createElement("option");
+        option.value = t;
+        option.textContent = quizData[t].title || t;
+        themeSelect.appendChild(option);
+    });
+}
+
+// Added for challenge
+// === Challenge ===
+
+// Affiche/cacher le formulaire de défi
+document.getElementById("showChallengeBtn").onclick = () => {
+    const form = document.getElementById("challenge-form");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+
+    // 🔹 Charger dynamiquement les emails et thèmes
+    loadAllEmails();
+    loadAllThemes();
+};
+
+// Envoyer un défi
+document.getElementById("sendChallengeBtn").onclick = async () => {
+    const opponent = document.getElementById("opponentEmail").value.trim().toLowerCase();
+    const theme = document.getElementById("challengeTheme").value;
+
+    if (!opponent || !theme) {
+        alert("❌ Veuillez remplir l'email et sélectionner un thème !");
+        return;
+    }
+
+    // Récupérer toutes les questions du thème s'il y en a
+    const allQuestions = quizData[theme]?.questions || [];
+
+    // Même si aucune question, on crée un tableau vide pour le challenge
+    const picked = allQuestions.length > 0
+        ? shuffle([...allQuestions])
+            .slice(0, Math.min(10, allQuestions.length))
+            .map(q => String(q.id)) // 🔹 Conversion en string pour Flow
+        : [];
+
+    const payload = {
+        challenger: currentUser,
+        opponent: opponent,
+        theme: theme,
+        questions: picked,
+        status: "pending",
+        challengerScore: null,
+        opponentScore: null
+    };
+
+    console.log("📤 Challenge envoyé :", payload);
+
+    try {
+        const res = await fetch(createChallengeFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+            alert("✅ Défi envoyé à " + opponent);
+            document.getElementById("challenge-form").style.display = "none";
+        } else {
+            alert("❌ Erreur lors de l'envoi du défi : " + res.status);
+        }
+    } catch (err) {
+        console.error(err);
+        alert("❌ Impossible d'envoyer le défi. Vérifiez votre connexion.");
+    }
+};
+
+// Charger mes défis
+// Fonction pour charger les défis reçus par l'utilisateur
+
+// Fonction pour accepter ou refuser un défi via Power Automate
+
+function parseExcelBool(value) {
+    if (value === true) return true;
+    if (typeof value === "string") {
+        const normalized = value.trim().toLowerCase();
+        return normalized === "true" || normalized === "yes" || normalized === "1";
+    }
+    if (typeof value === "number") return value === 1;
+    return false;
+}
+
+// 🔹 Charger mes défis reçus
+async function loadMyChallenges(userEmail) {
+    if (!userEmail) return;
+
+    const challengesList = document.getElementById("challenges-list");
+    if (!challengesList) {
+        console.warn("loadMyChallenges: élément #challenges-list introuvable");
+        return;
+    }
+    challengesList.innerHTML = "";
+
+    try {
+        const response = await fetch(getChallengesFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ opponent: userEmail })
+        });
+
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        let challenges = await response.json();
+	
+console.log("📥 Données brutes reçues du Flow (MyChallenges):", challenges);
+
+        // 🔹 Conversion et nettoyage
+        challenges = (challenges || []).map(c => ({
+            ...c,
+            challengerScore: c.challengerScore ? Number(c.challengerScore) : null,
+            opponentScore: c.opponentScore ? Number(c.opponentScore) : null,
+challengerDone: parseExcelBool(c.challengerDone),
+opponentDone: parseExcelBool(c.opponentDone),
+            status: (c.status || "pending").toLowerCase(),
+        }));
+
+        console.log("📋 Défis reçus après conversion :", challenges.map(c => ({
+            ID: c.ID,
+            status: c.status,
+            challengerDone: c.challengerDone,
+            opponentDone: c.opponentDone
+        })));
+
+        // 🔹 Filtrage robuste : ne montrer que pending ET non encore joués par l'utilisateur
+        const visible = challenges.filter(c =>
+            c.status === "pending" &&
+            (
+                (c.opponent === userEmail && !c.opponentDone) ||
+                (c.challenger === userEmail && !c.challengerDone)
+            )
+        );
+
+        console.log("🔎 Défis visibles pour l'utilisateur :", visible);
+
+        if (visible.length === 0) {
+            challengesList.innerHTML = "<p>Aucun défi reçu pour le moment.</p>";
+            return;
+        }
+
+        visible.forEach(challenge => {
+            const div = document.createElement("div");
+            div.className = "challenge-item";
+            div.style.border = "1px solid #ccc";
+            div.style.padding = "10px";
+            div.style.marginBottom = "10px";
+
+            const info = document.createElement("p");
+            info.textContent = `De: ${challenge.challenger} | Thème: ${challenge.theme}`;
+            div.appendChild(info);
+
+            const acceptBtn = document.createElement("button");
+            acceptBtn.textContent = "Accepter";
+            acceptBtn.style.marginRight = "5px";
+            acceptBtn.onclick = async () => {
+                const qArray = Array.isArray(challenge.questions) ? challenge.questions : JSON.parse(challenge.questions || "[]");
+                const success = await respondToChallenge(challenge.ID, "accepted");
+                if (success) {
+                    div.remove();
+                    const qSet = qArray.map(qid => quizData[challenge.theme]?.questions.find(q => q.id === qid)).filter(q => q);
+                    if (qSet.length === 0) { alert("⚠️ Aucune question trouvée pour ce défi !"); return; }
+                    startQuiz(qSet, true, challenge.theme, challenge);
+                }
+            };
+
+            const rejectBtn = document.createElement("button");
+            rejectBtn.textContent = "Refuser";
+            rejectBtn.onclick = async () => {
+                const success = await respondToChallenge(challenge.ID, "rejected");
+                if (success) div.remove();
+            };
+
+            div.appendChild(acceptBtn);
+            div.appendChild(rejectBtn);
+            challengesList.appendChild(div);
+        });
+
+    } catch (error) {
+        console.error("❌ Erreur loadMyChallenges :", error);
+        challengesList.innerHTML = "<p>Erreur lors du chargement des défis.</p>";
+    }
+}
+
+async function loadSentChallenges(userEmail) {
+    if (!userEmail) return;
+
+    const sentList = document.getElementById("sent-challenges-list");
+    if (!sentList) {
+        console.warn("loadSentChallenges: élément #sent-challenges-list introuvable");
+        return;
+    }
+    sentList.innerHTML = "";
+
+    try {
+        const response = await fetch(getChallengesFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ challenger: userEmail })
+        });
+
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        let challenges = await response.json();
+
+console.log("📥 Données brutes reçues du Flow (SentChallenges):", challenges);
+
+        challenges = (challenges || []).map(c => ({
+            ...c,
+            challengerScore: c.challengerScore ? Number(c.challengerScore) : null,
+            opponentScore: c.opponentScore ? Number(c.opponentScore) : null,
+challengerDone: parseExcelBool(c.challengerDone),
+opponentDone: parseExcelBool(c.opponentDone),
+            status: (c.status || "pending").toLowerCase(),
+        }));
+
+        console.log("📤 Défis envoyés après conversion :", challenges);
+
+        // 🔹 Filtrage : ne montrer que pending et non encore joués par le challenger
+        const visible = challenges.filter(c =>
+            c.status === "pending" &&
+            c.challenger === userEmail &&
+            !c.challengerDone
+        );
+
+        console.log("🔎 Défis envoyés visibles :", visible);
+
+        if (visible.length === 0) {
+            sentList.innerHTML = "<p>Aucun défi envoyé pour le moment.</p>";
+            return;
+        }
+
+        visible.forEach(challenge => {
+            const div = document.createElement("div");
+            div.className = "challenge-item";
+            div.style.border = "1px solid #ccc";
+            div.style.padding = "10px";
+            div.style.marginBottom = "10px";
+
+            const info = document.createElement("p");
+            info.textContent = `À: ${challenge.opponent} | Thème: ${challenge.theme}`;
+            div.appendChild(info);
+
+            const playBtn = document.createElement("button");
+            playBtn.textContent = "Faire mon défi";
+            playBtn.onclick = () => {
+                if (challenge.challengerDone) { alert("⚠️ Tu as déjà terminé ce défi !"); return; }
+                const qArray = Array.isArray(challenge.questions) ? challenge.questions : JSON.parse(challenge.questions || "[]");
+                const qSet = qArray.map(qid => quizData[challenge.theme]?.questions.find(q => q.id === qid)).filter(q => q);
+                if (qSet.length === 0) { alert("⚠️ Aucune question trouvée pour ce défi !"); return; }
+                startQuiz(qSet, true, challenge.theme, challenge);
+            };
+
+            div.appendChild(playBtn);
+            sentList.appendChild(div);
+        });
+
+    } catch (error) {
+        console.error("❌ Erreur loadSentChallenges :", error);
+        sentList.innerHTML = "<p>Erreur lors du chargement des défis envoyés.</p>";
+    }
+}
+
+// === 🔁 AUTO-REFRESH DES DÉFIS ===
+// Recharge automatiquement les défis toutes les 15 secondes
+function startChallengeAutoRefresh() {
+    if (!currentUser) return;
+
+    console.log("🔁 Auto-refresh des défis activé pour :", currentUser);
+
+    // Chargement initial
+    loadMyChallenges(currentUser);
+    loadSentChallenges(currentUser);
+
+    // Intervalle de rafraîchissement
+    setInterval(() => {
+        console.log("🔄 Rafraîchissement automatique des défis...");
+        loadMyChallenges(currentUser);
+        loadSentChallenges(currentUser);
+    }, 30000); // 30000 = 15 secondes
+}
+
+// Lancer l'auto-refresh dès que la page est chargée et l'utilisateur connu
+window.addEventListener("DOMContentLoaded", () => {
+    if (currentUser) {
+        startChallengeAutoRefresh();
+    }
+});
+
+async function respondToChallenge(ID, status) {
+    try {
+        const res = await fetch(updateChallengeFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ID, status })
+        });
+
+        if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+
+        console.log(`✅ Données envoyées au Flow avec succès (${status})`);
+        return true;
+    } catch (error) {
+        console.error(`Erreur lors de la réponse au défi (${status}):`, error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+        return false;
+    }
+}
+
+// Fonction pour récupérer le challenge complet depuis Flow
+async function getChallengeFromFlow(challengeID) {
+    try {
+        const res = await fetch(getChallengeByIdFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ID: challengeID })
+        });
+        if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+        const data = await res.json();
+
+        // 🔹 Conversions numériques
+        data.challengerScore = data.challengerScore !== null && data.challengerScore !== '' ? Number(data.challengerScore) : null;
+        data.opponentScore   = data.opponentScore !== null && data.opponentScore !== '' ? Number(data.opponentScore) : null;
+
+        // 🔹 Conversion booléens
+        data.challengerDone = data.challengerDone === true || data.challengerDone === "true";
+        data.opponentDone = data.opponentDone === true || data.opponentDone === "true";
+
+        return data;
+    } catch (err) {
+        console.error("❌ Impossible de récupérer le challenge :", err);
+        return null;
+    }
+}
+
+// Quand un joueur finit son défi
+
+window.onChallengeFinished = async function(finalScore, challenge) {
+    if (!challenge || !challenge.ID) {
+        console.error("❌ Challenge invalide ou ID manquant", challenge);
+        return alert("❌ Challenge invalide.");
+    }
+
+    const isChallenger = (currentUser === challenge.challenger);
+
+    // 🔹 Mettre à jour le score local
+    if (isChallenger) challenge.challengerScore = Number(finalScore);
+    else challenge.opponentScore = Number(finalScore);
+
+    console.log("🏁 Fin du défi pour", currentUser, "| Score:", finalScore);
+
+    try {
+        // --- 1️⃣ Envoyer le score au Flow ---
+        const scorePayload = {
+            ID: challenge.ID,
+            challengerScore: challenge.challengerScore,
+            opponentScore: challenge.opponentScore,
+            status: "pending"
+        };
+
+        console.log("📤 Envoi du score au Flow :", scorePayload);
+
+        const scoreRes = await fetch(updateChallengeFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(scorePayload)
+        });
+
+        if (!scoreRes.ok) throw new Error(`Erreur HTTP ${scoreRes.status}`);
+        console.log("✅ Score envoyé au Flow !");
+
+        // --- 2️⃣ Mettre à jour la colonne Done et récupérer le JSON du Flow ---
+        const donePayload = {
+            ID: challenge.ID,
+            currentUser: currentUser,
+            role: isChallenger ? "challenger" : "opponent"
+        };
+
+        console.log("⚙️ Envoi du Done au Flow :", donePayload);
+
+        const doneRes = await fetch(updateChallengeDoneFlowUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(donePayload)
+        });
+
+        if (!doneRes.ok) throw new Error(`Erreur HTTP ${doneRes.status}`);
+
+        // 🔹 Récupérer la réponse JSON du Flow
+        const doneData = await doneRes.json();
+        // 🔹 Mettre à jour les propriétés locales avec les valeurs renvoyées
+        challenge.challengerDone = !!doneData.challengerDone;
+        challenge.opponentDone = !!doneData.opponentDone;
+
+        console.log(`✅ Done mis à jour depuis Flow :`, challenge);
+
+        // --- 3️⃣ Attendre un court délai pour laisser Excel/Flow propager la MAJ ---
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        // --- 4️⃣ Recharger les listes pour cacher le défi terminé ---
+        if (typeof loadMyChallenges === "function") loadMyChallenges(currentUser);
+        if (typeof loadSentChallenges === "function") loadSentChallenges(currentUser);
+
+        console.log("🔄 Listes de défis rechargées après mise à jour Done");
+
+    } catch (err) {
+        console.error("❌ Erreur lors de la finalisation du défi :", err);
+        alert("Une erreur est survenue lors de la finalisation du défi. Réessaie !");
+        return;
+    }
+
+    // 🔹 Recharger le challenge complet
+    let freshChallenge;
+    try {
+        freshChallenge = await getChallengeFromFlow(challenge.ID);
+        if (!freshChallenge) throw new Error("Impossible de récupérer le défi complet.");
+    } catch (err) {
+        console.error(err);
+        return alert("Impossible de récupérer le défi complet après le score.");
+    }
+
+    // 🔹 Déterminer le statut final
+    const challengerScore = freshChallenge.challengerScore;
+    const opponentScore   = freshChallenge.opponentScore;
+    const status = (challengerScore !== null && opponentScore !== null) ? "finished" : "pending";
+
+    challenge.status = status;
+    challenge.challengerScore = challengerScore;
+    challenge.opponentScore = opponentScore;
+
+    // 🔹 Si terminé, envoyer le statut final
+    if (status === "finished") {
+        try {
+            const finalPayload = {
+                ID: challenge.ID,
+                challengerScore,
+                opponentScore,
+                status: "finished"
+            };
+            await fetch(updateChallengeFlowUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(finalPayload)
+            });
+            console.log("✅ Statut final 'finished' envoyé au Flow pour l'ID :", challenge.ID);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    // 🔹 🔁 Rafraîchir automatiquement la liste des défis pour cacher ceux déjà faits
+    loadMyChallenges(currentUser);
+    loadSentChallenges(currentUser);
+};
+
+// FINISH CHALLENGE IF NEEDED
+// =======================
+function finishChallengeIfNeeded() {
+    console.log("⚡ finishChallengeIfNeeded appelé :", isChallengeSession, window.currentChallenge);
+    if (isChallengeSession && typeof window.onChallengeFinished === "function") {
+        window.onChallengeFinished(score, window.currentChallenge || null);
+        isChallengeSession = false;
+    }
+}
+
+// Vérifier le gagnant et stopper toute boucle
+async function checkWinner(challenge) {
+    // Vérifier que les deux scores sont présents
+    if (
+        typeof challenge.challengerScore === 'number' &&
+        !isNaN(challenge.challengerScore) &&
+        typeof challenge.opponentScore === 'number' &&
+        !isNaN(challenge.opponentScore)
+    ) {
+        let msg;
+        if (challenge.challengerScore > challenge.opponentScore) {
+            msg = `${challenge.challenger} a gagné !`;
+        } else if (challenge.opponentScore > challenge.challengerScore) {
+            msg = `${challenge.opponent} a gagné !`;
+        } else {
+            msg = "Égalité parfaite !";
+        }
+
+        alert("🏆 Résultat du défi : " + msg);
+
+        // Bloquer toute relance du défi
+        challenge.status = "finished";
+        console.log("✅ Défi terminé, boucle stoppée, statut:", challenge.status);
+
+        // 🔹 Appel au Flow pour mettre à jour le statut de cette row
+        const payload = {
+            ID: challenge.ID,
+            challengerScore: challenge.challengerScore,
+            opponentScore: challenge.opponentScore,
+            status: "finished"
+        };
+
+        try {
+            const res = await fetch(updateChallengeFlowUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+            console.log("✅ Statut final 'finished' envoyé au Flow pour l'ID :", challenge.ID);
+        } catch (err) {
+            console.error("❌ Erreur lors de l’envoi du statut final au Flow :", err);
+            alert("Impossible de mettre à jour le statut final. Réessaie !");
+        }
+    }
+}
+
+// Charger les défis à chaque login
+window.addEventListener("DOMContentLoaded", () => {
+    if (currentUser) loadMyChallenges(currentUser);
+});
+  
   </script>
 </body>
 </html>
