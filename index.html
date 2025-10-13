@@ -212,6 +212,13 @@
         <div class="footer-note">Tip: you get a different set each time you launch a theme.</div>
       </div>
 
+<div id="overallProgressContainer" style="margin: 16px 0; text-align:center;">
+  <div style="background:#eee; border-radius:8px; height:20px; width:80%; margin:0 auto; position:relative;">
+    <div id="overallProgressFill" style="background:#4caf50; height:100%; width:0%; border-radius:8px; text-align:center; color:white; line-height:20px; font-size:12px;">
+      0%
+    </div>
+  </div>
+  
     </div>
   </div>
 
@@ -239,6 +246,8 @@ const getChallengesFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.e
 const updateChallengeFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f75d3f08213d4d3badffabd91a32f666/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eOjS9FQtNfeonEXf3eYRX2y5koUv9nV-czcyrFN8lvM";
 const getAllUsersFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/87639e159f094cfdb271eac85cc07e9a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=44pRUiagqDm_20uaN8NVFifqclbejWMyNPDMan3Wntk"
 const updateChallengeDoneFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c9bcce3eda5549b3ae905734dadc8fcf/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=mNGG7Fs3Z0ywx5v95GrR2aKzEoQVzBGIK2XECgdpNA8";
+const UPDATE_PROGRESS_URL = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e23e3c436c3145bebd18206e4b7e55eb/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CffamMjMGSTdVPz_ZJ8QOQOI8W_C0I1lBKutiMjQa84";
+const GET_PROGRESS_URL = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/4d4e1d4fa7154adf9e982d40925666f5/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=uk1eQuzMtSrZ2MXRhXK7sz772Th105-hlY0mGSQjjjQ";
 
 function getUserIP() {
   // ⚠️ HTML ne peut pas obtenir l’IP réelle sans backend.
@@ -2115,12 +2124,10 @@ questions: [
 	   }
   ]
 },
-  logistics_shipping: { 
-    title: "Logistics & Shipping Operations", 
+logistics_shipping: { 
+  title: "Logistics & Shipping Operations", 
   questions: [
-    {
-      id: 1,
-      question: "You buy crude FOB and sell CIF. At which point does the title of the cargo usually transfer?",
+    { id: "log1", question: "You buy crude FOB and sell CIF. At which point does the title of the cargo usually transfer?",
       choices: [
         "When the vessel passes the ship rail at the loadport",
         "When the vessel arrives at discharge port",
@@ -2130,9 +2137,7 @@ questions: [
       correct: [0,3],
       explanation: "FOB transfers title/loadport once the product passes ship’s rail. However, many contracts also link title to the Bill of Lading date."
     },
-    {
-      id: 2,
-      question: "You sold cargo DAP Rotterdam but the receiver changes the discharge port to Antwerp. What are the operational impacts?",
+    { id: "log2", question: "You sold cargo DAP Rotterdam but the receiver changes the discharge port to Antwerp. What are the operational impacts?",
       choices: [
         "Additional port costs must be renegotiated",
         "Vessel deviation time may be for seller’s account",
@@ -2142,9 +2147,7 @@ questions: [
       correct: [0,1,3],
       explanation: "Changing discharge port affects port costs, voyage time and demurrage. Buyer cannot change port freely without agreement."
     },
-    {
-      id: 3,
-      question: "Which items are critical to check on a Bill of Lading (B/L)?",
+    { id: "log3", question: "Which items are critical to check on a Bill of Lading (B/L)?",
       choices: [
         "Correct cargo description and quantity",
         "Loadport and discharge port",
@@ -2155,9 +2158,7 @@ questions: [
       correct: [0,1,2,4],
       explanation: "Cargo, ports, date and parties must be correct. Freight rate belongs to the charter party, not B/L."
     },
-    {
-      id: 4,
-      question: "Why is crude oil washing (COW) performed on tankers?",
+    { id: "log4", question: "Why is crude oil washing (COW) performed on tankers?",
       choices: [
         "To reduce clingage losses",
         "To comply with MARPOL regulations",
@@ -2167,9 +2168,7 @@ questions: [
       correct: [0,1,2],
       explanation: "COW reduces losses, ensures regulatory compliance, and prepares tanks for next cargo."
     },
-    {
-      id: 5,
-      question: "What risks occur when nominating a vessel late to a counterparty?",
+    { id: "log5", question: "What risks occur when nominating a vessel late to a counterparty?",
       choices: [
         "Receiver may reject the vessel",
         "Demurrage will automatically be zero",
@@ -2179,16 +2178,12 @@ questions: [
       correct: [0,2,3],
       explanation: "Late nominations risk rejection, contract breach and delays. Demurrage is unrelated."
     },
-    {
-      id: 6,
-      question: "In a CIF sale, who is responsible for arranging insurance?",
+    { id: "log6", question: "In a CIF sale, who is responsible for arranging insurance?",
       choices: ["Buyer", "Seller", "Port Authority", "Charterer"],
       correct: [1],
       explanation: "Seller must provide insurance under CIF Incoterm."
     },
-    {
-      id: 7,
-      question: "Which factors affect demurrage exposure?",
+    { id: "log7", question: "Which factors affect demurrage exposure?",
       choices: [
         "Port congestion",
         "Weather delays",
@@ -2198,9 +2193,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Demurrage depends on time spent in port and laytime clauses. Freight rate does not affect it."
     },
-    {
-      id: 8,
-      question: "When issuing a Letter of Indemnity (LOI) for delivery without B/L, what are key risks?",
+    { id: "log8", question: "When issuing a Letter of Indemnity (LOI) for delivery without B/L, what are key risks?",
       choices: [
         "Buyer may not pay cargo",
         "Double claim on cargo title",
@@ -2210,9 +2203,7 @@ questions: [
       correct: [0,1,2],
       explanation: "LOIs expose to risk of non-payment, double title claim, and loss of insurance protection."
     },
-    {
-      id: 9,
-      question: "You are discharging a cargo with high pour point in winter. What operational issues matter?",
+    { id: "log9", question: "You are discharging a cargo with high pour point in winter. What operational issues matter?",
       choices: [
         "Need for heating coils during voyage",
         "Slower pumping rates at discharge",
@@ -2222,9 +2213,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Heating is required to maintain flow; otherwise pumping slows or solidifies."
     },
-    {
-      id: 10,
-      question: "What are the key documents required for crude oil cargo discharge?",
+    { id: "log10", question: "What are the key documents required for crude oil cargo discharge?",
       choices: [
         "Bill of Lading",
         "Certificate of Quantity (CQ)",
@@ -2235,9 +2224,7 @@ questions: [
       correct: [0,1,3],
       explanation: "B/L, CQ and Certificate of Quality are essential for title and customs. LC is for finance."
     },
-    {
-      id: 11,
-      question: "When does laytime typically start counting?",
+    { id: "log11", question: "When does laytime typically start counting?",
       choices: [
         "Upon vessel arrival at anchorage",
         "Once Notice of Readiness (NOR) is tendered and accepted",
@@ -2247,16 +2234,12 @@ questions: [
       correct: [1],
       explanation: "Laytime begins after NOR is tendered and accepted, subject to berth availability and CP terms."
     },
-    {
-      id: 12,
-      question: "Which Incoterm gives the seller maximum control of the transport chain?",
+    { id: "log12", question: "Which Incoterm gives the seller maximum control of the transport chain?",
       choices: ["FOB", "CFR", "CIF", "DAP"],
       correct: [3],
       explanation: "DAP means seller organizes transport until delivery point. FOB transfers control at loadport."
     },
-    {
-      id: 13,
-      question: "Why is ullage measurement important during cargo loading?",
+    { id: "log13", question: "Why is ullage measurement important during cargo loading?",
       choices: [
         "To calculate loaded volume",
         "To check vessel stability",
@@ -2266,9 +2249,7 @@ questions: [
       correct: [0,1],
       explanation: "Ullage helps confirm volume and stability of vessel. Freight cost is pre-agreed, not from ullage."
     },
-    {
-      id: 14,
-      question: "What are common causes of cargo contamination?",
+    { id: "log14", question: "What are common causes of cargo contamination?",
       choices: [
         "Unclean tanks",
         "Line displacement issues",
@@ -2278,9 +2259,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Contamination usually results from tank cleanliness or line issues, not documentation errors."
     },
-    {
-      id: 15,
-      question: "What is the function of a cargo surveyor?",
+    { id: "log15", question: "What is the function of a cargo surveyor?",
       choices: [
         "Verify cargo quantity",
         "Check quality specifications",
@@ -2290,16 +2269,12 @@ questions: [
       correct: [0,1,3],
       explanation: "Surveyors independently verify quantity, quality and observe operations. They do not issue vessel certs."
     },
-    {
-      id: 16,
-      question: "In an FOB deal, who is responsible for freight?",
+    { id: "log16", question: "In an FOB deal, who is responsible for freight?",
       choices: ["Buyer", "Seller", "Vessel master", "Port authority"],
       correct: [0],
       explanation: "Buyer arranges and pays for freight under FOB terms."
     },
-    {
-      id: 17,
-      question: "What are typical reasons for issuing a Letter of Protest (LOP)?",
+    { id: "log17", question: "What are typical reasons for issuing a Letter of Protest (LOP)?",
       choices: [
         "Delays in operations",
         "Unsafe loading practices",
@@ -2309,9 +2284,7 @@ questions: [
       correct: [0,1,2],
       explanation: "LOPs are issued for delays, unsafe ops, or disputes over time counting."
     },
-    {
-      id: 18,
-      question: "Why might a receiver request a split Bill of Lading?",
+    { id: "log18", question: "Why might a receiver request a split Bill of Lading?",
       choices: [
         "To allow multiple consignees",
         "To adjust freight rate",
@@ -2321,9 +2294,7 @@ questions: [
       correct: [0,2],
       explanation: "Split B/Ls are used for multiple buyers/financing arrangements."
     },
-    {
-      id: 19,
-      question: "What are the impacts of weather delays at loadport?",
+    { id: "log19", question: "What are the impacts of weather delays at loadport?",
       choices: [
         "Potential demurrage",
         "Cargo contamination",
@@ -2333,9 +2304,7 @@ questions: [
       correct: [0,2],
       explanation: "Weather delays may trigger demurrage and cause late delivery, but not contamination."
     },
-    {
-      id: 20,
-      question: "What is the role of the Notice of Readiness (NOR)?",
+    { id: "log20", question: "What is the role of the Notice of Readiness (NOR)?",
       choices: [
         "Triggers laytime start",
         "Confirms vessel readiness for loading/discharge",
@@ -2345,9 +2314,7 @@ questions: [
       correct: [0,1],
       explanation: "NOR indicates vessel readiness and triggers laytime. It has no customs or title role."
     },
-    {
-      id: 21,
-      question: "Why might a charterer prefer a time charter over a voyage charter?",
+    { id: "log21", question: "Why might a charterer prefer a time charter over a voyage charter?",
       choices: [
         "Flexibility in using vessel for multiple voyages",
         "Lower bunker risk exposure",
@@ -2357,9 +2324,7 @@ questions: [
       correct: [0,1],
       explanation: "Time charters give flexibility and shift bunker risk to owner. Voyage charters fix freight per trip."
     },
-    {
-      id: 22,
-      question: "What are bunker adjustment factors in shipping?",
+    { id: "log22", question: "What are bunker adjustment factors in shipping?",
       choices: [
         "Charges linked to fuel cost changes",
         "Extra demurrage fees",
@@ -2369,9 +2334,7 @@ questions: [
       correct: [0],
       explanation: "BAF are surcharges applied to adjust freight with bunker fuel prices."
     },
-    {
-      id: 23,
-      question: "What happens if a cargo is discharged against a wrong Bill of Lading?",
+    { id: "log23", question: "What happens if a cargo is discharged against a wrong Bill of Lading?",
       choices: [
         "Risk of double claims on cargo",
         "Receiver may refuse payment",
@@ -2381,9 +2344,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Delivering without correct B/L risks double claim, non-payment, and loss of P&I cover."
     },
-    {
-      id: 24,
-      question: "Why is heating critical during voyage for some fuel oils?",
+    { id: "log24", question: "Why is heating critical during voyage for some fuel oils?",
       choices: [
         "To maintain pumpable viscosity",
         "To meet sulfur specifications",
@@ -2393,9 +2354,7 @@ questions: [
       correct: [0,2],
       explanation: "Heating avoids solidification and maintains flow. It has no effect on sulfur spec."
     },
-    {
-      id: 25,
-      question: "Which clause protects the owner from liability for strike delays?",
+    { id: "log25", question: "Which clause protects the owner from liability for strike delays?",
       choices: [
         "Force majeure",
         "Laytime exception clause",
@@ -2405,9 +2364,7 @@ questions: [
       correct: [1],
       explanation: "Laytime exception clauses often exclude counting strike delays."
     },
-	{
-      id: 26,
-      question: "What are typical risks with STS (Ship-to-Ship) transfer operations?",
+    { id: "log26", question: "What are typical risks with STS (Ship-to-Ship) transfer operations?",
       choices: [
         "Oil spillage",
         "Hull damage",
@@ -2417,9 +2374,7 @@ questions: [
       correct: [0,1,3],
       explanation: "STS risks include pollution, hull contact and contamination. Documentation errors are secondary."
     },
-    {
-      id: 27,
-      question: "Why is draft survey important?",
+    { id: "log27", question: "Why is draft survey important?",
       choices: [
         "To calculate cargo weight via vessel displacement",
         "To measure cargo temperature",
@@ -2429,9 +2384,7 @@ questions: [
       correct: [0,2],
       explanation: "Draft surveys measure cargo loaded/discharged and check stability."
     },
-    {
-      id: 28,
-      question: "What are consequences of incorrect ullage report?",
+    { id: "log28", question: "What are consequences of incorrect ullage report?",
       choices: [
         "Commercial disputes over quantity",
         "Loss of trust with counterparties",
@@ -2441,9 +2394,7 @@ questions: [
       correct: [0,1,3],
       explanation: "Wrong ullage can cause disputes, legal claims, and damage credibility. Demurrage is unaffected."
     },
-    {
-      id: 29,
-      question: "What are common reasons for cargo shortage claims?",
+    { id: "log29", question: "What are common reasons for cargo shortage claims?",
       choices: [
         "Evaporation losses",
         "Tank clingage",
@@ -2453,9 +2404,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Losses come from evaporation, clingage, and errors. Incoterms do not cause shortages."
     },
-    {
-      id: 30,
-      question: "What is a Letter of Credit’s role in oil trading?",
+    { id: "log30", question: "What is a Letter of Credit’s role in oil trading?",
       choices: [
         "Guarantees payment to seller if documents comply",
         "Confirms vessel seaworthiness",
@@ -2465,9 +2414,7 @@ questions: [
       correct: [0],
       explanation: "LC secures payment but does not certify vessel or cover demurrage."
     },
-    {
-      id: 31,
-      question: "What are safe berth warranties in charter parties?",
+    { id: "log31", question: "What are safe berth warranties in charter parties?",
       choices: [
         "Charterer guarantees berth is physically safe",
         "Seller guarantees port costs",
@@ -2477,9 +2424,7 @@ questions: [
       correct: [0],
       explanation: "Safe berth warranties put liability on charterers to nominate a safe port/berth."
     },
-    {
-      id: 32,
-      question: "Why is tank inspection before loading important?",
+    { id: "log32", question: "Why is tank inspection before loading important?",
       choices: [
         "Ensures tanks are clean",
         "Prevents contamination",
@@ -2489,9 +2434,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Tank inspections avoid contamination and confirm readiness. Port charges are unrelated."
     },
-    {
-      id: 33,
-      question: "What is the role of a Notice of Protest (NOP)?",
+    { id: "log33", question: "What is the role of a Notice of Protest (NOP)?",
       choices: [
         "Formally records disagreement",
         "Protects legal rights in disputes",
@@ -2501,9 +2444,7 @@ questions: [
       correct: [0,1],
       explanation: "NOP preserves charterers’/owners’ rights in disputes. It is not a customs doc."
     },
-    {
-      id: 34,
-      question: "What can cause a vessel to be rejected at loadport?",
+    { id: "log34", question: "What can cause a vessel to be rejected at loadport?",
       choices: [
         "Failing vetting inspection",
         "Not meeting terminal restrictions",
@@ -2513,9 +2454,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Rejection is linked to safety, certificates, or terminal rules. Freight rate is irrelevant."
     },
-    {
-      id: 35,
-      question: "What are consequences of incorrect NOR tendering?",
+    { id: "log35", question: "What are consequences of incorrect NOR tendering?",
       choices: [
         "Laytime disputes",
         "Loss of demurrage claim",
@@ -2525,9 +2464,7 @@ questions: [
       correct: [0,1,3],
       explanation: "Incorrect NOR impacts demurrage rights and may cause disputes or delays."
     },
-    {
-      id: 36,
-      question: "Why might a cargo receiver insist on shore tank gauging?",
+    { id: "log36", question: "Why might a cargo receiver insist on shore tank gauging?",
       choices: [
         "Independent verification of quantity",
         "Cross-check against ship figures",
@@ -2537,9 +2474,7 @@ questions: [
       correct: [0,1,3],
       explanation: "Shore tank gauging provides independent verification and supports customs clearance."
     },
-    {
-      id: 37,
-      question: "What is the role of a cargo manifest?",
+    { id: "log37", question: "What is the role of a cargo manifest?",
       choices: [
         "Lists all cargo loaded/discharged",
         "Used for customs clearance",
@@ -2549,9 +2484,7 @@ questions: [
       correct: [0,1],
       explanation: "Cargo manifest is for customs and cargo listing, not freight contracts."
     },
-    {
-      id: 38,
-      question: "What are common reasons for high demurrage bills?",
+    { id: "log38", question: "What are common reasons for high demurrage bills?",
       choices: [
         "Port congestion",
         "Receiver delays",
@@ -2561,9 +2494,7 @@ questions: [
       correct: [0,1,2,3],
       explanation: "All listed factors can drive demurrage costs up."
     },
-    {
-      id: 39,
-      question: "Why is weather routing important in tanker operations?",
+    { id: "log39", question: "Why is weather routing important in tanker operations?",
       choices: [
         "Avoids delays",
         "Minimizes fuel consumption",
@@ -2573,9 +2504,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Routing reduces delays, saves fuel, and protects cargo. Port tariffs are unrelated."
     },
-    {
-      id: 40,
-      question: "What does 'free pratique' mean?",
+    { id: "log40", question: "What does 'free pratique' mean?",
       choices: [
         "Health clearance for vessel to enter port",
         "Permission to start loading",
@@ -2585,9 +2514,7 @@ questions: [
       correct: [0],
       explanation: "Free pratique is health clearance allowing vessel entry."
     },
-    {
-      id: 41,
-      question: "Why is slops management important?",
+    { id: "log41", question: "Why is slops management important?",
       choices: [
         "Environmental compliance",
         "Port reception facility costs",
@@ -2597,9 +2524,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Slops handling avoids pollution, manages space, and adds costs. It doesn’t save laytime."
     },
-    {
-      id: 42,
-      question: "What happens if ship documents are not presented correctly under an LC?",
+    { id: "log42", question: "What happens if ship documents are not presented correctly under an LC?",
       choices: [
         "Bank may refuse payment",
         "Cargo title may be disputed",
@@ -2609,9 +2534,7 @@ questions: [
       correct: [0,1,3],
       explanation: "Incorrect docs block payment and risk title disputes. Demurrage is unrelated."
     },
-    {
-      id: 43,
-      question: "Why is compatibility testing done before blending or commingling cargoes?",
+    { id: "log43", question: "Why is compatibility testing done before blending or commingling cargoes?",
       choices: [
         "Prevent asphaltene precipitation",
         "Avoid sludge formation",
@@ -2621,9 +2544,7 @@ questions: [
       correct: [0,1,2],
       explanation: "Compatibility testing prevents quality issues; it does not impact pumping time."
     },
-    {
-      id: 44,
-      question: "What is a 'deadfreight' claim?",
+    { id: "log44", question: "What is a 'deadfreight' claim?",
       choices: [
         "Owner’s claim for unused vessel space",
         "Demurrage for delays",
@@ -2633,9 +2554,7 @@ questions: [
       correct: [0],
       explanation: "Deadfreight compensates owners when charterers fail to provide full cargo."
     },
-    {
-      id: 45,
-      question: "What are typical bunker risks in shipping operations?",
+    { id: "log45", question: "What are typical bunker risks in shipping operations?",
       choices: [
         "Fuel contamination",
         "Price volatility",
@@ -2645,65 +2564,50 @@ questions: [
       correct: [0,1,2],
       explanation: "Bunker risks include contamination, shortages, and volatile prices."
     },
-    {
-      id: 46,
-      question: "What is the purpose of a 'notice of readiness clause' in charter parties?",
+    { id: "log46", question: "What is the purpose of the Sea Protest document?",
       choices: [
-        "Defines when NOR can be tendered",
-        "Protects owners’ demurrage rights",
-        "Allocates port costs",
-        "Confirms insurance coverage"
+        "Record weather damage during voyage",
+        "Claim insurance protection",
+        "Acknowledge port delays",
+        "Reset laytime clock"
       ],
       correct: [0,1],
-      explanation: "The clause specifies NOR validity, impacting laytime and demurrage."
+      explanation: "Sea Protest records voyage incidents for insurance and liability defense."
     },
-    {
-      id: 47,
-      question: "What are the operational risks of high pour point fuel oils during winter?",
+    { id: "log47", question: "Why do charter parties include pumping warranties?",
       choices: [
-        "Cargo solidification in pipelines",
-        "Slower pumping rates",
-        "Risk of off-spec delivery",
-        "Increased demurrage"
+        "Ensure efficient discharge",
+        "Limit demurrage exposure",
+        "Protect cargo temperature",
+        "Guarantee freight rate"
       ],
-      correct: [0,1,2],
-      explanation: "High pour point oils need heating to prevent solidification; otherwise pumping slows and specs can be missed."
+      correct: [0,1],
+      explanation: "Pumping warranties assure discharge efficiency and reduce demurrage exposure."
     },
-    {
-      id: 48,
-      question: "Why is MARPOL compliance critical during crude oil transport?",
-      choices: [
-        "Avoid environmental fines",
-        "Ensure safe handling of slops",
-        "Maintain vessel insurance coverage",
-        "Reduce demurrage charges"
-      ],
-      correct: [0,1,2],
-      explanation: "MARPOL ensures environmental safety; compliance affects fines, slops handling, and insurance."
+    { id: "log48", question: "Which party typically issues the Certificate of Quantity?",
+      choices: ["Independent surveyor", "Buyer", "Seller", "Vessel master"],
+      correct: [0],
+      explanation: "Independent surveyors issue CQ after measuring loaded/discharged quantities."
     },
-    {
-      id: 49,
-      question: "What is the impact of incorrect laytime calculation on charter parties?",
+    { id: "log49", question: "What are the risks of over-heating cargo during voyage?",
       choices: [
-        "Incorrect demurrage billing",
-        "Commercial disputes",
-        "Potential arbitration",
-        "Port fines"
+        "Quality degradation",
+        "Vapor losses",
+        "Increased viscosity",
+        "Tank corrosion"
       ],
-      correct: [0,1,2],
-      explanation: "Errors in laytime counting lead to demurrage disputes, possibly legal or arbitration cases."
+      correct: [0,1,3],
+      explanation: "Excess heat degrades quality, causes vapor loss, and can damage tanks."
     },
-    {
-      id: 50,
-      question: "Why is P&I insurance crucial for crude oil shipping?",
+    { id: "log50", question: "Why are vessel vetting inspections mandatory for oil majors?",
       choices: [
-        "Covers cargo claims",
-        "Covers pollution liability",
-        "Protects against personal injury claims",
-        "Guarantees freight payments"
+        "Ensure safety compliance",
+        "Reduce environmental risks",
+        "Guarantee cheaper freight",
+        "Protect corporate reputation"
       ],
-      correct: [0,1,2],
-      explanation: "P&I insurance protects against cargo loss, pollution, and crew/passenger claims; it does not guarantee freight."
+      correct: [0,1,3],
+      explanation: "Vetting ensures safety, environmental compliance, and reputation protection."
     }
   ]
 },
@@ -3069,56 +2973,56 @@ questions: [
 
         questions: [
           // 1
-          { id: 1, question: "To raise gasoline octane without adding sulfur, blend with:", choices: ["Alkylate", "Vacuum residue", "Light cycle oil (LCO)", "Heavy fuel oil"], correct: 0, explanation: "Alkylate is high-octane, very low sulfur, and olefin-free—ideal for upgrading octane cleanly." },
-    { id: 2, question: "Gasoline RVP increases the most when adding:", choices: ["Reformate", "Kerosene", "Butane", "Diesel"], correct: 2, explanation: "Butane has very high vapor pressure; small additions sharply raise pool RVP." },
-    { id: 3, question: "A common gasoline detergent additive is:", choices: ["Polyether amine (PEA)", "Sodium chloride", "Water", "Sulfur"], correct: 0, explanation: "PEA detergents keep injectors/intake valves clean and control deposit formation." },
-    { id: 4, question: "Typical cetane improver for diesel blending:", choices: ["MTBE", "Toluene", "2-ethylhexyl nitrate (2-EHN)", "Ethanol"], correct: 2, explanation: "2-EHN shortens ignition delay and effectively increases diesel cetane number." },
-    { id: 5, question: "Adding FAME (biodiesel) to diesel mainly:", choices: ["Reduces lubricity", "Improves lubricity", "Eliminates sulfur", "Raises octane"], correct: 1, explanation: "Even small FAME additions improve HFRR lubricity in ultra-low sulfur diesel." },
-    { id: 6, question: "Which property is notably non-linear in gasoline blending?", choices: ["Octane number", "Density", "Sulfur content", "Color"], correct: 0, explanation: "Octane blending is strongly non-linear; simple volume averaging fails." },
-    { id: 7, question: "Best low-sulfur, high-octane gasoline blendstock:", choices: ["FCC gasoline", "Alkylate", "Reformate", "Straight-run naphtha"], correct: 1, explanation: "Alkylate combines high RON/MON with very low sulfur and zero olefins." },
-    { id: 8, question: "Blend component that raises aromatics and octane:", choices: ["Reformate", "Alkylate", "Butane", "Hydrotreated naphtha"], correct: 0, explanation: "Catalytic reformate is aromatic-rich, lifting RON but tightening benzene/aromatics specs." },
-    { id: 9, question: "To improve diesel cold flow you would typically add:", choices: ["Kerosene (winterization)", "Heavy cycle oil", "Bitumen", "Water"], correct: 0, explanation: "Kerosene lowers cloud/CFPP quickly; PPDs help too, but kerosene is a fast fix." },
-    { id: 10, question: "Final product release is based on meeting:", choices: ["Crude assay data", "Pump performance curves", "Applicable product specification (e.g., ASTM/EN)", "Material safety data sheet"], correct: 2, explanation: "Shipment release depends on certified test results versus the required product specification." },
-    { id: 11, question: "Case study: Summer gasoline is over-volatile. What should you trim first?", choices: ["Butane", "Alkylate", "Reformate", "Isomerate"], correct: 0, explanation: "Cutting butane is the fastest way to bring RVP down for summer caps." },
-    { id: 12, question: "Case study: Winter startability complaints. First corrective addition?", choices: ["Butane", "Heavy reformate", "Diesel", "Resid"], correct: 0, explanation: "In winter, adding butane boosts volatility to improve cold starts—within seasonal limits." },
-    { id: 13, question: "Which component most increases benzene in gasoline?", choices: ["Reformate", "Isomerate", "Alkylate", "Ethanol"], correct: 0, explanation: "Reformate contains benzene; alkylate/isomerate are benzene-lean." },
-    { id: 14, question: "To reduce gasoline benzene below 1 vol%, favor:", choices: ["Reformate", "Alkylate", "FCC gasoline", "Coker naphtha"], correct: 1, explanation: "Alkylate has near-zero benzene and helps meet aromatics/benzene constraints." },
-    { id: 15, question: "Non-oxygenate octane booster often referenced in racing fuels:", choices: ["Toluene", "Ethanol", "MTBE", "Kerosene"], correct: 0, explanation: "Aromatics like toluene raise octane but also increase aromatics content; use is regulated." },
-    { id: 16, question: "Which gasoline property is the most seasonal constraint in trading?", choices: ["RVP (volatility)", "Olefins", "Color", "Sulfur always"], correct: 0, explanation: "RVP limits vary by season/region and often bind summer gasoline trades." },
-    { id: 17, question: "Diesel density is too high. Which blendstock helps the most?", choices: ["Kerosene", "LCO", "Vacuum gasoil", "Reformate"], correct: 0, explanation: "Kerosene lowers density and improves cold flow without heavily hurting cetane." },
-    { id: 18, question: "Which component most effectively raises diesel cetane?", choices: ["Light cycle oil", "HVO diesel", "Reformate", "Butane"], correct: 1, explanation: "HVO (paraffinic) diesel has very high cetane and very low aromatics." },
-    { id: 19, question: "Which diesel component most harms CFPP/cold flow?", choices: ["Light cycle oil (LCO)", "Kerosene", "Hydrotreated diesel", "HVO diesel"], correct: 0, explanation: "Aromatic LCO degrades cold flow and increases smoke." },
-    { id: 20, question: "Rising FAME content in diesel increases risk of:", choices: ["Oxidation instability", "Low lubricity", "Higher sulfur", "Lower density"], correct: 0, explanation: "FAME can oxidize; antioxidants and tight storage discipline mitigate the risk." },
-    { id: 21, question: "Gasoline MON is low but RON is okay. Best corrective stream:", choices: ["Isomerate", "Alkylate", "Reformate", "Butane"], correct: 1, explanation: "Alkylate has strong MON; isomerate tends to increase sensitivity (RON–MON)." },
-    { id: 22, question: "Blending margin is best defined as:", choices: ["Crude price minus product price", "Blend value minus component cost", "Spec deviation penalty", "Arbitrage spread only"], correct: 1, explanation: "It’s the incremental value from turning components into a spec product vs. their costs." },
-    { id: 23, question: "Which property is approximately linear in blending calculations?", choices: ["Sulfur content", "RVP", "Octane", "Smoke point"], correct: 0, explanation: "Mass properties like sulfur are near-linear; octane/RVP are notably non-linear." },
-    { id: 24, question: "Viscosity blending for fuel oil is commonly handled with:", choices: ["Simple averaging", "Refutas (Viscosity Blending Number)", "Cloud point index", "Cetane index"], correct: 1, explanation: "Refutas VBN converts viscosity to a quasi-linear space for accurate blending math." },
-    { id: 25, question: "Key risk when blending HSFO with paraffinic low-S cutter stocks:", choices: ["Low RVP", "Asphaltene precipitation (incompatibility)", "High cetane", "Phase separation"], correct: 1, explanation: "Incompatibility can precipitate asphaltenes—check stability/TSP tests." },
-	{ id: 26, question: "Ethanol’s effect on gasoline volatility at low blends (e.g., E10):", choices: ["Lowers RVP", "No effect", "Raises RVP (uplift)", "Eliminates RVP limits"], correct: 2, explanation: "Ethanol causes a volatility uplift at low concentrations—key for summer specs." },
-    { id: 27, question: "To reduce gasoline sulfur via blending, favor:", choices: ["Hydrotreated naphtha", "FCC gasoline", "Coker naphtha", "Heavy reformate"], correct: 0, explanation: "Hydrotreated naphtha is very low sulfur and reduces pool sulfur quickly." },
-    { id: 28, question: "Jet fuel smoke point is low. First blending move:", choices: ["Add hydrotreated kerosene", "Add reformate", "Add LCO", "Add heavy naphtha"], correct: 0, explanation: "More paraffins/fewer aromatics (hydrotreated kerosene) improve smoke point." },
-    { id: 29, question: "Gasoline T90 is too high (too heavy). Best corrective stream:", choices: ["Light isomerate", "Heavy reformate", "LCO", "Heavy naphtha"], correct: 0, explanation: "Light isomerate/light naphtha lowers the back-end of the distillation curve (T90)." },
-    { id: 30, question: "Before sailing, the document proving specs at load port is the:", choices: ["Certificate of Quality (CoQ)", "Bill of Lading only", "Commercial invoice", "Timesheet"], correct: 0, explanation: "An independent survey issues the CoQ from sealed load-port samples." },
-    { id: 31, question: "Which property is NOT used for diesel release testing?", choices: ["Cetane number/index", "Density", "Cold flow (CFPP/cloud)", "Octane number"], correct: 3, explanation: "Octane is for gasoline; diesel uses cetane, density, sulfur, cold-flow, etc." },
-    { id: 32, question: "Which gasoline blendstock is olefin-free and improves stability/gum risk?", choices: ["Alkylate", "FCC gasoline", "Coker naphtha", "Reformate"], correct: 0, explanation: "Alkylate contains virtually no olefins—excellent stability and low gum." },
-    { id: 33, question: "Market in strong backwardation. Best stance for components:", choices: ["Store for later", "Sell promptly", "Hedge only", "Ignore structure"], correct: 1, explanation: "In backwardation, time erodes value; monetizing quickly maximizes margin." },
-    { id: 34, question: "Constraint often limiting profitable butane injection in terminals:", choices: ["Cetane", "CFPP", "RVP and seasonal limits", "Smoke point"], correct: 2, explanation: "Terminal/regional RVP caps limit economical butane injection." },
-    { id: 35, question: "To hit low benzene and low aromatics while keeping octane, favor pairing:", choices: ["Reformate + LCO", "Alkylate + Isomerate", "Coker naphtha + Reformate", "FCC gasoline + Reformate"], correct: 1, explanation: "Alkylate + isomerate are paraffinic/clean with good octane and low aromatics." },
-    { id: 36, question: "Deep hydrotreating can harm diesel lubricity. Quick corrective action:", choices: ["Add lubricity improver", "Add sulfur", "Blend with LCO", "Raise density"], correct: 0, explanation: "Lubricity additives restore HFRR quickly without violating sulfur limits." },
-    { id: 37, question: "Best practice to ensure homogeneous blends before CoQ sampling:", choices: ["Immediate sample after top-loading", "No circulation needed", "In-tank circulation/line blending then settle", "Skip sampling"], correct: 2, explanation: "Proper circulation avoids stratification and biased CoQ results." },
-    { id: 38, question: "Gasoline pool has high sulfur and low octane. Best two-stream combo:", choices: ["Alkylate + hydrotreated naphtha", "Reformate + LCO", "Coker naphtha + FCC gasoline", "Butane + heavy reformate"], correct: 0, explanation: "Alkylate boosts octane; hydrotreated naphtha lowers sulfur—synergistic." },
-    { id: 39, question: "Bunker blend shows high TSP/instability. Likely corrective action:", choices: ["Add heavy reformate", "Dilute with stable, low-asphaltene cutter", "Add water", "Raise temperature only"], correct: 1, explanation: "Use compatible paraffinic cutter and verify with stability tests." },
-    { id: 40, question: "Which blendstock tends to raise RON much more than MON (high sensitivity)?", choices: ["Isomerate", "Alkylate", "Reformate", "Kerosene"], correct: 0, explanation: "Isomerate is high-RON but relatively lower MON, increasing sensitivity." },
-    { id: 41, question: "When adding ethanol to gasoline, the compliance calculation most impacted is:", choices: ["Cetane", "Oxygen content (wt%)", "Smoke point", "CFPP"], correct: 1, explanation: "Oxygen content and RVP uplift must be checked when blending ethanol." },
-    { id: 42, question: "Major operational risk when blending ethanol into moist gasoline:", choices: ["Low octane", "Phase separation with water", "High cetane", "Low density"], correct: 1, explanation: "Water promotes ethanol/water separation (two-phase), making fuel off-spec." },
-    { id: 43, question: "Which contamination in jet fuel cannot realistically be solved by simple blending if too high?", choices: ["High aromatics", "High sulfur", "FAME contamination over limit", "Slightly high density"], correct: 2, explanation: "FAME carryover limits are very tight; significant contamination requires reprocessing." },
-    { id: 44, question: "Tool most used to screen multi-component blending economics:", choices: ["Simple averages", "Linear programming (pooling LP)", "Manual spreadsheets only", "Monte Carlo only"], correct: 1, explanation: "LP pooling models capture specs, costs, and constraints to optimize margin." },
-    { id: 45, question: "Which gasoline component most raises gum formation risk if overused?", choices: ["FCC gasoline (olefinic)", "Alkylate", "Isomerate", "Hydrotreated naphtha"], correct: 0, explanation: "Olefinic FCC gasoline is more prone to oxidation/gum; treat limits carefully." },
-    { id: 46, question: "To lower diesel aromatics via blending (not processing), best stream to add:", choices: ["HVO diesel", "LCO", "Reformate", "Vacuum residue"], correct: 0, explanation: "Paraffinic HVO reduces aromatics and smoke while helping cetane." },
-    { id: 47, question: "For jet fuel: meeting both freeze point and smoke point at minimal cost is easiest with:", choices: ["Heavy reformate alone", "Hydrotreated kerosene + synthetic paraffinic kerosene (SPK)", "LCO only", "Butane addition"], correct: 1, explanation: "SPK + hydrotreated kerosene are paraffinic/clean, improving both properties." },
-    { id: 48, question: "Gasoline oxygen is too high due to ethanol. Quickest corrective move while preserving octane:", choices: ["Increase alkylate and reduce ethanol proportion", "Add water", "Add LCO", "Add heavy reformate"], correct: 0, explanation: "Cut ethanol to reduce oxygen and replace octane with alkylate to keep specs." },
-    { id: 49, question: "Case study: A Europe→US gasoline arb opens, but pool aromatics are high. Best quick fix:", choices: ["Add reformate", "Add alkylate/isomerate and cut reformate", "Add diesel", "Do nothing"], correct: 1, explanation: "US specs are tight on benzene/aromatics; paraffinic components help fit the window." },
-    { id: 50, question: "Case study: Contango builds on gasoline components. Likely value strategy:", choices: ["Sell prompt regardless", "Store components if carry < contango spread", "Blend immediately into final", "Avoid hedging"], correct: 1, explanation: "In contango, deferred prices exceed prompt; if storage costs (carry) are lower, storing can add value." }
+          { id: "rfb1", question: "To raise gasoline octane without adding sulfur, blend with:", choices: ["Alkylate", "Vacuum residue", "Light cycle oil (LCO)", "Heavy fuel oil"], correct: 0, explanation: "Alkylate is high-octane, very low sulfur, and olefin-free—ideal for upgrading octane cleanly." },
+    { id: "rfb2", question: "Gasoline RVP increases the most when adding:", choices: ["Reformate", "Kerosene", "Butane", "Diesel"], correct: 2, explanation: "Butane has very high vapor pressure; small additions sharply raise pool RVP." },
+    { id: "rfb3", question: "A common gasoline detergent additive is:", choices: ["Polyether amine (PEA)", "Sodium chloride", "Water", "Sulfur"], correct: 0, explanation: "PEA detergents keep injectors/intake valves clean and control deposit formation." },
+    { id: "rfb4", question: "Typical cetane improver for diesel blending:", choices: ["MTBE", "Toluene", "2-ethylhexyl nitrate (2-EHN)", "Ethanol"], correct: 2, explanation: "2-EHN shortens ignition delay and effectively increases diesel cetane number." },
+    { id: "rfb5", question: "Adding FAME (biodiesel) to diesel mainly:", choices: ["Reduces lubricity", "Improves lubricity", "Eliminates sulfur", "Raises octane"], correct: 1, explanation: "Even small FAME additions improve HFRR lubricity in ultra-low sulfur diesel." },
+    { id: "rfb6", question: "Which property is notably non-linear in gasoline blending?", choices: ["Octane number", "Density", "Sulfur content", "Color"], correct: 0, explanation: "Octane blending is strongly non-linear; simple volume averaging fails." },
+    { id: "rfb7", question: "Best low-sulfur, high-octane gasoline blendstock:", choices: ["FCC gasoline", "Alkylate", "Reformate", "Straight-run naphtha"], correct: 1, explanation: "Alkylate combines high RON/MON with very low sulfur and zero olefins." },
+    { id: "rfb8", question: "Blend component that raises aromatics and octane:", choices: ["Reformate", "Alkylate", "Butane", "Hydrotreated naphtha"], correct: 0, explanation: "Catalytic reformate is aromatic-rich, lifting RON but tightening benzene/aromatics specs." },
+    { id: "rfb9", question: "To improve diesel cold flow you would typically add:", choices: ["Kerosene (winterization)", "Heavy cycle oil", "Bitumen", "Water"], correct: 0, explanation: "Kerosene lowers cloud/CFPP quickly; PPDs help too, but kerosene is a fast fix." },
+    { id: "rfb10", question: "Final product release is based on meeting:", choices: ["Crude assay data", "Pump performance curves", "Applicable product specification (e.g., ASTM/EN)", "Material safety data sheet"], correct: 2, explanation: "Shipment release depends on certified test results versus the required product specification." },
+    { id: "rfb11", question: "Case study: Summer gasoline is over-volatile. What should you trim first?", choices: ["Butane", "Alkylate", "Reformate", "Isomerate"], correct: 0, explanation: "Cutting butane is the fastest way to bring RVP down for summer caps." },
+    { id: "rfb12", question: "Case study: Winter startability complaints. First corrective addition?", choices: ["Butane", "Heavy reformate", "Diesel", "Resid"], correct: 0, explanation: "In winter, adding butane boosts volatility to improve cold starts—within seasonal limits." },
+    { id: "rfb13", question: "Which component most increases benzene in gasoline?", choices: ["Reformate", "Isomerate", "Alkylate", "Ethanol"], correct: 0, explanation: "Reformate contains benzene; alkylate/isomerate are benzene-lean." },
+    { id: "rfb14", question: "To reduce gasoline benzene below 1 vol%, favor:", choices: ["Reformate", "Alkylate", "FCC gasoline", "Coker naphtha"], correct: 1, explanation: "Alkylate has near-zero benzene and helps meet aromatics/benzene constraints." },
+    { id: "rfb15", question: "Non-oxygenate octane booster often referenced in racing fuels:", choices: ["Toluene", "Ethanol", "MTBE", "Kerosene"], correct: 0, explanation: "Aromatics like toluene raise octane but also increase aromatics content; use is regulated." },
+    { id: "rfb16", question: "Which gasoline property is the most seasonal constraint in trading?", choices: ["RVP (volatility)", "Olefins", "Color", "Sulfur always"], correct: 0, explanation: "RVP limits vary by season/region and often bind summer gasoline trades." },
+    { id: "rfb17", question: "Diesel density is too high. Which blendstock helps the most?", choices: ["Kerosene", "LCO", "Vacuum gasoil", "Reformate"], correct: 0, explanation: "Kerosene lowers density and improves cold flow without heavily hurting cetane." },
+    { id: "rfb18", question: "Which component most effectively raises diesel cetane?", choices: ["Light cycle oil", "HVO diesel", "Reformate", "Butane"], correct: 1, explanation: "HVO (paraffinic) diesel has very high cetane and very low aromatics." },
+    { id: "rfb19", question: "Which diesel component most harms CFPP/cold flow?", choices: ["Light cycle oil (LCO)", "Kerosene", "Hydrotreated diesel", "HVO diesel"], correct: 0, explanation: "Aromatic LCO degrades cold flow and increases smoke." },
+    { id: "rfb20", question: "Rising FAME content in diesel increases risk of:", choices: ["Oxidation instability", "Low lubricity", "Higher sulfur", "Lower density"], correct: 0, explanation: "FAME can oxidize; antioxidants and tight storage discipline mitigate the risk." },
+    { id: "rfb21", question: "Gasoline MON is low but RON is okay. Best corrective stream:", choices: ["Isomerate", "Alkylate", "Reformate", "Butane"], correct: 1, explanation: "Alkylate has strong MON; isomerate tends to increase sensitivity (RON–MON)." },
+    { id: "rfb22", question: "Blending margin is best defined as:", choices: ["Crude price minus product price", "Blend value minus component cost", "Spec deviation penalty", "Arbitrage spread only"], correct: 1, explanation: "It’s the incremental value from turning components into a spec product vs. their costs." },
+    { id: "rfb23", question: "Which property is approximately linear in blending calculations?", choices: ["Sulfur content", "RVP", "Octane", "Smoke point"], correct: 0, explanation: "Mass properties like sulfur are near-linear; octane/RVP are notably non-linear." },
+    { id: "rfb24", question: "Viscosity blending for fuel oil is commonly handled with:", choices: ["Simple averaging", "Refutas (Viscosity Blending Number)", "Cloud point index", "Cetane index"], correct: 1, explanation: "Refutas VBN converts viscosity to a quasi-linear space for accurate blending math." },
+    { id: "rfb25", question: "Key risk when blending HSFO with paraffinic low-S cutter stocks:", choices: ["Low RVP", "Asphaltene precipitation (incompatibility)", "High cetane", "Phase separation"], correct: 1, explanation: "Incompatibility can precipitate asphaltenes—check stability/TSP tests." },
+	{ id: "rfb26", question: "Ethanol’s effect on gasoline volatility at low blends (e.g., E10):", choices: ["Lowers RVP", "No effect", "Raises RVP (uplift)", "Eliminates RVP limits"], correct: 2, explanation: "Ethanol causes a volatility uplift at low concentrations—key for summer specs." },
+    { id: "rfb27", question: "To reduce gasoline sulfur via blending, favor:", choices: ["Hydrotreated naphtha", "FCC gasoline", "Coker naphtha", "Heavy reformate"], correct: 0, explanation: "Hydrotreated naphtha is very low sulfur and reduces pool sulfur quickly." },
+    { id: "rfb28", question: "Jet fuel smoke point is low. First blending move:", choices: ["Add hydrotreated kerosene", "Add reformate", "Add LCO", "Add heavy naphtha"], correct: 0, explanation: "More paraffins/fewer aromatics (hydrotreated kerosene) improve smoke point." },
+    { id: "rfb29", question: "Gasoline T90 is too high (too heavy). Best corrective stream:", choices: ["Light isomerate", "Heavy reformate", "LCO", "Heavy naphtha"], correct: 0, explanation: "Light isomerate/light naphtha lowers the back-end of the distillation curve (T90)." },
+    { id: "rfb30", question: "Before sailing, the document proving specs at load port is the:", choices: ["Certificate of Quality (CoQ)", "Bill of Lading only", "Commercial invoice", "Timesheet"], correct: 0, explanation: "An independent survey issues the CoQ from sealed load-port samples." },
+    { id: "rfb31", question: "Which property is NOT used for diesel release testing?", choices: ["Cetane number/index", "Density", "Cold flow (CFPP/cloud)", "Octane number"], correct: 3, explanation: "Octane is for gasoline; diesel uses cetane, density, sulfur, cold-flow, etc." },
+    { id: "rfb32", question: "Which gasoline blendstock is olefin-free and improves stability/gum risk?", choices: ["Alkylate", "FCC gasoline", "Coker naphtha", "Reformate"], correct: 0, explanation: "Alkylate contains virtually no olefins—excellent stability and low gum." },
+    { id: "rfb33", question: "Market in strong backwardation. Best stance for components:", choices: ["Store for later", "Sell promptly", "Hedge only", "Ignore structure"], correct: 1, explanation: "In backwardation, time erodes value; monetizing quickly maximizes margin." },
+    { id: "rfb34", question: "Constraint often limiting profitable butane injection in terminals:", choices: ["Cetane", "CFPP", "RVP and seasonal limits", "Smoke point"], correct: 2, explanation: "Terminal/regional RVP caps limit economical butane injection." },
+    { id: "rfb35", question: "To hit low benzene and low aromatics while keeping octane, favor pairing:", choices: ["Reformate + LCO", "Alkylate + Isomerate", "Coker naphtha + Reformate", "FCC gasoline + Reformate"], correct: 1, explanation: "Alkylate + isomerate are paraffinic/clean with good octane and low aromatics." },
+    { id: "rfb36", question: "Deep hydrotreating can harm diesel lubricity. Quick corrective action:", choices: ["Add lubricity improver", "Add sulfur", "Blend with LCO", "Raise density"], correct: 0, explanation: "Lubricity additives restore HFRR quickly without violating sulfur limits." },
+    { id: "rfb37", question: "Best practice to ensure homogeneous blends before CoQ sampling:", choices: ["Immediate sample after top-loading", "No circulation needed", "In-tank circulation/line blending then settle", "Skip sampling"], correct: 2, explanation: "Proper circulation avoids stratification and biased CoQ results." },
+    { id: "rfb38", question: "Gasoline pool has high sulfur and low octane. Best two-stream combo:", choices: ["Alkylate + hydrotreated naphtha", "Reformate + LCO", "Coker naphtha + FCC gasoline", "Butane + heavy reformate"], correct: 0, explanation: "Alkylate boosts octane; hydrotreated naphtha lowers sulfur—synergistic." },
+    { id: "rfb39", question: "Bunker blend shows high TSP/instability. Likely corrective action:", choices: ["Add heavy reformate", "Dilute with stable, low-asphaltene cutter", "Add water", "Raise temperature only"], correct: 1, explanation: "Use compatible paraffinic cutter and verify with stability tests." },
+    { id: "rfb40", question: "Which blendstock tends to raise RON much more than MON (high sensitivity)?", choices: ["Isomerate", "Alkylate", "Reformate", "Kerosene"], correct: 0, explanation: "Isomerate is high-RON but relatively lower MON, increasing sensitivity." },
+    { id: "rfb41", question: "When adding ethanol to gasoline, the compliance calculation most impacted is:", choices: ["Cetane", "Oxygen content (wt%)", "Smoke point", "CFPP"], correct: 1, explanation: "Oxygen content and RVP uplift must be checked when blending ethanol." },
+    { id: "rfb42", question: "Major operational risk when blending ethanol into moist gasoline:", choices: ["Low octane", "Phase separation with water", "High cetane", "Low density"], correct: 1, explanation: "Water promotes ethanol/water separation (two-phase), making fuel off-spec." },
+    { id: "rfb43", question: "Which contamination in jet fuel cannot realistically be solved by simple blending if too high?", choices: ["High aromatics", "High sulfur", "FAME contamination over limit", "Slightly high density"], correct: 2, explanation: "FAME carryover limits are very tight; significant contamination requires reprocessing." },
+    { id: "rfb44", question: "Tool most used to screen multi-component blending economics:", choices: ["Simple averages", "Linear programming (pooling LP)", "Manual spreadsheets only", "Monte Carlo only"], correct: 1, explanation: "LP pooling models capture specs, costs, and constraints to optimize margin." },
+    { id: "rfb45", question: "Which gasoline component most raises gum formation risk if overused?", choices: ["FCC gasoline (olefinic)", "Alkylate", "Isomerate", "Hydrotreated naphtha"], correct: 0, explanation: "Olefinic FCC gasoline is more prone to oxidation/gum; treat limits carefully." },
+    { id: "rfb46", question: "To lower diesel aromatics via blending (not processing), best stream to add:", choices: ["HVO diesel", "LCO", "Reformate", "Vacuum residue"], correct: 0, explanation: "Paraffinic HVO reduces aromatics and smoke while helping cetane." },
+    { id: "rfb47", question: "For jet fuel: meeting both freeze point and smoke point at minimal cost is easiest with:", choices: ["Heavy reformate alone", "Hydrotreated kerosene + synthetic paraffinic kerosene (SPK)", "LCO only", "Butane addition"], correct: 1, explanation: "SPK + hydrotreated kerosene are paraffinic/clean, improving both properties." },
+    { id: "rfb48", question: "Gasoline oxygen is too high due to ethanol. Quickest corrective move while preserving octane:", choices: ["Increase alkylate and reduce ethanol proportion", "Add water", "Add LCO", "Add heavy reformate"], correct: 0, explanation: "Cut ethanol to reduce oxygen and replace octane with alkylate to keep specs." },
+    { id: "rfb49", question: "Case study: A Europe→US gasoline arb opens, but pool aromatics are high. Best quick fix:", choices: ["Add reformate", "Add alkylate/isomerate and cut reformate", "Add diesel", "Do nothing"], correct: 1, explanation: "US specs are tight on benzene/aromatics; paraffinic components help fit the window." },
+    { id: "rfb50", question: "Case study: Contango builds on gasoline components. Likely value strategy:", choices: ["Sell prompt regardless", "Store components if carry < contango spread", "Blend immediately into final", "Avoid hedging"], correct: 1, explanation: "In contango, deferred prices exceed prompt; if storage costs (carry) are lower, storing can add value." }
         ]
       },
 
@@ -4257,7 +4161,7 @@ questions: [
       const icons = {
   cargo_docs: "https://img.icons8.com/fluency/96/document.png",
   crude_types_specs: "https://img.icons8.com/?size=96&id=18348&format=png",
-  refined_products: "https://img.icons8.com/color/96/fuel.png",
+  refined_products: "https://img.icons8.com/color/96/gas-station.png",
   trading_market: "https://img.icons8.com/color/96/combo-chart.png",
   pricing_contracts: "https://img.icons8.com/color/96/contract.png",
   logistics_shipping: "https://img.icons8.com/color/96/cargo-ship.png",
@@ -4352,13 +4256,20 @@ async function login() {
             localStorage.setItem("quizUser", currentUser);
             document.getElementById("login-container").style.display = "none";
             document.getElementById("theme-selection").style.display = "block";
+			
+			    // 🔹 Afficher/recharger la barre globale
+    const overallContainer = document.getElementById("overallProgressContainer");
+    if (overallContainer) overallContainer.style.display = "block";
 
             renderThemesGrid();
             loadProgressOverview();
+			
 
             document.getElementById("challenge-section").style.display = "block";
             document.getElementById("my-challenges").style.display = "block";
             await loadMyChallenges(email); // <-- passer l'email ici ✅
+			await loadProgressFromCloud();
+			updateOverallProgressBar();      // mettre à jour la barre globale
 
         } else {
             // ⚡ Si login échoue, vérifier si on a un user temporaire stocké
@@ -4384,14 +4295,25 @@ async function login() {
     }
 }
 
- function logout() {
- // 🔴 Stop le timer en cours
+function logout() {
+  // 🔴 Stop le timer en cours
   stopTimer();
 
   // 🔴 Réinitialise l'affichage du timer
   const timerEl = document.getElementById("timer");
   if (timerEl) timerEl.textContent = "";
-  
+
+// 🔴 Réinitialiser la barre globale
+const overallContainer = document.getElementById("overallProgressContainer");
+if (overallContainer) {
+    overallContainer.style.display = "none"; // on cache le conteneur complet
+    const overallFill = document.getElementById("overallProgressFill");
+    if (overallFill) {
+        overallFill.style.width = "0%";
+        overallFill.textContent = "";
+    }
+}
+
   try { localStorage.removeItem("quizUser"); } catch(e) {}
   currentUser = null;
   document.getElementById("theme-selection").style.display = "none";
@@ -4402,22 +4324,31 @@ async function login() {
   document.getElementById("my-challenges").style.display = "none";
 }
 
-  window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => { // <-- rendre async pour pouvoir await
     let saved = null;
     try { saved = localStorage.getItem("quizUser"); } catch(e) {}
     if (saved) {
       currentUser = saved;
       document.getElementById("login-container").style.display = "none";
       document.getElementById("theme-selection").style.display = "block";
+      
       renderThemesGrid();
       loadProgressOverview();
-	  
-	  document.getElementById("challenge-section").style.display = "block"; // <-- ici
-	  document.getElementById("my-challenges").style.display = "block";
-	  loadMyChallenges(); // <--- AJOUT IMPORTANT ICI ✅
-	  
+
+      // 🔹 Afficher la barre globale
+      const overallContainer = document.getElementById("overallProgressContainer");
+      if (overallContainer) overallContainer.style.display = "block";
+
+      // 🔹 Charger la progression depuis le cloud
+      await loadProgressFromCloud();  // ✅ ça mettra à jour la barre et les thèmes
+
+      updateOverallProgressBar();      // 🔹 mettre à jour la barre globale après cloud
+
+      document.getElementById("challenge-section").style.display = "block";
+      document.getElementById("my-challenges").style.display = "block";
+      await loadMyChallenges(currentUser); // <-- passer l'email explicitement
     }
-  });
+});
 
   /* ========= Persistent progress (unique solved) ========= */
   function getUserProgress() {
@@ -4430,6 +4361,121 @@ async function login() {
       localStorage.setItem("progress_" + currentUser, JSON.stringify(data));
     } catch(e) {}
   }
+  
+// 🔹 Fonction pour nettoyer et préparer le payload avant envoi
+function prepareProgressPayload(progress, email) {
+    const cleanedProgress = {};
+
+    for (const [theme, data] of Object.entries(progress)) {
+        if (!theme) continue; // Ignorer les clés vides
+        cleanedProgress[theme] = {
+            solved: data.solved.map(String) // Convertir tous les IDs en string
+        };
+    }
+
+    return {
+        Email: email,
+        Progress: cleanedProgress
+    };
+}
+
+function syncProgressToCloud(progressData, email) {
+    if (!progressData || !email) return;
+
+    // 🔹 On transforme la progression pour le Flow
+    Object.keys(progressData).forEach(theme => {
+        if (!theme || !progressData[theme]?.solved) return;
+
+        const payload = {
+            Email: email,
+            Theme: theme,                     // obligatoire
+            SolvedIds: progressData[theme].solved.map(id => id.toString()), // obligatoire
+            IP: getUserIP() || "0.0.0.0"      // optionnel
+        };
+
+        console.log("📤 Sync payload:", payload);
+
+        fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/e23e3c436c3145bebd18206e4b7e55eb/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CffamMjMGSTdVPz_ZJ8QOQOI8W_C0I1lBKutiMjQa84", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+        .then(res => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+        })
+        .then(() => console.log("✅ Données envoyées au Flow avec succès"))
+        .catch(err => console.error("❌ Error syncing progress:", err));
+    });
+}
+
+function updateOverallProgressBar() {
+  const progress = getUserProgress();
+  let totalQuestions = 0;
+  let totalSolved = 0;
+
+  for (const theme of Object.keys(quizData)) {
+    const themeTotal = quizData[theme].questions.length || 0;
+    const themeSolved = progress[theme]?.solved?.length || 0;
+
+    totalQuestions += themeTotal;
+    totalSolved += themeSolved;
+  }
+
+  const percent = totalQuestions ? Math.round((totalSolved / totalQuestions) * 100) : 0;
+  const fill = document.getElementById("overallProgressFill");
+
+  if (fill) {
+    fill.style.width = percent + "%";
+    fill.textContent = percent + "% overall completed";
+  }
+}
+
+// 🔹 Récupère la progression stockée dans Power Automate
+async function loadProgressFromCloud() {
+  if (!currentUser) return;
+
+  try {
+    const res = await fetch(GET_PROGRESS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ Email: currentUser })
+    });
+
+    const data = await res.json();
+    console.log("📦 Réponse complète du Flow :", data);
+
+    // 🧩 Extraire correctement la partie utile
+    const progressBody = data?.progress?.body || [];
+    const normalized = {};
+
+    for (const entry of progressBody) {
+      // Chaque entrée ressemble à { refined_products: [...] }
+      const theme = Object.keys(entry)[0];
+      const solvedArray = entry[theme];
+
+      if (theme && Array.isArray(solvedArray)) {
+        normalized[theme] = { solved: solvedArray.map(String) };
+      }
+    }
+
+    console.log("☁️ Progress loaded from cloud (normalized):", normalized);
+
+    // ✅ Enregistre la progression normalisée
+    setUserProgress(normalized);
+
+    // 🔄 Met à jour l’UI
+    renderThemesGrid();
+    loadProgressOverview();
+    updateTopProgressBar();
+	updateOverallProgressBar();
+
+  } catch (err) {
+    console.error("❌ Erreur lors du chargement de la progression :", err);
+  }
+}
+
+
  function markQuestionAsSolved(theme, qid) {
     if (!qid || !currentTheme) return;
 
@@ -4448,6 +4494,10 @@ async function login() {
         }
 
         setUserProgress(data);
+    syncProgressToCloud(data, currentUser); // ✅ ajout des bons params
+		updateTopProgressBar();  // 🔄 Actualise barre en haut
+		loadProgressOverview();  // 🔄 Et met à jour la liste complète
+		updateOverallProgressBar();
     }
 }
   function getSolvedCount(theme) {
@@ -4766,6 +4816,9 @@ const donePayload = {
 function updateTopProgressBar() {
     if (!currentTheme || isChallengeSession) return; // ignore si mode défi
 
+    // 🔄 Recharge à jour
+    const freshData = getUserProgress();
+	
     const total = quizData[currentTheme].questions.length || 1; // éviter div/0
     let solved = getSolvedCount(currentTheme);
 
@@ -5030,7 +5083,7 @@ function sendAnswerToFlow(q, selected, isCorrect) {
   }
 
 // =======================
-// COMMIT SESSION SOLVED
+// COMMIT SESSION SOLVED + SYNC CLOUD
 // =======================
 function commitSessionSolved() {
     if (!currentTheme || isChallengeSession) return; // ignore les défis
@@ -5039,6 +5092,8 @@ function commitSessionSolved() {
     if (!data[currentTheme]) data[currentTheme] = { solved: [] };
 
     const total = quizData[currentTheme]?.questions.length || 0;
+
+    // Ajouter les bonnes réponses à la progression locale
     Object.keys(answersHistory).forEach(k => {
         const rec = answersHistory[k];
         if (rec?.isCorrect && rec?.id && !data[currentTheme].solved.includes(rec.id)) {
@@ -5046,11 +5101,16 @@ function commitSessionSolved() {
         }
     });
 
+    // S'assurer de ne pas dépasser le total
     if (data[currentTheme].solved.length > total) {
         data[currentTheme].solved = data[currentTheme].solved.slice(0, total);
     }
 
+    // Stockage local
     setUserProgress(data);
+
+    // 🔹 Envoi immédiat vers Power Automate avec nettoyage
+    syncProgressToCloud(data, currentUser);
 }
 
 
@@ -5067,7 +5127,8 @@ function nextQuestion() {
         updateTopProgressBar();         // mise à jour barre de progression (ignore si défi)
         renderThemesGrid();             // mise à jour grille accueil
         loadProgressOverview();         // mise à jour cartes progress
-
+		updateOverallProgressBar();
+		
         document.getElementById("question").textContent = "🎉 Quiz completed!";
         document.getElementById("choices").innerHTML = "";
         document.getElementById("result").textContent = `Final Score: ${score}/${selectedSet.length}`;
