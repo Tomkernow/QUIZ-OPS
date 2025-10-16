@@ -2556,9 +2556,9 @@ middle_ops: {
       id: "p1",
       question: "You buy a Gasoil cargo CIF NWE indexed to ICE Gasoil M-1 + $5/MT. Delivery is delayed to M. What is your exposure?",
       choices: [
-        "Exposure to the time spread M vs M-1",
-        "No exposure, index unchanged",
-        "FX exposure only",
+        "Short exposure to the time spread M vs M-1",
+        "No exposure",
+        "Long exposure to the time spread M vs M-1",
         "You gain $5/MT extra"
       ],
       correct: 0,
@@ -2568,22 +2568,22 @@ middle_ops: {
       id: "p2",
       question: "You hedge a Jet CIF NWE sale with ICE Gasoil futures. What residual risk remains?",
       choices: [
-        "Freight exposure",
+        "Freight exposure CIF vs FOB",
         "No risk",
         "Basis risk Jet CIF NWE vs ICE Gasoil",
-        "FX risk only"
+        "Time Spread risk"
       ],
       correct: 2,
       explanation: "Jet CIF and ICE Gasoil are correlated but not identical—basis risk remains."
     },
     {
       id: "p3",
-      question: "You buy a Brent-linked crude cargo and hedge with ICE Brent futures. What type of risk remains?",
+      question: "You buy a Brent crude cargo and hedge with ICE Brent futures. What type of risk remains?",
       choices: [
         "Quality risk",
         "None, perfect hedge",
         "Basis and timing spread risk",
-        "Freight exposure"
+        "Flat price risk"
       ],
       correct: 2,
       explanation: "ICE Brent and Dated Brent differ slightly, leaving a basis and timing spread exposure."
@@ -2592,10 +2592,10 @@ middle_ops: {
       id: "p4",
       question: "You sell a Jet FOB ARA cargo indexed to CIF NWE. What is your main risk?",
       choices: [
-        "FX exposure",
+        "Flat price risk",
         "Freight exposure ARA–NWE",
         "No risk",
-        "Volume risk"
+        "Time Spread risk"
       ],
       correct: 1,
       explanation: "Using a CIF index for an FOB sale introduces freight exposure."
@@ -2604,24 +2604,24 @@ middle_ops: {
       id: "p5",
       question: "A trader buys Gasoil FOB ARA and sells CIF Med. What new exposure is introduced?",
       choices: [
-        "Freight ARA–Med",
-        "FX rate",
+        "Long Freight ARA–Med",
+        "Short Freight ARA–Med",
         "Quality differential",
-        "Storage cost"
+        "Flat price risk"
       ],
-      correct: 0,
-      explanation: "Switching from FOB to CIF adds freight exposure on the shipping route."
+      correct: 1,
+      explanation: "Switching from FOB to CIF adds freight exposure on the shipping route and exposes you to higher freight cost"
     },
     {
       id: "p6",
       question: "A Jet CIF NWE sale is hedged using Gasoil swaps. What is the main residual risk?",
       choices: [
-        "Basis risk Jet vs Gasoil",
+        "Physical vs Paper risk",
         "Freight risk",
-        "FX risk",
+        "Basis risk Jet vs Gasoil",
         "No risk"
       ],
-      correct: 0,
+      correct: 2,
       explanation: "Jet and Gasoil are correlated but distinct products—basis risk remains."
     },
     {
@@ -2640,17 +2640,17 @@ middle_ops: {
       id: "p8",
       question: "You hedge a physical Jet sale in EUR with a futures contract quoted in USD. What exposure arises?",
       choices: [
-        "FX risk EUR/USD",
+        "None",
         "Basis risk",
-        "Freight risk",
-        "None"
+        "Flat price risk",
+        "FX risk EUR/USD"
       ],
-      correct: 0,
+      correct: 3,
       explanation: "Currency mismatch between physical and hedge introduces FX exposure."
     },
     {
       id: "p9",
-      question: "A cargo is priced 'Brent Dated + $2/bbl'. Market rises $3/bbl before delivery. If unhedged, what happens to the seller?",
+      question: "A cargo is fixed price 'Brent Dated + $2/bbl'. Market rises $3/bbl before delivery. If unhedged, what happens to the seller?",
       choices: [
         "Seller loses $3/bbl",
         "Seller gains $3/bbl",
@@ -2658,37 +2658,37 @@ middle_ops: {
         "No effect until invoice"
       ],
       correct: 0,
-      explanation: "Seller fixed at +2, so any further rise means a loss versus market."
+      explanation: "Seller fixed the price, so any further rise means a loss versus market."
     },
     {
       id: "p10",
-      question: "A trader buys Jet CIF NWE for M-1 and sells M+1. What type of exposure is this?",
+      question: "A trader buys Jet CIF NWE for M+1 and sells M+2. What type of exposure is this?",
       choices: [
-        "FX risk",
-        "Time spread exposure",
+        "Short Time Spread",
+        "Long Time Spread",
         "Flat price exposure",
-        "Arbitrage between grades"
+        "No exposure"
       ],
-      correct: 1,
+      correct: 0,
       explanation: "Buying and selling different months creates a calendar time spread position."
     },
     {
       id: "p11",
-      question: "You sell a Gasoil term 100 kb/month but only deliver 80 kb. What’s your hedge situation?",
+      question: "You sell a Gasoil term 100 kb/month pricing cal M+1 but only deliver 80 kb. What’s your hedge situation?",
       choices: [
-        "Under-hedged 20 kb",
-        "Flat",
-        "Over-hedged 20 kb",
-        "No exposure"
+        "Under-hedged 20 kb, I'm long",
+        "Under-hedged 20 kb, I'm short",
+        "Over-hedged 20 kb, I'm long",
+        "Over-hedged 20 kb, I'm short"
       ],
-      correct: 2,
-      explanation: "If you hedged for 100 kb and only deliver 80 kb, you remain long paper 20 kb."
+      correct: 3,
+      explanation: "If you hedged for 100 kb and only deliver 80 kb, you remain short paper 20 kb."
     },
     {
       id: "p12",
-      question: "A cargo priced vs Platts CIF Med is hedged using ICE Gasoil. What’s your risk?",
+      question: "A Gasoil cargo priced vs Platts CIF Med is hedged using ICE Gasoil. What’s your risk?",
       choices: [
-        "FX risk",
+        "Flat price risk",
         "Freight risk only",
         "No risk",
         "Basis risk between Med and NWE"
@@ -2701,7 +2701,7 @@ middle_ops: {
       question: "You’re short Jet CIF NWE swaps and prices fall. What happens to your P&L?",
       choices: [
         "You lose",
-        "It depends on FX",
+        "It depends on physical position",
         "No impact",
         "You gain"
       ],
@@ -2712,25 +2712,25 @@ middle_ops: {
       id: "p14",
       question: "A trader buys Fuel Oil FOB Singapore but hedges with Gasoil futures. What is the residual risk?",
       choices: [
-        "FX risk",
+        "Flat price risk",
         "Freight risk",
         "None",
-        "Basis risk Fuel vs Gasoil"
+        "Basis risk"
       ],
       correct: 3,
       explanation: "Fuel Oil and Gasoil have different fundamentals — basis risk remains."
     },
     {
       id: "p15",
-      question: "A Gasoil swap is set vs M-1. The physical cargo is priced on M. How to neutralize the exposure?",
+      question: "You're long Gasoil swaps M. And you've bought a physical cargo pricing on M+1. How to neutralize the exposure?",
       choices: [
-        "Enter M vs M-1 spread trade",
-        "Sell M swaps",
-        "Hedge with Brent",
-        "Ignore it"
+        "Buy M vs M+1 Gasoil spread",
+        "Sell M Gasoil swaps",
+        "Sell M vs M+1 Gasoil spread",
+        "Buy M Gasoil swaps"
       ],
-      correct: 0,
-      explanation: "Adding a time spread M vs M-1 hedge offsets the mismatch."
+      correct: 2,
+      explanation: "You're long M and short M+1. Adding a time spread M vs M+1 hedge offsets the mismatch."
     },
     {
       id: "p16",
@@ -2739,9 +2739,9 @@ middle_ops: {
         "Flat price",
         "Inter-product spread",
         "Time spread",
-        "FX hedge"
+        "Arb trade"
       ],
-      correct: 1,
+      correct: [1,3],
       explanation: "It’s an inter-product spread between Gasoil and Jet."
     },
     {
@@ -2770,12 +2770,12 @@ middle_ops: {
     },
     {
       id: "p19",
-      question: "You buy Crude CIF Med and sell it FOB NWE. What exposure appears?",
+      question: "You buy Crude cargo pricing CIF Med and sell it pricing FOB NWE. What exposure appears?",
       choices: [
-        "Storage only",
+        "Time spread",
         "None",
         "Freight Med–NWE",
-        "FX"
+        "Arb decision"
       ],
       correct: 2,
       explanation: "Switching from CIF to FOB creates freight exposure."
@@ -2794,7 +2794,7 @@ middle_ops: {
     },
     {
       id: "p21",
-      question: "A Jet CIF Med cargo is sold at M+1 average. Prices rise. If unhedged, what happens?",
+      question: "A Jet CIF Med cargo is sold at fixed price. Market prices rise. If unhedged, what happens?",
       choices: [
         "Gain for the seller",
         "Freight loss",
@@ -2802,13 +2802,13 @@ middle_ops: {
         "No change"
       ],
       correct: 2,
-      explanation: "Selling against a later (rising) average means the seller loses as prices rise."
+      explanation: "Selling against a rising price means the seller loses as he already fixed the price."
     },
     {
       id: "p22",
       question: "A refiner sells Gasoil term barrels indexed to ICE Gasoil. How can it hedge exposure?",
       choices: [
-        "Buy Brent futures",
+        "Buy Crack Spread",
         "Sell ICE Gasoil futures",
         "Buy ICE Gasoil futures",
         "No hedge needed"
@@ -2818,15 +2818,15 @@ middle_ops: {
     },
     {
       id: "p23",
-      question: "A trader buys LPG CIF NWE and sells it FOB ARA. What risk appears?",
+      question: "You buy a cargo of 700,000 bbls of Crude oil pricing 5 After B/L. What's your daily pricing?",
       choices: [
-        "Time spread",
-        "FX exposure",
-        "Freight ARA–NWE",
-        "Quality differential"
+        "+ 140kbbls every day",
+        "- 140kbbls every day",
+        "No daily pricing because you hedged the cargo.",
+        "700,000 bbls every day."
       ],
-      correct: 2,
-      explanation: "CIF to FOB introduces freight risk between ARA and NWE."
+      correct: 1,
+      explanation: "Buying a cargo floating price means your are exposed to prices decreasing. Therefore you are short. 700 / 5 = 140. So short 140kbbls over 5 days."
     },
     {
       id: "p24",
@@ -2844,10 +2844,10 @@ middle_ops: {
       id: "p25",
       question: "You sell Jet CIF NWE swaps for M, but physical sale is M+1. How to hedge properly?",
       choices: [
-        "Add an M vs M+1 spread",
-        "Sell Brent swaps",
-        "Do nothing",
-        "Buy FX forwards"
+        "Buy M vs M+1 Jet spread",
+        "Sell M Jet swaps",
+        "Sell M vs M+1 Jet spread",
+        "Buy M Jet swaps"
       ],
       correct: 0,
       explanation: "A time spread hedge balances the pricing period mismatch."
@@ -2856,10 +2856,10 @@ middle_ops: {
   id: "p26",
   question: "You buy Jet CIF Med cargo indexed to Gasoil CIF NWE. What is your main exposure?",
   choices: [
-    "FX exposure",
-    "Basis Med vs NWE",
-    "Freight Med–NWE",
-    "Quality Jet vs Gasoil"
+    "Flat price risk",
+    "Basis risk",
+    "Freight risk",
+    "Physical quality risk Jet vs Gasoil"
   ],
   correct: 1,
   explanation: "Different regional benchmarks (Med vs NWE) create basis risk."
@@ -2868,8 +2868,8 @@ middle_ops: {
   id: "p27",
   question: "You sell Gasoil FOB ARA but hedge using CIF Med swaps. What is the main risk?",
   choices: [
-    "Freight Med–ARA",
-    "FX risk",
+    "Freight",
+    "Flat price risk",
     "Storage cost",
     "No exposure"
   ],
@@ -2878,12 +2878,12 @@ middle_ops: {
 },
 {
   id: "p28",
-  question: "A trader is long physical Gasoil and long paper Gasoil. What’s the exposure?",
+  question: "A trader buys a physical Gasoil cargo at fixed price which he sells floating price and is long paper Gasoil. What’s the exposure?",
   choices: [
     "Flat",
     "Double long exposure",
     "Short position",
-    "Neutral"
+    "Long position"
   ],
   correct: 1,
   explanation: "Both long positions compound exposure to rising prices."
@@ -2894,7 +2894,7 @@ middle_ops: {
   choices: [
     "Refining margin risk",
     "Flat price exposure",
-    "FX exposure",
+    "Netback",
     "None"
   ],
   correct: 0,
@@ -2902,10 +2902,10 @@ middle_ops: {
 },
 {
   id: "p30",
-  question: "A trader buys Brent-linked crude and sells Dubai-linked crude. What exposure is this?",
+  question: "A trader buys crude linked to Brent and sells one linked to Dubai. What exposure is this?",
   choices: [
-    "FX risk",
-    "Inter-benchmark spread risk",
+    "Long spread Brent/Dubai",
+    "Short Spread Brent/Dubai",
     "Freight Med–Asia",
     "Storage risk"
   ],
@@ -2955,7 +2955,7 @@ middle_ops: {
     "Loss on spread position",
     "Gain on spread position",
     "No change",
-    "FX loss"
+    "Flat price risk"
   ],
   correct: 0,
   explanation: "If the Med weakens vs NWE, the long Med/short NWE position loses value."
@@ -2966,8 +2966,8 @@ middle_ops: {
   choices: [
     "Timing risk",
     "Quality risk",
-    "Basis ICE vs Dated Brent",
-    "FX risk"
+    "Basis exposure",
+    "Arb risk"
   ],
   correct: 2,
   explanation: "ICE Brent and Dated Brent don’t perfectly align, leaving basis exposure."
@@ -2986,12 +2986,12 @@ middle_ops: {
 },
 {
   id: "p37",
-  question: "A trader buys 50 kb Jet CIF NWE and hedges with 2 ICE Gasoil futures. Is the hedge correct?",
+  question: "A trader buys a cargo of Jet of 50 kb Jet CIF NWE and hedges with 2 ICE Gasoil futures. Is the hedge correct?",
   choices: [
-    "Yes, correct size",
-    "Under-hedged",
-    "Over-hedged",
-    "Irrelevant product"
+    "Under-hedged - long",
+    "Under-hedged - short",
+    "Over-hedged - long",
+    "Over-hedged - short"
   ],
   correct: 1,
   explanation: "Each ICE Gasoil contract covers 100 tons → ~12.6 kb, so hedge is too small."
@@ -3001,9 +3001,9 @@ middle_ops: {
   question: "You buy 1 Brent Dec future and sell 1 Brent Jan future. What position is this?",
   choices: [
     "Flat",
-    "Calendar spread short Dec/long Jan",
-    "Time spread long Dec/short Jan",
-    "Arbitrage position"
+    "Time spread short Dec/Jan",
+    "Time spread long Dec/Jan",
+    "No position"
   ],
   correct: 2,
   explanation: "Buying Dec and selling Jan = long nearby, short deferred = long time spread."
@@ -3012,34 +3012,34 @@ middle_ops: {
   id: "p39",
   question: "You buy Jet CIF NWE and hedge with Brent futures. What’s your exposure?",
   choices: [
-    "Refining margin (crack spread)",
-    "FX risk only",
+    "Short crack spread",
+    "Long crack spread",
     "No exposure",
-    "Storage cost"
+    "Long Brent"
   ],
-  correct: 0,
+  correct: 1,
   explanation: "Jet vs Brent represents a refining margin exposure."
 },
 {
   id: "p40",
-  question: "You hedge a Gasoil sale in USD with a EUR account. What risk remains?",
+  question: "A call option is bought. Who is rewarded if strike price is hit?",
   choices: [
-    "FX EUR/USD",
-    "No risk",
-    "Basis Gasoil vs Jet",
-    "Freight"
+    "Buyer receives option premium",
+    "Seller receives option premium",
+    "Buyer becomes long on expiry",
+    "Seller loses"
   ],
-  correct: 0,
-  explanation: "Mismatched currency introduces FX risk."
+  correct: [1,2],
+  explanation: "A call buyer profits when the underlying asset increases in price and the option has been excercised. The seller profits from the premium."
 },
 {
   id: "p41",
-  question: "A trader sells 3,000 tons of Gasoil but hedges 4,000 tons. Market rises. What happens?",
+  question: "A trader sells a cargo of 3,000 tons of Gasoil but hedges 4,000 tons. Market rises. What happens?",
   choices: [
     "Over-hedged, gain on futures",
     "Over-hedged, loss on futures",
-    "Flat",
-    "No effect"
+    "No impact",
+    "Over-hedged, Flat Pnl"
   ],
   correct: 1,
   explanation: "Being over-hedged means loss on excess short futures when prices rise."
@@ -3048,21 +3048,21 @@ middle_ops: {
   id: "p42",
   question: "You buy Jet CIF Med and hedge with Gasoil CIF Med. Prices rise equally. P&L effect?",
   choices: [
-    "Neutral hedge",
-    "Loss due to freight",
-    "FX loss",
-    "Basis loss"
+    "Gain due to higher price",
+    "Gain due to higher Jet/Gasoil spread",
+    "Loss due to higher price",
+    "Neutral hedge"
   ],
-  correct: 0,
+  correct: 3,
   explanation: "Perfect correlation means hedge offsets movement."
 },
 {
   id: "p43",
-  question: "You are long physical Gasoil and prices rally. Futures hedge is short. What’s the combined result?",
+  question: "You bought a physical Fuel cargo at fixed price which you need to sell and you have a short futures position. Prices rally. What’s the combined result?",
   choices: [
-    "Big gain",
-    "Big loss",
-    "Flat overall",
+    "Gain",
+    "Loss",
+    "No result",
     "Gain on both sides"
   ],
   correct: 2,
@@ -3070,22 +3070,22 @@ middle_ops: {
 },
 {
   id: "p44",
-  question: "A trader sells Gasoil M-1 swaps but buys physical for M+1. What exposure remains?",
+  question: "A trader sells Gasoil M swaps but buys physical for M+1. What exposure remains?",
   choices: [
-    "Time spread exposure M-1/M+1",
+    "Long time spread exposure M-1/M+1",
     "Flat price",
-    "Freight",
+    "Short time spread exposure M-1/M+1",
     "None"
   ],
-  correct: 0,
-  explanation: "M-1 vs M+1 difference creates a two-month time spread exposure."
+  correct: 2,
+  explanation: "M vs M+1 difference creates a two-month time spread exposure."
 },
 {
   id: "p45",
-  question: "A Jet CIF NWE sale is priced on a 10-day average. Hedge is monthly. What risk?",
+  question: "A Jet CIF NWE sale is priced on a 10-day average. Hedge prices monthly. What risk?",
   choices: [
-    "Timing mismatch (period exposure)",
-    "FX only",
+    "Structure risk (period exposure)",
+    "Flat price risk",
     "Freight risk",
     "No risk"
   ],
@@ -3094,26 +3094,26 @@ middle_ops: {
 },
 {
   id: "p46",
-  question: "You buy Gasoil CIF Med but sell FOB ARA cargo. What new element appears?",
+  question: "A put option is bought. Who is rewarded if strike price is hit?",
   choices: [
-    "Freight Med–ARA",
-    "Storage",
-    "FX exposure",
-    "None"
+    "Buyer receives option premium",
+    "Seller receives option premium",
+    "Buyer becomes long on expiry",
+    "Seller loses"
   ],
-  correct: 0,
-  explanation: "Switching delivery region creates freight exposure."
+  correct: 1,
+  explanation: "A call buyer profits when the underlying asset increases in price and the option has been excercised. The seller profits from the premium."
 },
 {
   id: "p47",
-  question: "You hedge Jet CIF Med exposure with Jet FOB Singapore swaps. What’s the risk?",
+  question: "You buy a Jet cargo CIF Med and intend to sell it in Singapore. What’s the risk?",
   choices: [
-    "FX",
-    "Freight and regional basis",
+    "Freight risk",
+    "Geographic arbitrage risk",
     "No exposure",
-    "Quality"
+    "Quality risk"
   ],
-  correct: 1,
+  correct: [0,1,3],
   explanation: "Different regions create both freight and basis risk."
 },
 {
@@ -3130,27 +3130,27 @@ middle_ops: {
 },
 {
   id: "p49",
-  question: "You buy Jet CIF NWE and hedge with Gasoil CIF NWE. Jet cracks widen. Result?",
+  question: "You buy Jet CIF NWE and hedge with Gasoil CIF NWE. Jet cracks widen faster than Gasoil cracks. Result?",
   choices: [
     "Gain on physical Jet",
     "Loss on hedge",
     "Both gain equally",
-    "Flat result"
+    "Loss on physical Gasoil"
   ],
   correct: 0,
   explanation: "Jet strengthening vs Gasoil benefits Jet long positions."
 },
 {
   id: "p50",
-  question: "A trader sells Gasoil term barrels indexed to M-1 but invoices M+1. What’s the impact?",
+  question: "A trader sells Gasoil term barrels indexed to M-1 but enters in deal sheet pricing M. What’s the impact?",
   choices: [
-    "Time spread loss",
+    "Time spread",
     "Freight risk",
-    "FX gain",
-    "Storage cost increase"
+    "Flat price impact",
+    "Trader made a mistake"
   ],
-  correct: 0,
-  explanation: "Pricing mismatch creates time spread loss (M-1 vs M+1)."
+  correct: [0,2,3],
+  explanation: "Pricing period is completely wrong in the system. It is trader's fault (but Middle Office and Ops should have checked). This creates Flat Price as deal priced in the past and potential Time spread with new hedge needed."
 }
   ]
 },
@@ -3247,7 +3247,7 @@ middle_ops: {
         id: "bcv13",
         question: "What is the role of the terminal in vetting?",
         choices: ["Approve barge access", "Conduct safety checks", "Issue ADN certificate", "Coordinate loading"],
-        correct: [0,1,4],
+        correct: [0,1],
         explanation: "Terminals approve access and conduct safety checks but do not issue ADN certificates."
       },
       {
@@ -5377,8 +5377,8 @@ middle_ops: {
 
   // 🆕 New themes
   middle_ops: "https://img.icons8.com/color/96/organization.png", // coordination / back-office
-  barge_customs_vetting: "https://img.icons8.com/color/96/barge.png", // barge transport
-  contracts_legal_insurance: "https://img.icons8.com/color/96/legal-document.png", // legal/contracts
+  barge_customs_vetting: "https://img.icons8.com/color/96/cargo-ship.png", // barge transport
+  contracts_legal_insurance: "https://img.icons8.com/color/96/law.png", // legal/contracts
   credit_finance: "https://img.icons8.com/color/96/money-bag.png", // finance/credit
   loss_control: "https://img.icons8.com/color/96/inspection.png" // loss control / quality check
 };
