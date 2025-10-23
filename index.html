@@ -434,24 +434,32 @@
         <div class="themes"></div>
 
 <div id="challenge-section" style="display:none; margin-top:24px;">
-    <h2>⚔️ Défis</h2>
-    <button id="showChallengeBtn">Lancer un défi</button>
+    <h2>⚔️ Challenge</h2>
+    <button id="showChallengeBtn">Challenge a player</button>
+
+<button id="topPlayersBtn">🏆 Top 3 Players</button>
+
+<!-- Conteneur pour afficher le top 3 -->
+<div id="topPlayersContainer" style="display:none; margin-top:16px; text-align:center;">
+  <h3>🏅 Scoreboard TopPlayer</h3>
+  <div id="topPlayersList"></div>
+</div>
 
     <div id="challenge-form" style="display:none; margin-top:12px;">
       <select id="opponentEmail">
-  <option value="">Choisir un joueur...</option>
+  <option value="">Choose a player...</option>
 </select>
       <select id="challengeTheme">
         <option value="cargo_docs">Cargo Docs</option>
         <option value="refined_products">Refined Products</option>
         <option value="specialty_products">Specialty Products</option>
       </select>
-      <button id="sendChallengeBtn">Envoyer le défi</button>
+      <button id="sendChallengeBtn">Send a challenge</button>
     </div>
 
     <!-- Container pour défis reçus -->
     <div id="my-challenges" style="margin-top:16px; display:none;">
-        <h3>Défis reçus</h3>
+        <h3>Challenge received</h3>
         <div id="challenges-list"></div>
     </div>
 </div>
@@ -2547,157 +2555,333 @@ middle_ops: {
 },
 
 
-
-
- pricing: {
+oilMarkets: {
   title: "Pricing Strategies & Exposures",
   questions: [
     {
-      id: "p1",
-      question: "You buy a Gasoil cargo CIF NWE indexed to ICE Gasoil M-1 + $5/MT. Delivery is delayed to M. What is your exposure?",
+      id: "om1",
+      question: "What does TAS (Trade at Settlement) allow a trader to do?",
       choices: [
-        "Short exposure to the time spread M vs M-1",
-        "No exposure",
-        "Long exposure to the time spread M vs M-1",
-        "You gain $5/MT extra"
+        "Execute a trade at the day's closing settlement price",
+        "Execute a trade at the opening price",
+        "Avoid margin calls",
+        "Trade physical barrels only"
       ],
       correct: 0,
-      explanation: "Changing delivery from M-1 to M alters the pricing period, creating exposure to the time spread."
+      explanation: "TAS allows traders to enter a futures position at the official settlement price published at the end of the trading day. This is useful for aligning with daily mark-to-market valuations and for strategies that rely on end-of-day pricing."
     },
     {
-      id: "p2",
-      question: "You hedge a Jet CIF NWE sale with ICE Gasoil futures. What residual risk remains?",
+      id: "om2",
+      question: "What is the purpose of MOC (Market on Close) orders?",
       choices: [
-        "Freight exposure CIF vs FOB",
-        "No risk",
-        "Basis risk Jet CIF NWE vs ICE Gasoil",
-        "Time Spread risk"
-      ],
-      correct: 2,
-      explanation: "Jet CIF and ICE Gasoil are correlated but not identical—basis risk remains."
-    },
-    {
-      id: "p3",
-      question: "You buy a Brent crude cargo and hedge with ICE Brent futures. What type of risk remains?",
-      choices: [
-        "Quality risk",
-        "None, perfect hedge",
-        "Basis and timing spread risk",
-        "Flat price risk"
-      ],
-      correct: 2,
-      explanation: "ICE Brent and Dated Brent differ slightly, leaving a basis and timing spread exposure."
-    },
-    {
-      id: "p4",
-      question: "You sell a Jet FOB ARA cargo indexed to CIF NWE. What is your main risk?",
-      choices: [
-        "Flat price risk",
-        "Freight exposure ARA–NWE",
-        "No risk",
-        "Time Spread risk"
+        "To execute trades at the average price of the day",
+        "To execute trades at the last price before market close",
+        "To execute trades at the settlement price",
+        "To avoid trading during volatile periods"
       ],
       correct: 1,
-      explanation: "Using a CIF index for an FOB sale introduces freight exposure."
+      explanation: "MOC orders are designed to execute at the last available price before the market closes. They are often used by traders who want to align their positions with end-of-day liquidity and benchmark pricing."
     },
     {
-      id: "p5",
-      question: "A trader buys Gasoil FOB ARA and sells CIF Med. What new exposure is introduced?",
+      id: "om3",
+      question: "How does MOP (Market on Open) differ from MOC?",
       choices: [
-        "Long Freight ARA–Med",
-        "Short Freight ARA–Med",
-        "Quality differential",
-        "Flat price risk"
-      ],
-      correct: 1,
-      explanation: "Switching from FOB to CIF adds freight exposure on the shipping route and exposes you to higher freight cost"
-    },
-    {
-      id: "p6",
-      question: "A Jet CIF NWE sale is hedged using Gasoil swaps. What is the main residual risk?",
-      choices: [
-        "Physical vs Paper risk",
-        "Freight risk",
-        "Basis risk Jet vs Gasoil",
-        "No risk"
-      ],
-      correct: 2,
-      explanation: "Jet and Gasoil are correlated but distinct products—basis risk remains."
-    },
-    {
-      id: "p7",
-      question: "You pre-hedged 100 kb Brent futures for a crude cargo that gets canceled. What happens?",
-      choices: [
-        "You are long paper Brent",
-        "You are short paper Brent",
-        "You are flat",
-        "No effect"
+        "MOP executes at the opening price; MOC at the closing price",
+        "MOP is used for swaps; MOC is used for futures",
+        "MOP avoids volatility; MOC increases volatility",
+        "MOP is only used in OTC markets"
       ],
       correct: 0,
-      explanation: "Without physical barrels, your futures hedge becomes a speculative long."
+      explanation: "MOP orders are executed at the first available price when the market opens, while MOC orders are executed at the last price before the market closes. These mechanisms help traders manage timing risk and benchmark alignment."
     },
     {
-      id: "p8",
-      question: "You hedge a physical Jet sale in EUR with a futures contract quoted in USD. What exposure arises?",
+      id: "om4",
+      question: "Why might a trader use TAS instead of a regular futures order?",
       choices: [
-        "None",
+        "To speculate on intraday volatility",
+        "To match the settlement price for accounting or hedging",
+        "To avoid paying margin",
+        "To trade physical oil"
+      ],
+      correct: 1,
+      explanation: "TAS is often used when a trader wants to match the settlement price for hedging or accounting purposes. It provides certainty on pricing and is especially useful for aligning with OTC swap settlements."
+    },
+    {
+      id: "om5",
+      question: "Which of the following statements about TAS, MOP, and MOC is correct?",
+      choices: [
+        "TAS and MOC both execute at the settlement price",
+        "MOP is used to capture early market momentum",
+        "MOC is preferred for volatility trading",
+        "TAS is only available in OTC markets"
+      ],
+      correct: [1],
+      explanation: "MOP is used to capture early market momentum by executing at the opening price. MOC is used to align with closing benchmarks, and TAS executes at the official settlement price."
+    },
+    {
+      id: "om6",
+      question: "What is a flat price position in oil trading?",
+      choices: [
+        "Exposure to price differences between two grades",
+        "Exposure to the directional movement of oil prices",
+        "Exposure to seasonal demand shifts",
+        "Exposure to refining margins"
+      ],
+      correct: 1,
+      explanation: "A flat price position, also called an outright position, means the trader is exposed to the simple up or down movement of oil prices."
+    },
+    {
+      id: "om7",
+      question: "What does a time spread represent in oil trading?",
+      choices: [
+        "Price difference between two locations",
+        "Price difference between two grades",
+        "Price difference between two time periods",
+        "Price difference between crude and product"
+      ],
+      correct: 2,
+      explanation: "Time spreads reflect the price difference for the same grade of oil across two different time periods. Traders use them to manage seasonality and storage economics."
+    },
+    {
+      id: "om8",
+      question: "Which spread is known as a refinery margin spread?",
+      choices: [
+        "Arbitrage spread",
+        "Crack spread",
+        "Time spread",
+        "Relative value spread"
+      ],
+      correct: 1,
+      explanation: "Crack spreads represent the difference between finished product prices and crude oil prices, indicating refinery margins."
+    },
+    {
+      id: "om9",
+      question: "You sell Jet CIF NWE swaps for M, but physical sale is M+1. How to hedge properly?",
+      choices: [
+        "Buy M vs M+1 Jet spread",
+        "Sell M Jet swaps",
+        "Sell M vs M+1 Jet spread",
+        "Buy M Jet swaps"
+      ],
+      correct: 0,
+      explanation: "A time spread hedge balances the pricing period mismatch."
+    },
+    {
+      id: "om10",
+      question: "What does a regrade spread compare?",
+      choices: [
+        "Crude vs product",
+        "Same product in different regions",
+        "Different grades of the same product",
+        "Product vs transportation cost"
+      ],
+      correct: 2,
+      explanation: "Regrade spreads compare different grades of the same product, such as kerosene vs gasoil in Asia or gasoline grades in the US."
+    },
+    {
+      id: "om11",
+      question: "What is a box spread?",
+      choices: [
+        "A spread between two locations",
+        "A spread involving two time spreads",
+        "A time spread involving two other spreads",
+        "A spread between crude and product"
+      ],
+      correct: 2,
+      explanation: "Box spreads are time spreads that involve two crack, arbitrage, or relative value spreads."
+    },
+    {
+      id: "om12",
+      question: "What is the primary risk in a spread position?",
+      choices: [
+        "Currency risk",
         "Basis risk",
-        "Flat price risk",
-        "FX risk EUR/USD"
+        "Credit risk",
+        "Operational risk"
       ],
-      correct: 3,
-      explanation: "Currency mismatch between physical and hedge introduces FX exposure."
+      correct: 1,
+      explanation: "Basis risk is the market risk associated with spread positions, reflecting price differences between grades, time periods, or locations."
     },
     {
-      id: "p9",
-      question: "A cargo is fixed price 'Brent Dated + $2/bbl'. Market rises $3/bbl before delivery. If unhedged, what happens to the seller?",
+      id: "om13",
+      question: "What does 'going long futures' mean?",
       choices: [
-        "Seller loses $3/bbl",
-        "Seller gains $3/bbl",
-        "Buyer loses $3/bbl",
-        "No effect until invoice"
+        "Selling futures contracts",
+        "Buying futures contracts expecting prices to fall",
+        "Buying futures contracts expecting prices to rise",
+        "Closing out a futures position"
+      ],
+      correct: 2,
+      explanation: "Going long futures means buying contracts with the expectation that market prices will rise."
+    },
+    {
+      id: "om14",
+      question: "What is a margin call in futures trading?",
+      choices: [
+        "A request to close a position",
+        "A request to post additional margin due to losses",
+        "A request to increase leverage",
+        "A request to change contract terms"
+      ],
+      correct: 1,
+      explanation: "A margin call is a demand for additional funds when the market moves against a trader’s position."
+    },
+    {
+      id: "om15",
+      question: "A trader buys a physical Gasoil cargo at fixed price which he sells floating price and is long paper Gasoil. What’s the exposure?",
+  choices: [
+    "Flat",
+    "Double long exposure",
+    "Short position",
+    "Long position"
+  ],
+  correct: 1,
+  explanation: "Both long positions compound exposure to rising prices."
+    },
+    {
+      id: "om16",
+      question: "What is the term for reducing leverage to zero in futures trading?",
+      choices: [
+        "Squaring out",
+        "Unwinding",
+        "Fully collateralizing",
+        "Hedging"
+      ],
+      correct: 2,
+      explanation: "Fully collateralizing means posting the full value of the oil to eliminate leverage."
+    },
+    {
+      id: "om17",
+      question: "What is the main difference between futures and OTC swaps?",
+      choices: [
+        "OTC swaps are standardized",
+        "Futures are customizable",
+        "OTC swaps are customizable",
+        "Futures are traded privately"
+      ],
+      correct: 2,
+      explanation: "OTC swaps are customizable contracts traded directly between counterparties, unlike standardized futures."
+    },
+    {
+      id: "om18",
+      question: "What does 'paying fixed and receiving floating' mean in swap terminology?",
+      choices: [
+        "Going short a swap",
+        "Going long a swap",
+        "Closing a swap",
+        "Hedging against falling prices"
+      ],
+      correct: 1,
+      explanation: "Paying fixed and receiving floating means going long a swap, benefiting from rising prices."
+    },
+    {
+      id: "om19",
+      question: "What is Asian settlement in OTC swaps?",
+      choices: [
+        "Settlement based on a single day",
+        "Settlement based on average monthly prices",
+        "Settlement based on futures expiry",
+        "Settlement based on benchmark differentials"
+      ],
+      correct: 1,
+      explanation: "Asian settlement refers to cash settlement based on the average price over a calendar month."
+    },
+    {
+      id: "om20",
+      question: "What is a floating-for-floating swap?",
+      choices: [
+        "Swap with fixed price",
+        "Swap with bullet settlement",
+        "Swap between two floating prices",
+        "Swap with no settlement"
+      ],
+      correct: 2,
+      explanation: "Floating-for-floating swaps involve trading the spread between two floating prices, such as crude vs product."
+    },
+    {
+      id: "om21",
+      
+question: "Which instrument allows hedging short-term dated Brent exposure?",
+      choices: ["21-day BFOE", "CFD", "ICE Brent Futures", "WTI Futures"],
+      correct: 1,
+      explanation: "CFDs allow traders to hedge or speculate on dated Brent over short periods like a week or half-month."
+
+    },
+    {
+      id: "om22",
+      question: "What is the role of ISDA in OTC markets?",
+      choices: [
+        "Regulates futures exchanges",
+        "Provides benchmark prices",
+        "Creates standardized contracts",
+        "Manages margin calls"
+      ],
+      correct: 2,
+      explanation: "ISDA produces standardized contracts and clauses used in OTC oil trading."
+    },
+    {
+      id: "om23",
+      question: "A trader buys a cargo of Jet of 50 kb Jet CIF NWE and hedges with 2 ICE Gasoil futures. Is the hedge correct?",
+  choices: [
+    "Under-hedged - long",
+    "Under-hedged - short",
+    "Over-hedged - long",
+    "Over-hedged - short"
+  ],
+  correct: 1,
+  explanation: "Each ICE Gasoil contract covers 100 tons → ~12.6 kb, so hedge is too small."
+    },
+    {
+      id: "om24",
+      question: "What is a crack spread swap?",
+      choices: [
+        "Buying crude and selling product",
+        "Selling crude and buying product",
+        "Buying product and selling crude",
+        "Buying two products"
       ],
       correct: 0,
-      explanation: "Seller fixed the price, so any further rise means a loss versus market."
+      explanation: "A crack spread swap involves buying crude and selling finished product swaps to hedge refinery margins."
     },
     {
-      id: "p10",
-      question: "A trader buys Jet CIF NWE for M+1 and sells M+2. What type of exposure is this?",
+      id: "om25",
+      question: "What is the typical expiry style for OTC oil options?",
       choices: [
-        "Short Time Spread",
-        "Long Time Spread",
-        "Flat price exposure",
-        "No exposure"
+        "American",
+        "European",
+        "Asian",
+        "Bermudan"
       ],
-      correct: 0,
-      explanation: "Buying and selling different months creates a calendar time spread position."
+      correct: 2,
+      explanation: "Asian expiry is most common in OTC oil options, based on average prices over a period."
     },
+	
     {
-      id: "p11",
-      question: "You sell a Gasoil term 100 kb/month pricing cal M+1 but only deliver 80 kb. What’s your hedge situation?",
+      id: "om26",
+      question: "A trader buys a March swap for 20,000 MT of Platts NWE Jet Fuel at $1,510/MT. The average floating price for March is $1,550.25/MT. What is the net result?",
       choices: [
-        "Under-hedged 20 kb, I'm long",
-        "Under-hedged 20 kb, I'm short",
-        "Over-hedged 20 kb, I'm long",
-        "Over-hedged 20 kb, I'm short"
+        "Trader pays $30,200,000 on the fixed leg",
+        "Trader receives $31,005,000 on the floating leg",
+        "Trader nets a gain of $805,000",
+        "Trader loses $805,000"
       ],
-      correct: 3,
-      explanation: "If you hedged for 100 kb and only deliver 80 kb, you remain short paper 20 kb."
+      correct: [0, 1, 2],
+      explanation: "The trader pays the fixed leg ($1,510 × 20,000 = $30.2M) and receives the floating leg ($1,550.25 × 20,000 = $31.005M). The net gain is $805,000."
     },
     {
-      id: "p12",
-      question: "A Gasoil cargo priced vs Platts CIF Med is hedged using ICE Gasoil. What’s your risk?",
+      id: "om27",
+      question: "A refiner sells Gasoil term barrels indexed to ICE Gasoil. How can it hedge exposure to lock in margin?",
       choices: [
-        "Flat price risk",
-        "Freight risk only",
-        "No risk",
-        "Basis risk between Med and NWE"
+        "Buy Crack Spread",
+        "Sell ICE Gasoil futures",
+        "Buy ICE Gasoil futures",
+        "No hedge needed"
       ],
-      correct: 3,
-      explanation: "Different regional pricing creates basis risk (Med vs NWE)."
+      correct: 1,
+      explanation: "Selling physical means you short paper to lock in margin."
     },
     {
-      id: "p13",
+      id: "om28",
       question: "You’re short Jet CIF NWE swaps and prices fall. What happens to your P&L?",
       choices: [
         "You lose",
@@ -2709,19 +2893,247 @@ middle_ops: {
       explanation: "Short swaps benefit when prices fall."
     },
     {
-      id: "p14",
-      question: "A trader buys Fuel Oil FOB Singapore but hedges with Gasoil futures. What is the residual risk?",
+      id: "om29",
+      question: "Which spreads are commonly used to hedge refinery margins?",
       choices: [
-        "Flat price risk",
-        "Freight risk",
-        "None",
-        "Basis risk"
+        "Crack spreads",
+        "Arbitrage spreads",
+        "Relative value spreads",
+        "Time spreads"
       ],
-      correct: 3,
-      explanation: "Fuel Oil and Gasoil have different fundamentals — basis risk remains."
+      correct: [0],
+      explanation: "Crack spreads (e.g., gasoline minus crude) represent refinery margins and are used to hedge refining economics."
     },
     {
-      id: "p15",
+      id: "om30",
+      question: "A trader sells a 321 crack spread. What is the position?",
+      choices: [
+        "Buy 3 crude futures",
+        "Sell 2 gasoline futures",
+        "Sell 1 heating oil futures",
+        "Sell 3 crude futures"
+      ],
+      correct: [0, 1, 2],
+      explanation: "Selling a 321 crack spread involves buying 3 crude and selling 2 gasoline and 1 heating oil futures."
+    },
+    {
+      id: "om31",
+      question: "What is the purpose of a floating-for-floating swap?",
+      choices: [
+        "To hedge directional price risk",
+        "To trade the spread between two benchmarks",
+        "To eliminate fixed price exposure",
+        "To speculate on volatility"
+      ],
+      correct: [1, 3],
+      explanation: "Floating-for-floating swaps trade the spread between two benchmarks (e.g., jet fuel vs crude) and can be used to speculate on volatility."
+    },
+    {
+      id: "om32",
+      question: "Which expiry styles are most common in OTC oil options?",
+      choices: [
+        "American",
+        "Asian",
+        "European",
+        "Bermudan"
+      ],
+      correct: [1],
+      explanation: "Asian expiry is most common in OTC oil options, settling against average prices over a period."
+    },
+    {
+      id: "om33",
+      question: "What does Vega measure in options trading?",
+      choices: [
+        "Sensitivity to time decay",
+        "Sensitivity to volatility changes",
+        "Sensitivity to interest rate changes",
+        "Sensitivity to underlying price changes"
+      ],
+      correct: [1],
+      explanation: "Vega measures how much an option’s value changes with a 1% change in volatility."
+    },
+    {
+      id: "om34",
+      question: "An airline buys a call and sells a put. What strategy is this?",
+      choices: [
+        "Straddle",
+        "Collar",
+        "Call spread",
+        "Risk reversal"
+      ],
+      correct: [1, 3],
+      explanation: "Buying a call and selling a put is a collar, also known as a risk reversal, used to hedge against rising prices with no upfront premium."
+    },
+    {
+      id: "om35",
+      question: "Which option strategy profits from high volatility regardless of direction?",
+      choices: [
+        "Straddle",
+        "Collar",
+        "Call spread",
+        "Put spread"
+      ],
+      correct: [0],
+      explanation: "A straddle involves buying both a call and a put at the same strike, profiting from large price movements in either direction."
+    },
+    {
+      id: "om36",
+      question: "What are the benefits of hedging oil price risk?",
+      choices: [
+        "Improved borrowing capacity",
+        "Reduced bankruptcy risk",
+        "Better earnings forecasting",
+        "Guaranteed profits"
+      ],
+      correct: [0, 1, 2],
+      explanation: "Hedging reduces cash flow volatility, improves financial stability, and enables better planning, though it does not guarantee profits."
+    },
+    {
+      id: "om37",
+      question: "Which of the following are true about futures contracts?",
+      choices: [
+        "Standardized and exchange-traded",
+        "Require initial and variation margin",
+        "Expire into physical oil",
+        "Customizable for any volume"
+      ],
+      correct: [0, 1, 2],
+      explanation: "Futures are standardized, traded on exchanges, require margining, and may expire into physical oil unless squared out."
+    },
+    {
+      id: "om38",
+      question: "What is the main difference between futures and OTC swaps?",
+      choices: [
+        "Futures are standardized; swaps are customizable",
+        "Futures settle physically; swaps settle in cash",
+        "Futures use bullet expiry; swaps use Asian expiry",
+        "Futures are discounted for time value"
+      ],
+      correct: [0, 1, 2],
+      explanation: "Futures are standardized and often settle physically with bullet expiry, while swaps are customizable, cash-settled, and use Asian expiry."
+    },
+    {
+      id: "om39",
+     question: "You’re long physical Jet and short futures. Prices rise sharply. What’s your net effect?",
+      choices: [
+        "Gain both sides",
+        "Gain on physical, loss on futures → roughly neutral",
+        "Loss both sides",
+        "Loss on physical, gain on futures"
+      ],
+      correct: 1,
+      explanation: "Proper hedge neutralizes price movement."
+    },
+    {
+      id: "om40",
+      question: "Which of the following are true about margin calls?",
+      choices: [
+        "They occur when market moves against a position",
+        "They require additional funds to maintain the position",
+        "They are issued by the exchange clearinghouse",
+        "They are optional for OTC swaps"
+      ],
+      correct: [0, 1, 2],
+      explanation: "Margin calls are mandatory in futures trading when losses occur, and are managed by the exchange clearinghouse."
+    },
+    {
+      id: "om41",
+      question: "What does Theta represent in options trading?",
+      choices: [
+        "Change in value due to volatility",
+        "Change in value due to time decay",
+        "Change in value due to interest rates",
+        "Change in value due to underlying price"
+      ],
+      correct: [1],
+      explanation: "Theta measures the loss in option value as time passes, known as time decay."
+    },
+    {
+      id: "om42",
+        question: "You sell a Gasoil term 100 kb/month pricing cal M+1 but only deliver 80 kb. What’s your hedge situation if you have decided to lock the price?",
+      choices: [
+        "Under-hedged 20 kb, I'm long",
+        "Under-hedged 20 kb, I'm short",
+        "Over-hedged 20 kb, I'm long",
+        "Over-hedged 20 kb, I'm short"
+      ],
+      correct: 3,
+      explanation: "If you hedged for 100 kb and only deliver 80 kb, you remain short paper 20 kb."
+    },
+    {
+      id: "om43",
+      question: "What is the payoff of a $105 strike call option if market expires at $110 and premium was $5?",
+      choices: [
+        "$0",
+        "$5",
+        "$10",
+        "$5 net of premium"
+      ],
+      correct: [3],
+      explanation: "The option is $5 in the money, which offsets the $5 premium, resulting in a net payoff of $5."
+    },
+    {
+      id: "om44",
+      question: "Which instruments are used to hedge against falling oil prices?",
+      choices: [
+        "Put options",
+        "Fixed price receiver swaps",
+        "Selling futures",
+        "Call options"
+      ],
+      correct: [0, 1, 2],
+      explanation: "Put options, fixed price receiver swaps, and short futures positions hedge against falling prices."
+    },
+    {
+      id: "om45",
+      question: "What is the role of ISDA in OTC trading?",
+      choices: [
+        "Provides benchmark prices",
+        "Standardizes contracts",
+        "Manages margin calls",
+        "Regulates exchanges"
+      ],
+      correct: [1],
+      explanation: "ISDA standardizes OTC contracts and clauses, facilitating efficient documentation and legal clarity."
+    },
+    {
+      id: "om46",
+      question: "Which of the following are true about option premiums?",
+      choices: [
+        "Paid upfront by buyer",
+        "Never refunded",
+        "Can be financed by selling another option",
+        "Paid by seller"
+      ],
+      correct: [0, 1, 2],
+      explanation: "Option premiums are paid upfront, non-refundable, and can be offset by selling another option (e.g., in a collar)."
+    },
+    {
+      id: "om47",
+      question: "What is a swaption?",
+      choices: [
+        "An option that gives the right to enter a swap",
+        "A swap that gives the right to enter an option",
+        "A futures contract with optional expiry",
+        "A spread between two swaps"
+      ],
+      correct: [0],
+      explanation: "A swaption is an option that, if exercised, gives the buyer the right to enter into an OTC swap."
+    },
+    {
+      id: "om48",
+      question: "Which factors affect the value of an oil option?",
+      choices: [
+        "Underlying market price",
+        "Time to expiry",
+        "Volatility",
+        "Interest rates"
+      ],
+      correct: [0, 1, 2, 3],
+      explanation: "Option value is influenced by market price, time decay (Theta), volatility (Vega), and interest rates (Rho)."
+    },
+    {
+      id: "om49",
       question: "You're long Gasoil swaps M. And you've bought a physical cargo pricing on M+1. How to neutralize the exposure?",
       choices: [
         "Buy M vs M+1 Gasoil spread",
@@ -2733,427 +3145,20 @@ middle_ops: {
       explanation: "You're long M and short M+1. Adding a time spread M vs M+1 hedge offsets the mismatch."
     },
     {
-      id: "p16",
-      question: "You are long Gasoil CIF Med and short Jet CIF NWE. What type of trade is this?",
+      id: "om50",
+      question: "Which option strategy limits both premium and payoff?",
       choices: [
-        "Flat price",
-        "Inter-product spread",
-        "Time spread",
-        "Arb trade"
+        "Call spread",
+        "Put spread",
+        "Straddle",
+        "Collar"
       ],
-      correct: [1,3],
-      explanation: "It’s an inter-product spread between Gasoil and Jet."
-    },
-    {
-      id: "p17",
-      question: "You hedge a physical in EUR using ICE Gasoil in USD. Market stable, EUR/USD falls. What happens?",
-      choices: [
-        "FX loss on hedge",
-        "No effect",
-        "FX gain on hedge",
-        "Price risk appears"
-      ],
-      correct: 0,
-      explanation: "USD strengthens, so hedge loses in EUR terms."
-    },
-    {
-      id: "p18",
-      question: "You’re long physical Jet and short futures. Prices rise sharply. What’s your net effect?",
-      choices: [
-        "Gain both sides",
-        "Gain on physical, loss on futures → roughly neutral",
-        "Loss both sides",
-        "Loss on physical, gain on futures"
-      ],
-      correct: 1,
-      explanation: "Proper hedge neutralizes price movement."
-    },
-    {
-      id: "p19",
-      question: "You buy Crude cargo pricing CIF Med and sell it pricing FOB NWE. What exposure appears?",
-      choices: [
-        "Time spread",
-        "None",
-        "Freight Med–NWE",
-        "Arb decision"
-      ],
-      correct: 2,
-      explanation: "Switching from CIF to FOB creates freight exposure."
-    },
-    {
-      id: "p20",
-      question: "A Gasoil cargo is priced vs M average. Market backwardates strongly. When to sell if you’re long?",
-      choices: [
-        "As early as possible",
-        "As late as possible",
-        "It doesn’t matter",
-        "Mid-month"
-      ],
-      correct: 0,
-      explanation: "In backwardation, earlier sale avoids losing value as prices fall into delivery."
-    },
-    {
-      id: "p21",
-      question: "A Jet CIF Med cargo is sold at fixed price. Market prices rise. If unhedged, what happens?",
-      choices: [
-        "Gain for the seller",
-        "Freight loss",
-        "Loss for the seller",
-        "No change"
-      ],
-      correct: 2,
-      explanation: "Selling against a rising price means the seller loses as he already fixed the price."
-    },
-    {
-      id: "p22",
-      question: "A refiner sells Gasoil term barrels indexed to ICE Gasoil. How can it hedge exposure?",
-      choices: [
-        "Buy Crack Spread",
-        "Sell ICE Gasoil futures",
-        "Buy ICE Gasoil futures",
-        "No hedge needed"
-      ],
-      correct: 1,
-      explanation: "Selling physical means you short paper to lock in margin."
-    },
-    {
-      id: "p23",
-      question: "You buy a cargo of 700,000 bbls of Crude oil pricing 5 After B/L. What's your daily pricing?",
-      choices: [
-        "+ 140kbbls every day",
-        "- 140kbbls every day",
-        "No daily pricing because you hedged the cargo.",
-        "700,000 bbls every day."
-      ],
-      correct: 1,
-      explanation: "Buying a cargo floating price means your are exposed to prices decreasing. Therefore you are short. 700 / 5 = 140. So short 140kbbls over 5 days."
-    },
-    {
-      id: "p24",
-      question: "You are long Brent futures but prices drop $2/bbl. What happens?",
-      choices: [
-        "Margin credit increases",
-        "Gain $2/bbl",
-        "No effect",
-        "Lose $2/bbl"
-      ],
-      correct: 3,
-      explanation: "Long futures lose when prices fall."
-    },
-    {
-      id: "p25",
-      question: "You sell Jet CIF NWE swaps for M, but physical sale is M+1. How to hedge properly?",
-      choices: [
-        "Buy M vs M+1 Jet spread",
-        "Sell M Jet swaps",
-        "Sell M vs M+1 Jet spread",
-        "Buy M Jet swaps"
-      ],
-      correct: 0,
-      explanation: "A time spread hedge balances the pricing period mismatch."
-    },
-	{
-  id: "p26",
-  question: "You buy Jet CIF Med cargo indexed to Gasoil CIF NWE. What is your main exposure?",
-  choices: [
-    "Flat price risk",
-    "Basis risk",
-    "Freight risk",
-    "Physical quality risk Jet vs Gasoil"
-  ],
-  correct: 1,
-  explanation: "Different regional benchmarks (Med vs NWE) create basis risk."
-},
-{
-  id: "p27",
-  question: "You sell Gasoil FOB ARA but hedge using CIF Med swaps. What is the main risk?",
-  choices: [
-    "Freight",
-    "Flat price risk",
-    "Storage cost",
-    "No exposure"
-  ],
-  correct: 0,
-  explanation: "The hedge uses a different regional basis — freight Med–ARA remains unhedged."
-},
-{
-  id: "p28",
-  question: "A trader buys a physical Gasoil cargo at fixed price which he sells floating price and is long paper Gasoil. What’s the exposure?",
-  choices: [
-    "Flat",
-    "Double long exposure",
-    "Short position",
-    "Long position"
-  ],
-  correct: 1,
-  explanation: "Both long positions compound exposure to rising prices."
-},
-{
-  id: "p29",
-  question: "A refiner sells Jet CIF NWE and buys Brent futures. What remains unhedged?",
-  choices: [
-    "Refining margin risk",
-    "Flat price exposure",
-    "Netback",
-    "None"
-  ],
-  correct: 0,
-  explanation: "Refiner still exposed to crack spread (Jet vs Brent)."
-},
-{
-  id: "p30",
-  question: "A trader buys crude linked to Brent and sells one linked to Dubai. What exposure is this?",
-  choices: [
-    "Long spread Brent/Dubai",
-    "Short Spread Brent/Dubai",
-    "Freight Med–Asia",
-    "Storage risk"
-  ],
-  correct: 1,
-  explanation: "Exposure lies in the differential between Brent and Dubai benchmarks."
-},
-{
-  id: "p31",
-  question: "You sell a Jet cargo indexed to M-1 but deliver in M. Prices fall. What happens?",
-  choices: [
-    "Gain due to timing difference",
-    "Loss due to timing difference",
-    "No change",
-    "Freight gain"
-  ],
-  correct: 1,
-  explanation: "Selling against an earlier (higher) index in a falling market means loss."
-},
-{
-  id: "p32",
-  question: "You’re short 5,000 tons of Gasoil futures and prices fall $20/ton. What’s your result?",
-  choices: [
-    "Gain $100,000",
-    "Lose $100,000",
-    "No effect",
-    "Gain $200,000"
-  ],
-  correct: 0,
-  explanation: "Short futures gain when market prices fall."
-},
-{
-  id: "p33",
-  question: "A crude cargo is priced 'Brent Dated – $1/bbl'. Market backwardates. Who benefits?",
-  choices: [
-    "Seller",
-    "Buyer",
-    "Both equal",
-    "Neither"
-  ],
-  correct: 0,
-  explanation: "Backwardation benefits the seller since the discount narrows in value."
-},
-{
-  id: "p34",
-  question: "You buy Jet CIF Med and sell Jet CIF NWE. Market structure inverts. What happens?",
-  choices: [
-    "Loss on spread position",
-    "Gain on spread position",
-    "No change",
-    "Flat price risk"
-  ],
-  correct: 0,
-  explanation: "If the Med weakens vs NWE, the long Med/short NWE position loses value."
-},
-{
-  id: "p35",
-  question: "A trader hedges Brent-linked crude exposure with Dated Brent swaps. Main residual risk?",
-  choices: [
-    "Timing risk",
-    "Quality risk",
-    "Basis exposure",
-    "Arb risk"
-  ],
-  correct: 2,
-  explanation: "ICE Brent and Dated Brent don’t perfectly align, leaving basis exposure."
-},
-{
-  id: "p36",
-  question: "You sell a cargo at fixed $100/bbl but don’t hedge. Prices drop to $90/bbl. What’s the result?",
-  choices: [
-    "Loss $10/bbl",
-    "Gain $10/bbl",
-    "Flat P&L",
-    "Depends on freight"
-  ],
-  correct: 1,
-  explanation: "Seller locked in at $100 and benefits from the market decline."
-},
-{
-  id: "p37",
-  question: "A trader buys a cargo of Jet of 50 kb Jet CIF NWE and hedges with 2 ICE Gasoil futures. Is the hedge correct?",
-  choices: [
-    "Under-hedged - long",
-    "Under-hedged - short",
-    "Over-hedged - long",
-    "Over-hedged - short"
-  ],
-  correct: 1,
-  explanation: "Each ICE Gasoil contract covers 100 tons → ~12.6 kb, so hedge is too small."
-},
-{
-  id: "p38",
-  question: "You buy 1 Brent Dec future and sell 1 Brent Jan future. What position is this?",
-  choices: [
-    "Flat",
-    "Time spread short Dec/Jan",
-    "Time spread long Dec/Jan",
-    "No position"
-  ],
-  correct: 2,
-  explanation: "Buying Dec and selling Jan = long nearby, short deferred = long time spread."
-},
-{
-  id: "p39",
-  question: "You buy Jet CIF NWE and hedge with Brent futures. What’s your exposure?",
-  choices: [
-    "Short crack spread",
-    "Long crack spread",
-    "No exposure",
-    "Long Brent"
-  ],
-  correct: 1,
-  explanation: "Jet vs Brent represents a refining margin exposure."
-},
-{
-  id: "p40",
-  question: "A call option is bought. Who is rewarded if strike price is hit?",
-  choices: [
-    "Buyer receives option premium",
-    "Seller receives option premium",
-    "Buyer becomes long on expiry",
-    "Seller loses"
-  ],
-  correct: [1,2],
-  explanation: "A call buyer profits when the underlying asset increases in price and the option has been excercised. The seller profits from the premium."
-},
-{
-  id: "p41",
-  question: "A trader sells a cargo of 3,000 tons of Gasoil but hedges 4,000 tons. Market rises. What happens?",
-  choices: [
-    "Over-hedged, gain on futures",
-    "Over-hedged, loss on futures",
-    "No impact",
-    "Over-hedged, Flat Pnl"
-  ],
-  correct: 1,
-  explanation: "Being over-hedged means loss on excess short futures when prices rise."
-},
-{
-  id: "p42",
-  question: "You buy Jet CIF Med and hedge with Gasoil CIF Med. Prices rise equally. P&L effect?",
-  choices: [
-    "Gain due to higher price",
-    "Gain due to higher Jet/Gasoil spread",
-    "Loss due to higher price",
-    "Neutral hedge"
-  ],
-  correct: 3,
-  explanation: "Perfect correlation means hedge offsets movement."
-},
-{
-  id: "p43",
-  question: "You bought a physical Fuel cargo at fixed price which you need to sell and you have a short futures position. Prices rally. What’s the combined result?",
-  choices: [
-    "Gain",
-    "Loss",
-    "No result",
-    "Gain on both sides"
-  ],
-  correct: 2,
-  explanation: "Proper hedge neutralizes price move: gain on physical, loss on paper."
-},
-{
-  id: "p44",
-  question: "A trader sells Gasoil M swaps but buys physical for M+1. What exposure remains?",
-  choices: [
-    "Long time spread exposure M-1/M+1",
-    "Flat price",
-    "Short time spread exposure M-1/M+1",
-    "None"
-  ],
-  correct: 2,
-  explanation: "M vs M+1 difference creates a two-month time spread exposure."
-},
-{
-  id: "p45",
-  question: "A Jet CIF NWE sale is priced on a 10-day average. Hedge prices monthly. What risk?",
-  choices: [
-    "Structure risk (period exposure)",
-    "Flat price risk",
-    "Freight risk",
-    "No risk"
-  ],
-  correct: 0,
-  explanation: "Different pricing periods mean imperfect hedge."
-},
-{
-  id: "p46",
-  question: "A put option is bought. Who is rewarded if strike price is hit?",
-  choices: [
-    "Buyer receives option premium",
-    "Seller receives option premium",
-    "Buyer becomes long on expiry",
-    "Seller loses"
-  ],
-  correct: 1,
-  explanation: "A call buyer profits when the underlying asset increases in price and the option has been excercised. The seller profits from the premium."
-},
-{
-  id: "p47",
-  question: "You buy a Jet cargo CIF Med and intend to sell it in Singapore. What’s the risk?",
-  choices: [
-    "Freight risk",
-    "Geographic arbitrage risk",
-    "No exposure",
-    "Quality risk"
-  ],
-  correct: [0,1,3],
-  explanation: "Different regions create both freight and basis risk."
-},
-{
-  id: "p48",
-  question: "You’re short Brent futures and market rallies $4/bbl. What happens?",
-  choices: [
-    "Gain $4/bbl",
-    "Lose $4/bbl",
-    "No effect",
-    "Depends on storage"
-  ],
-  correct: 1,
-  explanation: "Short futures lose when prices rise."
-},
-{
-  id: "p49",
-  question: "You buy Jet CIF NWE and hedge with Gasoil CIF NWE. Jet cracks widen faster than Gasoil cracks. Result?",
-  choices: [
-    "Gain on physical Jet",
-    "Loss on hedge",
-    "Both gain equally",
-    "Loss on physical Gasoil"
-  ],
-  correct: 0,
-  explanation: "Jet strengthening vs Gasoil benefits Jet long positions."
-},
-{
-  id: "p50",
-  question: "A trader sells Gasoil term barrels indexed to M-1 but enters in deal sheet pricing M. What’s the impact?",
-  choices: [
-    "Time spread",
-    "Freight risk",
-    "Flat price impact",
-    "Trader made a mistake"
-  ],
-  correct: [0,2,3],
-  explanation: "Pricing period is completely wrong in the system. It is trader's fault (but Middle Office and Ops should have checked). This creates Flat Price as deal priced in the past and potential Time spread with new hedge needed."
-}
+      correct: [0, 1],
+      explanation: "Call and put spreads involve buying and selling options at different strikes, reducing premium and capping payoff."
+    }
   ]
 },
+
 
 
   barge_customs_vetting: {
@@ -5374,7 +5379,7 @@ middle_ops: {
   specialty_products: "https://img.icons8.com/color/96/laboratory.png",
   regulations_compliance: "https://img.icons8.com/color/96/law.png",
   operations_coordination: "https://img.icons8.com/color/96/teamwork.png",
-
+  oilMarkets: "https://img.icons8.com/color/96/contract.png",
   // 🆕 New themes
   middle_ops: "https://img.icons8.com/color/96/organization.png", // coordination / back-office
   barge_customs_vetting: "https://img.icons8.com/color/96/cargo-ship.png", // barge transport
@@ -5907,6 +5912,7 @@ function startQuiz(input, challengeMode = false, theme = null, challenge = null)
         // input = tableau de questions pour le défi
         questions = input;
         currentTheme = theme;
+		    window.currentChallenge = challenge || null;
     } else {
         // quiz normal par thème
         currentTheme = input;
@@ -6599,7 +6605,7 @@ opponentDone: parseExcelBool(c.opponentDone),
         console.log("🔎 Défis visibles pour l'utilisateur :", visible);
 
         if (visible.length === 0) {
-            challengesList.innerHTML = "<p>Aucun défi reçu pour le moment.</p>";
+            challengesList.innerHTML = "<p>No challenge received for now.</p>";
             return;
         }
 
@@ -6795,32 +6801,67 @@ async function getChallengeFromFlow(challengeID) {
     }
 }
 
+// 🔹 Fonction finale pour appeler le Flow setWinner
+async function callSetWinner(challenge) {
+    if (!challenge || !challenge.ID) {
+        console.error("⚠️ Challenge invalide ou ID manquant :", challenge);
+        return;
+    }
+
+    // 🔹 Préparer le payload selon le schéma attendu par le Flow
+    const payload = {
+        ID: challenge.ID,
+        challengerScore: challenge.challengerScore ?? null,
+        opponentScore: challenge.opponentScore ?? null,
+        status: "finished" // obligatoire
+    };
+
+    console.log("🏆 Appel setWinner avec le payload :", payload);
+
+    try {
+        const res = await fetch(
+            "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/287fa2a83caa44a682e9061374bf5a26/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nPOw4xdlbAor9kWqoZr10Z5uYhTmGJM19ILM0UkMe_Q",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }
+        );
+
+        if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+
+        console.log("✅ Flow setWinner appelé avec succès pour le challenge ID :", challenge.ID);
+    } catch (err) {
+        console.error("❌ Impossible d'appeler setWinner :", err);
+    }
+}
+
 // Quand un joueur finit son défi
 
 window.onChallengeFinished = async function(finalScore, challenge) {
+    console.log("🚀 [onChallengeFinished] Début exécution avec :", { finalScore, challenge });
+	console.log("🚨 [DEBUG] onChallengeFinished appelée !");
+	
     if (!challenge || !challenge.ID) {
         console.error("❌ Challenge invalide ou ID manquant", challenge);
         return alert("❌ Challenge invalide.");
     }
 
     const isChallenger = (currentUser === challenge.challenger);
-
-    // 🔹 Mettre à jour le score local
     if (isChallenger) challenge.challengerScore = Number(finalScore);
     else challenge.opponentScore = Number(finalScore);
 
     console.log("🏁 Fin du défi pour", currentUser, "| Score:", finalScore);
 
     try {
-        // --- 1️⃣ Envoyer le score au Flow ---
+        // --- 1️⃣ Envoi du score ---
         const scorePayload = {
             ID: challenge.ID,
             challengerScore: challenge.challengerScore,
             opponentScore: challenge.opponentScore,
             status: "pending"
         };
-
-        console.log("📤 Envoi du score au Flow :", scorePayload);
+        console.log("📤 [1] Envoi du score au Flow :", scorePayload);
 
         const scoreRes = await fetch(updateChallengeFlowUrl, {
             method: "POST",
@@ -6829,16 +6870,21 @@ window.onChallengeFinished = async function(finalScore, challenge) {
         });
 
         if (!scoreRes.ok) throw new Error(`Erreur HTTP ${scoreRes.status}`);
-        console.log("✅ Score envoyé au Flow !");
+        console.log("✅ [1] Score envoyé au Flow !");
+    } catch (err) {
+        console.error("❌ [1] Erreur lors de l'envoi du score :", err);
+        alert("Erreur lors de l'envoi du score au Flow.");
+        return;
+    }
 
-        // --- 2️⃣ Mettre à jour la colonne Done et récupérer le JSON du Flow ---
+    try {
+        // --- 2️⃣ Mise à jour du Done ---
         const donePayload = {
             ID: challenge.ID,
             currentUser: currentUser,
             role: isChallenger ? "challenger" : "opponent"
         };
-
-        console.log("⚙️ Envoi du Done au Flow :", donePayload);
+        console.log("⚙️ [2] Envoi du Done au Flow :", donePayload);
 
         const doneRes = await fetch(updateChallengeDoneFlowUrl, {
             method: "POST",
@@ -6848,81 +6894,110 @@ window.onChallengeFinished = async function(finalScore, challenge) {
 
         if (!doneRes.ok) throw new Error(`Erreur HTTP ${doneRes.status}`);
 
-        // 🔹 Récupérer la réponse JSON du Flow
         const doneData = await doneRes.json();
-        // 🔹 Mettre à jour les propriétés locales avec les valeurs renvoyées
         challenge.challengerDone = !!doneData.challengerDone;
         challenge.opponentDone = !!doneData.opponentDone;
-
-        console.log(`✅ Done mis à jour depuis Flow :`, challenge);
-
-        // --- 3️⃣ Attendre un court délai pour laisser Excel/Flow propager la MAJ ---
-        await new Promise(resolve => setTimeout(resolve, 800));
-
-        // --- 4️⃣ Recharger les listes pour cacher le défi terminé ---
-        if (typeof loadMyChallenges === "function") loadMyChallenges(currentUser);
-        if (typeof loadSentChallenges === "function") loadSentChallenges(currentUser);
-
-        console.log("🔄 Listes de défis rechargées après mise à jour Done");
-
+        console.log("✅ [2] Done mis à jour :", challenge);
     } catch (err) {
-        console.error("❌ Erreur lors de la finalisation du défi :", err);
-        alert("Une erreur est survenue lors de la finalisation du défi. Réessaie !");
+        console.error("❌ [2] Erreur lors de la mise à jour Done :", err);
+        alert("Erreur lors de la mise à jour du Done.");
         return;
     }
 
-    // 🔹 Recharger le challenge complet
-    let freshChallenge;
+    console.log("🕒 [3] Pause pour propagation des données...");
+    await new Promise(resolve => setTimeout(resolve, 800));
+
     try {
-        freshChallenge = await getChallengeFromFlow(challenge.ID);
-        if (!freshChallenge) throw new Error("Impossible de récupérer le défi complet.");
+        // --- 4️⃣ Rafraîchissement listes ---
+        if (typeof loadMyChallenges === "function") loadMyChallenges(currentUser);
+        if (typeof loadSentChallenges === "function") loadSentChallenges(currentUser);
+        console.log("🔄 [4] Listes de défis rechargées après mise à jour Done");
     } catch (err) {
-        console.error(err);
-        return alert("Impossible de récupérer le défi complet après le score.");
+        console.warn("⚠️ [4] Impossible de recharger les listes :", err);
     }
 
-    // 🔹 Déterminer le statut final
+    let freshChallenge;
+    try {
+        // --- 5️⃣ Recharger le challenge complet ---
+        console.log("📥 [5] Récupération du défi complet depuis le Flow...");
+        freshChallenge = await getChallengeFromFlow(challenge.ID);
+        console.log("📦 [5] Données du freshChallenge :", freshChallenge);
+        if (!freshChallenge) throw new Error("Aucune donnée reçue du Flow.");
+    } catch (err) {
+        console.error("❌ [5] Erreur récupération du défi :", err);
+        alert("Impossible de récupérer le défi complet après le score.");
+        return;
+    }
+
+    // --- 6️⃣ Vérifier statut final ---
     const challengerScore = freshChallenge.challengerScore;
     const opponentScore   = freshChallenge.opponentScore;
-    const status = (challengerScore !== null && opponentScore !== null) ? "finished" : "pending";
+    const status = (challengerScore != null && opponentScore != null) ? "finished" : "pending";
 
     challenge.status = status;
     challenge.challengerScore = challengerScore;
     challenge.opponentScore = opponentScore;
 
-    // 🔹 Si terminé, envoyer le statut final
+    console.log("🧩 [6] Vérification du statut :", status, "| Scores :", { challengerScore, opponentScore });
+
     if (status === "finished") {
         try {
+            // --- 7️⃣ Envoi du statut final ---
             const finalPayload = {
                 ID: challenge.ID,
                 challengerScore,
                 opponentScore,
                 status: "finished"
             };
-            await fetch(updateChallengeFlowUrl, {
+            console.log("🏁 [7] Envoi du statut final 'finished' :", finalPayload);
+
+            const res = await fetch(updateChallengeFlowUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(finalPayload)
             });
-            console.log("✅ Statut final 'finished' envoyé au Flow pour l'ID :", challenge.ID);
+
+            if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+            console.log("✅ [7] Statut final 'finished' envoyé au Flow !");
+
+            // --- 8️⃣ Appel setWinner ---
+            console.log("🏆 [8] Appel prévu à callSetWinner avec :", challenge);
+            try {
+                await callSetWinner(challenge);
+                console.log("🎯 [8] callSetWinner exécutée avec succès !");
+            } catch (err) {
+                console.error("❌ [8] Erreur dans callSetWinner :", err);
+            }
+
         } catch (err) {
-            console.error(err);
+            console.error("❌ [7] Erreur lors de l'envoi du statut final :", err);
         }
+    } else {
+        console.log("⏸️ [6] Statut non terminé, callSetWinner non déclenché (status =", status, ")");
     }
 
-    // 🔹 🔁 Rafraîchir automatiquement la liste des défis pour cacher ceux déjà faits
-    loadMyChallenges(currentUser);
-    loadSentChallenges(currentUser);
+    // --- 9️⃣ Rafraîchir les listes une dernière fois ---
+    try {
+        loadMyChallenges(currentUser);
+        loadSentChallenges(currentUser);
+        console.log("🔁 [9] Listes de défis rafraîchies après callSetWinner");
+    } catch (err) {
+        console.warn("⚠️ [9] Impossible de rafraîchir les listes :", err);
+    }
+
+    console.log("🏁 [FIN] onChallengeFinished terminée pour l'ID :", challenge.ID);
 };
 
 // FINISH CHALLENGE IF NEEDED
 // =======================
 function finishChallengeIfNeeded() {
-    console.log("⚡ finishChallengeIfNeeded appelé :", isChallengeSession, window.currentChallenge);
-    if (isChallengeSession && typeof window.onChallengeFinished === "function") {
-        window.onChallengeFinished(score, window.currentChallenge || null);
-        isChallengeSession = false;
-    }
+    if (!isChallengeSession || !window.currentChallenge) return;
+
+    const finalScore = typeof score === "number" ? score : 0;
+    console.log("⚡ finishChallengeIfNeeded appelé, challenge:", window.currentChallenge);
+    window.onChallengeFinished(finalScore, window.currentChallenge);
+
+    isChallengeSession = false;
 }
 
 // Vérifier le gagnant et stopper toute boucle
@@ -6970,12 +7045,89 @@ async function checkWinner(challenge) {
             console.error("❌ Erreur lors de l’envoi du statut final au Flow :", err);
             alert("Impossible de mettre à jour le statut final. Réessaie !");
         }
+		
+		// 🏆 Appel du Flow setWinner
+        try {
+            console.log("🏆 Tentative d'appel de callSetWinner avec challenge :", challenge);
+            await callSetWinner({
+                ID: challenge.ID,
+                challengerScore: challenge.challengerScore,
+                opponentScore: challenge.opponentScore,
+                status: "finished"
+            });
+            console.log("✅ Flow setWinner appelé avec succès !");
+        } catch (err) {
+            console.error("❌ Erreur lors de l'appel à callSetWinner :", err);
+        }
     }
 }
 
 // Charger les défis à chaque login
 window.addEventListener("DOMContentLoaded", () => {
     if (currentUser) loadMyChallenges(currentUser);
+});
+
+// === Fonction pour récupérer et afficher le Top 3 des joueurs ===
+document.getElementById("topPlayersBtn").addEventListener("click", async () => {
+  const container = document.getElementById("topPlayersContainer");
+  const list = document.getElementById("topPlayersList");
+
+  // Toggle affichage
+  container.style.display = container.style.display === "none" ? "block" : "none";
+  list.innerHTML = "<p>⏳ Chargement du classement...</p>";
+
+try {
+  const response = await fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/2a538ebdb3e848209694fb5ea11b7738/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=bJ6gYaVm82UuMf5HEGKocYcBPyad3GhxsxCryYPjbA8", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ action: "getTopPlayers" })
+  });
+
+  console.log("📡 Requête envoyée au Flow getWinCounts");
+
+  if (!response.ok) {
+    console.error("❌ Erreur HTTP :", response.status, await response.text());
+    throw new Error("Erreur lors de la récupération du classement");
+  }
+
+  const data = await response.json();
+  console.log("📦 Réponse brute du Flow :", data);
+
+  if (!Array.isArray(data)) {
+    console.error("⚠️ Données inattendues (pas un tableau) :", data);
+    list.innerHTML = "<p style='color:red;'>⚠️ Données inattendues du Flow</p>";
+    return;
+  }
+
+  // Normalise si le Flow renvoie {email, wins} au lieu de {winner, count}
+  const normalized = data.map(item => ({
+    winner: item.winner || item.email || "Unknown",
+    count: item.count || item.wins || 0
+  }));
+
+  console.log("✅ Données normalisées :", normalized);
+
+  const sorted = normalized.sort((a, b) => b.count - a.count).slice(0, 3);
+  console.log("🏆 Top 3 trié :", sorted);
+
+  if (sorted.length === 0) {
+    list.innerHTML = "<p>No winner registered for now.</p>";
+    return;
+  }
+
+  list.innerHTML = sorted
+    .map((p, i) => {
+      const medals = ["🥇", "🥈", "🥉"];
+      return `<p style="font-size:1.1rem;">${medals[i] || "🎯"} <b>${p.winner}</b> — ${p.count} victory${p.count > 1 ? "s" : ""}</p>`;
+    })
+    .join("");
+
+} catch (error) {
+  console.error("💥 Erreur JS :", error);
+  list.innerHTML = "<p style='color:red;'>⚠️ Error on downloading Top 3</p>";
+}
 });
   
   </script>
