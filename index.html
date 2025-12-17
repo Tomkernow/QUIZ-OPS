@@ -439,6 +439,11 @@
 
 <button id="topPlayersBtn">🏆 Top 3 Players</button>
 
+<!-- === CONCOURS DU MOIS === -->
+<button id="monthlyContestBtn" style="margin-top:10px; opacity:0.5;" disabled>
+  🚀 Monthly competition
+</button>
+
 <!-- Conteneur pour afficher le top 3 -->
 <div id="topPlayersContainer" style="display:none; margin-top:16px; text-align:center;">
   <h3>🏅 Scoreboard TopPlayer</h3>
@@ -512,16 +517,16 @@ function showLogin() {
 }
 
   // === Power Automate Flow URL ===
-const flowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8529a06fdcc6401aaa54e12ccdf8053c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZMFUE06qvb1Qjx-2UAwG47ivXUPZljA2ikv4TaMdVQE";
-const flowUrlSignup = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/cb431fe6824e4af79ff1081e88adbcde/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JJ-Qbs2tRRE5gFnpSBfUrVp6oPshyoZcKFEJ3CcVWvg";
-const flow = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/cd72f3ad611140f4b40ee95952f496ac/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=U45wTZLPIBNCIHN1Jv8Uq1AmteCU1Bo6eLzz2TTmVIE"
+const flowUrl = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/363304342fcd421f9e6eb45b96bff882/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CJen2AkWl70Z63WNYZoNarCmS_wB1YYJaZmICS-v4TU";
+const flowUrlSignup = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/533533933bb04b309430b948b20b4b71/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=lonK8iUQKlRMstI2u3LNEmeV61G9xLRU8poE9xBfETA";
+const flow = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/6b6661e40f9243178d192e262b5f3573/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=49ZdPoD4td9MpAXbRHAKIyTFnZUFbR-AXRTCDTj4oYE"
 const createChallengeFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/2a477945342b45fb8d16005ccea30204/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rV-cHf43QIzra6-zmfEkfCNOEV00ovXN0VxL9Z62Wz0";
-const getChallengesFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/31ef6faaebcb43f4878225828d23a559/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=21xbDVO1CPlcxZgqjjjJ7bi9F9IBvXDzU_1fDKc5K7Q";
-const updateChallengeFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/f75d3f08213d4d3badffabd91a32f666/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=eOjS9FQtNfeonEXf3eYRX2y5koUv9nV-czcyrFN8lvM";
-const getAllUsersFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/87639e159f094cfdb271eac85cc07e9a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=44pRUiagqDm_20uaN8NVFifqclbejWMyNPDMan3Wntk"
-const updateChallengeDoneFlowUrl = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c9bcce3eda5549b3ae905734dadc8fcf/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=mNGG7Fs3Z0ywx5v95GrR2aKzEoQVzBGIK2XECgdpNA8";
-const UPDATE_PROGRESS_URL = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/e23e3c436c3145bebd18206e4b7e55eb/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CffamMjMGSTdVPz_ZJ8QOQOI8W_C0I1lBKutiMjQa84";
-const GET_PROGRESS_URL = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/4d4e1d4fa7154adf9e982d40925666f5/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=uk1eQuzMtSrZ2MXRhXK7sz772Th105-hlY0mGSQjjjQ";
+const getChallengesFlowUrl = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/5a692778a3bd4ed0970baf6bed061984/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=2Q2FK0h6cplzMHxnHkyy0WZpiHpibG2R0sIe3ObSTO0";
+const updateChallengeFlowUrl = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/09dc3e093a844405ac43d590f980e007/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1DdEh9-EdJJ2YPR9q4VlMquVBUlO8BxGPAJsIm_5_fo";
+const getAllUsersFlowUrl = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/9db1866cecc041368864a1a5b4926796/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=r_ASAon6DL82vEVOo4ZSGZWBpUOdWLuvtNGQ2qc_6uY"
+const updateChallengeDoneFlowUrl = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/09dc3e093a844405ac43d590f980e007/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1DdEh9-EdJJ2YPR9q4VlMquVBUlO8BxGPAJsIm_5_fo";
+const UPDATE_PROGRESS_URL = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/9c7bfbba644e453fa07ae2a2ea7df58f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ne8zayuj16Pit0mBKsdUqXwCb-E29JHNUx3j3wcpoMM";
+const GET_PROGRESS_URL = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c3241b02ed754267a465c2ec28b9b526/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nTZGD_KqImOnuFJgASZBKSiA4elE3iDM6G6SNtKbiXI";
 
 function getUserIP() {
   // ⚠️ HTML ne peut pas obtenir l’IP réelle sans backend.
@@ -542,7 +547,7 @@ function getUserIP() {
     const quizData = {
 
   cargo_docs: {
-    title: "Cargo Documentation",
+    title: "General Ops",
     questions: [
       {
         id: "cdoc1",
@@ -569,8 +574,8 @@ function getUserIP() {
         id: "cdoc4",
         question: "Which document confirms the quantity of cargo loaded?",
         choices: ["Certificate of Quantity", "Cargo Manifest", "Bill of Lading", "Ullage Report"],
-        correct: [0],
-        explanation: "The Certificate of Quantity confirms the amount of product loaded and is used for invoicing."
+        correct: [0,2],
+        explanation: "The Certificate of Quantity and bill of ladding confirms the amount of product loaded and is used for invoicing."
       },
       {
         id: "cdoc5",
@@ -3169,14 +3174,14 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
         question: "Which regulations apply to inland barge operations?",
         choices: ["ADN", "ISGINTT", "SOLAS", "OCIMF"],
         correct: [0,1],
-        explanation: "ADN governs dangerous goods transport on inland waterways; ISGINTT provides safety guidelines for terminals and tankers."
+        explanation: "ADN sets mandatory rules for transporting dangerous goods on inland waterways, including barge design and crew certification. ISGINTT complements this by providing best practices for safe loading, discharge, and terminal operations to prevent accidents and environmental incidents."
       },
       {
         id: "bcv2",
         question: "What is the purpose of barge vetting?",
         choices: ["Assess safety compliance", "Evaluate crew competence", "Verify technical condition", "Approve commercial terms"],
         correct: [0,1,2],
-        explanation: "Vetting ensures the barge meets safety, crew, and technical standards before operations."
+        explanation: "Vetting is a risk management process that checks if the barge meets company and industry safety standards, verifies crew competence, and confirms technical integrity. This prevents accidents, ensures compliance with ADN and ISGINTT, and protects commercial reputation."
       },
       {
         id: "bcv3",
@@ -3218,7 +3223,7 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
         question: "What is the minimum vetting validity period for barges?",
         choices: ["3 months", "6 months", "12 months", "24 months"],
         correct: [1],
-        explanation: "Vetting approvals are typically valid for 6 months unless otherwise specified."
+        explanation: "Most companies and OCIMF guidelines set vetting validity at 6 months to ensure continuous compliance. After this period, conditions may change (crew turnover, technical wear), so re-inspection is required to maintain safety assurance."
       },
       {
         id: "bcv9",
@@ -3239,7 +3244,7 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
         question: "Which parties are involved in barge vetting approval?",
         choices: ["Trading desk", "HSE", "Vetting team", "Terminal operator"],
         correct: [1,2,3],
-        explanation: "HSE, vetting team, and terminal operator assess and approve barge suitability."
+        explanation: "HSE ensures compliance with safety and environmental standards, the vetting team reviews technical and operational aspects, and the terminal operator confirms compatibility with berth and handling requirements. The trading desk is informed but does not approve vetting."
       },
       {
         id: "bcv12",
@@ -3394,7 +3399,7 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
         question: "What is the role of inerting in transshipment?",
         choices: ["Reduce oxygen level", "Prevent explosion", "Ensure cargo compatibility", "Facilitate customs clearance"],
         correct: [0,1],
-        explanation: "Inerting reduces oxygen to prevent explosion during ship-to-barge transfers."
+        explanation: "Inerting replaces oxygen in tanks with inert gas (usually nitrogen) to keep oxygen levels below 8%. This prevents ignition of flammable vapors during STS or barge transfers, which is critical for high-risk cargo like gasoline or naphtha."
       },
       {
         id: "bcv34",
@@ -3415,7 +3420,7 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
         question: "What happens if negative information is received post-vetting approval?",
         choices: ["Approval is withdrawn", "Reinspection is required", "Operations are suspended", "No action is taken"],
         correct: [0,1,2],
-        explanation: "Negative info may lead to withdrawal of approval, reinspection, or suspension."
+        explanation: "If new safety concerns arise after vetting approval (e.g., incident reports, expired certificates), the barge’s approval can be revoked immediately. Operations may be suspended, and a reinspection scheduled to restore compliance."
       },
       {
         id: "bcv37",
@@ -3457,7 +3462,7 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
         question: "Which vetting system replaced EBIS?",
         choices: ["SIRE-BIRE", "OCIMF", "ISGINTT", "TAM"],
         correct: [0],
-        explanation: "EBIS was integrated into OCIMF’s SIRE-BIRE system for unified inspections."
+        explanation: "EBIS was phased out and replaced by OCIMF’s SIRE-BIRE system, which standardizes barge inspections globally. This ensures consistency in vetting criteria and aligns inland barge checks with tanker vetting practices."
       },
       {
         id: "bcv43",
@@ -3478,7 +3483,7 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
         question: "Which hull types are prohibited for dangerous cargo?",
         choices: ["Single hull", "Double hull", "Triple hull", "Composite hull"],
         correct: [0],
-        explanation: "Single hull barges are prohibited for dangerous cargo since 2019."
+        explanation: "Single hull barges pose a high pollution risk in case of hull breach. Since 2019, ADN and company policies mandate double hulls for dangerous cargo to minimize environmental and safety hazards."
       },
       {
         id: "bcv46",
@@ -3520,183 +3525,211 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
 
 
   contracts_legal_insurance: {
-    title: "Contracts, Legal & Insurance",
+    title: "Contracts, Legal",
     questions: [
-      {
-        id: "cli1",
-        question: "Which law and jurisdiction apply to TOTSA contracts?",
-        choices: ["English law / London High Court", "New York law / AAA arbitration", "Singapore law / SIAC arbitration", "Texas law / AAA arbitration"],
-        correct: [0],
-        explanation: "TOTSA contracts are governed by English law and subject to the jurisdiction of the London High Court."
-      },
-      {
-        id: "cli2",
-        question: "What does a Warranty of Title guarantee?",
-        choices: ["Seller has legal right to sell", "Cargo is free of liens", "Buyer enjoys quiet possession", "Cargo is insured"],
-        correct: [0,1,2],
-        explanation: "A Warranty of Title guarantees the seller's right to sell, absence of liens, and buyer's peaceful possession."
-      },
-      {
-        id: "cli3",
-        question: "Which Incoterm obliges the seller to provide marine insurance?",
-        choices: ["FOB", "CFR", "CIF", "DAP"],
-        correct: [2],
-        explanation: "Under CIF, the seller must provide marine insurance for the cargo."
-      },
-      {
-        id: "cli4",
-        question: "What is the minimum insurance coverage required under T&S GTC?",
-        choices: ["100% of CIF value", "110% of CIF value", "90% of FOB value", "120% of invoice value"],
-        correct: [1],
-        explanation: "T&S GTC requires insurance coverage of 110% of the CIF cargo value."
-      },
-      {
-        id: "cli5",
-        question: "Which clauses are typically included in a Letter of Indemnity?",
-        choices: ["Title warranty", "Document validity", "Indemnity for missing B/L", "Cargo insurance terms"],
-        correct: [0,1,2],
-        explanation: "LOIs include warranties on title, document validity, and indemnity for missing original B/L."
-      },
-      {
-        id: "cli6",
-        question: "What is the role of the indemnifying party in a contract?",
-        choices: ["Compensate for losses", "Defend against claims", "Hold harmless", "Provide insurance"],
-        correct: [0,1,2],
-        explanation: "The indemnifying party must compensate, defend, and hold the other party harmless."
-      },
-      {
-        id: "cli7",
-        question: "Which risks are covered under Institute Cargo Clauses (A)?",
-        choices: ["All risks", "Named perils", "War risks", "Pollution"],
-        correct: [0],
-        explanation: "Institute Cargo Clauses (A) provide all-risk coverage subject to exclusions."
-      },
-      {
-        id: "cli8",
-        question: "What is the deductible for shortage under T&S cargo insurance?",
-        choices: ["0.5% of insured value", "1% of CIF value", "USD 20,000", "No deductible"],
-        correct: [0],
-        explanation: "Shortage is covered subject to a 0.5% deductible under T&S cargo insurance."
-      },
-      {
-        id: "cli9",
-        question: "Which clause should be avoided when negotiating demurrage?",
-        choices: ["Time bar clause", "Laycan clause", "Pro rata clause", "Force majeure clause"],
-        correct: [0],
-        explanation: "Time bar clauses are unfavorable when TOTSA is claiming demurrage."
-      },
-      {
-        id: "cli10",
-        question: "What does 'jointly and severally bound' mean in a bank LOI?",
-        choices: ["Bank shares full liability", "Bank guarantees payment", "Bank is co-indemnitor", "Bank is only witness"],
-        correct: [0,1,2],
-        explanation: "It means the bank shares full liability and guarantees the LOI obligations."
-      },
-      {
-        id: "cli11",
-        question: "Which document is not required for payment under GTC?",
-        choices: ["Warranty of Title", "Commercial Invoice", "Certificate of Quality", "Original B/L"],
-        correct: [0],
-        explanation: "WOT is not a negotiable document required for payment under GTC."
-      },
-      {
-        id: "cli12",
-        question: "Which clause allows termination in case of sanctions?",
-        choices: ["Trade Restrictions", "Force Majeure", "Change of Control", "Indemnity"],
-        correct: [0],
-        explanation: "Trade Restrictions clause allows suspension or termination if sanctions apply."
-      },
-      {
-        id: "cli13",
-        question: "What is the role of DARA in insurance management?",
-        choices: ["Assess risks", "Negotiate policies", "Issue certificates", "Manage claims"],
-        correct: [0,1],
-        explanation: "DARA assesses risks and negotiates global insurance coverage."
-      },
-      {
-        id: "cli14",
-        question: "Which insurance is required when chartering a vessel?",
-        choices: ["P&I Club membership", "Oil pollution cover", "War risk cover", "Cargo insurance"],
-        correct: [0,1,2],
-        explanation: "Chartered vessels must have P&I membership and pollution/war risk cover."
-      },
-      {
-        id: "cli15",
-        question: "Which clause defines the transfer of title and risk?",
-        choices: ["Delivery Terms", "Warranty of Title", "Incoterms", "Insurance clause"],
-        correct: [0],
-        explanation: "Delivery Terms clause defines when title and risk transfer to the buyer."
-      },
-      {
-        id: "cli16",
-        question: "What is the consequence of a missing original B/L?",
-        choices: ["LOI required", "Payment delayed", "Title not transferred", "Insurance invalid"],
-        correct: [0],
-        explanation: "A Letter of Indemnity is required to proceed with payment without original B/L."
-      },
-      {
-        id: "cli17",
-        question: "Which Incoterm is most protective for the seller?",
-        choices: ["CIF", "FOB", "DAP", "CFR"],
-        correct: [0],
-        explanation: "CIF is most protective for the seller as it includes insurance and delivery obligations."
-      },
-      {
-        id: "cli18",
-        question: "What is the role of the Sale of Goods Act 1979?",
-        choices: ["Implied title warranty", "Defines delivery terms", "Sets insurance rules", "Regulates arbitration"],
-        correct: [0],
-        explanation: "The Act implies the seller has the right to sell and guarantees quiet possession."
-      },
-      {
-        id: "cli19",
-        question: "Which clause should be added to protect against vessel claims?",
-        choices: ["Recourse clause", "Indemnity clause", "Insurance clause", "Force majeure clause"],
-        correct: [0],
-        explanation: "Recourse clause ensures the terminal seeks recovery from vessel before claiming indemnity."
-      },
-      {
-        id: "cli20",
-        question: "Which insurance covers storage risks?",
-        choices: ["Marine cargo extension", "Property damage policy", "General liability", "War risk cover"],
-        correct: [0,1],
-        explanation: "Storage risks are covered by marine cargo extension and property damage policies."
-      },
-      {
-        id: "cli21",
-        question: "What is the minimum cover required under Institute Cargo Clauses (A)?",
-        choices: ["All risks", "Named perils", "War risks", "Pollution"],
-        correct: [0],
-        explanation: "Institute Cargo Clauses (A) provide all-risk coverage for marine cargo."
-      },
-      {
-        id: "cli22",
-        question: "Which clause allows contract termination in case of default?",
-        choices: ["Termination clause", "Force majeure", "Trade restrictions", "Change of control"],
-        correct: [0],
-        explanation: "Termination clause allows ending the contract if obligations are not met."
-      },
-      {
-        id: "cli23",
-        question: "What is the role of the indemnified party?",
-        choices: ["Receive compensation", "Provide insurance", "Defend claims", "Issue LOI"],
-        correct: [0],
-        explanation: "The indemnified party is protected and compensated for losses under the indemnity."
-      },
-      {
-        id: "cli24",
-        question: "Which clause defines the scope of insurance obligations?",
-        choices: ["Insurance clause", "Delivery clause", "Warranty clause", "Indemnity clause"],
-        correct: [0],
-        explanation: "The insurance clause defines who insures, coverage scope, and duration."
-      },
-      {
-        id: "cli25",
-        question: "Which document confirms the seller’s right to sell the cargo?",
-        choices: ["Warranty of Title", "LOI", "Certificate of Origin", "Commercial Invoice"],
-        correct: [0],
-        explanation: "The Warranty of Title confirms the seller has legal ownership and right to sell."
-      },
+      
+{
+      id: "cli1",
+      question: "Which law and jurisdiction apply to TOTSA contracts?",
+      choices: ["English law / London High Court", "New York law / AAA arbitration", "Singapore law / SIAC arbitration", "Texas law / AAA arbitration"],
+      correct: [0],
+      explanation: "TOTSA contracts are governed by English law and disputes are resolved under the jurisdiction of the London High Court. English law is widely used in international oil trading for its predictability and clarity.",
+      why_it_matters: "Operators must know the governing law to understand which legal framework applies in case of disputes or claims."
+    },
+    {
+      id: "cli2",
+      question: "What does a Warranty of Title guarantee?",
+      choices: ["Seller has legal right to sell", "Cargo is free of liens", "Buyer enjoys quiet possession", "Cargo is insured"],
+      correct: [0,1,2],
+      explanation: "A Warranty of Title guarantees that the seller owns the cargo, it is free from liens or encumbrances, and the buyer will have peaceful possession.",
+      why_it_matters: "Operators must ensure title transfer is valid to avoid legal disputes and claims from third parties."
+    },
+    {
+      id: "cli3",
+      question: "Which Incoterm obliges the seller to provide marine insurance?",
+      choices: ["FOB", "CFR", "CIF", "DAP"],
+      correct: [2],
+      explanation: "Under CIF (Cost, Insurance, and Freight), the seller is responsible for arranging marine insurance for the cargo during transit.",
+      why_it_matters: "Understanding Incoterms helps operators verify insurance obligations and avoid gaps in coverage."
+    },
+    {
+      id: "cli4",
+      question: "What is the minimum insurance coverage required under T&S GTC?",
+      choices: ["100% of CIF value", "110% of CIF value", "90% of FOB value", "120% of invoice value"],
+      correct: [1],
+      explanation: "T&S General Terms and Conditions require insurance coverage of 110% of the CIF value to cover cargo plus potential additional costs.",
+      why_it_matters: "Operators must check insurance certificates to ensure compliance and avoid exposure in case of loss."
+    },
+    {
+      id: "cli5",
+      question: "Which clauses are typically included in a Letter of Indemnity?",
+      choices: ["Title warranty", "Document validity", "Indemnity for missing B/L", "Cargo insurance terms"],
+      correct: [0,1,2],
+      explanation: "LOIs include warranties on title, confirmation of document validity, and indemnity for delivery without original Bill of Lading.",
+      why_it_matters: "Operators must verify LOI wording to ensure legal enforceability and protect against misdelivery claims."
+    },
+    {
+      id: "cli6",
+      question: "What is the role of the indemnifying party in a contract?",
+      choices: ["Compensate for losses", "Defend against claims", "Hold harmless", "Provide insurance"],
+      correct: [0,1,2],
+      explanation: "The indemnifying party agrees to compensate for losses, defend the other party against claims, and hold them harmless from liabilities.",
+      why_it_matters: "Operators must understand indemnity obligations to manage risk and avoid unexpected liabilities."
+    },
+    {
+      id: "cli7",
+      question: "Which risks are covered under Institute Cargo Clauses (A)?",
+      choices: ["All risks", "Named perils", "War risks", "Pollution"],
+      correct: [0],
+      explanation: "Institute Cargo Clauses (A) provide all-risk coverage for marine cargo, subject to standard exclusions.",
+      why_it_matters: "Operators must confirm ICC (A) coverage to ensure maximum protection during transit."
+    },
+    {
+      id: "cli8",
+      question: "What is the deductible for shortage under T&S cargo insurance?",
+      choices: ["0.5% of insured value", "1% of CIF value", "USD 20,000", "No deductible"],
+      correct: [0],
+      explanation: "Shortage claims under T&S cargo insurance are subject to a deductible of 0.5% of the insured value.",
+      why_it_matters: "Operators must factor in deductibles when assessing claim recovery and financial exposure."
+    },
+    {
+      id: "cli9",
+      question: "Which clause should be avoided when negotiating demurrage?",
+      choices: ["Time bar clause", "Laycan clause", "Pro rata clause", "Force majeure clause"],
+      correct: [0],
+      explanation: "Time bar clauses impose strict deadlines for demurrage claims, which can lead to loss of rights if missed.",
+      why_it_matters: "Operators must track time bars carefully or negotiate their removal to protect the company’s financial interests."
+    },
+    {
+      id: "cli10",
+      question: "What does 'jointly and severally bound' mean in a bank LOI?",
+      choices: ["Bank shares full liability", "Bank guarantees payment", "Bank is co-indemnitor", "Bank is only witness"],
+      correct: [0,1,2],
+      explanation: "It means the bank shares full liability with the principal, guarantees payment, and acts as co-indemnitor under the LOI.",
+      why_it_matters: "Operators must ensure LOIs are countersigned by a reputable bank to secure enforceability and financial protection."
+    },
+      
+{
+      id: "cli11",
+      question: "Which document is not required for payment under GTC?",
+      choices: ["Warranty of Title", "Commercial Invoice", "Certificate of Quality", "Original B/L"],
+      correct: [0],
+      explanation: "Warranty of Title is a contractual guarantee but not a negotiable document required for payment. Payment typically requires the original Bill of Lading, invoice, and quality certificate.",
+      why_it_matters: "Operators must know which documents trigger payment to avoid delays and disputes."
+    },
+    {
+      id: "cli12",
+      question: "Which clause allows termination in case of sanctions?",
+      choices: ["Trade Restrictions", "Force Majeure", "Change of Control", "Indemnity"],
+      correct: [0],
+      explanation: "The Trade Restrictions clause allows suspension or termination if sanctions or embargoes affect performance.",
+      why_it_matters: "Operators must check this clause before fixing deals to avoid breaching compliance rules."
+    },
+    {
+      id: "cli13",
+      question: "What is the role of DARA in insurance management?",
+      choices: ["Assess risks", "Negotiate policies", "Issue certificates", "Manage claims"],
+      correct: [0,1],
+      explanation: "DARA evaluates risk exposure and negotiates global insurance coverage for the company.",
+      why_it_matters: "Operators should liaise with DARA for high-value cargo or special risk areas to ensure coverage."
+    },
+    {
+      id: "cli14",
+      question: "Which insurance is required when chartering a vessel?",
+      choices: ["P&I Club membership", "Oil pollution cover", "War risk cover", "Cargo insurance"],
+      correct: [0,1,2],
+      explanation: "Chartered vessels must have P&I membership for liability, pollution cover for environmental risks, and war risk cover for high-risk zones.",
+      why_it_matters: "Operators must verify these covers before approving vessel nomination to avoid exposure."
+    },
+    {
+      id: "cli15",
+      question: "Which clause defines the transfer of title and risk?",
+      choices: ["Delivery Terms", "Warranty of Title", "Incoterms", "Insurance clause"],
+      correct: [0],
+      explanation: "Delivery Terms specify when ownership and risk pass from seller to buyer, often linked to Incoterms.",
+      why_it_matters: "Operators must know the exact transfer point to manage liability and insurance correctly."
+    },
+    {
+      id: "cli16",
+      question: "What is the consequence of a missing original B/L?",
+      choices: ["LOI required", "Payment delayed", "Title not transferred", "Insurance invalid"],
+      correct: [0],
+      explanation: "If the original Bill of Lading is missing, a Letter of Indemnity (LOI) is required to release cargo and process payment.",
+      why_it_matters: "Operators must ensure LOI wording and bank countersignature to protect against misdelivery claims."
+    },
+    {
+      id: "cli17",
+      question: "Which Incoterm is most protective for the seller?",
+      choices: ["CIF", "FOB", "DAP", "CFR"],
+      correct: [0],
+      explanation: "CIF obliges the seller to arrange freight and insurance, giving more control and protection during transit.",
+      why_it_matters: "Understanding Incoterms helps operators manage risk allocation and cost responsibilities."
+    },
+    {
+      id: "cli18",
+      question: "What is the role of the Sale of Goods Act 1979?",
+      choices: ["Implied title warranty", "Defines delivery terms", "Sets insurance rules", "Regulates arbitration"],
+      correct: [0],
+      explanation: "The Act implies that the seller has the right to sell and guarantees the buyer's quiet possession of goods.",
+      why_it_matters: "Operators must ensure compliance with implied warranties to avoid legal disputes."
+    },
+    {
+      id: "cli19",
+      question: "Which clause should be added to protect against vessel claims?",
+      choices: ["Recourse clause", "Indemnity clause", "Insurance clause", "Force majeure clause"],
+      correct: [0],
+      explanation: "A Recourse clause ensures the terminal seeks recovery from the vessel before claiming indemnity from the trader.",
+      why_it_matters: "Including this clause limits exposure to third-party operational claims."
+    },
+    {
+      id: "cli20",
+      question: "Which insurance covers storage risks?",
+      choices: ["Marine cargo extension", "Property damage policy", "General liability", "War risk cover"],
+      correct: [0,1],
+      explanation: "Storage risks are covered by marine cargo extensions and property damage policies for tanks and terminals.",
+      why_it_matters: "Operators must confirm coverage when cargo is stored for extended periods."
+    },
+    {
+      id: "cli21",
+      question: "What is the minimum cover required under Institute Cargo Clauses (A)?",
+      choices: ["All risks", "Named perils", "War risks", "Pollution"],
+      correct: [0],
+      explanation: "ICC (A) provides all-risk coverage for marine cargo, subject to standard exclusions.",
+      why_it_matters: "Operators must ensure ICC (A) is applied for maximum cargo protection."
+    },
+    {
+      id: "cli22",
+      question: "Which clause allows contract termination in case of default?",
+      choices: ["Termination clause", "Force majeure", "Trade restrictions", "Change of control"],
+      correct: [0],
+      explanation: "Termination clauses allow ending the contract if obligations like payment or delivery are not met.",
+      why_it_matters: "Operators must monitor compliance to avoid triggering termination and penalties."
+    },
+    {
+      id: "cli23",
+      question: "What is the role of the indemnified party?",
+      choices: ["Receive compensation", "Provide insurance", "Defend claims", "Issue LOI"],
+      correct: [0],
+      explanation: "The indemnified party is protected under the indemnity clause and receives compensation for covered losses.",
+      why_it_matters: "Operators must know who benefits from indemnity to manage claims correctly."
+    },
+    {
+      id: "cli24",
+      question: "Which clause defines the scope of insurance obligations?",
+      choices: ["Insurance clause", "Delivery clause", "Warranty clause", "Indemnity clause"],
+      correct: [0],
+      explanation: "The insurance clause specifies who insures, the coverage scope, and duration.",
+      why_it_matters: "Operators must verify this clause to ensure compliance with contractual insurance requirements."
+    },
+    {
+      id: "cli25",
+      question: "Which document confirms the seller’s right to sell the cargo?",
+      choices: ["Warranty of Title", "LOI", "Certificate of Origin", "Commercial Invoice"],
+      correct: [0],
+      explanation: "Warranty of Title confirms the seller has legal ownership and authority to sell the cargo.",
+      why_it_matters: "Operators must ensure WOT is included to avoid title disputes and claims from third parties."
+    }
+,
 	  
       {
         id: "cli26",
@@ -4240,360 +4273,429 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
       },
 
   specialty_products: { 
-    title: "LPG, VGO, Bitumen, and Other Specialty Products", 
+    title: "Product stewardships", 
     questions: [
 
-{
-  id: "sp1",
-  question: "Which specialty products are considered light hydrocarbons?",
-  choices: ["LPG", "VGO", "Bitumen", "Naphtha"],
-  correct: [0, 3],
-  explanation: "LPG and naphtha are light hydrocarbons with low boiling points, while VGO and bitumen are heavier fractions with higher boiling ranges."
-},
-{
-  id: "sp2",
-  question: "Which products are sensitive to temperature during storage?",
-  choices: ["LPG", "Bitumen", "VGO", "Diesel"],
-  correct: [0, 1, 2],
-  explanation: "LPG is volatile and must be stored under pressure; bitumen and VGO are viscous and require heating to remain pumpable."
-},
-{
-  id: "sp3",
-  question: "Which products are commonly used as feedstock for cracking units?",
-  choices: ["VGO", "LPG", "Bitumen", "Gasoline"],
-  correct: [0],
-  explanation: "VGO (Vacuum Gas Oil) is a primary feedstock for FCC and hydrocracking units due to its high molecular weight and conversion potential."
-},
-{
-  id: "sp4",
-  question: "Which product is typically stored in underground salt caverns?",
-  choices: ["Bitumen", "LPG", "Diesel", "VGO"],
-  correct: [1],
-  explanation: "LPG is stored in underground salt caverns to safely manage its high vapor pressure and flammability."
-},
-{
-  id: "sp5",
-  question: "Which of the following has the highest viscosity at ambient temperature?",
-  choices: ["LPG", "VGO", "Bitumen", "Naphtha"],
-  correct: [2],
-  explanation: "Bitumen is a semi-solid at ambient temperature and has extremely high viscosity compared to other petroleum products."
-},
-{
-  id: "sp6",
-  question: "Which product is most likely to form hydrates in the presence of water?",
-  choices: ["Bitumen", "LPG", "VGO", "Jet A1"],
-  correct: [1],
-  explanation: "LPG can form hydrates or ice crystals when water is present, especially during pressure drops, posing operational risks."
-},
-{
-  id: "sp7",
-  question: "Which test is used to determine the softening point of bitumen?",
-  choices: ["ASTM D86", "Pensky-Martens", "Ring and Ball", "Reid Vapor Pressure"],
-  correct: [2],
-  explanation: "The Ring and Ball method is the standard test to determine the softening point of bitumen, indicating its temperature sensitivity."
-},
-{
-  id: "sp8",
-  question: "Which products typically require desulfurization before further processing?",
-  choices: ["LPG", "VGO", "Bitumen", "Jet A1"],
-  correct: [1, 2],
-  explanation: "VGO and bitumen often contain high sulfur levels and must be desulfurized to meet environmental and process requirements."
-},
-{
-  id: "sp9",
-  question: "What is the typical boiling range of VGO?",
-  choices: ["< 100°C", "100–200°C", "200–380°C", "380–550°C"],
-  correct: [3],
-  explanation: "VGO is obtained from vacuum distillation and typically boils between 380°C and 550°C."
-},
-{
-  id: "sp10",
-  question: "Which product is primarily used in road construction and waterproofing?",
-  choices: ["LPG", "VGO", "Bitumen", "Diesel"],
-  correct: [2],
-  explanation: "Bitumen is widely used in road paving and waterproofing due to its adhesive and water-resistant properties."
-},
-{
-  id: "sp11",
-  question: "Which of the following are typical LPG quality specifications?",
-  choices: ["Low sulfur content", "High vapor pressure", "Low boiling point", "High viscosity"],
-  correct: [0, 1, 2],
-  explanation: "LPG is characterized by low sulfur, high vapor pressure, and low boiling point. It is a light, volatile product with low viscosity."
-},
-{
-  id: "sp12",
-  question: "Which of the following are typical contaminants in LPG?",
-  choices: ["Water", "Hydrogen sulfide", "Asphaltenes", "Mercaptans"],
-  correct: [0, 1, 3],
-  explanation: "LPG must be free of water, H2S, and mercaptans to avoid corrosion and ensure safety. Asphaltenes are not present in LPG."
-},
-{
-  id: "sp13",
-  question: "Which product is most likely to require heating before pumping?",
-  choices: ["LPG", "Bitumen", "Diesel", "Naphtha"],
-  correct: [1],
-  explanation: "Bitumen is solid or highly viscous at ambient temperature and must be heated to flow or be pumped."
-},
-{
-  id: "sp14",
-  question: "Which of the following are typical applications of VGO?",
-  choices: ["FCC feedstock", "Hydrocracking feedstock", "Lubricant base oil", "Jet fuel"],
-  correct: [0, 1],
-  explanation: "VGO is used as feedstock in FCC and hydrocracking units to produce lighter, more valuable products."
-},
-{
-  id: "sp15",
-  question: "Which of the following are typical LPG components?",
-  choices: ["Propane", "Butane", "Pentane", "Hexane"],
-  correct: [0, 1],
-  explanation: "LPG is primarily composed of propane and butane. Pentane and hexane are heavier and typically found in naphtha."
-},
-{
-  id: "sp16",
-  question: "Which product is most likely to contain asphaltenes?",
-  choices: ["LPG", "VGO", "Bitumen", "Jet A1"],
-  correct: [2],
-  explanation: "Bitumen contains a high concentration of asphaltenes, contributing to its high viscosity and dark color."
-},
-{
-  id: "sp17",
-  question: "Which of the following are typical properties of bitumen?",
-  choices: ["High softening point", "High sulfur content", "Low volatility", "High pour point"],
-  correct: [0, 1, 2, 3],
-  explanation: "Bitumen has a high softening point, high sulfur, low volatility, and a high pour point, making it solid at room temperature."
-},
-{
-  id: "sp18",
-  question: "Which of the following are typical LPG safety concerns?",
-  choices: ["Flammability", "Corrosivity", "High pressure", "Toxicity"],
-  correct: [0, 2],
-  explanation: "LPG is highly flammable and stored under pressure. It is not inherently toxic but can displace oxygen in confined spaces."
-},
-{
-  id: "sp19",
-  question: "Which of the following are typical bitumen quality tests?",
-  choices: ["Penetration test", "Ring and Ball softening point", "Flash point", "Cetane number"],
-  correct: [0, 1, 2],
-  explanation: "Bitumen is tested for penetration, softening point, and flash point. Cetane number is not relevant for bitumen."
-},
-{
-  id: "sp20",
-  question: "Which of the following are typical LPG specifications?",
-  choices: ["Doctor test", "Reid Vapor Pressure", "Evaporation test", "Cetane index"],
-  correct: [0, 1, 2],
-  explanation: "LPG is tested using the Doctor test for sulfur, RVP for volatility, and evaporation tests for residue. Cetane index is for diesel."
-},
-{
-  id: "sp21",
-  question: "Which of the following are typical uses of LPG?",
-  choices: ["Domestic heating", "Petrochemical feedstock", "Road paving", "Cooking fuel"],
-  correct: [0, 1, 3],
-  explanation: "LPG is used for heating, cooking, and as a petrochemical feedstock. It is not used in road paving (bitumen is)."
-},
-{
-  id: "sp22",
-  question: "Which of the following are typical characteristics of VGO?",
-  choices: ["High boiling point", "Low density", "High sulfur content", "Used in FCC"],
-  correct: [0, 2, 3],
-  explanation: "VGO has a high boiling point, moderate to high sulfur content, and is used in FCC units. It has higher density than lighter products."
-},
-{
-  id: "sp23",
-  question: "Which of the following are typical flash point values for bitumen?",
-  choices: ["> 100°C", "> 180°C", "> 230°C", "> 250°C"],
-  correct: [2, 3],
-  explanation: "Bitumen has a high flash point, typically above 230–250°C, due to its heavy composition and low volatility."
-},
-{
-  id: "sp24",
-  question: "Which of the following are typical LPG handling precautions?",
-  choices: ["Avoid heat sources", "Ensure ventilation", "Use corrosion-resistant materials", "Store at ambient pressure"],
-  correct: [0, 1, 2],
-  explanation: "LPG must be kept away from heat, stored under pressure, and handled with corrosion-resistant equipment in ventilated areas."
-},
-{
-  id: "sp25",
-  question: "Which of the following are typical indicators of bitumen quality?",
-  choices: ["Penetration index", "Softening point", "Viscosity at 60°C", "Cetane number"],
-  correct: [0, 1, 2],
-  explanation: "Bitumen quality is assessed using penetration index, softening point, and viscosity. Cetane number is not applicable."
-},
 
 {
-  id: "sp26",
-  question: "Which of the following are typical flash point values for bitumen?",
-  choices: [">100°C", ">180°C", ">230°C", ">250°C"],
-  correct: [2, 3],
-  explanation: "Bitumen has a very high flash point, typically above 230–250°C, due to its heavy molecular structure and low volatility."
-},
+      id: "psdoc1",
+      question: "What is the primary goal of Product Stewardship?",
+      choices: ["Ensure safe use of products", "Reduce customs duties", "Optimize blending economics", "Improve vessel speed"],
+      correct: [0],
+      explanation: "Product Stewardship ensures that products are managed safely throughout their lifecycle.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc2",
+      question: "Which regulation applies to chemical safety in the European Union?",
+      choices: ["TSCA", "REACH", "IMO MARPOL", "SOLAS"],
+      correct: [1],
+      explanation: "REACH governs chemical registration and safety in the EU.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc3",
+      question: "Under TSCA, what must importers certify?",
+      choices: ["Product meets EPA inventory requirements", "Cargo is inerted", "Bill of Lading is clean", "Flash point is above 60°C"],
+      correct: [0],
+      explanation: "TSCA requires certification that substances are listed on the EPA inventory.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc4",
+      question: "What document communicates product hazards to stakeholders?",
+      choices: ["Safety Data Sheet (SDS)", "Bill of Lading", "Cargo Manifest", "Letter of Indemnity"],
+      correct: [0],
+      explanation: "The SDS provides detailed hazard and handling information for products.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc5",
+      question: "How many sections does a standard SDS contain?",
+      choices: ["8", "12", "16", "20"],
+      correct: [2],
+      explanation: "An SDS follows a 16-section format under GHS standards.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc6",
+      
+question: "What should an operator do if the SDS indicates cargo is 'Water Reactive'?",
+      choices: ["Avoid contact with moisture and ensure dry tanks", "Increase pumping speed", "Blend with high-flash product", "Ignore if cargo is stable"],
+      correct: [0],
+      explanation: "Water-reactive cargo must be kept dry to prevent hazardous reactions.",
+
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc7",
+      question: "What is the consequence of non-compliance with REACH?",
+      choices: ["Operational delay", "Financial penalties", "Criminal liability", "All of the above"],
+      correct: [3],
+      explanation: "Non-compliance can lead to delays, heavy fines, and legal consequences.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc8",
+      question: "Which tool is used to verify SDS compliance internally?",
+      choices: ["Medissys SDS Screener", "Cargo Planner", "EcoBlend", "Ops Tracker"],
+      correct: [0],
+      explanation: "Medissys SDS Screener checks regulatory compliance for SDS documents.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc9",
+      question: "What operational risk is associated with Styrene Monomer?",
+      choices: ["Polymerization", "Evaporation", "Freezing", "Corrosion"],
+      correct: [0],
+      explanation: "Styrene Monomer can polymerize if not stabilized, creating safety hazards.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc10",
+      question: "Why is inerting required for certain cargoes?",
+      choices: ["Prevent oxidation", "Reduce polymerization risk", "Avoid explosion hazards", "All of the above"],
+      correct: [3],
+      explanation: "Inerting prevents oxidation, polymerization, and explosion risks.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc11",
+      question: "Which parameter is critical for blending Jet fuel?",
+      choices: ["Flash point", "Density", "Viscosity", "All of the above"],
+      correct: [3],
+      explanation: "Flash point, density, and viscosity must all meet specifications for Jet fuel blending.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc12",
+      question: "What does TSCA stand for?",
+      choices: ["Toxic Substances Control Act", "Transport Safety Compliance Act", "Technical Standards for Cargo Analysis", "Trade Safety Control Agreement"],
+      correct: [0],
+      explanation: "TSCA is the Toxic Substances Control Act in the United States.",
+      link: "link-to-training-doc"
+    },
+    
+ {
+      id: "psdoc13",
+      question: "Which system is used to confirm REACH registration status internally?",
+      choices: ["Medissys Compliance Module", "Ops Tracker", "Cargo Planner", "EcoBlend"],
+      correct: [0],
+      explanation: "Medissys Compliance Module verifies REACH registration and SDS compliance.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc14",
+      question: "What is the minimum flash point for Jet A-1 fuel?",
+      choices: ["-10°C", "0°C", "38°C", "60°C"],
+      correct: [2],
+      explanation: "Jet A-1 requires a minimum flash point of 38°C for safety.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc15",
+      question: "Which regulation applies to chemical imports into the USA?",
+      choices: ["REACH", "TSCA", "CLP", "GHS"],
+      correct: [1],
+      explanation: "TSCA governs chemical imports and compliance in the USA.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc16",
+      question: "What does REACH require for substances >1 tonne/year?",
+      choices: ["Registration", "Notification", "Exemption", "No action"],
+      correct: [0],
+      explanation: "REACH mandates registration for substances over 1 tonne/year.",
+      link: "link-to-training-doc"
+    },
+
 {
-  id: "sp27",
-  question: "Which of the following are typical LPG safety tests?",
-  choices: ["Doctor test", "Copper strip corrosion", "Flash point", "Penetration test"],
-  correct: [0, 1],
-  explanation: "LPG is tested for sulfur content using the Doctor test and for corrosivity using the copper strip corrosion test. Flash point and penetration tests are not applicable."
-},
+      id: "psdoc17",
+      question: "What is the operator’s responsibility when a product is classified as 'Dangerous Goods' under IMO?",
+      choices: ["Ensure correct UN number and packing group in documentation", "Ignore classification if SDS is available", "Request blending approval", "Update freight invoice"],
+      correct: [0],
+      explanation: "Operators must confirm UN number, packing group, and ensure compliance with IMO transport rules.",
+      link: "link-to-training-doc"
+    },
+	
+    {
+      id: "psdoc18",
+      question: "What is the role of the HSE clause in contracts?",
+      choices: ["Ensure compliance with safety standards", "Reduce freight costs", "Guarantee payment terms", "Define blending ratios"],
+      correct: [0],
+      explanation: "The HSE clause ensures compliance with health, safety, and environmental standards.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc19",
+      question: "Which hazard is linked to low flash point cargo?",
+      choices: ["Explosion risk", "Polymerization", "Freezing", "Corrosion"],
+      correct: [0],
+      explanation: "Low flash point cargo increases explosion risk during handling.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc20",
+      question: "What does CLP stand for in EU regulations?",
+      choices: ["Classification, Labelling and Packaging", "Cargo Loading Protocol", "Chemical Logistics Plan", "Compliance Level Program"],
+      correct: [0],
+      explanation: "CLP is the EU regulation for Classification, Labelling and Packaging of chemicals.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc21",
+      
+question: "What is the main purpose of checking UN number in cargo documentation?",
+      choices: ["Ensure correct transport classification", "Reduce freight cost", "Confirm blending ratios", "Update customs invoice"],
+      correct: [0],
+      explanation: "The UN number ensures proper classification for transport and compliance with IMO rules.",
+
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc22",
+      question: "What is the purpose of inert gas in tanks?",
+      choices: ["Prevent oxygen ingress", "Reduce fire risk", "Maintain cargo stability", "All of the above"],
+      correct: [3],
+      explanation: "Inert gas prevents oxygen ingress, reduces fire risk, and stabilizes cargo.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc23",
+      
+question: "Why must operators verify the packing group for dangerous goods?",
+      choices: ["To determine handling and stowage requirements", "To calculate freight charges", "To confirm blending ratios", "To update customs invoice"],
+      correct: [0],
+      explanation: "Packing group defines the level of hazard and handling precautions required.",
+
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc24",
+      question: "What is the main risk when blending incompatible products?",
+      choices: ["Polymerization", "Explosion", "Quality failure", "All of the above"],
+      correct: [3],
+      explanation: "Blending incompatible products can cause polymerization, explosion, and off-spec quality.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc25",
+      
+question: "What is the operator’s responsibility when SDS revision date is older than 3 years?",
+      choices: ["Request updated SDS from supplier", "Ignore if cargo is stable", "Proceed with loading", "Blend with compliant product"],
+      correct: [0],
+      explanation: "Operators must ensure SDS is current and request an updated version if outdated.",
+
+      link: "link-to-training-doc"
+    },
+
+
 {
-  id: "sp28",
-  question: "Which of the following are typical bitumen quality indicators?",
-  choices: ["Penetration", "Softening point", "Flash point", "Cetane number"],
-  correct: [0, 1, 2],
-  explanation: "Bitumen is characterized by penetration, softening point, and flash point. Cetane number is not relevant for bitumen."
-},
+      id: "psdoc26",
+      question: "What is the first action an operator should take when receiving a new product specification?",
+      choices: ["Verify SDS availability", "Check vessel ETA", "Confirm blending ratios", "Update freight contract"],
+      correct: [0],
+      explanation: "Always ensure the Safety Data Sheet (SDS) is available and compliant before any operational step.",
+      link: "link-to-training-doc"
+    },
+	
+    {
+      id: "psdoc27",
+      
+question: "Why is it important to check compatibility of cleaning chemicals with cargo residues?",
+      choices: ["To avoid hazardous reactions during tank cleaning", "To reduce cleaning time", "To comply with customs", "To improve blending economics"],
+      correct: [0],
+      explanation: "Incompatible cleaning chemicals can react with cargo residues, causing dangerous situations.",
+
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc28",
+      question: "Which regulation defines GHS standards?",
+      choices: ["UN Globally Harmonized System", "IMO MARPOL", "REACH", "TSCA"],
+      correct: [0],
+      explanation: "GHS is the UN system for harmonizing chemical hazard communication globally.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc29",
+      question: "What is the role of Section 2 in an SDS?",
+      choices: ["Hazard identification", "First-aid measures", "Exposure controls", "Transport classification"],
+      correct: [0],
+      explanation: "Section 2 lists hazard classification and label elements.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc30",
+      question: "Which SDS section includes physical and chemical properties?",
+      choices: ["Section 9", "Section 10", "Section 12", "Section 14"],
+      correct: [0],
+      explanation: "Section 9 provides details like density, flash point, and boiling point.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc31",
+      question: "What is the minimum oxygen level required for inerting tanks?",
+      choices: ["21%", "10%", "8%", "<8%"],
+      correct: [3],
+      explanation: "Inerting aims to reduce oxygen below 8% to prevent combustion.",
+      link: "link-to-training-doc"
+    },
+    
 {
-  id: "sp29",
-  question: "Which of the following are typical LPG volatility tests?",
-  choices: ["Evaporation test", "Reid Vapor Pressure", "ASTM D86", "Distillation under vacuum"],
-  correct: [0, 1],
-  explanation: "LPG volatility is assessed using evaporation tests and Reid Vapor Pressure. ASTM D86 and vacuum distillation are not suitable for LPG."
-},
-{
-  id: "sp30",
-  question: "Which of the following are typical contaminants in bitumen?",
-  choices: ["Asphaltenes", "Water", "Sulfur", "Paraffins"],
-  correct: [0, 1, 2],
-  explanation: "Bitumen contains asphaltenes and sulfur naturally, and water contamination must be avoided to prevent foaming and degradation."
-},
-{
-  id: "sp31",
-  question: "Which of the following are typical uses of VGO?",
-  choices: ["Lubricant base oil", "FCC feedstock", "Hydrocracking feedstock", "Jet fuel"],
-  correct: [1, 2],
-  explanation: "VGO is primarily used as feedstock for FCC and hydrocracking units to produce lighter fuels. It is not used directly as a fuel or lubricant."
-},
-{
-  id: "sp32",
-  question: "Which of the following are typical LPG storage requirements?",
-  choices: ["Pressurized tanks", "Ambient temperature", "Underground caverns", "Cryogenic tanks"],
-  correct: [0, 2],
-  explanation: "LPG is stored in pressurized tanks or underground salt caverns to manage its high vapor pressure. Cryogenic storage is not required."
-},
-{
-  id: "sp33",
-  question: "Which of the following are typical bitumen handling precautions?",
-  choices: ["Preheating before pumping", "Avoid water contact", "Use of insulated pipelines", "Storage at ambient temperature"],
-  correct: [0, 1, 2],
-  explanation: "Bitumen must be preheated and kept insulated to maintain flow. Water contact must be avoided to prevent foaming and explosions."
-},
-{
-  id: "sp34",
-  question: "Which of the following are typical LPG components?",
-  choices: ["Methane", "Propane", "Butane", "Ethane"],
-  correct: [1, 2],
-  explanation: "LPG is mainly composed of propane and butane. Methane and ethane are typically found in natural gas, not LPG."
-},
-{
-  id: "sp35",
-  question: "Which of the following are typical bitumen softening point test methods?",
-  choices: ["Ring and Ball", "Penetration test", "Reid Vapor Pressure", "ASTM D36"],
-  correct: [0, 3],
-  explanation: "The softening point of bitumen is measured using the Ring and Ball method, standardized under ASTM D36."
-},
-{
-  id: "sp36",
-  question: "Which of the following are typical LPG purity requirements?",
-  choices: ["Low sulfur", "No water", "No asphaltenes", "Low octane number"],
-  correct: [0, 1],
-  explanation: "LPG must be free of sulfur and water to prevent corrosion and hydrate formation. Octane number and asphaltenes are not relevant."
-},
-{
-  id: "sp37",
-  question: "Which of the following are typical bitumen applications?",
-  choices: ["Roofing", "Road paving", "Jet fuel", "Waterproofing"],
-  correct: [0, 1, 3],
-  explanation: "Bitumen is used in construction for roofing, road paving, and waterproofing. It is not used as a fuel."
-},
-{
-  id: "sp38",
-  question: "Which of the following are typical LPG hazards?",
-  choices: ["High flammability", "Toxicity", "Asphaltene precipitation", "Hydrate formation"],
-  correct: [0, 3],
-  explanation: "LPG is highly flammable and can form hydrates in the presence of water. It is not inherently toxic and does not contain asphaltenes."
-},
-{
-  id: "sp39",
-  question: "Which of the following are typical VGO properties?",
-  choices: ["High boiling point", "Low viscosity", "High sulfur content", "Used in FCC"],
-  correct: [0, 2, 3],
-  explanation: "VGO has a high boiling point and sulfur content, and is used in FCC units. It is more viscous than lighter products."
-},
-{
-  id: "sp40",
-  question: "Which of the following are typical bitumen stability concerns?",
-  choices: ["Asphaltene precipitation", "Water contamination", "Low flash point", "High volatility"],
-  correct: [0, 1],
-  explanation: "Bitumen stability is affected by asphaltene precipitation and water contamination. It has low volatility and a high flash point."
-},
-{
-  id: "sp41",
-  question: "Which of the following are typical LPG quality control parameters?",
-  choices: ["Doctor test", "Evaporation residue", "Flash point", "Penetration index"],
-  correct: [0, 1],
-  explanation: "LPG is tested for sulfur using the Doctor test and for evaporation residue to assess heavy ends. Flash point and penetration index are not applicable."
-},
-{
-  id: "sp42",
-  question: "Which of the following are typical bitumen softening point ranges?",
-  choices: ["50–70°C", "100–150°C", "230–250°C", "300–350°C"],
-  correct: [2],
-  explanation: "Bitumen softening point typically falls between 230°C and 250°C, indicating its high-temperature resistance."
-},
-{
-  id: "sp43",
-  question: "Which of the following are typical LPG boiling points?",
-  choices: ["-42°C", "-0.5°C", "36°C", "100°C"],
-  correct: [0, 1],
-  explanation: "LPG components like propane and butane have boiling points around -42°C and -0.5°C respectively, making them highly volatile."
-},
-{
-  id: "sp44",
-  question: "Which of the following are typical bitumen test methods?",
-  choices: ["Penetration test", "Ring and Ball", "Cetane index", "Flash point test"],
-  correct: [0, 1, 3],
-  explanation: "Bitumen is tested using penetration, softening point (Ring and Ball), and flash point methods. Cetane index is for diesel."
-},
-{
-  id: "sp45",
-  question: "Which of the following are typical LPG applications?",
-  choices: ["Cooking", "Heating", "Road paving", "Petrochemical feedstock"],
-  correct: [0, 1, 3],
-  explanation: "LPG is used for cooking, heating, and as a petrochemical feedstock. It is not used in road paving."
-},
-{
-  id: "sp46",
-  question: "Which of the following are typical bitumen handling temperatures?",
-  choices: ["Ambient", "100°C", "150°C", "200°C"],
-  correct: [2, 3],
-  explanation: "Bitumen must be heated to 150–200°C to remain fluid and pumpable during handling and application."
-},
-{
-  id: "sp47",
-  question: "Which of the following are typical LPG impurities to be removed?",
-  choices: ["Water", "Mercaptans", "Asphaltenes", "Hydrogen sulfide"],
-  correct: [0, 1, 3],
-  explanation: "LPG must be free of water, mercaptans, and hydrogen sulfide to ensure safety and prevent corrosion. Asphaltenes are not present in LPG."
-},
-{
-  id: "sp48",
-  question: "Which of the following are typical bitumen stability tests?",
-  choices: ["Spot test", "Compatibility test", "Doctor test", "Penetration test"],
-  correct: [0, 1],
-  explanation: "Bitumen stability is assessed using spot and compatibility tests to evaluate asphaltene precipitation and fluxant interaction."
-},
-{
-  id: "sp49",
-  question: "Which of the following are typical LPG volatility constraints?",
-  choices: ["High RVP", "Low boiling point", "High flash point", "Low sulfur"],
-  correct: [0, 1, 3],
-  explanation: "LPG must have high RVP, low boiling point, and low sulfur content. Flash point is not a relevant constraint for LPG."
-},
-{
-  id: "sp50",
-  question: "Which of the following are typical bitumen composition elements?",
-  choices: ["Asphaltenes", "Resins", "Paraffins", "Aromatics"],
-  correct: [0, 1, 3],
-  explanation: "Bitumen is composed of asphaltenes, resins, and aromatics. Paraffins are more typical of lighter fractions like waxes."
-}
+      id: "psdoc32",
+      question: "What should an operator do if the SDS indicates a flash point below 23°C?",
+      choices: ["Apply inerting procedures", "Increase pumping speed", "Ignore if cargo is stable", "Blend with high-flash product immediately"],
+      correct: [0],
+      explanation: "Low flash point cargo requires inerting to prevent explosion hazards.",
+      link: "link-to-training-doc"
+    },
+	
+    {
+      id: "psdoc33",
+      question: "What is the main risk of high vapor pressure cargo?",
+      choices: ["Explosion", "Polymerization", "Freezing", "Corrosion"],
+      correct: [0],
+      explanation: "High vapor pressure increases explosion risk during loading and transport.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc34",
+      question: "Which SDS section includes toxicological information?",
+      choices: ["Section 11", "Section 8", "Section 14", "Section 12"],
+      correct: [0],
+      explanation: "Section 11 provides health hazard and toxicity data.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc35",
+      question: "What does the term 'polymerization risk' mean?",
+      choices: ["Cargo may solidify uncontrollably", "Cargo evaporates quickly", "Cargo corrodes tanks", "Cargo freezes at low temperature"],
+      correct: [0],
+      explanation: "Polymerization risk means the cargo can solidify, causing blockages and hazards.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc36",
+      question: "Which SDS section includes regulatory information?",
+      choices: ["Section 15", "Section 10", "Section 8", "Section 12"],
+      correct: [0],
+      explanation: "Section 15 lists applicable regulations and compliance requirements.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc37",
+      question: "What is the purpose of Section 6 in an SDS?",
+      choices: ["Accidental release measures", "Fire-fighting measures", "Transport details", "Disposal guidelines"],
+      correct: [0],
+      explanation: "Section 6 provides instructions for spill containment and cleanup.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc38",
+      question: "Which SDS section includes stability and reactivity?",
+      choices: ["Section 10", "Section 8", "Section 12", "Section 14"],
+      correct: [0],
+      explanation: "Section 10 details conditions to avoid and incompatible materials.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc39",
+      question: "What is the main purpose of Section 3 in an SDS?",
+      choices: ["Composition and ingredient information", "Hazard identification", "Transport classification", "Disposal guidelines"],
+      correct: [0],
+      explanation: "Section 3 lists chemical composition and CAS numbers.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc40",
+      question: "Which SDS section includes handling and storage guidelines?",
+      choices: ["Section 7", "Section 8", "Section 10", "Section 12"],
+      correct: [0],
+      explanation: "Section 7 provides safe handling and storage instructions.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc41",
+      question: "What is the main risk of blending incompatible chemicals?",
+      choices: ["Explosion", "Polymerization", "Quality failure", "All of the above"],
+      correct: [3],
+      explanation: "Blending incompatible chemicals can cause explosion, polymerization, and off-spec product.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc42",
+      question: "Which SDS section includes exposure controls and PPE?",
+      choices: ["Section 8", "Section 4", "Section 12", "Section 14"],
+      correct: [0],
+      explanation: "Section 8 covers exposure limits and personal protective equipment.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc43",
+      question: "What is the main purpose of Section 13 in an SDS?",
+      choices: ["Disposal considerations", "Transport details", "Fire-fighting measures", "Regulatory information"],
+      correct: [0],
+      explanation: "Section 13 provides disposal and waste management guidelines.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc44",
+      question: "Which SDS section includes ecological information?",
+      choices: ["Section 12", "Section 14", "Section 8", "Section 4"],
+      correct: [0],
+      explanation: "Section 12 provides environmental impact details.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc45",
+      question: "What is the main purpose of Section 14 in an SDS?",
+      choices: ["Transport information", "Hazard identification", "Disposal guidelines", "Fire-fighting measures"],
+      correct: [0],
+      explanation: "Section 14 lists UN number, packing group, and transport classification.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc46",
+      question: "Which SDS section includes first-aid measures?",
+      choices: ["Section 4", "Section 8", "Section 12", "Section 14"],
+      correct: [0],
+      explanation: "Section 4 provides first-aid instructions for exposure scenarios.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc47",
+      question: "What is the main purpose of Section 16 in an SDS?",
+      choices: ["Other information including revision history", "Hazard identification", "Transport details", "Disposal guidelines"],
+      correct: [0],
+      explanation: "Section 16 includes additional details and SDS revision history.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc48",
+      question: "Which hazard symbol indicates corrosive substances?",
+      choices: ["Corrosion pictogram", "Flame pictogram", "Exclamation mark", "Gas cylinder"],
+      correct: [0],
+      explanation: "The corrosion pictogram represents substances that damage metals and skin.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc49",
+      question: "What is the main purpose of Section 11 in an SDS?",
+      choices: ["Toxicological information", "Transport details", "Disposal guidelines", "Fire-fighting measures"],
+      correct: [0],
+      explanation: "Section 11 provides health hazard and toxicity data.",
+      link: "link-to-training-doc"
+    },
+    {
+      id: "psdoc50",
+      question: "Which SDS section includes accidental release measures?",
+      choices: ["Section 6", "Section 8", "Section 12", "Section 14"],
+      correct: [0],
+      explanation: "Section 6 provides spill containment and cleanup instructions.",
+      link: "link-to-training-doc"
+    }
+
 
  ]
       },
@@ -4961,357 +5063,410 @@ question: "Which instrument allows hedging short-term dated Brent exposure?",
  loss_control: {
     title: "Loss Control",
     questions: [
-      {
-        id: "lc1",
-        question: "What is the primary objective of Loss Control in oil operations?",
-        choices: ["Reduce product losses", "Optimise transport costs", "Improve crude quality", "Ensure customs compliance"],
-        correct: [0],
-        explanation: "Loss Control aims to reduce both physical and paper losses during operations."
-      },
-      {
-        id: "lc2",
-        question: "Which types of losses are identified in Loss Control?",
-        choices: ["Physical losses", "Paper losses", "Tax losses", "Environmental losses"],
-        correct: [0,1],
-        explanation: "Physical losses (e.g. leakage, evaporation) and paper losses (e.g. measurement or calculation errors) are the main types."
-      },
-      {
-        id: "lc3",
-        question: "Which tool is used to adjust discrepancies between ship and shore measurements?",
-        choices: ["VCF", "VEF", "SOF", "API 53B"],
-        correct: [1],
-        explanation: "The Vessel Experience Factor (VEF) is a ratio used to align shipboard measurements with shore figures."
-      },
-      {
-        id: "lc4",
-        question: "How many voyages are required to calculate a valid VEF?",
-        choices: ["5", "10", "20", "Minimum 5, maximum 20"],
-        correct: [3],
-        explanation: "VEF calculation requires at least 5 qualified voyages and up to 20 maximum."
-      },
-      {
-        id: "lc5",
-        question: "What does a VEF > 1 indicate?",
-        choices: ["Ship quantity is increased", "Ship quantity is reduced", "Quality is improved", "Density is corrected"],
-        correct: [1],
-        explanation: "A VEF greater than 1 means the ship quantity is reduced after correction."
-      },
-      {
-        id: "lc6",
-        question: "Which method is used to measure the product level in a tank?",
-        choices: ["Innage", "Ullage", "Radar", "Thermography"],
-        correct: [1],
-        explanation: "Ullage measures the empty space in the tank, allowing deduction of product height."
-      },
-      {
-        id: "lc7",
-        question: "Which factor is used to correct volume to reference temperature?",
-        choices: ["VCF", "VEF", "API 53B", "ASTM 54B"],
-        correct: [0],
-        explanation: "Volume Correction Factor (VCF) adjusts measured volume to the reference temperature (15°C)."
-      },
-      {
-        id: "lc8",
-        question: "What risks are associated with unexplained product loss?",
-        choices: ["Impact on P&L", "Customs fines", "Environmental pollution", "Fraud suspicion"],
-        correct: [0,1,2,3],
-        explanation: "Unexplained losses can lead to financial, legal, environmental and reputational consequences."
-      },
-      {
-        id: "lc9",
-        question: "What measurement error can cause an apparent loss of 4,310 litres?",
-        choices: ["1 mm height", "1°C temperature", "0.001 density", "1 m³ volume"],
-        correct: [0],
-        explanation: "A 1 mm error in height measurement can result in a 4,310 litre discrepancy in large tanks."
-      },
-      {
-        id: "lc10",
-        question: "What is the role of Loss Control in contracts?",
-        choices: ["Verify quantity and quality clauses", "Negotiate prices", "Manage insurance", "Audit suppliers"],
-        correct: [0],
-        explanation: "Loss Control ensures contract clauses related to quantity and quality are correctly applied."
-      },
-      {
-        id: "lc11",
-        question: "Which document records all events during cargo operations?",
-        choices: ["Statement of Facts (SOF)", "Charter Party", "NOR", "Cargo Manifest"],
-        correct: [0],
-        explanation: "SOF lists all operational events during loading and discharging."
-      },
-      {
-        id: "lc12",
-        question: "What does GOV stand for?",
-        choices: ["Gross Observed Volume", "General Oil Volume", "Gas Oil Value", "Global Operational Value"],
-        correct: [0],
-        explanation: "GOV refers to the total volume measured before any corrections."
-      },
-      {
-        id: "lc13",
-        question: "What is the corrected volume at standard temperature called?",
-        choices: ["GSV", "VCF", "TOV", "GOV"],
-        correct: [0],
-        explanation: "Gross Standard Volume (GSV) is the volume corrected to 15°C using VCF."
-      },
-      {
-        id: "lc14",
-        question: "Which sampling method is preferred for closed systems?",
-        choices: ["MK7", "Open thief", "First foot", "Running sample"],
-        correct: [0],
-        explanation: "MK7 samplers are designed for closed systems to ensure safety and representativity."
-      },
-      {
-        id: "lc15",
-        question: "What is the purpose of Crude Oil Washing (COW)?",
-        choices: ["Recover residual oil", "Clean tanks", "Reduce pollution", "Improve quality"],
-        correct: [0,1,2],
-        explanation: "COW helps recover oil residues, clean tanks and reduce environmental impact."
-      },
-      {
-        id: "lc16",
-        question: "Which factor affects VCF calculation?",
-        choices: ["Temperature", "Density", "Volume", "Pressure"],
-        correct: [0,1],
-        explanation: "VCF is calculated based on temperature and density of the product."
-      },
-      {
-        id: "lc17",
-        question: "What does TOV include?",
-        choices: ["Free water", "Oil", "Sediments", "All of the above"],
-        correct: [3],
-        explanation: "Total Observed Volume (TOV) includes oil, free water and sediments."
-      },
-      {
-        id: "lc18",
-        question: "Which document is used to reconcile stock differences?",
-        choices: ["Stock reconciliation report", "Bill of Lading", "Certificate of Quality", "Invoice"],
-        correct: [0],
-        explanation: "Stock reconciliation reports compare expected and actual volumes to identify discrepancies."
-      },
-      {
-        id: "lc19",
-        question: "What is the acceptable tolerance for stock reconciliation?",
-        choices: ["< 0.5%", "< 1%", "< 2%", "No tolerance"],
-        correct: [1],
-        explanation: "A tolerance of less than 1% is generally acceptable for stock reconciliation."
-      },
-      {
-        id: "lc20",
-        question: "Which operation can cause paper loss?",
-        choices: ["Incorrect VCF", "Wrong tank calibration", "Misreading temperature", "All of the above"],
-        correct: [3],
-        explanation: "All listed errors can lead to paper losses due to incorrect calculations."
-      },
-	  
+      
 {
-        id: "lc21",
-        question: "Which operation can cause physical loss?",
-        choices: ["Tank leakage", "Evaporation", "Pipeline rupture", "All of the above"],
-        correct: [3],
-        explanation: "All listed operations can result in physical product loss."
-      },
-      {
-        id: "lc22",
-        question: "What is the purpose of a first foot sample?",
-        choices: ["Check contamination", "Verify initial quality", "Calibrate instruments", "Measure temperature"],
-        correct: [0,1],
-        explanation: "First foot samples are taken early to detect contamination and confirm product quality."
-      },
-      {
-        id: "lc23",
-        question: "Which document defines the agreed quantity and quality terms?",
-        choices: ["Contract", "Bill of Lading", "Certificate of Quality", "Charter Party"],
-        correct: [0],
-        explanation: "The contract outlines the agreed terms for quantity and quality between parties."
-      },
-      {
-        id: "lc24",
-        question: "What does a negative stock reconciliation indicate?",
-        choices: ["Loss", "Gain", "Measurement error", "All of the above"],
-        correct: [0,2],
-        explanation: "A negative reconciliation suggests a loss or possible measurement error."
-      },
-      {
-        id: "lc25",
-        question: "Which sampling method ensures representativity?",
-        choices: ["Running sample", "Spot sample", "First foot", "Top sample"],
-        correct: [0],
-        explanation: "Running samples are taken during flow and provide a representative product profile."
-      },
-      {
-        id: "lc26",
-        question: "What is the role of inert gas during COW?",
-        choices: ["Prevent explosion", "Maintain pressure", "Improve cleaning", "Reduce oxygen"],
-        correct: [0,3],
-        explanation: "Inert gas prevents explosion and reduces oxygen during tank cleaning operations."
-      },
-      {
-        id: "lc27",
-        question: "Which factor is critical in calculating VCF?",
-        choices: ["API gravity", "Temperature", "Density", "Tank height"],
-        correct: [1,2],
-        explanation: "VCF is calculated using temperature and density of the crude oil."
-      },
-      {
-        id: "lc28",
-        question: "What does GSV exclude?",
-        choices: ["Free water", "Sediments", "Oil", "VCF"],
-        correct: [0,1],
-        explanation: "GSV excludes free water and sediments; it represents clean oil volume at standard temperature."
-      },
-      {
-        id: "lc29",
-        question: "Which tool helps detect systematic losses over time?",
-        choices: ["VEF", "Stock reconciliation", "Sampling log", "Tank calibration"],
-        correct: [1],
-        explanation: "Stock reconciliation identifies recurring discrepancies and potential systematic losses."
-      },
-      {
-        id: "lc30",
-        question: "What is the impact of incorrect temperature measurement?",
-        choices: ["Wrong VCF", "Incorrect volume", "Loss or gain", "All of the above"],
-        correct: [3],
-        explanation: "Incorrect temperature affects VCF and volume, leading to apparent losses or gains."
-      },
-      {
-        id: "lc31",
-        question: "Which document certifies the product’s physical properties?",
-        choices: ["Certificate of Quality", "Bill of Lading", "Invoice", "Charter Party"],
-        correct: [0],
-        explanation: "The Certificate of Quality confirms the physical characteristics of the cargo."
-      },
-      {
-        id: "lc32",
-        question: "What is the purpose of tank calibration?",
-        choices: ["Ensure accurate volume measurement", "Detect leaks", "Improve blending", "Reduce losses"],
-        correct: [0],
-        explanation: "Tank calibration ensures volume measurements are accurate and reliable."
-      },
-      {
-        id: "lc33",
-        question: "Which operation is most prone to paper loss?",
-        choices: ["Measurement", "Sampling", "Calculation", "All of the above"],
-        correct: [3],
-        explanation: "Paper losses can occur during measurement, sampling, and calculation stages."
-      },
-      {
-        id: "lc34",
-        question: "What does a VEF < 1 indicate?",
-        choices: ["Ship quantity is increased", "Ship quantity is reduced", "Loss is expected", "Gain is expected"],
-        correct: [0],
-        explanation: "A VEF less than 1 increases the ship quantity after correction."
-      },
-      {
-        id: "lc35",
-        question: "Which factor is used to convert GOV to GSV?",
-        choices: ["VCF", "VEF", "API gravity", "Temperature"],
-        correct: [0],
-        explanation: "VCF is applied to GOV to obtain GSV at standard temperature."
-      },
-      {
-        id: "lc36",
-        question: "What is the role of the Loss Control team during loading?",
-        choices: ["Monitor measurements", "Verify sampling", "Check documentation", "All of the above"],
-        correct: [3],
-        explanation: "Loss Control oversees all aspects of loading to prevent losses and ensure accuracy."
-      },
-      {
-        id: "lc37",
-        question: "Which error can result from incorrect tank calibration?",
-        choices: ["Wrong volume", "Incorrect reconciliation", "Paper loss", "All of the above"],
-        correct: [3],
-        explanation: "Incorrect calibration affects volume and reconciliation, leading to paper losses."
-      },
-      {
-        id: "lc38",
-        question: "What is the function of the Statement of Facts?",
-        choices: ["Record operational events", "Confirm timings", "Support demurrage claims", "All of the above"],
-        correct: [3],
-        explanation: "SOF documents all events and timings, supporting operational and financial claims."
-      },
-      {
-        id: "lc39",
-        question: "Which sampling error can lead to quality disputes?",
-        choices: ["Contaminated sample", "Wrong timing", "Incorrect method", "All of the above"],
-        correct: [3],
-        explanation: "Sampling errors can compromise representativity and lead to disputes over quality."
-      },
-      {
-        id: "lc40",
-        question: "What is the impact of incorrect density measurement?",
-        choices: ["Wrong VCF", "Incorrect volume", "Loss or gain", "All of the above"],
-        correct: [3],
-        explanation: "Density affects VCF and volume calculations, impacting reconciliation and perceived losses."
-      },
-      {
-        id: "lc41",
-        question: "Which document is used to initiate cargo operations?",
-        choices: ["Notice of Readiness (NOR)", "SOF", "Bill of Lading", "Certificate of Origin"],
-        correct: [0],
-        explanation: "NOR signals that the vessel is ready to commence cargo operations."
-      },
-      {
-        id: "lc42",
-        question: "What is the role of blending in Loss Control?",
-        choices: ["Achieve target quality", "Reduce off-spec cargo", "Improve value", "All of the above"],
-        correct: [3],
-        explanation: "Blending helps meet quality specs, reduce penalties, and enhance cargo value."
-      },
-      {
-        id: "lc43",
-        question: "Which factor is critical during tank stripping?",
-        choices: ["Temperature", "Residue level", "Inert gas", "Tank pressure"],
-        correct: [1],
-        explanation: "Stripping aims to remove residues; monitoring residue level is essential."
-      },
-      {
-        id: "lc44",
-        question: "What is the purpose of a closed sampling system?",
-        choices: ["Ensure safety", "Prevent contamination", "Maintain representativity", "All of the above"],
-        correct: [3],
-        explanation: "Closed systems protect operators, prevent contamination, and ensure sample integrity."
-      },
-      {
-        id: "lc45",
-        question: "Which document supports quantity claims?",
-        choices: ["Bill of Lading", "SOF", "VEF report", "Stock reconciliation"],
-        correct: [3],
-        explanation: "Stock reconciliation helps justify quantity discrepancies and support claims."
-      },
-      {
-        id: "lc46",
-        question: "What is the impact of incorrect API gravity?",
-        choices: ["Wrong VCF", "Incorrect volume", "Quality dispute", "All of the above"],
-        correct: [3],
-        explanation: "API gravity affects VCF and quality classification, impacting volume and commercial terms."
-      },
-      {
-        id: "lc47",
-        question: "Which operation is monitored to prevent contamination?",
-        choices: ["Sampling", "Blending", "Tank cleaning", "All of the above"],
-        correct: [3],
-        explanation: "All listed operations are monitored to avoid contamination risks."
-      },
-      {
-        id: "lc48",
-        question: "What is the role of the Loss Control team post-discharge?",
-        choices: ["Verify final measurements", "Check reconciliation", "Review documentation", "All of the above"],
-        correct: [3],
-        explanation: "Post-discharge, Loss Control ensures all data is accurate and reconciled."
-      },
-      {
-        id: "lc49",
-        question: "Which factor can cause evaporation losses?",
-        choices: ["High temperature", "Low pressure", "Open tank", "All of the above"],
-        correct: [3],
-        explanation: "Evaporation increases with temperature, low pressure, and exposure to air."
-      },
-      {
-        id: "lc50",
-        question: "What is the benefit of accurate reconciliation?",
-        choices: ["Loss prevention", "Improved reporting", "Better decision-making", "All of the above"],
-        correct: [3],
-        explanation: "Accurate reconciliation supports operational integrity, reporting, and strategic decisions."
-      }
+      id: "lc1",
+      question: "What is the primary objective of Loss Control in oil operations?",
+      choices: ["Reduce product losses", "Optimise transport costs", "Improve crude quality", "Ensure customs compliance"],
+      correct: [0],
+      explanation: "Loss Control focuses on minimizing both physical losses (like leakage or evaporation) and paper losses (calculation or measurement errors) during cargo operations.",
+      why_it_matters: "Every litre lost impacts profitability and can trigger disputes with counterparties. Understanding this objective helps operators prioritize accuracy and vigilance."
+    },
+    {
+      id: "lc2",
+      question: "Which types of losses are identified in Loss Control?",
+      choices: ["Physical losses", "Paper losses", "Tax losses", "Environmental losses"],
+      correct: [0,1],
+      explanation: "Physical losses occur due to leaks, evaporation, or spills. Paper losses result from incorrect measurements, temperature/density errors, or miscalculations.",
+      why_it_matters: "Operators must know these categories to apply the right preventive measures—technical checks for physical losses and calculation accuracy for paper losses."
+    },
+    {
+      id: "lc3",
+      question: "Which tool is used to adjust discrepancies between ship and shore measurements?",
+      choices: ["VCF", "VEF", "SOF", "API 53B"],
+      correct: [1],
+      explanation: "The Vessel Experience Factor (VEF) is a ratio based on historical voyages that corrects systematic differences between ship and shore quantities.",
+      why_it_matters: "Applying VEF correctly avoids disputes and ensures fair settlement of quantities between parties."
+    },
+    {
+      id: "lc4",
+      question: "How many voyages are required to calculate a valid VEF?",
+      choices: ["5", "10", "20", "Minimum 5, maximum 20"],
+      correct: [3],
+      explanation: "Industry standards require at least 5 qualified voyages and allow up to 20 for calculating a reliable VEF.",
+      why_it_matters: "Operators must verify VEF validity before using it in calculations to maintain credibility and compliance."
+    },
+    {
+      id: "lc5",
+      question: "What does a VEF > 1 indicate?",
+      choices: ["Ship quantity is increased", "Ship quantity is reduced", "Quality is improved", "Density is corrected"],
+      correct: [1],
+      explanation: "A VEF greater than 1 means the ship’s reported quantity will be reduced after applying the correction factor.",
+      why_it_matters: "Understanding this helps operators anticipate adjustments and explain differences to stakeholders."
+    },
+    {
+      id: "lc6",
+      question: "Which method is used to measure the product level in a tank?",
+      choices: ["Innage", "Ullage", "Radar", "Thermography"],
+      correct: [1],
+      explanation: "Ullage measures the empty space from the top of the tank to the liquid surface, allowing calculation of product height.",
+      why_it_matters: "Accurate ullage readings are critical for correct volume calculations and avoiding paper losses."
+    },
+    {
+      id: "lc7",
+      question: "Which factor is used to correct volume to reference temperature?",
+      choices: ["VCF", "VEF", "API 53B", "ASTM 54B"],
+      correct: [0],
+      explanation: "The Volume Correction Factor (VCF) adjusts observed volume to the standard reference temperature (15°C).",
+      why_it_matters: "Temperature variations can cause large discrepancies; applying VCF ensures fair and accurate invoicing."
+    },
+    {
+      id: "lc8",
+      question: "What risks are associated with unexplained product loss?",
+      choices: ["Impact on P&L", "Customs fines", "Environmental pollution", "Fraud suspicion"],
+      correct: [0,1,2,3],
+      explanation: "Unexplained losses can lead to financial penalties, regulatory issues, environmental damage, and even fraud investigations.",
+      why_it_matters: "Operators must document and justify every variance to protect the company from legal and reputational risks."
+    },
+    {
+      id: "lc9",
+      question: "What measurement error can cause an apparent loss of 4,310 litres?",
+      choices: ["1 mm height", "1°C temperature", "0.001 density", "1 m³ volume"],
+      correct: [0],
+      explanation: "A 1 mm error in height measurement in a large tank can result in a discrepancy of over 4,000 litres.",
+      why_it_matters: "This shows why precision in gauging is critical—small mistakes can have big financial impacts."
+    },
+    {
+      id: "lc10",
+      question: "What is the role of Loss Control in contracts?",
+      choices: ["Verify quantity and quality clauses", "Negotiate prices", "Manage insurance", "Audit suppliers"],
+      correct: [0],
+      explanation: "Loss Control ensures that contractual terms on quantity and quality are respected and documented during operations.",
+      why_it_matters: "Operators must align operational practices with contract clauses to avoid claims and disputes."
+    },
+      
+{
+      id: "lc11",
+      question: "Which document records all events during cargo operations?",
+      choices: ["Statement of Facts (SOF)", "Charter Party", "NOR", "Cargo Manifest"],
+      correct: [0],
+      explanation: "The Statement of Facts (SOF) logs every operational event, including start/stop times for loading and discharge.",
+      why_it_matters: "Accurate SOF entries are essential for calculating laytime and supporting demurrage claims."
+    },
+    {
+      id: "lc12",
+      question: "What does GOV stand for?",
+      choices: ["Gross Observed Volume", "General Oil Volume", "Gas Oil Value", "Global Operational Value"],
+      correct: [0],
+      explanation: "Gross Observed Volume (GOV) is the total measured volume at observed temperature before corrections.",
+      why_it_matters: "Operators must know GOV as the starting point for all volume corrections and reconciliation."
+    },
+    {
+      id: "lc13",
+      question: "What is the corrected volume at standard temperature called?",
+      choices: ["GSV", "VCF", "TOV", "GOV"],
+      correct: [0],
+      explanation: "Gross Standard Volume (GSV) is the volume adjusted to 15°C using the Volume Correction Factor (VCF).",
+      why_it_matters: "GSV is the contractual reference for invoicing and settlement—accuracy here avoids disputes."
+    },
+    {
+      id: "lc14",
+      question: "Which sampling method is preferred for closed systems?",
+      choices: ["MK7", "Open thief", "First foot", "Running sample"],
+      correct: [0],
+      explanation: "MK7 samplers are designed for closed systems to ensure safety and representative sampling without vapor release.",
+      why_it_matters: "Closed sampling prevents exposure to hazardous vapors and ensures compliance with safety regulations."
+    },
+    {
+      id: "lc15",
+      question: "What is the purpose of Crude Oil Washing (COW)?",
+      choices: ["Recover residual oil", "Clean tanks", "Reduce pollution", "Improve quality"],
+      correct: [0,1,2],
+      explanation: "COW uses crude oil to wash tank walls, recovering residues, cleaning tanks, and reducing pollution risk.",
+      why_it_matters: "Proper COW reduces cargo losses and ensures compliance with MARPOL environmental standards."
+    },
+    {
+      id: "lc16",
+      question: "Which factor affects VCF calculation?",
+      choices: ["Temperature", "Density", "Volume", "Pressure"],
+      correct: [0,1],
+      explanation: "VCF depends on product temperature and density to correct observed volume to standard conditions.",
+      why_it_matters: "Incorrect temperature or density inputs lead to wrong VCF and costly paper losses."
+    },
+    {
+      id: "lc17",
+      question: "What does TOV include?",
+      choices: ["Free water", "Oil", "Sediments", "All of the above"],
+      correct: [3],
+      explanation: "Total Observed Volume (TOV) includes oil, free water, and sediments before any deductions.",
+      why_it_matters: "Operators must distinguish TOV from GSV to avoid invoicing errors and disputes."
+    },
+    {
+      id: "lc18",
+      question: "Which document is used to reconcile stock differences?",
+      choices: ["Stock reconciliation report", "Bill of Lading", "Certificate of Quality", "Invoice"],
+      correct: [0],
+      explanation: "Stock reconciliation reports compare expected vs actual volumes to identify discrepancies.",
+      why_it_matters: "Accurate reconciliation prevents financial losses and flags operational issues early."
+    },
+    {
+      id: "lc19",
+      question: "What is the acceptable tolerance for stock reconciliation?",
+      choices: ["< 0.5%", "< 1%", "< 2%", "No tolerance"],
+      correct: [1],
+      explanation: "Industry practice allows a tolerance of less than 1% for stock reconciliation differences.",
+      why_it_matters: "Operators must monitor variances beyond tolerance as they indicate potential losses or errors."
+    },
+    {
+      id: "lc20",
+      question: "Which operation can cause paper loss?",
+      choices: ["Incorrect VCF", "Wrong tank calibration", "Misreading temperature", "All of the above"],
+      correct: [3],
+      explanation: "Errors in VCF, calibration, or temperature readings lead to calculation discrepancies called paper losses.",
+      why_it_matters: "Paper losses affect reported quantities and can trigger claims—accuracy is critical."
+    },
+    {
+      id: "lc21",
+      question: "Which operation can cause physical loss?",
+      choices: ["Tank leakage", "Evaporation", "Pipeline rupture", "All of the above"],
+      correct: [3],
+      explanation: "Physical losses occur due to leaks, evaporation, or ruptures during handling and transport.",
+      why_it_matters: "Preventing physical losses protects cargo value and avoids environmental incidents."
+    },
+    {
+      id: "lc22",
+      question: "What is the purpose of a first foot sample?",
+      choices: ["Check contamination", "Verify initial quality", "Calibrate instruments", "Measure temperature"],
+      correct: [0,1],
+      explanation: "First foot samples are taken at the start of loading to detect contamination and confirm product quality.",
+      why_it_matters: "Early detection avoids loading off-spec cargo and prevents costly claims."
+    },
+    {
+      id: "lc23",
+      question: "Which document defines the agreed quantity and quality terms?",
+      choices: ["Contract", "Bill of Lading", "Certificate of Quality", "Charter Party"],
+      correct: [0],
+      explanation: "The contract specifies the agreed quantity and quality terms between buyer and seller.",
+      why_it_matters: "Operators must align operational checks with contract terms to avoid penalties."
+    },
+    {
+      id: "lc24",
+      question: "What does a negative stock reconciliation indicate?",
+      choices: ["Loss", "Gain", "Measurement error", "All of the above"],
+      correct: [0,2],
+      explanation: "A negative reconciliation suggests a loss or a possible measurement error requiring investigation.",
+      why_it_matters: "Operators must escalate negative variances promptly to prevent financial exposure."
+    },
+    {
+      id: "lc25",
+      question: "Which sampling method ensures representativity?",
+      choices: ["Running sample", "Spot sample", "First foot", "Top sample"],
+      correct: [0],
+      explanation: "Running samples are collected during flow to capture a representative product profile.",
+      why_it_matters: "Representative sampling ensures accurate quality analysis and avoids disputes."
+    },
+      
+{
+      id: "lc26",
+      question: "What is the role of inert gas during COW?",
+      choices: ["Prevent explosion", "Maintain pressure", "Improve cleaning", "Reduce oxygen"],
+      correct: [0,3],
+      explanation: "Inert gas reduces oxygen levels and prevents ignition during Crude Oil Washing operations.",
+      why_it_matters: "Safety during COW is critical—failure to inert tanks can lead to catastrophic explosions."
+    },
+    {
+      id: "lc27",
+      question: "Which factor is critical in calculating VCF?",
+      choices: ["API gravity", "Temperature", "Density", "Tank height"],
+      correct: [1,2],
+      explanation: "VCF depends on accurate temperature and density readings to correct volume to standard conditions.",
+      why_it_matters: "Incorrect inputs lead to wrong invoicing and disputes—operators must double-check these values."
+    },
+    {
+      id: "lc28",
+      question: "What does GSV exclude?",
+      choices: ["Free water", "Sediments", "Oil", "VCF"],
+      correct: [0,1],
+      explanation: "Gross Standard Volume excludes free water and sediments, representing clean oil volume at 15°C.",
+      why_it_matters: "Understanding exclusions avoids overbilling and contractual penalties."
+    },
+    {
+      id: "lc29",
+      question: "Which tool helps detect systematic losses over time?",
+      choices: ["VEF", "Stock reconciliation", "Sampling log", "Tank calibration"],
+      correct: [1],
+      explanation: "Stock reconciliation compares expected vs actual volumes across operations to identify recurring losses.",
+      why_it_matters: "Early detection of trends prevents financial leakage and operational inefficiencies."
+    },
+    {
+      id: "lc30",
+      question: "What is the impact of incorrect temperature measurement?",
+      choices: ["Wrong VCF", "Incorrect volume", "Loss or gain", "All of the above"],
+      correct: [3],
+      explanation: "Temperature errors distort VCF and volume calculations, creating apparent losses or gains.",
+      why_it_matters: "Operators must ensure calibrated thermometers—small errors can cost thousands of dollars."
+    },
+    {
+      id: "lc31",
+      question: "Which document certifies the product’s physical properties?",
+      choices: ["Certificate of Quality", "Bill of Lading", "Invoice", "Charter Party"],
+      correct: [0],
+      explanation: "The Certificate of Quality confirms product specifications like density, sulfur, and water content.",
+      why_it_matters: "Quality disputes often hinge on this document—operators must verify accuracy before loading."
+    },
+    {
+      id: "lc32",
+      question: "What is the purpose of tank calibration?",
+      choices: ["Ensure accurate volume measurement", "Detect leaks", "Improve blending", "Reduce losses"],
+      correct: [0],
+      explanation: "Tank calibration ensures the tank’s capacity tables are accurate for volume calculations.",
+      why_it_matters: "Incorrect calibration leads to paper losses and contractual disputes—operators must check calibration certificates."
+    },
+    {
+      id: "lc33",
+      question: "Which operation is most prone to paper loss?",
+      choices: ["Measurement", "Sampling", "Calculation", "All of the above"],
+      correct: [3],
+      explanation: "Errors in measurement, sampling, or calculation can all cause paper losses.",
+      why_it_matters: "Operators must apply strict controls at every stage to maintain data integrity."
+    },
+    {
+      id: "lc34",
+      question: "What does a VEF < 1 indicate?",
+      choices: ["Ship quantity is increased", "Ship quantity is reduced", "Loss is expected", "Gain is expected"],
+      correct: [0],
+      explanation: "A VEF less than 1 means the ship’s reported quantity will be increased after correction.",
+      why_it_matters: "Operators must anticipate adjustments and communicate them clearly to avoid disputes."
+    },
+    {
+      id: "lc35",
+      question: "Which factor is used to convert GOV to GSV?",
+      choices: ["VCF", "VEF", "API gravity", "Temperature"],
+      correct: [0],
+      explanation: "VCF is applied to Gross Observed Volume to obtain Gross Standard Volume at 15°C.",
+      why_it_matters: "Correct application of VCF ensures accurate invoicing and compliance with API standards."
+    },
+    {
+      id: "lc36",
+      question: "What is the role of the Loss Control team during loading?",
+      choices: ["Monitor measurements", "Verify sampling", "Check documentation", "All of the above"],
+      correct: [3],
+      explanation: "Loss Control supervises measurements, sampling, and documentation to prevent losses.",
+      why_it_matters: "Active oversight during loading avoids costly errors and ensures contractual compliance."
+    },
+    {
+      id: "lc37",
+      question: "Which error can result from incorrect tank calibration?",
+      choices: ["Wrong volume", "Incorrect reconciliation", "Paper loss", "All of the above"],
+      correct: [3],
+      explanation: "Incorrect calibration impacts volume calculations and reconciliation, causing paper losses.",
+      why_it_matters: "Operators must confirm calibration certificates before operations to prevent disputes."
+    },
+    {
+      id: "lc38",
+      question: "What is the function of the Statement of Facts?",
+      choices: ["Record operational events", "Confirm timings", "Support demurrage claims", "All of the above"],
+      correct: [3],
+      explanation: "SOF documents all events and timings, supporting operational and financial claims.",
+      why_it_matters: "Accurate SOF entries protect the company in laytime and demurrage negotiations."
+    },
+    {
+      id: "lc39",
+      question: "Which sampling error can lead to quality disputes?",
+      choices: ["Contaminated sample", "Wrong timing", "Incorrect method", "All of the above"],
+      correct: [3],
+      explanation: "Sampling errors compromise representativity and can trigger costly quality disputes.",
+      why_it_matters: "Operators must follow strict sampling protocols to maintain credibility and avoid penalties."
+    },
+    {
+      id: "lc40",
+      question: "What is the impact of incorrect density measurement?",
+      choices: ["Wrong VCF", "Incorrect volume", "Loss or gain", "All of the above"],
+      correct: [3],
+      explanation: "Density errors affect VCF and volume calculations, leading to apparent losses or gains.",
+      why_it_matters: "Operators must verify density readings—errors can distort reconciliation and financial results."
+    },
+    {
+      id: "lc41",
+      question: "Which document is used to initiate cargo operations?",
+      choices: ["Notice of Readiness (NOR)", "SOF", "Bill of Lading", "Certificate of Origin"],
+      correct: [0],
+      explanation: "NOR signals that the vessel is ready to commence loading or discharge.",
+      why_it_matters: "Timely NOR issuance impacts laytime calculations and contractual obligations."
+    },
+    {
+      id: "lc42",
+      question: "What is the role of blending in Loss Control?",
+      choices: ["Achieve target quality", "Reduce off-spec cargo", "Improve value", "All of the above"],
+      correct: [3],
+      explanation: "Blending ensures cargo meets specifications, reduces penalties, and optimizes value.",
+      why_it_matters: "Operators must plan blending carefully to avoid off-spec cargo and financial losses."
+    },
+    {
+      id: "lc43",
+      question: "Which factor is critical during tank stripping?",
+      choices: ["Temperature", "Residue level", "Inert gas", "Tank pressure"],
+      correct: [1],
+      explanation: "Monitoring residue level ensures maximum recovery of cargo during stripping.",
+      why_it_matters: "Efficient stripping minimizes physical losses and maximizes cargo value."
+    },
+    {
+      id: "lc44",
+      question: "What is the purpose of a closed sampling system?",
+      choices: ["Ensure safety", "Prevent contamination", "Maintain representativity", "All of the above"],
+      correct: [3],
+      explanation: "Closed sampling systems protect operators, prevent contamination, and ensure sample integrity.",
+      why_it_matters: "Compliance with safety standards and accurate sampling are critical for operational integrity."
+    },
+    {
+      id: "lc45",
+      question: "Which document supports quantity claims?",
+      choices: ["Bill of Lading", "SOF", "VEF report", "Stock reconciliation"],
+      correct: [3],
+      explanation: "Stock reconciliation reports justify quantity discrepancies and support claims.",
+      why_it_matters: "Operators must maintain accurate reconciliation records to defend against claims."
+    },
+    {
+      id: "lc46",
+      question: "What is the impact of incorrect API gravity?",
+      choices: ["Wrong VCF", "Incorrect volume", "Quality dispute", "All of the above"],
+      correct: [3],
+      explanation: "API gravity errors affect VCF and quality classification, impacting volume and commercial terms.",
+      why_it_matters: "Operators must verify API gravity to avoid contractual penalties and disputes."
+    },
+    {
+      id: "lc47",
+      question: "Which operation is monitored to prevent contamination?",
+      choices: ["Sampling", "Blending", "Tank cleaning", "All of the above"],
+      correct: [3],
+      explanation: "All listed operations are monitored to prevent contamination risks.",
+      why_it_matters: "Contamination can lead to off-spec cargo and major financial losses—strict monitoring is essential."
+    },
+    {
+      id: "lc48",
+      question: "What is the role of the Loss Control team post-discharge?",
+      choices: ["Verify final measurements", "Check reconciliation", "Review documentation", "All of the above"],
+      correct: [3],
+      explanation: "Post-discharge, Loss Control ensures all measurements and documents are accurate and reconciled.",
+      why_it_matters: "Proper post-discharge checks prevent disputes and ensure operational integrity."
+    },
+    {
+      id: "lc49",
+      question: "Which factor can cause evaporation losses?",
+      choices: ["High temperature", "Low pressure", "Open tank", "All of the above"],
+      correct: [3],
+      explanation: "Evaporation increases with high temperature, low pressure, and exposure to air.",
+      why_it_matters: "Operators must minimize exposure and control conditions to reduce evaporation losses."
+    },
+    {
+      id: "lc50",
+      question: "What is the benefit of accurate reconciliation?",
+      choices: ["Loss prevention", "Improved reporting", "Better decision-making", "All of the above"],
+      correct: [3],
+      explanation: "Accurate reconciliation supports operational integrity, reporting accuracy, and strategic decisions.",
+      why_it_matters: "Operators rely on reconciliation to detect issues early and maintain trust with counterparties."
+    }
+
 	  
 	   ]
       }
@@ -5861,7 +6016,7 @@ document.getElementById("forgotID").onclick = () => {
       return; 
     }
 
-    fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/458482932c2546798bc331d62bcd9579/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=OacmhYAvpw_QjrCTJvpr0T-2Rgp2PBbR5HbxS5NVm3c", {
+    fetch("https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/7e697c4d27944b0f9695b9c6bfa4e8f6/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=S4LzIm8-68FkA2vubz0oqAXEX7Jw0wLj2gszDRlkPFE", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email })
@@ -6820,7 +6975,7 @@ async function callSetWinner(challenge) {
 
     try {
         const res = await fetch(
-            "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/287fa2a83caa44a682e9061374bf5a26/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nPOw4xdlbAor9kWqoZr10Z5uYhTmGJM19ILM0UkMe_Q",
+            "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c751f595bcaf433497abf52f79bcf78c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=UFKUU4YCKSXfmPcwHU0j9EEI1mc47-pThwTXiilcm2Q",
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -7077,7 +7232,7 @@ document.getElementById("topPlayersBtn").addEventListener("click", async () => {
   list.innerHTML = "<p>⏳ Chargement du classement...</p>";
 
 try {
-  const response = await fetch("https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/2a538ebdb3e848209694fb5ea11b7738/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=bJ6gYaVm82UuMf5HEGKocYcBPyad3GhxsxCryYPjbA8", {
+  const response = await fetch("https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3144eeacb31a4a9da99ecffd10680267/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=pU-AWVPl_HJrwfkKeK8-eu_IBEcdnC8Zbcb7B0daKtc", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -7120,7 +7275,7 @@ try {
   list.innerHTML = sorted
     .map((p, i) => {
       const medals = ["🥇", "🥈", "🥉"];
-      return `<p style="font-size:1.1rem;">${medals[i] || "🎯"} <b>${p.winner}</b> — ${p.count} victory${p.count > 1 ? "s" : ""}</p>`;
+      return `<p style="font-size:1.1rem;">${medals[i] || "🎯"} <b>${p.winner}</b> — ${p.count} win${p.count > 1 ? "s" : ""}</p>`;
     })
     .join("");
 
@@ -7129,7 +7284,403 @@ try {
   list.innerHTML = "<p style='color:red;'>⚠️ Error on downloading Top 3</p>";
 }
 });
-  
+
+//------------------------------------
+// 🎯 CONFIG : Concours mensuel (avec stockage via Power Automate)
+//------------------------------------
+
+// ----------------------------------
+// Vérifier si l'utilisateur a déjà joué au concours ce mois-ci
+// ----------------------------------
+async function checkIfUserAlreadyPlayed(email, mois) {
+    const endpoint = "https://default329e91b0e21f48fba071456717ecc2.8e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/26f82a5bffb34bb6b24ef62672aa41c9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VeX2BhxG0xsBc4hB0i8qpVOtTwptzYQJfrerzGBbSRs";
+
+    try {
+        const response = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, mois })
+        });
+
+        const data = await response.json();
+        console.log("Réponse Flow:", data);
+
+        return data.alreadyPlayed === true;
+    }
+    catch (err) {
+        console.error("Erreur lors de la vérification du concours:", err);
+        return false; 
+    }
+}
+
+
+
+
+
+let isMonthlyContest = false;
+
+// points
+const BASE_POINTS = 100;     // points pour bonne réponse
+const SPEED_BONUS = 4;       // points par seconde restante
+
+// timer question
+let monthlyQuestionTimer = null;
+let monthlyTimeLeft = 25;
+
+// thèmes par mois
+const monthlyThemes = {
+    1: "general_ops_january",
+    2: "crude_oil_february",
+    3: "refined_product_march",
+    4: "trading_market_funda_april",
+    5: "middle_for_ops_may",
+    6: "pricing_strategies_june",
+    7: "barge_customs_vetting_july",
+    8: "contracts_legal_august",
+    9: "refining_blending_september",
+    10: "product_stewardships_october",
+    11: "credit_finance_november",
+    12: "loss_control_december"
+};
+
+// stockage des questions / état courant du concours
+let monthlyCurrentQuestions = [];
+let monthlyCurrentIndex = 0;
+let monthlyScore = 0;
+
+// ----------------------------------
+// Bouton dispo du 26 au 30
+// ----------------------------------
+function updateMonthlyContestButton() {
+    const btn = document.getElementById("monthlyContestBtn");
+    if (!btn) return;
+    const day = new Date().getDate();
+    if (day >= 08 && day <= 30) {
+        btn.disabled = false;
+        btn.style.opacity = "1";
+    } else {
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+    }
+}
+setInterval(updateMonthlyContestButton, 30000);
+updateMonthlyContestButton();
+
+// ----------------------------------
+// Click sur le bouton concours
+// ----------------------------------
+const monthlyBtnEl = document.getElementById("monthlyContestBtn");
+if (monthlyBtnEl) {
+    monthlyBtnEl.addEventListener("click", async () => {
+        const month = new Date().getMonth() + 1;
+        const email = currentUser || "inconnu@example.com";
+
+        // 1️⃣ Vérification via Power Automate
+        const alreadyPlayed = await checkIfUserAlreadyPlayed(email, month);
+
+        if (alreadyPlayed) {
+            alert("❗ You have already participate, please wait next Month.");
+            return;
+        }
+
+        // 2️⃣ Autorisé → lancer le concours
+        const themeId = monthlyThemes[month];
+        if (!themeId) {
+            alert("❗ No theme for this month.");
+            return;
+        }
+
+        startMonthlyContest(themeId);
+    });
+}
+
+// ----------------------------------
+// Fonction pour envoyer la réponse à Power Automate
+// ----------------------------------
+async function sendAnswerToPowerAutomate({email, theme, question, reponse, resultat, mois, score}) {
+    const endpoint = "https://099c9236da0ae9fea8a2fb3b782904.4b.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3f3b7429ce0c4b548a48c0ae5597fd9d/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N2ESlpryAogYQU-ErMDMWVEYoG_VQGoPmQOnbFVg80c";
+    try {
+        await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, theme, question, reponse, resultat, mois, score })
+        });
+    } catch (err) {
+        console.error("Erreur en envoyant la réponse vers Power Automate :", err);
+    }
+}
+
+// ----------------------------------
+// Lancer le concours (charge questions, init état)
+// ----------------------------------
+function startMonthlyContest(themeId) {
+    isMonthlyContest = true;
+
+    const monthlyQuestions = monthlyContestQuestions[themeId];
+    if (!monthlyQuestions || monthlyQuestions.length < 1) {
+        alert("❗ Erreur : il manque des questions pour ce thème.");
+        return;
+    }
+
+    monthlyCurrentQuestions = monthlyQuestions.slice(0, 20); // max 20 questions
+    monthlyCurrentIndex = 0;
+    monthlyScore = 0;
+
+    // afficher UI quiz
+    const themeSelection = document.getElementById("theme-selection");
+    const quizContainer = document.getElementById("quiz-container");
+    if (themeSelection) themeSelection.style.display = "none";
+    if (quizContainer) quizContainer.style.display = "block";
+
+    // cacher boutons quiz normal
+    const prevBtn = document.getElementById("prevBtn");
+    const backBtn = document.getElementById("backBtn");
+    if (prevBtn) prevBtn.style.display = "none";
+    if (backBtn) backBtn.style.display = "none";
+
+    document.getElementById("theme-title").textContent = "🚀 Monthly competition";
+    showMonthlyQuestion();
+}
+
+// ----------------------------------
+// Afficher question (concours) avec format quiz normal
+// ----------------------------------
+function showMonthlyQuestion() {
+    clearMonthlyTimer();
+
+    const q = monthlyCurrentQuestions[monthlyCurrentIndex];
+    if (!q) {
+        finishMonthlyContest();
+        return;
+    }
+
+    const questionEl = document.getElementById("question");
+    const choicesDiv = document.getElementById("choices");
+    const resultEl = document.getElementById("result");
+    const explanationEl = document.getElementById("explanation");
+
+    if (questionEl) questionEl.textContent = q.question;
+    if (resultEl) resultEl.textContent = "";
+    if (explanationEl) explanationEl.textContent = "";
+    if (choicesDiv) choicesDiv.innerHTML = "";
+
+    // afficher les réponses comme dans le quiz normal
+    if (q.choices && q.choices.length > 0) {
+        q.choices.forEach((choice, index) => {
+            const choiceContainer = document.createElement("div");
+            choiceContainer.className = "choice";
+            choiceContainer.dataset.choice = choice;
+            choiceContainer.innerHTML = `
+                <span class="choice-letter">${String.fromCharCode(65 + index)}</span>
+                <span class="choice-text">${choice}</span>
+            `;
+            choiceContainer.addEventListener("click", () => monthlySelectAnswer(choiceContainer, q));
+            choicesDiv.appendChild(choiceContainer);
+        });
+    }
+
+    // lancer timer 25s
+    monthlyTimeLeft = 25;
+    const timerEl = document.getElementById("timer");
+    if (timerEl) timerEl.textContent = `⏳ ${monthlyTimeLeft}s`;
+    monthlyQuestionTimer = setInterval(() => {
+        monthlyTimeLeft--;
+        if (timerEl) timerEl.textContent = `⏳ ${monthlyTimeLeft}s`;
+        if (monthlyTimeLeft <= 0) {
+            clearMonthlyTimer();
+            monthlyAutoFail();
+        }
+    }, 1000);
+
+    // mettre à jour score
+    const scoreLine = document.getElementById("scoreLine");
+    if (scoreLine) scoreLine.textContent = `Score : ${monthlyScore}`;
+}
+
+// ----------------------------------
+// Clear timer
+// ----------------------------------
+function clearMonthlyTimer() {
+    if (monthlyQuestionTimer) {
+        clearInterval(monthlyQuestionTimer);
+        monthlyQuestionTimer = null;
+    }
+}
+
+// ----------------------------------
+// Réponse sélectionnée (format quiz normal) avec envoi vers Power Automate
+// ----------------------------------
+function monthlySelectAnswer(choiceEl, question) {
+    clearMonthlyTimer();
+
+    const selectedChoice = choiceEl.dataset.choice;
+    const isCorrect = selectedChoice === question.answer;
+
+    // Marquer toutes les réponses
+    const allChoices = document.querySelectorAll("#choices .choice");
+    allChoices.forEach(c => {
+        if (c.dataset.choice === question.answer) {
+            c.classList.add("correct");
+        } else if (c.dataset.choice === selectedChoice) {
+            c.classList.add(isCorrect ? "correct" : "wrong");
+        }
+        c.style.pointerEvents = "none";
+    });
+
+    // calcul score
+    if (isCorrect) {
+        monthlyScore += BASE_POINTS;
+        monthlyScore += monthlyTimeLeft * SPEED_BONUS;
+    }
+
+    // afficher résultat et explication
+    const resultEl = document.getElementById("result");
+    const explanationEl = document.getElementById("explanation");
+    if (resultEl) resultEl.textContent = isCorrect ? "✅ Correct !" : `❌ Wrong. Réponse: ${question.answer}`;
+    if (explanationEl) explanationEl.textContent = question.explanation || "";
+
+    const scoreLine = document.getElementById("scoreLine");
+    if (scoreLine) scoreLine.textContent = `Score : ${monthlyScore}`;
+
+    // envoyer la réponse au backend
+    const email = currentUser || "inconnu@example.com";
+    const mois = new Date().getMonth() + 1;
+    sendAnswerToPowerAutomate({
+        email,
+        theme: monthlyThemes[mois],
+        question: question.question,
+        reponse: selectedChoice,
+        resultat: isCorrect ? "Correct" : "Wrong",
+        mois,
+        score: monthlyScore
+    });
+
+    // passer à la question suivante
+    setTimeout(() => {
+        monthlyCurrentIndex++;
+        if (monthlyCurrentIndex < monthlyCurrentQuestions.length) {
+            showMonthlyQuestion();
+        } else {
+            finishMonthlyContest();
+        }
+    }, 1200);
+}
+
+// ----------------------------------
+// Timeout -> considérer comme incorrect et passer, avec envoi
+// ----------------------------------
+function monthlyAutoFail() {
+    const q = monthlyCurrentQuestions[monthlyCurrentIndex];
+    const resultEl = document.getElementById("result");
+    const explanationEl = document.getElementById("explanation");
+    if (resultEl) resultEl.textContent = `⏰ Temps écoulé ! Réponse: ${q.answer}`;
+    if (explanationEl) explanationEl.textContent = q.explanation || "";
+
+    // marquer la réponse correcte
+    const allChoices = document.querySelectorAll("#choices .choice");
+    allChoices.forEach(c => {
+        if (c.dataset.choice === q.answer) {
+            c.classList.add("correct");
+        }
+        c.style.pointerEvents = "none";
+    });
+
+    // envoyer la réponse au backend comme Wrong
+    const email = currentUser || "inconnu@example.com";
+    const mois = new Date().getMonth() + 1;
+    sendAnswerToPowerAutomate({
+        email,
+        theme: monthlyThemes[mois],
+        question: q.question,
+        reponse: "Aucune",
+        resultat: "Wrong",
+        mois,
+        score: monthlyScore
+    });
+
+    setTimeout(() => {
+        monthlyCurrentIndex++;
+        if (monthlyCurrentIndex < monthlyCurrentQuestions.length) {
+            showMonthlyQuestion();
+        } else {
+            finishMonthlyContest();
+        }
+    }, 1200);
+}
+
+// ----------------------------------
+// Fin du concours
+// ----------------------------------
+function finishMonthlyContest() {
+    clearMonthlyTimer();
+    isMonthlyContest = false;
+
+    const quizContainer = document.getElementById("quiz-container");
+    const themeSelection = document.getElementById("theme-selection");
+    if (quizContainer) quizContainer.style.display = "none";
+    if (themeSelection) themeSelection.style.display = "block";
+
+    // réafficher boutons quiz normal
+    const prevBtn = document.getElementById("prevBtn");
+    const backBtn = document.getElementById("backBtn");
+    if (prevBtn) prevBtn.style.display = "inline-block";
+    if (backBtn) backBtn.style.display = "inline-block";
+
+    alert(`🎉 Concours terminé !\nScore final : ${monthlyScore} points`);
+}
+
+// ----------------------------------
+// Exemple de questions
+// ----------------------------------
+const monthlyContestQuestions = {
+    credit_finance_november: [
+        {
+            question: "Quel document accompagne toujours un cargo et décrit la marchandise chargée ?",
+            choices: ["Le Manifest", "Le B/L", "Le SOF", "Le Q88"],
+            answer: "Le B/L",
+            explanation: "Le Bill of Lading est le document contractuel et de propriété de la cargaison."
+        },
+        {
+            question: "Quelle section d’un B/L précise l’état apparent de la cargaison au chargement ?",
+            choices: ["Cargo Description", "Clauses", "Shipper’s Declaration", "Remarks"],
+            answer: "Remarks",
+            explanation: "Les ‘remarks’ indiquent les réserves du capitaine sur l’état de la marchandise."
+        },
+        {
+            question: "Quel document émis par le terminal confirme la quantité réellement chargée ?",
+            choices: ["Outturn Report", "Draft Survey", "Certificate of Quantity", "NOR"],
+            answer: "Certificate of Quantity",
+            explanation: "Le CoQ certifie officiellement les quantités chargées ou déchargées."
+        },
+        {
+            question: "Quel document établit la qualité du produit à bord ?",
+            choices: ["Certificate of Origin", "Certificate of Quality", "Laytime Statement", "ROB Report"],
+            answer: "Certificate of Quality",
+            explanation: "Le CoQ est émis par un laboratoire et décrit les spécifications du produit."
+        },
+        {
+            question: "Quel document doit être présenté pour pouvoir décharger une cargaison ?",
+            choices: ["Mate’s Receipt", "Original B/L", "Cargo Manifest", "Statement of Facts"],
+            answer: "Original B/L",
+            explanation: "Sans l’Original Bill of Lading, le capitaine ne peut pas légalement délivrer la marchandise."
+        }
+        // ajoute ici tes 15 autres questions pour arriver à 20
+    ],
+
+    crude_oil_february: [],
+    refined_product_march: [],
+	trading_market_funda_april: [],
+	middle_for_ops_may: [],
+	pricing_strategies_june: [],
+	barge_customs_vetting_july: [],
+	contracts_legal_august: [],
+	refining_blending_september: [],
+	product_stewardships_october: [],
+	credit_finance_november: [],
+	loss_control_december: []
+
+};
+
   </script>
 </body>
 </html>
